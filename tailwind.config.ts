@@ -13,6 +13,11 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Nunito Sans', 'sans-serif'],
+        primary: ['Montserrat', 'sans-serif'],
+        secondary: ['Montserrat Alternates', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
