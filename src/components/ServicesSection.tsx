@@ -18,18 +18,22 @@ import googleLogo from "@/assets/clients/google.png";
 import metaphysicLogo from "@/assets/clients/metaphysic.png";
 import metroLogo from "@/assets/clients/metro.png";
 import upliftLogo from "@/assets/clients/uplift.png";
+import accesaLogo from "@/assets/clients/accesa.png";
+import upcLogo from "@/assets/clients/upc.png";
 
 export const ServicesSection = () => {
   const clients = [
+    { name: "Google", logo: googleLogo },
     { name: "Bitdefender", logo: bitdefenderLogo },
     { name: "Bloomberg", logo: bloombergLogo },
     { name: "Bosch", logo: boschLogo },
     { name: "BP", logo: bpLogo },
     { name: "Exomatter", logo: exomatterLogo },
-    { name: "Google", logo: googleLogo },
     { name: "Metaphysic", logo: metaphysicLogo },
     { name: "Metro", logo: metroLogo },
     { name: "Uplift", logo: upliftLogo },
+    { name: "Accesa", logo: accesaLogo },
+    { name: "UPC", logo: upcLogo },
   ];
 
   const services = [
