@@ -130,7 +130,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <p className="text-muted-foreground">contact@aiflow.com</p>
+                    <p className="text-muted-foreground">contact@aiflow.ltd</p>
                   </div>
                 </div>
 
@@ -140,7 +140,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Phone</h3>
-                    <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                    <p className="text-muted-foreground">+40 721 658 931 (Romania)</p>
+                    <p className="text-muted-foreground">+41 767 771 131 (Switzerland)</p>
                   </div>
                 </div>
 
@@ -151,9 +152,9 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold mb-1">Location</h3>
                     <p className="text-muted-foreground">
-                      San Francisco, CA
+                      Cluj-Napoca, Romania
                       <br />
-                      United States
+                      Zürich, Switzerland
                     </p>
                   </div>
                 </div>
@@ -165,7 +166,7 @@ const Contact = () => {
               <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">•</span>
-                  <span>Deep expertise in AI/ML since before the hype</span>
+                  <span>Deep expertise in AI/ML, +10 years experience</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">•</span>

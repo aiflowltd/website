@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { NavLink } from "@/components/NavLink";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 export const Navigation = () => {
@@ -8,9 +9,9 @@ export const Navigation = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2 cursor-pointer">
             <img src={logo} alt="AI Flow Logo" className="h-10 w-auto" />
-          </div>
+          </Link>
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center gap-8">
