@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { ServicesSection } from "@/components/ServicesSection";
+import { CaseStudiesSection } from "@/components/CaseStudiesSection";
 import { StarfieldBackground } from "@/components/StarfieldBackground";
 
 const Index = () => {
@@ -11,6 +12,7 @@ const Index = () => {
         <Navigation />
         <Hero />
         <ServicesSection />
+        <CaseStudiesSection />
       </div>
     </div>
   );
