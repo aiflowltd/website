@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { NavLink } from "@/components/NavLink";
+import logo from "@/assets/logo.png";
 
 export const Navigation = () => {
   return (
@@ -8,9 +9,7 @@ export const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-xl font-bold text-background">AI</span>
-            </div>
+            <img src={logo} alt="AI Flow Logo" className="h-10 w-auto" />
           </div>
 
           {/* Navigation Links */}
