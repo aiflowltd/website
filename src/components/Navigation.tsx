@@ -16,32 +16,37 @@ export const Navigation = () => {
           {/* Navigation Links */}
           <div className="hidden md:flex items-center gap-8">
             <NavLink 
-              to="/" 
-              className="text-foreground hover:text-primary transition-colors"
+              to="/services" 
+              className="text-foreground hover:text-primary transition-colors relative pb-1"
+              activeClassName="text-primary font-semibold after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
             >
               Services
             </NavLink>
             <NavLink 
-              to="/" 
-              className="text-foreground hover:text-primary transition-colors"
+              to="/case-studies" 
+              className="text-foreground hover:text-primary transition-colors relative pb-1"
+              activeClassName="text-primary font-semibold after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
             >
               Case Studies
             </NavLink>
             <NavLink 
-              to="/" 
-              className="text-foreground hover:text-primary transition-colors"
+              to="/blog" 
+              className="text-foreground hover:text-primary transition-colors relative pb-1"
+              activeClassName="text-primary font-semibold after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
             >
               Blog
             </NavLink>
             <NavLink 
-              to="/" 
-              className="text-foreground hover:text-primary transition-colors"
+              to="/careers" 
+              className="text-foreground hover:text-primary transition-colors relative pb-1"
+              activeClassName="text-primary font-semibold after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
             >
               Careers
             </NavLink>
             <NavLink 
               to="/contact" 
-              className="text-foreground hover:text-primary transition-colors"
+              className="text-foreground hover:text-primary transition-colors relative pb-1"
+              activeClassName="text-primary font-semibold after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
             >
               Contact
             </NavLink>

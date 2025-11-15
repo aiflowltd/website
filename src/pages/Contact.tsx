@@ -141,7 +141,7 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold mb-1">Phone</h3>
                     <p className="text-muted-foreground">+40 721 658 931 (Romania)</p>
-                    <p className="text-muted-foreground">+41 767 771 131 (Switzerland)</p>
+                    <p className="text-muted-foreground">+41 76 777 11 31 (Switzerland)</p>
                   </div>
                 </div>
 
