@@ -1,8 +1,10 @@
 import { Navigation } from "@/components/Navigation";
+import { AuthorCard } from "@/components/AuthorCard";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowLeft, Calendar, Clock, User, Tag, Share2, Linkedin, Twitter } from "lucide-react";
 import { Link, useParams, Navigate } from "react-router-dom";
+import { getAuthor } from "@/data/authors";
 
 const BlogPost = () => {
   const { id } = useParams();
@@ -11,7 +13,7 @@ const BlogPost = () => {
     "why-you-need-ai-consultant-2025": {
       title: "Why You Need an AI Consultant in 2025",
       excerpt: "Building impactful AI products requires rigorous fundamentals. Learn why bringing in an AI consultant is no longer a luxury but a strategic necessity.",
-      author: "Mihai Anton",
+      authorId: "mihai-anton",
       date: "November 22, 2024",
       readTime: "8 min read",
       category: "Strategy",
@@ -99,7 +101,7 @@ const BlogPost = () => {
     "how-to-start-learning-ai-2025": {
       title: "How to Start Learning AI in 2025",
       excerpt: "A practical guide for founders and tech leads on where to actually start learning AI, grounded in real-world experience building transformative AI systems.",
-      author: "Mihai Anton",
+      authorId: "mihai-anton",
       date: "November 18, 2024",
       readTime: "9 min read",
       category: "AI Trends",
@@ -219,7 +221,7 @@ const BlogPost = () => {
     "tech-giants-ai-acquisitions-2025": {
       title: "How Tech Giants Leverage AI Acquisitions in 2025",
       excerpt: "Why large companies are on an AI buying spree and what smaller enterprises can learn from this strategic push to embed AI expertise into their business models.",
-      author: "Mihai Anton",
+      authorId: "mihai-anton",
       date: "November 19, 2024",
       readTime: "10 min read",
       category: "Strategy",
@@ -367,7 +369,7 @@ const BlogPost = () => {
     "understanding-ai-agents": {
       title: "Understanding AI Agents: Intelligent Automation and the Power of Delegation",
       excerpt: "Beyond the hype: what AI agents really are, how they differ from simple automation, and whether they'll reshape how businesses build AI-driven products.",
-      author: "Mihai Anton",
+      authorId: "mihai-anton",
       date: "November 20, 2024",
       readTime: "11 min read",
       category: "AI Trends",
@@ -505,7 +507,7 @@ const BlogPost = () => {
     "pruning-junk-tokens-llm-costs": {
       title: "How We Saved 80% off LLM Inference Costs by Pruning 'Junk Tokens'",
       excerpt: "A practical guide to reducing your AI API bills by up to 85% through intelligent token pruning – and why this pattern works almost anywhere.",
-      author: "Mihai Anton",
+      authorId: "mihai-anton",
       date: "November 15, 2024",
       readTime: "10 min read",
       category: "Engineering",
@@ -653,7 +655,7 @@ const BlogPost = () => {
     "5-ways-improve-ml-system": {
       title: "5 Ways to Improve Your ML System",
       excerpt: "Behind every polished demo sits a messier truth. Fix these five low-hanging optimizations early to improve your system, prepare it for scale, and reduce costs.",
-      author: "Mihai Anton",
+      authorId: "mihai-anton",
       date: "November 12, 2024",
       readTime: "8 min read",
       category: "Machine Learning",
@@ -803,7 +805,7 @@ wandb.watch(model, log="all", log_freq=100)
     "future-of-ai-enterprise-2025": {
       title: "The Future of AI in Enterprise: Trends to Watch in 2025",
       excerpt: "Explore the emerging AI trends that will shape enterprise technology in the coming year, from generative AI to autonomous systems.",
-      author: "Mihai Anton",
+      authorId: "irina-barbos",
       date: "November 10, 2024",
       readTime: "8 min read",
       category: "AI Trends",
@@ -924,7 +926,7 @@ wandb.watch(model, log="all", log_freq=100)
     "production-ml-pipelines": {
       title: "Building Production-Ready ML Pipelines: A Complete Guide",
       excerpt: "Learn best practices for creating robust, scalable ML pipelines that can handle real-world production demands.",
-      author: "Mihai Anton",
+      authorId: "irina-barbos",
       date: "November 5, 2024",
       readTime: "12 min read",
       category: "Machine Learning",
@@ -1152,7 +1154,7 @@ with mlflow.start_run():
     "rag-vs-finetuning": {
       title: "RAG vs Fine-tuning: Choosing the Right Approach for Your LLM",
       excerpt: "Understanding the trade-offs between Retrieval-Augmented Generation and fine-tuning for large language model applications.",
-      author: "Mihai Anton",
+      authorId: "irina-barbos",
       date: "October 20, 2024",
       readTime: "15 min read",
       category: "LLMs",
@@ -1440,7 +1442,7 @@ with mlflow.start_run():
           <div className="flex flex-wrap gap-6 text-muted-foreground mb-8 pb-8 border-b border-border">
             <div className="flex items-center gap-2">
               <User className="w-5 h-5 text-primary" />
-              <span>{post.author}</span>
+              <span>{getAuthor(post.authorId).name}</span>
             </div>
             <div className="flex items-center gap-2">
               <Calendar className="w-5 h-5 text-primary" />
@@ -1455,10 +1457,6 @@ with mlflow.start_run():
           {/* Share Buttons */}
           <div className="flex items-center gap-4 mb-12">
             <span className="text-sm text-muted-foreground">Share:</span>
-            <Button variant="outline" size="sm" className="gap-2">
-              <Twitter className="w-4 h-4" />
-              Twitter
-            </Button>
             <Button variant="outline" size="sm" className="gap-2">
               <Linkedin className="w-4 h-4" />
               LinkedIn
@@ -1499,31 +1497,9 @@ with mlflow.start_run():
           </div>
 
           {/* Author Card */}
-          <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20 p-8 mt-12">
-            <div className="flex items-start gap-6">
-              <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                <User className="w-10 h-10 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">About {post.author}</h3>
-                <p className="text-muted-foreground mb-4">
-                  {post.author === "Mihai Anton" 
-                    ? "Co-founder and CTO at AI Flow. Over 10 years of experience building AI/ML systems for Fortune 500 companies. Passionate about making AI practical and profitable."
-                    : "Co-founder and CEO at AI Flow. Deep expertise in AI strategy and implementation. Focused on delivering business value through intelligent automation."}
-                </p>
-                <div className="flex gap-4">
-                  <Button variant="outline" size="sm" className="gap-2">
-                    <Linkedin className="w-4 h-4" />
-                    Connect
-                  </Button>
-                  <Button variant="outline" size="sm" className="gap-2">
-                    <Twitter className="w-4 h-4" />
-                    Follow
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </Card>
+          <div className="mt-12">
+            <AuthorCard author={getAuthor(post.authorId)} />
+          </div>
 
           {/* CTA */}
           <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20 p-12 text-center mt-12">
