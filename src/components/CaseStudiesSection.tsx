@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import caseStudy1 from "@/assets/case-study-1.jpg";
 import caseStudy2 from "@/assets/case-study-2.jpg";
 import caseStudy3 from "@/assets/case-study-3.jpg";
@@ -11,43 +12,46 @@ import clientManufact from "@/assets/client-manufact.png";
 export const CaseStudiesSection = () => {
   const caseStudies = [
     {
-      title: "AI-Powered Analytics Platform",
-      client: "TechGlobal Inc.",
-      clientLogo: clientTechGlobal,
-      image: caseStudy1,
-      description: "Developed a comprehensive analytics platform that processes millions of data points in real-time, providing actionable insights for business decisions.",
-      metrics: [
-        { label: "Revenue Increase", value: "45%" },
-        { label: "Processing Speed", value: "10x" },
-        { label: "Cost Reduction", value: "60%" },
-      ],
-      tags: ["Machine Learning", "Big Data", "Analytics"],
-    },
-    {
-      title: "Customer Support Automation",
-      client: "RetailCo",
-      clientLogo: clientRetailCo,
-      image: caseStudy2,
-      description: "Implemented an intelligent chatbot system that handles customer inquiries 24/7, reducing support costs while improving customer satisfaction.",
-      metrics: [
-        { label: "Response Time", value: "-85%" },
-        { label: "Customer Satisfaction", value: "92%" },
-        { label: "Support Costs", value: "-40%" },
-      ],
-      tags: ["NLP", "Chatbots", "Automation"],
-    },
-    {
-      title: "Predictive Maintenance System",
-      client: "ManufactureX",
+      id: "supply-chain-optimization",
+      title: "AI-Powered Supply Chain Optimization",
+      client: "Fortune 500 Manufacturer",
       clientLogo: clientManufact,
-      image: caseStudy3,
-      description: "Built a predictive maintenance solution using IoT sensors and machine learning to prevent equipment failures before they occur.",
+      image: caseStudy1,
+      description: "Implemented ML-powered demand forecasting and automated inventory optimization system that reduced costs by 40% and improved forecast accuracy to 95%.",
       metrics: [
-        { label: "Downtime Reduction", value: "70%" },
-        { label: "Maintenance Costs", value: "-50%" },
-        { label: "Equipment Lifespan", value: "+35%" },
+        { label: "Inventory Costs", value: "-40%" },
+        { label: "Decision Speed", value: "60%" },
+        { label: "Forecast Accuracy", value: "95%" },
       ],
-      tags: ["IoT", "Predictive AI", "Manufacturing"],
+      tags: ["Machine Learning", "Supply Chain", "Optimization"],
+    },
+    {
+      id: "customer-service-platform",
+      title: "Intelligent Customer Service Platform",
+      client: "E-commerce Leader",
+      clientLogo: clientRetailCo,
+      image: caseStudy3,
+      description: "Developed AI chatbot with natural language understanding and sentiment analysis that handles 24/7 customer support with 90% satisfaction rate.",
+      metrics: [
+        { label: "Support Costs", value: "-70%" },
+        { label: "Response Time", value: "<1 min" },
+        { label: "Satisfaction", value: "90%" },
+      ],
+      tags: ["NLP", "Chatbot", "Customer Service"],
+    },
+    {
+      id: "fraud-detection-system",
+      title: "Real-Time Fraud Detection System",
+      client: "Global Financial Institution",
+      clientLogo: clientTechGlobal,
+      image: caseStudy2,
+      description: "Built real-time ML fraud detection system with <100ms detection time, preventing $50M+ in fraud annually with 99.7% accuracy.",
+      metrics: [
+        { label: "Fraud Prevented", value: "$50M+" },
+        { label: "Detection Time", value: "<100ms" },
+        { label: "Accuracy", value: "99.7%" },
+      ],
+      tags: ["AI/ML", "Fraud Detection", "Real-time"],
     },
   ];
 
@@ -124,10 +128,10 @@ export const CaseStudiesSection = () => {
                       ))}
                     </div>
 
-                    <button className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all">
+                    <Link to={`/case-studies/${study.id}`} className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all">
                       View Full Case Study
                       <ArrowUpRight className="w-4 h-4" />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -10,6 +10,7 @@ import caseStudy3 from "@/assets/case-study-3.jpg";
 const CaseStudies = () => {
   const caseStudies = [
     {
+      id: "supply-chain-optimization",
       title: "AI-Powered Supply Chain Optimization",
       client: "Fortune 500 Manufacturer",
       industry: "Manufacturing",
@@ -24,6 +25,7 @@ const CaseStudies = () => {
       tags: ["Machine Learning", "Supply Chain", "Optimization"],
     },
     {
+      id: "fraud-detection-system",
       title: "Real-Time Fraud Detection System",
       client: "Global Financial Institution",
       industry: "Finance",
@@ -38,6 +40,7 @@ const CaseStudies = () => {
       tags: ["AI/ML", "Fraud Detection", "Real-time Processing"],
     },
     {
+      id: "customer-service-platform",
       title: "Intelligent Customer Service Platform",
       client: "E-commerce Leader",
       industry: "E-commerce",
@@ -126,10 +129,12 @@ const CaseStudies = () => {
                     ))}
                   </div>
                   
-                  <Button className="bg-primary hover:bg-primary/90 text-background font-semibold">
-                    Read Full Case Study
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
+                  <Link to={`/case-studies/${study.id}`}>
+                    <Button className="bg-primary hover:bg-primary/90 text-background font-semibold">
+                      Read Full Case Study
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </Card>
