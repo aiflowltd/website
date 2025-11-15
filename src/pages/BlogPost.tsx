@@ -8,10 +8,802 @@ const BlogPost = () => {
   const { id } = useParams();
 
   const blogPosts: Record<string, any> = {
+    "why-you-need-ai-consultant-2025": {
+      title: "Why You Need an AI Consultant in 2025",
+      excerpt: "Building impactful AI products requires rigorous fundamentals. Learn why bringing in an AI consultant is no longer a luxury but a strategic necessity.",
+      author: "Mihai Anton",
+      date: "November 22, 2024",
+      readTime: "8 min read",
+      category: "Strategy",
+      tags: ["AI", "Consulting", "Business", "Strategy"],
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop",
+      content: [
+        {
+          type: "paragraph",
+          text: "As the AI wave keeps accelerating, we're witnessing a shift in how companies build and scale their software systems. What was once reserved for a handful of tech giants is now within reach for small and medium enterprises, and the possibilities stretch well beyond the commonly praised Large Language Models we see in the media. There's still a big gap, though: building a truly impactful AI product—from data engineering to deployment—requires rigorous fundamentals that many teams haven't yet mastered. If you plan to harness AI responsibly and efficiently, bringing in an AI consultant is no longer a luxury. Here's why."
+        },
+        {
+          type: "heading",
+          text: "1. AI Has Moved Beyond the Hype"
+        },
+        {
+          type: "paragraph",
+          text: "We're all familiar with the fuss around ChatGPT or generative art, but these solutions are only a fraction of what AI can do. Companies see the acronym 'AI' and assume it's all about text or images. In reality, there are countless other domains—predictive analytics, anomaly detection, self-learning agents, recommendation engines, advanced computer vision systems, and more. A competent consultant will help you identify which form of AI best aligns with your goals, rather than forcing the same solution into every scenario."
+        },
+        {
+          type: "heading",
+          text: "2. Building the Right Foundation Now Pays Off Later"
+        },
+        {
+          type: "paragraph",
+          text: "One of the biggest mistakes we see is layering fancy AI models on top of a weak data infrastructure. This might look impressive in the short term but can break the moment you try to scale. At AI Flow, we've seen projects where a client's pipeline was never designed to handle large data spikes, and swapping in a more powerful AI model didn't solve the underlying issues. With the right consultant from the start, you'll establish a robust pipeline, design flexible APIs, and ensure your system can integrate with the best tools out there—like Google's Vertex AI or AWS Sagemaker—without needing to rewrite everything when your user base grows."
+        },
+        {
+          type: "heading",
+          text: "3. Regulations Are Becoming a Real Factor"
+        },
+        {
+          type: "paragraph",
+          text: "If you've followed the EU AI Act or other emerging data regulations, you know that AI is no longer the 'Wild West' it used to be. Companies that neglect compliance measures often face steep penalties or forced rebuilds. A consultant who truly understands the fundamentals—beyond just wrapping an off-the-shelf model—knows how to embed responsible data practices from day one. Building with strong ethical and regulatory principles up front spares you the headache of retrofitting your entire product weeks before a crucial compliance deadline."
+        },
+        {
+          type: "heading",
+          text: "4. Scarcity of True AI Experts"
+        },
+        {
+          type: "paragraph",
+          text: "As more developers label themselves 'AI engineers' after integrating off-the-shelf models, it has become harder to separate genuine expertise from basic API calls. There's a critical difference between a professional who has worked deeply on optimizing AI models and pipelines—and someone who merely taps into an external service. While there's nothing wrong with using existing platforms, you need to ensure your long-term roadmap stays robust and adaptable. An experienced consultant will help you maintain this balance without being sidetracked by hype."
+        },
+        {
+          type: "heading",
+          text: "5. Stay Ahead of the Competition"
+        },
+        {
+          type: "paragraph",
+          text: "AI-driven capabilities, whether it's better analytics or new user-facing features, will eventually become the norm. By getting there faster and with the right architecture, you position yourself to deliver better experiences than your competitors. We've seen companies capture a market niche simply by building AI-driven recommendation systems that tailor interactions to each user. That initial investment often pays for itself as these systems gradually learn from and adapt to user behavior, driving revenue growth and stronger customer loyalty."
+        },
+        {
+          type: "heading",
+          text: "6. Real-World Examples"
+        },
+        {
+          type: "paragraph",
+          text: "In the past couple of years, we've watched AI consultants step in and add value quickly:"
+        },
+        {
+          type: "list",
+          items: [
+            "Scaling a growing startup's infrastructure: Making sure a platform could handle rapid increases in user traffic without sacrificing speed or reliability.",
+            "Improving AI-driven content generation: Reducing training times and operational overhead so the client's creative workflows could run more smoothly.",
+            "Refining data pipelines: Designing distributed pipelines that ingest, clean, and organize data, enabling the AI model to make better, more accurate predictions."
+          ]
+        },
+        {
+          type: "paragraph",
+          text: "In each scenario, spending a little time with an experienced consultant saved the client months of costly trial-and-error."
+        },
+        {
+          type: "heading",
+          text: "Conclusion"
+        },
+        {
+          type: "paragraph",
+          text: "As we move further into 2025, AI is evolving into an integral part of every modern business strategy, but it's far from a one-size-fits-all approach. A credible consultant helps you refine your data infrastructure, factor in new regulations, and select the most effective AI methods for your unique challenges—without relying solely on surface-level integrations."
+        },
+        {
+          type: "paragraph",
+          text: "If you're curious to learn more about integrating advanced machine learning in a way that's both scalable and responsible, you can book a call with us to discuss your next steps. By planning carefully now, you'll reap the rewards in a marketplace where genuine AI expertise sets you apart."
+        }
+      ]
+    },
+    "how-to-start-learning-ai-2025": {
+      title: "How to Start Learning AI in 2025",
+      excerpt: "A practical guide for founders and tech leads on where to actually start learning AI, grounded in real-world experience building transformative AI systems.",
+      author: "Mihai Anton",
+      date: "November 18, 2024",
+      readTime: "9 min read",
+      category: "AI Trends",
+      tags: ["AI", "Learning", "Career", "Education"],
+      image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&h=600&fit=crop",
+      content: [
+        {
+          type: "paragraph",
+          text: "If you've scrolled through your feed recently, you've seen the AI buzz: from LLM integrations that claim to handle all your customer support needs to 'game-changing' coding agents that promise to replace half your dev team. But behind those bold headlines, many founders and tech leads still ask the same question: Where do I actually start learning AI, especially in a world that changes every month?"
+        },
+        {
+          type: "paragraph",
+          text: "After nearly a decade in the field, I've seen both the hype-driven missteps and the truly transformative approaches to learning AI. Below is a concise guide to help you start learning AI in 2025, grounded in the real-world challenges I've tackled at AI Flow for small and mid-sized companies."
+        },
+        {
+          type: "heading",
+          text: "1. Understand Why You're Learning AI"
+        },
+        {
+          type: "paragraph",
+          text: "The first step is clarifying your goal. Are you a startup looking to build predictive models that drive your new product? Or are you part of a mid-enterprise that needs to streamline operations with smarter analytics? Many businesses turn to AI after hitting bottlenecks—manual work, unused data, content chaos, or poor forecasting. That's when they realize they need deeper AI capabilities."
+        },
+        {
+          type: "paragraph",
+          text: "Don't just learn AI because it's the current hype. You'll end up scratching the surface, only to build suboptimal AI and Machine Learning projects. Learn the fundamentals well, and you'll be able to scale as much as you want. Skim the highlights, and your foundation stays brittle. You won't grasp or build full AI products end to end."
+        },
+        {
+          type: "quote",
+          text: "The risk of learning AI just because it's cool will start showing up when things don't go well. Any engineer can call some APIs, and build some no code automations. But what if things don't work out? What if your model is not generalizing? What if your data augmentation steps are not the best? Or, what if your inference time is 4X slower and more expensive than it should be? It will be at this moment when deep knowledge will show up and make a difference."
+        },
+        {
+          type: "heading",
+          text: "2. Start with the Foundations"
+        },
+        {
+          type: "paragraph",
+          text: "Artificial Intelligence may seem glamorous, but the basics still matter. Strong math skills, clean data organization, and solid software engineering are all essential. If you're just starting out, make these the core of your self-study plan:"
+        },
+        {
+          type: "paragraph",
+          text: "Mathematical Basics: Start with statistics—like confidence intervals and distributions—and linear algebra, including matrix operations and eigenvalues. These concepts help you read model results, debug strange behavior, and avoid blindly trusting models that only 'kind of work.'"
+        },
+        {
+          type: "paragraph",
+          text: "Data Handling: Next, learn to gather, clean, and organize your data. Tools like Python's pandas—or big data frameworks like Spark—can save you from messy spreadsheets and repetitive ETL tasks."
+        },
+        {
+          type: "paragraph",
+          text: "Coding & Version Control: Finally, even if you focus on data science or ML research, you'll still need to connect your models to real products. That's where Git, Docker (for packaging code), and a cloud platform like AWS, GCP, or Azure come in handy."
+        },
+        {
+          type: "heading",
+          text: "3. Pick One Model and Go Deeper"
+        },
+        {
+          type: "paragraph",
+          text: "It's tempting to test every new library out there—LLMs one day, object detection the next. In practice, you'll learn faster if you pick a model type relevant to your business and really drill down."
+        },
+        {
+          type: "paragraph",
+          text: "Regression/Forecasting: Let's begin with a common entry point. If you're in finance, supply chain, or any field that needs to predict demand, this area is key. For instance, learning time-series analysis helps you understand how machine learning—and now advanced AI—can automate recurring tasks and improve accuracy."
+        },
+        {
+          type: "paragraph",
+          text: "Classification: Moving on, classification is essential when you're labeling data. If you handle user-generated content, you're likely tagging items as 'spam or not,' 'duplicate or unique,' or 'priority vs. backlog.' For example, we helped a client manage thousands of daily submissions. We built a custom model that cut their moderators' workload in half overnight."
+        },
+        {
+          type: "paragraph",
+          text: "Generative Models: Finally, generative models are a good fit for tasks like creating images, generating text, or producing synthetic media. At AI Flow, we've built pipelines for hyper-realistic video content. These models used advanced architectures while staying mindful of cost and complexity."
+        },
+        {
+          type: "heading",
+          text: "4. Learn to Deploy, Not Just Experiment"
+        },
+        {
+          type: "paragraph",
+          text: "Knowing how to train a model is a great start, but your value multiplies once you can integrate AI into a live product. This is where experience with back-end frameworks, container orchestration (Kubernetes or ECS), and modern serverless approaches is critical. The real challenge is ensuring your model remains stable and secure under production traffic."
+        },
+        {
+          type: "paragraph",
+          text: "Example: We worked with a content curation platform that relied on a model running locally on a researcher's laptop. Once we deployed it in a scalable setup—with automated retraining and solid monitoring—the real impact followed. They saw fewer duplicate posts, faster moderation, and a clear boost in user satisfaction."
+        },
+        {
+          type: "heading",
+          text: "5. Find Mentors or Specialized Teams"
+        },
+        {
+          type: "paragraph",
+          text: "The fastest way to learn often comes through collaboration. Don't hesitate to reach out to AI specialists—whether it's a friend with years in ML or an agency that can co-build and teach. From my own journey and building AI Flow, I've seen how mentorship speeds up learning—especially when tackling real-world edge cases."
+        },
+        {
+          type: "heading",
+          text: "6. Evolve With the Field"
+        },
+        {
+          type: "paragraph",
+          text: "AI in 2025 isn't static. New regulations—like the EU AI Act—could change how you store or process data. At the same time, the speed of model innovation can feel overwhelming. To stay grounded, build a habit: follow trusted news sources like The Verge's AI section, Wired's AI coverage, or niche newsletters. And, more importantly, learn to filter: focus on the breakthroughs that matter to your work, and don't get distracted by flashy headlines."
+        },
+        {
+          type: "heading",
+          text: "Final Thoughts"
+        },
+        {
+          type: "paragraph",
+          text: "Learning AI can feel overwhelming, like drinking from a firehose. But it usually starts with one clear project. Maybe it's a shipping model. Or a content classifier. Or demand forecasting. Whatever it is, start with strong math and clean data. Regardless, it's crucial to start with solid math and data engineering. Then, pick one model type that solves a real problem. Once that's in place, you can expand, or pivot. That's how we've helped clients grow, from UGC overload to post-MVP scaling."
+        },
+        {
+          type: "paragraph",
+          text: "Through it all, remember: AI is more than fancy algorithms. It's a method of solving tangible problems in ways that weren't possible with rigid scripts or guesswork. And that's why I've found it to be an incredibly compelling field to master—particularly when you see the doors it can open for real businesses."
+        },
+        {
+          type: "paragraph",
+          text: "Book a call with us and let's talk about AI."
+        }
+      ]
+    },
+    "tech-giants-ai-acquisitions-2025": {
+      title: "How Tech Giants Leverage AI Acquisitions in 2025",
+      excerpt: "Why large companies are on an AI buying spree and what smaller enterprises can learn from this strategic push to embed AI expertise into their business models.",
+      author: "Mihai Anton",
+      date: "November 19, 2024",
+      readTime: "10 min read",
+      category: "Strategy",
+      tags: ["AI", "Business", "Strategy", "M&A"],
+      image: "https://images.unsplash.com/photo-1556155092-490a1ba16284?w=1200&h=600&fit=crop",
+      content: [
+        {
+          type: "paragraph",
+          text: "One trend that's been hard to ignore lately: large companies that never started as 'AI first' are on a buying spree, snapping up AI-focused startups in deals worth millions—even billions. This pattern isn't just about big valuations; it's a strategic push to inject new technology and talent into an existing business model. For smaller enterprises and founders, it highlights one key lesson: embedding AI expertise into your product or service is no longer optional—it's quickly becoming a pillar for long-term growth."
+        },
+        {
+          type: "paragraph",
+          text: "Below, we'll look into why these AI acquisitions matter, how they reflect a broader shift in the tech landscape, and what you can do to future-proof your own venture (without waiting for a giant to show up at your door)."
+        },
+        {
+          type: "heading",
+          text: "1. Why Big Companies Buy AI Startups"
+        },
+        {
+          type: "paragraph",
+          text: "Tech giants have historically expanded through acquisitions, but 2025 has taken it up a notch. From enterprise software providers integrating AI-driven workflow automation, to social media conglomerates using advanced NLP or computer-vision startups, the message is the same: AI isn't a buzzword—it's a main differentiator."
+        },
+        {
+          type: "paragraph",
+          text: "Some real-world examples reinforce this point:"
+        },
+        {
+          type: "list",
+          items: [
+            "ServiceNow acquiring Moveworks for automating tasks within enterprises.",
+            "CoreWeave buying Weights & Biases to enhance tracking and monitoring insights.",
+            "UiPath buys Peak.ai to help with business process efficiency."
+          ]
+        },
+        {
+          type: "paragraph",
+          text: "Even if a corporation built its brand on something else—like consumer apps, business processes, or data analytics—it sees AI as the missing puzzle piece to stay competitive. Often, these larger companies need specialized engineering and research teams fast, and a well-chosen acquisition is the quickest path there."
+        },
+        {
+          type: "heading",
+          text: "2. What This Means for Smaller and Mid-Sized Startups"
+        },
+        {
+          type: "paragraph",
+          text: "If you're a small or medium enterprise trying to 'catch up' on AI, these acquisitions might feel both exciting and intimidating. On one hand, it signals an industry shift that underscores the value of specialized AI and data capabilities. On the other hand, not everyone has the resources to buy an entire startup when they need advanced AI."
+        },
+        {
+          type: "paragraph",
+          text: "What you can do instead is invest systematically in AI fundamentals:"
+        },
+        {
+          type: "paragraph",
+          text: "Data Architecture: Make sure your data flows, pipelines, and storage are well-organized—something we emphasize heavily at AI Flow. Trying to layer advanced algorithms on messy data is a recipe for minimal impact and high frustration."
+        },
+        {
+          type: "paragraph",
+          text: "Skilled Team: Even if you use existing off-the-shelf models, you need a team or consultant who understands how to adapt and scale them. You don't need an army of PhDs, but you do need people who truly get how ML systems work under the hood."
+        },
+        {
+          type: "paragraph",
+          text: "Responsible Experimentation: Aim for well-scoped AI pilots that solve concrete issues, like automating part of your customer support or refining your product recommendation engine. From there, scale incrementally."
+        },
+        {
+          type: "heading",
+          text: "3. Building a Future-Proof Strategy"
+        },
+        {
+          type: "paragraph",
+          text: "Major acquisitions happen because AI is much more than a marketing line: it optimizes processes, uncovers new revenue, and solves real pain points. Startups that figure out how to integrate AI responsibly from day one often get noticed (and in some cases acquired). But even if acquisition isn't your end goal, applying these principles can help you stand out:"
+        },
+        {
+          type: "paragraph",
+          text: "Clarity on Use Cases: Don't jump into AI just because it's trendy. Identify a specific business process or user experience that genuinely benefits from advanced algorithms. For instance, one of our clients had a high data volume platform that needed better data ingestion methods. We built data pipelines, with information extraction and summarization ML components. Nothing flashy, just targeted components, used at scale, to ingest millions of data records daily, from unstructured documents."
+        },
+        {
+          type: "paragraph",
+          text: "Modularity: Big companies lean on AI 'building blocks'—like natural language models, image classifiers, or specialized recommendation engines. You can do the same by choosing tools (or an internal framework) that let you swap out components as technology evolves. That way, if the latest open-source model is better than your current one, it's easier to integrate without rewriting your entire application."
+        },
+        {
+          type: "paragraph",
+          text: "Data Ownership: We see it consistently—whoever controls the best data and knows how to harness it gains a competitive edge. Make sure you track the data you're collecting, how it's cleaned, and who has access. This is crucial not just for building robust AI but for compliance, especially under new or upcoming regulations."
+        },
+        {
+          type: "heading",
+          text: "4. Lessons from Past Client Projects"
+        },
+        {
+          type: "paragraph",
+          text: "At AI Flow, we've worked with companies that realized they needed advanced AI capabilities only after hitting scaling issues:"
+        },
+        {
+          type: "paragraph",
+          text: "Financing platform: We rebuilt an outdated student-financing platform in a few months, launching an MVP that seamlessly scaled to thousands of users from day one. Once we had enough data on usage, we used AI to cluster contracts and generate insights from them."
+        },
+        {
+          type: "paragraph",
+          text: "ExoMatter: By introducing an AutoML pipeline (via Google's Vertex AI) for predicting material properties, we cut model-development time from months to hours—transforming the way this materials-science startup manages data and experimentation."
+        },
+        {
+          type: "paragraph",
+          text: "In both instances, the push for AI came from real business strain. If you approach AI from a place of immediate operational need, you're more likely to invest in methods or technologies that stick—and that's exactly how acquisitions get justified at the enterprise level."
+        },
+        {
+          type: "heading",
+          text: "5. Looking Ahead: The 2025 AI Landscape"
+        },
+        {
+          type: "paragraph",
+          text: "With major acquisitions ramping up, the AI market feels busier than ever. A few trends are especially relevant:"
+        },
+        {
+          type: "paragraph",
+          text: "Industry-Specific AI: Bigger companies often acquire startups with domain expertise—like healthcare or shipping—because generalized solutions only go so far. For smaller players, targeting a niche where you can show real results might be your best bet."
+        },
+        {
+          type: "paragraph",
+          text: "Regulatory Environment: As more data gets absorbed into large-scale AI, regulations will tighten. Being transparent, ethical, and well-documented with your data processes can help you stand out—or avoid major headaches later."
+        },
+        {
+          type: "paragraph",
+          text: "Ecosystem Partnerships: Not every business can do end-to-end AI alone. Partnerships with specialized agencies or consultants often accelerate the path to meaningful ROI, without requiring the overhead of in-house hires for every skill set."
+        },
+        {
+          type: "paragraph",
+          text: "Ultimately, if you want to remain competitive, you have two paths: build strong AI capabilities internally or rely on an external partner that knows how to integrate cutting-edge algorithms with solid engineering practices. The wave of acquisitions underscores just how important it is to pick one of these paths sooner rather than later."
+        },
+        {
+          type: "heading",
+          text: "Final Thoughts"
+        },
+        {
+          type: "paragraph",
+          text: "Just because you're not a multibillion-dollar conglomerate doesn't mean you can't leverage AI effectively—whether your goal is to get acquired down the line or simply scale to new markets. By focusing on robust data practices, specialized talent, and carefully chosen pilot projects, you position your company to thrive in an environment where AI is increasingly the engine of innovation."
+        },
+        {
+          type: "paragraph",
+          text: "And as the big names continue to acquire specialized AI startups, remember that these deals aren't just about technology; they're about strategy. Your advantage as a smaller or mid-sized firm is agility—if you craft a compelling AI-enabled solution, you're not only future-proofing your operations, but placing yourself in a strategic spot that bigger players can't ignore."
+        },
+        {
+          type: "paragraph",
+          text: "Book a call with us, and we can chat more on how to build a strong AI foundation."
+        }
+      ]
+    },
+    "understanding-ai-agents": {
+      title: "Understanding AI Agents: Intelligent Automation and the Power of Delegation",
+      excerpt: "Beyond the hype: what AI agents really are, how they differ from simple automation, and whether they'll reshape how businesses build AI-driven products.",
+      author: "Mihai Anton",
+      date: "November 20, 2024",
+      readTime: "11 min read",
+      category: "AI Trends",
+      tags: ["AI Agents", "Automation", "AI", "MCP"],
+      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&h=600&fit=crop",
+      content: [
+        {
+          type: "paragraph",
+          text: "In the last few years, we've seen AI evolve from simplistic rule-based systems to large language models that can write code, summarize complex documents, and even craft entire design mockups. But there's one trend that keeps cropping up in both marketing materials and developer conversations: AI agents. Despite the hype, it's still not obvious what an 'agent' really is—and whether these new tools will truly reshape how businesses build AI-driven products."
+        },
+        {
+          type: "paragraph",
+          text: "As someone who has worked with AI for years—both at Google and through my agency, AI Flow—I've come to see AI agents as a more proactive (and sometimes more autonomous) form of automation. Below, we'll look at where agents fit into the current AI landscape, why they matter, and how you can approach them, especially if you're a technical lead or founder who wants to incorporate AI responsibly."
+        },
+        {
+          type: "heading",
+          text: "1. Beyond Simple Scripts: What Is an AI Agent, Really?"
+        },
+        {
+          type: "paragraph",
+          text: "Historically, we've used basic automation to handle repetitive tasks: running a script at 8 a.m. daily, sending out templated emails, or scanning a database for anomalies. These automations are helpful, but they rarely exhibit true 'intelligence.' AI agents, on the other hand, make decisions based on context—which could be anything from user data to live web content—and then act accordingly. This means:"
+        },
+        {
+          type: "list",
+          items: [
+            "Instead of sending a single static email to every contact, an agent might pull in real-time product updates, analyze each recipient's behavior, and craft personalized messages on the fly.",
+            "Rather than simply responding to a typed command, an agent can chain multiple requests, retrieving documents, summarizing them, and even writing preliminary code changes if you're comfortable with the approach."
+          ]
+        },
+        {
+          type: "paragraph",
+          text: "Some developers reference an emerging idea called the Model Context Protocol (MCP), where multiple AI models exchange context or 'state' behind the scenes. The goal is to route each request to the right model or tool, making the entire workflow feel more like delegating to a virtual team than triggering a script."
+        },
+        {
+          type: "heading",
+          text: "2. Automation With Intelligence: The Value Proposition"
+        },
+        {
+          type: "paragraph",
+          text: "One of my favorite analogies is to think of AI agents as 'junior teammates' rather than standalone software. If you only rely on a standard automation pipeline—like a typical no-code drag-and-drop tool—you might get stuck the moment a task grows more complex or requires nuanced judgment. AI agents, by contrast:"
+        },
+        {
+          type: "list",
+          items: [
+            "Adapt to changing inputs: They're not bound to if-then statements. They can (theoretically) read new data, interpret it, and respond with different actions each time.",
+            "Reason across tasks: Properly configured agents can break a request into steps—finding relevant data, verifying code, even initiating a new workflow in your system."
+          ]
+        },
+        {
+          type: "paragraph",
+          text: "Of course, this doesn't mean you can simply fire your engineering team. As I often see at AI Flow, an agentic approach still demands skilled engineers who understand how to guide these tools. Otherwise, you risk building a brittle system that looks impressive in a demo but fails in real production environments."
+        },
+        {
+          type: "heading",
+          text: "3. Why 'No-Code' Tools Fall Short for Real Production"
+        },
+        {
+          type: "paragraph",
+          text: "If you skim AI news or attend startup demos, you've probably heard of 'no-code agents' that promise to string together any action you want—just by pointing, clicking, and describing tasks in plain language. In small prototypes, these can be great for testing ideas quickly. But once you scale up, you face a few issues:"
+        },
+        {
+          type: "paragraph",
+          text: "Complex Error Handling: In a real environment, not every process goes smoothly. Agents might generate partial code or parse the wrong data, which means you'll need a robust fallback or review step."
+        },
+        {
+          type: "paragraph",
+          text: "Security and Compliance: Agents can inadvertently leak or misuse data, especially if they roam external APIs with minimal oversight. For industries dealing with sensitive information, you must embed the right guardrails from day one."
+        },
+        {
+          type: "paragraph",
+          text: "Deep Integration: Businesses often run on legacy systems or specialized architectures that no simple drag-and-drop interface can fully capture. You'll need custom development to ensure stable connections, a reliable data flow, and advanced orchestration logic."
+        },
+        {
+          type: "paragraph",
+          text: "Take a client project we handled at AI Flow for a mid-sized enterprise dealing with high volumes of user requests. Initially, they tried an off-the-shelf no-code AI integrator. It worked nicely for a pilot, but the moment they needed advanced logging, user-specific logic, and cost monitoring, that solution fell apart. We ended up building an agent pipeline from scratch, letting us embed intelligence at each step—while ensuring we had full control of the underlying code and model usage."
+        },
+        {
+          type: "heading",
+          text: "4. Practical Use Cases and Delegation"
+        },
+        {
+          type: "paragraph",
+          text: "So, what does an AI agent's 'intelligent automation' look like day to day? A few possibilities:"
+        },
+        {
+          type: "paragraph",
+          text: "Recruitment & HR: An agent can sift through resumes, check social media for public portfolios, and shortlist candidates. But if it hits ambiguous profiles, it routes them to a human recruiter."
+        },
+        {
+          type: "paragraph",
+          text: "Marketing Automation: Beyond static email campaigns, an agent can fetch daily analytics, summarize which leads engaged the most, craft a personalized follow-up message, and even propose fresh copy."
+        },
+        {
+          type: "paragraph",
+          text: "Software Development: Tools like Cursor or Reflection AI are exploring how to automatically tackle background coding tasks—like linting, updating config files, or creating test suites—so human developers can focus on higher-level features."
+        },
+        {
+          type: "paragraph",
+          text: "Each of these examples demands fine control over how the agent interacts with data and when it escalates to a human in the loop, which is why an AI consultant or a specialized engineer remains invaluable."
+        },
+        {
+          type: "heading",
+          text: "5. Designing for the Long Haul: Tools, People, and Strategy"
+        },
+        {
+          type: "paragraph",
+          text: "Bringing AI agents into your workflow is about more than hooking up an API. To make them sustainable:"
+        },
+        {
+          type: "list",
+          items: [
+            "Hire or partner with the right expertise. Even the most advanced agent frameworks need strong engineering fundamentals—version control, testing, data governance, and so on.",
+            "Look for synergy, not replacement. Agents should augment your existing teams. If you're building an ML-powered product, treat these agents as sidekicks, not unstoppable forces.",
+            "Stay flexible. The AI field changes fast. Frameworks that are cutting edge now may lag behind in six months. Designing with modularity means you can swap in new models (like a future version of Google's Gemma or Anthropic's Claude) without rebuilding your entire pipeline."
+          ]
+        },
+        {
+          type: "paragraph",
+          text: "The bottom line is: AI agents matter because they raise the bar for what automation can do. They're not a magic bullet, but a step toward more adaptive workflows that handle real-world variability. In practical terms, that can translate into freeing your best people from mundane tasks—giving them more time to craft the bigger features or product visions that truly differentiate your company."
+        },
+        {
+          type: "heading",
+          text: "Final Thoughts"
+        },
+        {
+          type: "paragraph",
+          text: "Despite the hype and the ongoing confusion about what 'agents' really are, they're here to stay as a concept for intelligent delegation. If you're considering them for your startup or enterprise project, it's worth stepping back and asking whether your data processes, software architecture, and internal teams are ready. In many cases, bridging that gap involves working with specialists who have a deep grasp of AI fundamentals and software engineering—individuals who can see past the marketing fluff and help you integrate agents the right way."
+        },
+        {
+          type: "paragraph",
+          text: "For me, that's one of the main goals at AI Flow. We've been in the weeds of AI long enough to recognize what actually drives value and what's more of a short-lived buzzword. By focusing on well-grounded strategies and proven engineering best practices, you can explore AI agents without getting lost in the hype—ultimately shipping robust products that stand the test of time."
+        }
+      ]
+    },
+    "pruning-junk-tokens-llm-costs": {
+      title: "How We Saved 80% off LLM Inference Costs by Pruning 'Junk Tokens'",
+      excerpt: "A practical guide to reducing your AI API bills by up to 85% through intelligent token pruning – and why this pattern works almost anywhere.",
+      author: "Mihai Anton",
+      date: "November 15, 2024",
+      readTime: "10 min read",
+      category: "Engineering",
+      tags: ["LLM", "Cost Optimization", "Engineering", "Best Practices"],
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop",
+      content: [
+        {
+          type: "heading",
+          text: "1. The Silent Line-Item on Your AI Invoice"
+        },
+        {
+          type: "paragraph",
+          text: "Large-language-model APIs don't charge for compute time; they charge for tokens. Every HTML tag, tracking pixel, boilerplate legal clause or stale Slack signature you send to a model is billable. With GPT-4o, for example, a million input tokens cost ≈ $5 and the same amount of generated output costs ≈ $15. At scale those pennies compound fast."
+        },
+        {
+          type: "paragraph",
+          text: "Yet most raw data streams are overwhelmed with text that the model never needed to see in the first place."
+        },
+        {
+          type: "heading",
+          text: "2. Case Study: Job-Post Extraction at Scale"
+        },
+        {
+          type: "paragraph",
+          text: "A client aggregates thousands of job adverts per hour. The raw scraper delivered full HTML documents: styles, scripts, hidden DIVs, social buttons, cookies banners – about 10× more text than the human-visible ad."
+        },
+        {
+          type: "paragraph",
+          text: "My brief was simple: 'Cut our OpenAI bill without sacrificing extraction accuracy.'"
+        },
+        {
+          type: "heading",
+          text: "What We Did"
+        },
+        {
+          type: "list",
+          items: [
+            "DOM hygiene. Remove tags with no semantic value (<script>, <style>, tracking spans, empty wrappers).",
+            "Recursive pruning. Any node whose children collapse to whitespace gets dropped.",
+            "Minimal plain-text render. Serialize the cleaned DOM; keep only visible sentences.",
+            "Lightweight lint. Deduplicate whitespace, normalise unicode, strip boilerplate lines ('Apply on LinkedIn', etc.)."
+          ]
+        },
+        {
+          type: "heading",
+          text: "The Outcome"
+        },
+        {
+          type: "paragraph",
+          text: "The results speak for themselves:"
+        },
+        {
+          type: "table",
+          headers: ["Metric", "Before", "After Cleaning"],
+          rows: [
+            ["Avg. characters / advert", "47k", "6k"],
+            ["Tokens sent to LLM", "≈ 11k", "≈ 1.8k"],
+            ["OpenAI cost per 1,000 ads", "$7.50", "$1.10"]
+          ]
+        },
+        {
+          type: "paragraph",
+          text: "Inference spend dropped ~85% and quality went up, because the model no longer hallucinated on noisy context."
+        },
+        {
+          type: "heading",
+          text: "3. Prune First, Reason Second"
+        },
+        {
+          type: "paragraph",
+          text: "The same 'prune first, reason later' mindset applies anywhere the payload is noisy or repetitive:"
+        },
+        {
+          type: "table",
+          headers: ["Domain", "Typical Noise", "Quick Wins"],
+          rows: [
+            ["Customer-support email threads", "Quoted history, signatures, tracking pixels", "Strip previous replies; keep topmost message only"],
+            ["E-commerce product pages", "Carousels, ads, hidden SEO copy", "Extract canonical description, schema.org fields"],
+            ["Legal PDFs", "Headers, footers, Bates numbers", "Page-header detection, merge body text"],
+            ["Log files", "Timestamp boilerplate, debug stack traces", "Regex sponge before summarisation"],
+            ["Meeting transcripts", "Fillers, cross-talk, greetings", "ASR confidence > 0.9, remove <200ms utterances"]
+          ]
+        },
+        {
+          type: "paragraph",
+          text: "Academic work backs this up: JPMorgan Chase's TRIM pipeline shows that dropping inferable words saves ~20% tokens with negligible semantic loss – before any domain-specific cleaning."
+        },
+        {
+          type: "heading",
+          text: "4. Building a Repeatable Pipeline"
+        },
+        {
+          type: "paragraph",
+          text: "Here's how we structure token pruning pipelines for production:"
+        },
+        {
+          type: "list",
+          items: [
+            "Deterministic filters first. Regular expressions, DOM rules or AST visitors are cheap and fast.",
+            "Lightweight gatekeeper model. A small local model (e.g. Tiny-Llama) can classify chunks as 'signal' or 'noise' at <$0.01 per k tokens.",
+            "Chunk intelligently. Aim for coherent 1–2k-token windows so the LLM's attention isn't diluted.",
+            "Trace every byte. Log token counts per stage; you can't optimise what you don't measure.",
+            "Re-evaluate monthly. New ad formats, email templates or vendor widgets sneak back in."
+          ]
+        },
+        {
+          type: "paragraph",
+          text: "We package these steps as CI checks so the cost regression suite runs automatically on every pull request – one of the small rituals that keeps bills honest at AI Flow."
+        },
+        {
+          type: "heading",
+          text: "5. Questions to Ask Your Own Team"
+        },
+        {
+          type: "list",
+          items: [
+            "Which 10% of your input produces 90% of model value?",
+            "Do you track token usage per data source in your observability stack?",
+            "What would break if you removed every HTML tag that has no attributes?",
+            "Could a $0.001 local model pre-filter data before the $0.03 flagship call?"
+          ]
+        },
+        {
+          type: "paragraph",
+          text: "If you can't answer these yet, you're probably paying the hype tax."
+        },
+        {
+          type: "heading",
+          text: "6. Closing Thoughts"
+        },
+        {
+          type: "paragraph",
+          text: "Tokens are the new cloud instances: invisible, elastic, and costly when left unchecked. Pruning them is rarely glamorous work, but it is foundational. The earlier you embed a 'clean-before-call' mindset, the more head-room you keep for actual innovation."
+        },
+        {
+          type: "paragraph",
+          text: "I've been advocating this approach since the feature-selection days at Google and continue to apply it across sectors, from energy to generative video. The tools change; the principle stays: rigor before scale."
+        },
+        {
+          type: "paragraph",
+          text: "For a deeper technical walkthrough, you can book a call with us at aiflow.ltd."
+        }
+      ]
+    },
+    "5-ways-improve-ml-system": {
+      title: "5 Ways to Improve Your ML System",
+      excerpt: "Behind every polished demo sits a messier truth. Fix these five low-hanging optimizations early to improve your system, prepare it for scale, and reduce costs.",
+      author: "Mihai Anton",
+      date: "November 12, 2024",
+      readTime: "8 min read",
+      category: "Machine Learning",
+      tags: ["ML", "Optimization", "Best Practices", "Production"],
+      image: "https://images.unsplash.com/photo-1527474305487-b87b222841cc?w=1200&h=600&fit=crop",
+      content: [
+        {
+          type: "paragraph",
+          text: "Behind every polished demo sits a messier truth: most machine-learning systems are full of duct tape, and barely hold together to deliver some results. After a decade in AI – building feature-selection tools at Google, production pipelines at BP, and high-fidelity generative video at Metaphysic – I keep seeing the same low-hanging optimizations. Fix them early, and you'll both improve your system, prepare it for scale, and reduce operation costs. All before touching the model."
+        },
+        {
+          type: "paragraph",
+          text: "Below are the five quickest wins I reach for when a founder, CTO, or product lead asks, 'How do we make this thing both better and cheaper?'"
+        },
+        {
+          type: "heading",
+          text: "1. Clean Data In—Smaller Data Out"
+        },
+        {
+          type: "paragraph",
+          text: "Untrimmed datasets increase storage, prolong training, and hide signal in noise. In one Google project we cut the raw feature set by 70% using a first-principles feature-selection tool; accuracy held steady, while every downstream metric, from GPU hours to notebook load times, dropped proportionally."
+        },
+        {
+          type: "paragraph",
+          text: "Quick check:"
+        },
+        {
+          type: "list",
+          items: [
+            "Automate schema validation at ingestion.",
+            "Add lightweight 'outlier sweeps' before the main ETL.",
+            "Version your datasets the same way you version code; roll back when drift creeps in.",
+            "Clean your data of information that will have 0 impact on the quality of your result."
+          ]
+        },
+        {
+          type: "paragraph",
+          text: "When the training set is slimmer, every later optimisation compounds. It should be the top of the funnel and your top 1 priority."
+        },
+        {
+          type: "heading",
+          text: "2. Keep GPUs Busy"
+        },
+        {
+          type: "paragraph",
+          text: "Nothing makes cloud bills soar like an idle H100. On a GenAI project, we overlapped data pre-fetch, augmentation, and upload, pushing average GPU utilisation from ~48% to 90%—a change that shaved 45% off end-to-end cost."
+        },
+        {
+          type: "paragraph",
+          text: "Quick check: use htop to monitor GPU usage. Ideally, you should have maximum usage all the time, instead of blocks of high usage followed by dips."
+        },
+        {
+          type: "paragraph",
+          text: "Also, measure the percentage of GPU usage within each epoch. If your epoch takes 4 seconds, and the GPU is used just 1, you're losing both time and money."
+        },
+        {
+          type: "heading",
+          text: "3. Problem First, Model Second"
+        },
+        {
+          type: "paragraph",
+          text: "LLMs, diffusion, mixture-of-experts, so many buzzwords. Yet algorithm selection research keeps confirming the obvious: the best model is the one that matches the problem constraints, not the headline."
+        },
+        {
+          type: "paragraph",
+          text: "At AI Flow we see founders burn weeks fine-tuning giant models when a gradient-boosted tree plus a well-crafted embedding outperforms on latency-sensitive tasks. Start with the decision boundary you need (classification? ranking? retrieval augmented generation?) and work backward to model family, size, and architecture."
+        },
+        {
+          type: "paragraph",
+          text: "Quick check:"
+        },
+        {
+          type: "list",
+          items: [
+            "Clarify latency, cost, interpretability, and update cadence before reading a single model card.",
+            "Pilot three architectures of different complexity; keep the cheapest one that meets KPIs."
+          ]
+        },
+        {
+          type: "heading",
+          text: "4. Make Observability a First-Class Citizen"
+        },
+        {
+          type: "paragraph",
+          text: "A transparent system is a healthy system. Modern ML observability tools like Weights & Biases track distribution drift, resource spikes, and even token-level LLM traces. Teams using W&B report faster triage and fewer silent failures in production."
+        },
+        {
+          type: "paragraph",
+          text: "In practice we wire logging at experiment one. By the time a model ships, the dashboard already tells you how it behaves across a different range of settings."
+        },
+        {
+          type: "paragraph",
+          text: "Quick check:"
+        },
+        {
+          type: "code",
+          language: "python",
+          code: `import wandb
+
+wandb.init(project="credit-scoring")
+wandb.watch(model, log="all", log_freq=100)
+
+# Add alert rules for drift and GPU memory spikes`
+        },
+        {
+          type: "paragraph",
+          text: "Add alert rules for drift and GPU memory spikes; your ops team will thank you."
+        },
+        {
+          type: "heading",
+          text: "5. Invest in the Data Foundation"
+        },
+        {
+          type: "paragraph",
+          text: "Generative AI has resurfaced an old truth: model quality asymptotically approaches data quality."
+        },
+        {
+          type: "paragraph",
+          text: "At a law firm we worked with, we stood up resilient pipelines (millions of daily records, streaming + batch) before a single model hit prod. The result: fewer late-night pages, quicker regulatory audits, and a platform that still scales years later."
+        },
+        {
+          type: "paragraph",
+          text: "Quick check:"
+        },
+        {
+          type: "list",
+          items: [
+            "Centralise metadata (Snowflake, Pinecone, etc depending on specific need).",
+            "Treat data contracts as part of the CI pipeline.",
+            "Budget for continuous quality tests: null ratios, completeness, referential integrity."
+          ]
+        },
+        {
+          type: "heading",
+          text: "Closing Thought"
+        },
+        {
+          type: "paragraph",
+          text: "Most organisations don't need a moon-shot architecture to feel an immediate difference; they need well processed data, full GPUs, a model that fits, and dashboards that speak early and often."
+        },
+        {
+          type: "paragraph",
+          text: "If you found these principles useful, you can explore more practical deep-tech notes at AI Flow or browse my personal build logs at antonmih.ai. Strong foundations repay themselves. Quietly, compoundingly, long after version 1 ships."
+        }
+      ]
+    },
     "future-of-ai-enterprise-2025": {
       title: "The Future of AI in Enterprise: Trends to Watch in 2025",
       excerpt: "Explore the emerging AI trends that will shape enterprise technology in the coming year, from generative AI to autonomous systems.",
-      author: "Mihai Badea",
+      author: "Mihai Anton",
       date: "November 10, 2024",
       readTime: "8 min read",
       category: "AI Trends",
@@ -132,7 +924,7 @@ const BlogPost = () => {
     "production-ml-pipelines": {
       title: "Building Production-Ready ML Pipelines: A Complete Guide",
       excerpt: "Learn best practices for creating robust, scalable ML pipelines that can handle real-world production demands.",
-      author: "Irina Badea",
+      author: "Mihai Anton",
       date: "November 5, 2024",
       readTime: "12 min read",
       category: "Machine Learning",
@@ -360,7 +1152,7 @@ with mlflow.start_run():
     "rag-vs-finetuning": {
       title: "RAG vs Fine-tuning: Choosing the Right Approach for Your LLM",
       excerpt: "Understanding the trade-offs between Retrieval-Augmented Generation and fine-tuning for large language model applications.",
-      author: "Mihai Badea",
+      author: "Mihai Anton",
       date: "October 20, 2024",
       readTime: "15 min read",
       category: "LLMs",
@@ -582,6 +1374,33 @@ with mlflow.start_run():
               </pre>
             </Card>
           );
+        case 'table':
+          return (
+            <Card key={index} className="bg-card border-border p-6 my-6 overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-border">
+                    {block.headers.map((header: string, idx: number) => (
+                      <th key={idx} className="text-left p-3 font-bold text-primary">
+                        {header}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {block.rows.map((row: string[], rowIdx: number) => (
+                    <tr key={rowIdx} className="border-b border-border/50">
+                      {row.map((cell: string, cellIdx: number) => (
+                        <td key={cellIdx} className="p-3 text-muted-foreground">
+                          {cell}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </Card>
+          );
         default:
           return null;
       }
@@ -688,7 +1507,7 @@ with mlflow.start_run():
               <div>
                 <h3 className="text-xl font-bold mb-2">About {post.author}</h3>
                 <p className="text-muted-foreground mb-4">
-                  {post.author === "Mihai Badea" 
+                  {post.author === "Mihai Anton" 
                     ? "Co-founder and CTO at AI Flow. Over 10 years of experience building AI/ML systems for Fortune 500 companies. Passionate about making AI practical and profitable."
                     : "Co-founder and CEO at AI Flow. Deep expertise in AI strategy and implementation. Focused on delivering business value through intelligent automation."}
                 </p>
