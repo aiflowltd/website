@@ -40,7 +40,7 @@ export const Navigation = () => {
               Careers
             </NavLink>
             <NavLink 
-              to="/" 
+              to="/contact" 
               className="text-foreground hover:text-primary transition-colors"
             >
               Contact
