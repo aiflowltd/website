@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Linkedin, Globe } from "lucide-react";
-import { Author } from "@/data/authors";
+import { Author } from "@/data/team";
 
 interface AuthorCardProps {
   author: Author;
@@ -12,7 +12,7 @@ export const AuthorCard = ({ author }: AuthorCardProps) => {
     <Card className="bg-card border-border p-6">
       <div className="flex items-start gap-4">
         <img
-          src={author.image}
+          src={author.photo}
           alt={author.name}
           className="w-20 h-20 rounded-full object-cover"
         />

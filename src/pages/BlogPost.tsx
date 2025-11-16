@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowLeft, Calendar, Clock, User, Tag, Share2, Linkedin, Twitter } from "lucide-react";
 import { Link, useParams, Navigate } from "react-router-dom";
-import { getAuthor } from "@/data/authors";
+import { getAuthor } from "@/data/team";
 
 const BlogPost = () => {
   const { id } = useParams();

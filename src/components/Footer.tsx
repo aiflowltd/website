@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import { Linkedin, Mail, Globe } from "lucide-react";
 import { teamMembers, companyInfo } from "@/data/team";
 import logo from "@/assets/logo.png";
-import irinaPhoto from "@/assets/irina.png";
-import mihaiPhoto from "@/assets/mihai.png";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -147,7 +145,7 @@ export const Footer = () => {
                 >
                   <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300">
                     <img
-                      src={irinaPhoto}
+                      src={teamMembers.irina.photo}
                       alt={teamMembers.irina.name}
                       className="w-full h-full object-cover"
                     />
@@ -166,7 +164,7 @@ export const Footer = () => {
                 >
                   <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300">
                     <img
-                      src={mihaiPhoto}
+                      src={teamMembers.mihai.photo}
                       alt={teamMembers.mihai.name}
                       className="w-full h-full object-cover"
                     />

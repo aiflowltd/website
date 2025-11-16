@@ -1,11 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { NavLink } from "@/components/NavLink";
 import { Link } from "react-router-dom";
-import { Linkedin } from "lucide-react";
 import { teamMembers, companyInfo } from "@/data/team";
 import logo from "@/assets/logo.png";
-import irinaPhoto from "@/assets/irina.png";
-import mihaiPhoto from "@/assets/mihai.png";
 import { AI_FLOW_LOGO_LARGE, AI_FLOW_LOGO_SMALL } from "@/constants/images";
 
 export const Navigation = () => {
@@ -50,7 +47,7 @@ export const Navigation = () => {
               >
                 <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110">
                   <img
-                    src={irinaPhoto}
+                    src={teamMembers.irina.photo}
                     alt={teamMembers.irina.name}
                     className="w-full h-full object-cover"
                   />
@@ -74,7 +71,7 @@ export const Navigation = () => {
               >
                 <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110">
                   <img
-                    src={mihaiPhoto}
+                    src={teamMembers.mihai.photo}
                     alt={teamMembers.mihai.name}
                     className="w-full h-full object-cover"
                   />

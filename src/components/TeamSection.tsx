@@ -1,20 +1,9 @@
 import { Card } from "@/components/ui/card";
 import { Linkedin, Github, Mail } from "lucide-react";
-import { teamMembers, type TeamMember } from "@/data/team";
-import irinaPhoto from "@/assets/irina.png";
-import mihaiPhoto from "@/assets/mihai.png";
+import { teamArray, type TeamMember } from "@/data/team";
 
 export const TeamSection = () => {
-  const team: (TeamMember & { photo: string })[] = [
-    {
-      ...teamMembers.irina,
-      photo: irinaPhoto,
-    },
-    {
-      ...teamMembers.mihai,
-      photo: mihaiPhoto,
-    },
-  ];
+  const team: TeamMember[] = teamArray;
 
   return (
     <section id="team" className="relative py-24 px-6 scroll-mt-20">

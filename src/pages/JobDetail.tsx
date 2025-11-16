@@ -26,9 +26,9 @@ const applicationSchema = z.object({
   fullName: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
   phone: z.string().min(10, "Please enter a valid phone number"),
-  linkedIn: z.string().url("Please enter a valid LinkedIn URL").optional().or(z.literal("")),
+  linkedIn: z.string().min(1, "LinkedIn profile is required").url("Please enter a valid LinkedIn URL"),
   portfolio: z.string().url("Please enter a valid portfolio URL").optional().or(z.literal("")),
-  coverLetter: z.string().min(100, "Cover letter must be at least 100 characters"),
+  coverLetter: z.string().optional().or(z.literal("")),
   resume: z.string().optional(),
 });
 
@@ -59,15 +59,82 @@ const JobDetail = () => {
   const onSubmit = async (data: ApplicationForm) => {
     setIsSubmitting(true);
     try {
-      // Simulate API call - replace with actual submission logic
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      if (!selectedFile) {
+        toast.error("Please upload your resume");
+        setIsSubmitting(false);
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("fullName", data.fullName);
+      formData.append("email", data.email);
+      formData.append("phone", data.phone);
+      formData.append("linkedin", data.linkedIn || "");
+      formData.append("portfolio", data.portfolio || "");
+      formData.append("coverLetter", data.coverLetter || "");
+      formData.append("position", job.title);
+      formData.append("resume", selectedFile);
+
+      const apiUrl = import.meta.env.VITE_API_URL;
+
+      console.log("🔧 API URL:", apiUrl);
+      console.log("🔧 All env vars:", import.meta.env);
+      console.log("🚀 Submitting to:", `${apiUrl}/api/applications/submit`);
+
+      if (!apiUrl) {
+        throw new Error("Backend URL not configured. Please set VITE_API_URL=http://localhost:3001 in .env.local and restart dev server");
+      }
+
+      const response = await fetch(`${apiUrl}/api/applications/submit`, {
+        method: "POST",
+        body: formData,
+      });
+
+      console.log("📡 Response status:", response.status);
+      console.log("📡 Response headers:", Object.fromEntries(response.headers.entries()));
+
+      const contentType = response.headers.get("content-type");
+      console.log("📡 Content-Type:", contentType);
+
+      if (!response.ok) {
+        let errorMessage = "Submission failed";
+        try {
+          if (contentType?.includes("application/json")) {
+            const error = await response.json();
+            console.error("❌ Error response:", error);
+            errorMessage = error.error || error.message || errorMessage;
+          } else {
+            const text = await response.text();
+            console.error("❌ Non-JSON error:", text);
+            errorMessage = text || errorMessage;
+          }
+        } catch (e) {
+          console.error("❌ Could not parse error response:", e);
+        }
+        throw new Error(errorMessage);
+      }
+
+      let result;
+      try {
+        if (contentType?.includes("application/json")) {
+          result = await response.json();
+          console.log("✅ Application submitted successfully:", result);
+        } else {
+          const text = await response.text();
+          console.log("✅ Response text:", text);
+          result = { success: true };
+        }
+      } catch (e) {
+        console.error("⚠️ Could not parse response, but request was successful");
+        result = { success: true };
+      }
       
       toast.success("Application submitted successfully! We'll be in touch soon.");
       reset();
       setSelectedFile(null);
     } catch (error) {
-      console.error("Error submitting application:", error);
-      toast.error("Failed to submit application. Please try again or email us directly.");
+      console.error("❌ Error submitting application:", error);
+      toast.error(error.message || "Failed to submit application. Please try again or email us directly.");
     } finally {
       setIsSubmitting(false);
     }
@@ -293,7 +360,7 @@ const JobDetail = () => {
 
                 <div>
                   <label htmlFor="linkedIn" className="block text-sm font-medium mb-2">
-                    LinkedIn Profile
+                    LinkedIn Profile *
                   </label>
                   <Input
                     id="linkedIn"
@@ -309,7 +376,7 @@ const JobDetail = () => {
 
                 <div>
                   <label htmlFor="portfolio" className="block text-sm font-medium mb-2">
-                    Portfolio / Website
+                    Portfolio / Website <span className="text-muted-foreground font-normal">(Optional)</span>
                   </label>
                   <Input
                     id="portfolio"
@@ -325,7 +392,7 @@ const JobDetail = () => {
 
                 <div>
                   <label htmlFor="coverLetter" className="block text-sm font-medium mb-2">
-                    Cover Letter *
+                    Cover Letter <span className="text-muted-foreground font-normal">(Optional)</span>
                   </label>
                   <Textarea
                     id="coverLetter"
