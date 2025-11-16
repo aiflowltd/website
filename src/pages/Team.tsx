@@ -127,7 +127,6 @@ const Team = () => {
 
   const achievements = [
     { label: "Production Systems", value: "100%" },
-    { label: "Client Satisfaction", value: "98%" },
     { label: "On-Time Delivery", value: "100%" },
   ];
 
