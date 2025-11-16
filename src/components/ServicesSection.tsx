@@ -7,6 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 // Import client logos
 import bitdefenderLogo from "@/assets/clients/bitdefender.png";
@@ -114,7 +115,14 @@ export const ServicesSection = () => {
               opts={{
                 align: "start",
                 loop: true,
+                dragFree: true,
               }}
+              plugins={[
+                Autoplay({
+                  delay: 3000,
+                  stopOnInteraction: true,
+                }),
+              ]}
               className="w-full"
             >
               <CarouselContent>
