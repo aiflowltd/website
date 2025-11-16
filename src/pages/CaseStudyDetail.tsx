@@ -418,7 +418,7 @@ const CaseStudyDetail = () => {
         </Link>
 
         {/* Hero Section */}
-        <div className="max-w-5xl mx-auto mb-12">
+        <div className="max-w-7xl mx-auto mb-12">
           <div className="flex flex-wrap gap-2 mb-6">
             {study.tags.map((tag: string, idx: number) => (
               <span
@@ -451,7 +451,7 @@ const CaseStudyDetail = () => {
         </div>
 
         {/* Hero Image */}
-        <div className="relative h-96 rounded-2xl overflow-hidden mb-16 max-w-5xl mx-auto">
+        <div className="relative h-96 rounded-2xl overflow-hidden mb-16 max-w-7xl mx-auto">
           <img
             src={study.image}
             alt={study.title}
@@ -461,7 +461,7 @@ const CaseStudyDetail = () => {
         </div>
 
         {/* Content */}
-        <div className="max-w-4xl mx-auto space-y-16">
+        <div className="max-w-6xl mx-auto space-y-16">
           {/* Challenge */}
           <section>
             <h2 className="text-3xl font-bold mb-6 text-primary">The Challenge</h2>
@@ -557,7 +557,7 @@ const CaseStudyDetail = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Ready for Similar Results?
               </h2>
-              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
                 Let's discuss how we can help you achieve transformative outcomes with AI.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

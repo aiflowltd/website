@@ -13,7 +13,7 @@ const Team = () => {
       
       <main className="container mx-auto px-6 pt-32 pb-20">
         {/* Header */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+        <div className="text-center mb-16 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Meet the <span className="text-primary">Team</span>
           </h1>
@@ -24,14 +24,14 @@ const Team = () => {
         </div>
 
         {/* Team Members */}
-        <div className="max-w-5xl mx-auto space-y-8 mb-20">
+        <div className="max-w-6xl mx-auto space-y-8 mb-20">
           {Object.values(authors).map((author) => (
             <AuthorCard key={author.id} author={author} />
           ))}
         </div>
 
         {/* Our Story */}
-        <div className="max-w-4xl mx-auto mb-20">
+        <div className="max-w-6xl mx-auto mb-20">
           <Card className="bg-card border-border p-12">
             <h2 className="text-3xl font-bold mb-6">Our Story</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
@@ -57,7 +57,7 @@ const Team = () => {
         </div>
 
         {/* Our Values */}
-        <div className="max-w-6xl mx-auto mb-20">
+        <div className="max-w-7xl mx-auto mb-20">
           <h2 className="text-3xl font-bold mb-8 text-center">Our Values</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <Card className="bg-card border-border p-6">
@@ -85,7 +85,7 @@ const Team = () => {
         </div>
 
         {/* CTA */}
-        <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20 p-12 text-center max-w-4xl mx-auto">
+        <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20 p-12 text-center max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Let's Build Something Amazing
           </h2>

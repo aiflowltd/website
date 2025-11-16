@@ -8,7 +8,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { toast } from "sonner";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Calendar } from "lucide-react";
+import { useEffect } from "react";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -28,6 +29,21 @@ const Contact = () => {
   } = useForm<ContactForm>({
     resolver: zodResolver(contactSchema),
   });
+
+  // Load Calendly script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup script on unmount
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
 
   const onSubmit = async (data: ContactForm) => {
     // Simulate form submission
@@ -52,7 +68,7 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto">
           {/* Contact Form */}
           <div className="bg-card border border-border rounded-lg p-8">
             <h2 className="text-2xl font-bold mb-6">Send us a message</h2>
@@ -183,6 +199,29 @@ const Contact = () => {
                 </li>
               </ul>
             </div>
+          </div>
+        </div>
+
+        {/* Calendly Booking Section */}
+        <div className="max-w-7xl mx-auto mt-20">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Calendar className="w-8 h-8 text-primary" />
+              <h2 className="text-3xl md:text-4xl font-bold">
+                Schedule a <span className="text-primary">Call</span>
+              </h2>
+            </div>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Prefer to talk directly? Book a 20-minute consultation call with us to discuss your AI project.
+            </p>
+          </div>
+          
+          <div className="bg-card border border-border rounded-lg overflow-hidden">
+            <div
+              className="calendly-inline-widget"
+              data-url="https://calendly.com/mihaianton/20min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=080808&text_color=ffffff"
+              style={{ minWidth: "320px", height: "700px" }}
+            ></div>
           </div>
         </div>
       </main>

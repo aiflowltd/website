@@ -53,7 +53,7 @@ const Careers = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             Why Work at <span className="text-primary">AI Flow</span>?
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {benefits.map((benefit, index) => (
               <Card
                 key={index}
@@ -78,7 +78,7 @@ const Careers = () => {
             Join our growing team and work on challenging AI projects with real-world impact.
           </p>
           
-          <div className="space-y-6 max-w-4xl mx-auto">
+          <div className="space-y-6 max-w-6xl mx-auto">
             {openPositions.map((position) => (
               <Link key={position.id} to={`/careers/${position.id}`} className="block space-y-6">
                 <Card className="bg-card border-border p-8 hover:border-primary transition-all duration-300 group cursor-pointer">
@@ -130,11 +130,11 @@ const Careers = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-12 text-center max-w-4xl mx-auto border border-primary/20">
+        <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-12 text-center max-w-6xl mx-auto border border-primary/20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Don't See the Right Role?
           </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
             We're always looking for talented people. Send us your resume and let us know how you can contribute to our mission.
           </p>
           <Link to="/contact">

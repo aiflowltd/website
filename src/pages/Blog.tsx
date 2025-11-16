@@ -122,11 +122,11 @@ const Blog = () => {
         </div>
 
         {/* Newsletter Section */}
-        <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-12 text-center max-w-4xl mx-auto border border-primary/20">
+        <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-12 text-center max-w-6xl mx-auto border border-primary/20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Stay Updated with AI Insights
           </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
             Subscribe to our newsletter for the latest articles, tutorials, and AI industry insights delivered to your inbox.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">

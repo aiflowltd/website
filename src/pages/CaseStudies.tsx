@@ -134,7 +134,7 @@ const CaseStudies = () => {
         </div>
 
         {/* Case Studies */}
-        <div className="space-y-20 max-w-6xl mx-auto">
+        <div className="space-y-20 max-w-7xl mx-auto">
           {caseStudies.map((study, index) => (
             <Card
               key={index}
@@ -203,11 +203,11 @@ const CaseStudies = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-12 text-center max-w-4xl mx-auto mt-20 border border-primary/20">
+        <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-12 text-center max-w-6xl mx-auto mt-20 border border-primary/20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Write Your Success Story?
           </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
             Let's discuss how we can help you achieve similar results with AI-powered solutions.
           </p>
           <Link to="/contact">

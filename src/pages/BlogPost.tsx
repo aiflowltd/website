@@ -1424,7 +1424,7 @@ with mlflow.start_run():
         </Link>
 
         {/* Article Header */}
-        <article className="max-w-4xl mx-auto">
+        <article className="max-w-6xl mx-auto">
           <div className="mb-8">
             <span className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
               {post.category}
@@ -1507,7 +1507,7 @@ with mlflow.start_run():
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Need Help with AI Implementation?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
               Let's discuss how we can help you build production-ready AI systems that deliver real business value.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
