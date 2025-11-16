@@ -3,42 +3,10 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Briefcase, Clock, ArrowRight, Heart, Zap, Users, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
+import { getAllJobs } from "@/data/jobs";
 
 const Careers = () => {
-  const openPositions = [
-    {
-      title: "Senior ML Engineer",
-      location: "Cluj-Napoca, Romania / Remote",
-      type: "Full-time",
-      department: "Engineering",
-      description: "Build and deploy production ML systems for Fortune 500 clients. Work with cutting-edge AI technologies.",
-      requirements: ["5+ years ML/AI experience", "Python, TensorFlow/PyTorch", "Production ML systems", "Cloud platforms (AWS/GCP)"],
-    },
-    {
-      title: "AI Product Manager",
-      location: "Zürich, Switzerland / Hybrid",
-      type: "Full-time",
-      department: "Product",
-      description: "Define and drive AI product strategy. Bridge the gap between technical teams and business stakeholders.",
-      requirements: ["3+ years product management", "AI/ML product experience", "Technical background", "Strong communication skills"],
-    },
-    {
-      title: "Data Engineer",
-      location: "Cluj-Napoca, Romania / Remote",
-      type: "Full-time",
-      department: "Engineering",
-      description: "Design and build scalable data pipelines and infrastructure to power AI/ML applications.",
-      requirements: ["3+ years data engineering", "Python, SQL, Spark", "Cloud data platforms", "ETL/ELT experience"],
-    },
-    {
-      title: "AI Research Scientist",
-      location: "Remote",
-      type: "Full-time",
-      department: "Research",
-      description: "Push the boundaries of AI research while solving real-world problems. Publish and implement cutting-edge algorithms.",
-      requirements: ["PhD or MS in CS/ML", "Published research papers", "Deep learning expertise", "Strong math background"],
-    },
-  ];
+  const openPositions = getAllJobs();
 
   const benefits = [
     {
@@ -110,56 +78,52 @@ const Careers = () => {
           </p>
           
           <div className="space-y-6 max-w-4xl mx-auto">
-            {openPositions.map((position, index) => (
-              <Card
-                key={index}
-                className="bg-card border-border p-8 hover:border-primary transition-all duration-300 group cursor-pointer"
-              >
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-                  <div className="flex-1">
-                    <div className="flex flex-wrap items-center gap-3 mb-4">
-                      <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
-                        {position.title}
-                      </h3>
-                      <span className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
-                        {position.department}
+            {openPositions.map((position) => (
+              <Link key={position.id} to={`/careers/${position.id}`} className="block space-y-6">
+                <Card className="bg-card border-border p-8 hover:border-primary transition-all duration-300 group cursor-pointer">
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+                    <div className="flex-1">
+                      <div className="flex flex-wrap items-center gap-3 mb-4">
+                        <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
+                          {position.title}
+                        </h3>
+                        <span className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+                          {position.department}
+                        </span>
+                      </div>
+                      
+                      <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-4">
+                        <div className="flex items-center gap-2">
+                          <MapPin className="w-4 h-4" />
+                          <span>{position.location}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Briefcase className="w-4 h-4" />
+                          <span>{position.type}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Clock className="w-4 h-4" />
+                          <span>{position.experience}</span>
+                        </div>
+                      </div>
+                      
+                      <p className="text-muted-foreground mb-4">
+                        {position.shortDescription}
+                      </p>
+                    </div>
+                    
+                    <Button 
+                      className="bg-primary hover:bg-primary/90 text-background font-semibold whitespace-nowrap"
+                      asChild
+                    >
+                      <span>
+                        View Details
+                        <ArrowRight className="ml-2 w-4 h-4" />
                       </span>
-                    </div>
-                    
-                    <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-4">
-                      <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4" />
-                        <span>{position.location}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Briefcase className="w-4 h-4" />
-                        <span>{position.type}</span>
-                      </div>
-                    </div>
-                    
-                    <p className="text-muted-foreground mb-4">
-                      {position.description}
-                    </p>
-                    
-                    <div className="mb-4">
-                      <h4 className="font-semibold mb-2 text-sm">Key Requirements:</h4>
-                      <ul className="grid md:grid-cols-2 gap-2">
-                        {position.requirements.map((req, idx) => (
-                          <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
-                            <span className="text-primary mt-1">•</span>
-                            <span>{req}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    </Button>
                   </div>
-                  
-                  <Button className="bg-primary hover:bg-primary/90 text-background font-semibold whitespace-nowrap">
-                    Apply Now
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </div>
-              </Card>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
