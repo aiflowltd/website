@@ -12,7 +12,6 @@ const Team = () => {
       <Navigation />
       
       <main className="container mx-auto px-6 pt-32 pb-20">
-        {/* Header */}
         <div className="text-center mb-16 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Meet the <span className="text-primary">Team</span>
@@ -23,14 +22,12 @@ const Team = () => {
           </p>
         </div>
 
-        {/* Team Members */}
         <div className="max-w-6xl mx-auto space-y-8 mb-20">
           {Object.values(authors).map((author) => (
             <AuthorCard key={author.id} author={author} />
           ))}
         </div>
 
-        {/* Our Story */}
         <div className="max-w-6xl mx-auto mb-20">
           <Card className="bg-card border-border p-12">
             <h2 className="text-3xl font-bold mb-6">Our Story</h2>
