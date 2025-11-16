@@ -1,4 +1,5 @@
 import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 import { AuthorCard } from "@/components/AuthorCard";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -105,6 +106,7 @@ const Team = () => {
           </div>
         </Card>
       </main>
+      <Footer />
     </div>
   );
 };

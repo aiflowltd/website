@@ -1,4 +1,5 @@
 import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Briefcase, Clock, ArrowRight, Heart, Zap, Users, TrendingUp } from "lucide-react";
@@ -144,6 +145,7 @@ const Careers = () => {
           </Link>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowRight, Tag } from "lucide-react";
@@ -229,6 +230,7 @@ const Blog = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

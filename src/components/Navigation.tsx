@@ -29,6 +29,13 @@ export const Navigation = () => {
             >
               Case Studies
             </NavLink>
+            <NavLink
+              to="/team"
+              className="text-foreground hover:text-primary transition-colors relative pb-1"
+              activeClassName="text-primary font-semibold after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
+            >
+              Team
+            </NavLink>
             <NavLink 
               to="/blog" 
               className="text-foreground hover:text-primary transition-colors relative pb-1"
@@ -50,18 +57,17 @@ export const Navigation = () => {
             >
               Contact
             </NavLink>
-            <NavLink
-              to="/team"
-              className="text-foreground hover:text-primary transition-colors relative pb-1"
-              activeClassName="text-primary font-semibold after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
+            <a
+              href="https://aiflow.ltd/meet"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Team
-            </NavLink>
-            <Button 
-              className="bg-primary hover:bg-primary/90 text-background font-semibold px-6"
-            >
-              BOOK A CALL
-            </Button>
+              <Button 
+                className="bg-primary hover:bg-primary/90 text-background font-semibold px-6"
+              >
+                BOOK A CALL
+              </Button>
+            </a>
           </div>
         </div>
       </div>

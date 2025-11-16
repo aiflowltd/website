@@ -1,4 +1,5 @@
 import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { ServicesSection } from "@/components/ServicesSection";
 import { CaseStudiesSection } from "@/components/CaseStudiesSection";
@@ -13,6 +14,7 @@ const Index = () => {
         <Hero />
         <ServicesSection />
         <CaseStudiesSection />
+        <Footer />
       </div>
     </div>
   );

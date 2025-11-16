@@ -1,4 +1,5 @@
 import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Code2, Brain, TrendingUp, Zap, Database, Sparkles, CheckCircle2, ArrowRight } from "lucide-react";
@@ -138,6 +139,7 @@ const Services = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

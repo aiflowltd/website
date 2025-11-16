@@ -1,4 +1,5 @@
 import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 import { AuthorCard } from "@/components/AuthorCard";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -1524,6 +1525,7 @@ with mlflow.start_run():
           </Card>
         </article>
       </main>
+      <Footer />
     </div>
   );
 };
