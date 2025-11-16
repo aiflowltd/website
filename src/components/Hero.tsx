@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { DataCardsDummyEmbed } from "@/components/DataCardsDummyEmbed";
 
 export const Hero = () => {
   const words = [
@@ -77,12 +78,10 @@ export const Hero = () => {
             {/* <span className="inline-block w-[2px] h-[1em] bg-primary animate-pulse ml-1" /> */}
           </span>
         </h1>
-
         {/* Subheading */}
         <p className="text-xl md:text-2xl text-muted-foreground mb-16 max-w-3xl mx-auto">
           In AI & ML before the wave. Building products, not hype.
         </p>
-
         {/* Service Cards */}
         <div className="grid md:grid-cols-3 gap-8 mb-16 max-w-5xl mx-auto">
           <div className="flex flex-col items-center gap-4">
@@ -104,6 +103,10 @@ export const Hero = () => {
           </div>
         </div>
 
+        {/* Data Cards Embed */}
+        <div className="mb-16 w-full">
+          <DataCardsDummyEmbed />
+        </div>
         {/* CTA Button */}
         <Link to="/contact#calendly">
           <Button
@@ -113,7 +116,6 @@ export const Hero = () => {
             Book a call with us
           </Button>
         </Link>
-
         {/* Scroll Indicator */}
         <a
           href="#services"
