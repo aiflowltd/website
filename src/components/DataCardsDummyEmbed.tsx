@@ -305,10 +305,10 @@ export const DataCardsDummyEmbed = () => {
   const showRefresh = hasAnswer && !isStreaming;
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full max-w-full md:max-w-4xl mx-auto">
       <form
         onSubmit={handleSubmit}
-        className="relative mt-[2.25em] w-full rounded-[1.5em] border-white/10 bg-white p-[1em] shadow-[0_4px_10px_0_rgba(0,0,0,0.15)]"
+        className="relative mt-[2.25em] w-full rounded-[1.5em] border-white/10 bg-white p-[1em] pt-[3em] md:pt-[1em] min-h-[120px] md:min-h-0 shadow-[0_4px_10px_0_rgba(0,0,0,0.15)]"
       >
         <a
           href="https://datacards.ai"
@@ -325,7 +325,7 @@ export const DataCardsDummyEmbed = () => {
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="block w-full resize-none bg-transparent text-[max(1rem,1.125em)] leading-[120%] text-black outline-none"
+          className="block w-full resize-none bg-transparent text-[max(1rem,1.125em)] leading-[120%] text-black outline-none mt-2 md:mt-0"
           rows={3}
           placeholder={PLACEHOLDER_PROMPTS[placeholderIndex]}
           autoFocus

@@ -30,11 +30,15 @@ export const TeamSection = () => {
           {/* Team Members and Logo Layout */}
           <div className="relative">
             {/* Top Row: Two Team Members */}
-            <div className="grid md:grid-cols-2 gap-4 relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative">
               {team.map((member, index) => (
                 <Card
                   key={index}
-                  className="bg-card border-border p-8 hover:border-primary transition-all duration-300 group relative z-0"
+                  className={`bg-card border-border p-8 hover:border-primary transition-all duration-300 group relative z-0 ${
+                    member.id === "mihai-anton"
+                      ? "order-1 md:order-2"
+                      : "order-2 md:order-1"
+                  }`}
                 >
                   <div className="flex flex-col items-center text-center">
                     {/* Photo */}
@@ -111,7 +115,7 @@ export const TeamSection = () => {
             <div className="mt-4 relative z-0">
               <Card className="bg-card border-border p-6 hover:border-primary transition-all duration-300">
                 <div className="flex items-center justify-center">
-                  <div className="flex items-center pl-2">
+                  <div className="hidden md:flex items-center pl-2">
                     <div className="group relative z-20 hover:z-50 transition-all duration-300">
                       <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
                         <span className="text-xl text-muted-foreground">
@@ -174,6 +178,11 @@ export const TeamSection = () => {
                         + other senior ML, AI & Data engineers.
                       </p>
                     </span>
+                  </div>
+                  <div className="md:hidden">
+                    <p className="text-muted-foreground leading-relaxed text-xl">
+                      + other senior ML, AI & Data engineers.
+                    </p>
                   </div>
                 </div>
               </Card>
