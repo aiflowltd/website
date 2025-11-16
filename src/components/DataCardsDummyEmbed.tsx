@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { ArrowUp, RefreshCw } from "lucide-react";
 import { AI_FLOW_LOGO_SYMBOL } from "@/constants/images";
 
 interface QAPair {
@@ -18,7 +17,7 @@ const QA_PAIRS: QAPair[] = [
   {
     question: "Who are the founders of AI Flow?",
     answer:
-      "AI Flow is co-founded by Mihai Anton and Irina Barbos. Mihai is the Lead AI/ML Engineer with nearly a decade of experience, having worked at Google on feature selection tools and at BP on production ML pipelines. Irina is the AI Solutions Consultant, specializing in full-stack development and system architecture with expertise in Next.js, React, and cloud infrastructure.",
+      "AI Flow is co-founded by Mihai Anton and Irina Barbos. Mihai is the Lead AI/ML Engineer with 10+ years of experience, having worked at Google on feature selection tools and at BP on production ML pipelines. Irina is the AI Solutions Consultant, specializing in full-stack development and system architecture with expertise in Next.js, React, and cloud infrastructure.",
     keywords: ["founders", "who", "team", "mihai", "irina", "co-founder"],
   },
   {
@@ -42,7 +41,7 @@ const QA_PAIRS: QAPair[] = [
   {
     question: "What is your experience with machine learning?",
     answer:
-      "Our team has extensive machine learning experience. Mihai has nearly a decade of experience in AI and ML, having worked at Google and BP. We specialize in predictive analytics, computer vision, natural language processing, recommendation systems, and building scalable ML pipelines for production environments.",
+      "Our team has extensive machine learning experience. Mihai has 10+ years of experience in AI and ML, having worked at Google and BP. We specialize in predictive analytics, computer vision, natural language processing, recommendation systems, and building scalable ML pipelines for production environments.",
     keywords: [
       "machine",
       "learning",
@@ -344,9 +343,17 @@ export const DataCardsDummyEmbed = () => {
           className="absolute bottom-[1em] right-[1em] w-[2em] h-[2em] rounded-full bg-black flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed transition-opacity hover:bg-black/90"
         >
           {showRefresh ? (
-            <RefreshCw className="size-[1.2em] fill-white text-white" />
+            <img
+              src="/images/icons/anti-clockwise.svg"
+              alt="Refresh"
+              className="w-[1.2em] h-[1.2em]"
+            />
           ) : (
-            <ArrowUp className="size-[1.2em] fill-white text-white" />
+            <img
+              src="/images/icons/arrow-up.svg"
+              alt="Send"
+              className="w-[1.2em] h-[1.2em]"
+            />
           )}
         </button>
 

@@ -141,7 +141,7 @@ const Team = () => {
             Team <span className="text-primary">Specs</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A decade of combined experience building production AI systems
+            20+ years of combined experience building production AI systems
           </p>
         </div>
 
