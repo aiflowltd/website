@@ -146,7 +146,7 @@ export const ClientsCarousel = () => {
                   }}
                 >
                   <Card
-                    className="bg-transparent border-none flex items-center justify-center hover:border-primary transition-all duration-300 group cursor-pointer hover:shadow-lg"
+                    className="bg-transparent border-none flex items-center justify-center transition-all duration-300 group cursor-pointer hover:shadow-[0_8px_16px_-4px_rgba(0,0,0,0.2)]"
                     style={{
                       height: "128px",
                       minHeight: "128px",

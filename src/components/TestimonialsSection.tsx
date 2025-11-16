@@ -9,7 +9,7 @@ export const TestimonialsSection = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            What are my <span className="text-primary">clients saying?</span>
+            What are our <span className="text-primary">clients saying?</span>
           </h2>
         </div>
 
