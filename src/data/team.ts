@@ -19,7 +19,7 @@ export const teamMembers = {
     id: "irina-barbos",
     name: "Irina Barbos",
     role: "Co-Founder & AI Solutions Consultant",
-    bio: "Irina brings deep expertise in full-stack development and system architecture. She has led the development of complex web platforms and specializes in building scalable, production-ready systems with modern technologies like Next.js, React, and cloud infrastructure.",
+    bio: "Irina brings deep expertise in full-stack development and system architecture. She has led the development of complex platforms and specializes in building scalable, production-ready systems with modern technologies like Next.js, React, and cloud infrastructure.",
     photo: irinaImage,
     linkedin: "https://www.linkedin.com/in/irina-barbos",
     github: "https://github.com/irinalarisabarbos",
