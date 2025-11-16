@@ -72,7 +72,7 @@ export const Hero = () => {
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-alternates mb-6 leading-tight">
           We build AI powered
           <br />
-          <span className="inline-block min-h-[1em] mt-1 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <span className="inline-block min-h-[1em] mt-1 pb-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             {currentText || "\u00A0"}
             {/* <span className="inline-block w-[2px] h-[1em] bg-primary animate-pulse ml-1" /> */}
           </span>
