@@ -86,7 +86,6 @@ const QA_PAIRS: QAPair[] = [
   },
 ];
 
-// Simple similarity search using keyword matching
 const findBestAnswer = (userQuestion: string): string => {
   const normalizedQuestion = userQuestion.toLowerCase().trim();
   const questionWords = normalizedQuestion
@@ -145,8 +144,8 @@ export const DataCardsDummyEmbed = () => {
   const [hasAnswer, setHasAnswer] = useState(false);
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const answerRef = useRef<string>("");
 
-  // Auto-resize textarea
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
@@ -154,41 +153,127 @@ export const DataCardsDummyEmbed = () => {
     }
   }, [question]);
 
-  // Cycle through placeholder prompts
   useEffect(() => {
-    // Only cycle if textarea is empty and not focused
     if (question.trim() || isStreaming) return;
 
     const interval = setInterval(() => {
       setPlaceholderIndex((prev) => (prev + 1) % PLACEHOLDER_PROMPTS.length);
-    }, 3000); // Change every 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [question, isStreaming]);
 
-  const submitQuestion = () => {
+  const submitQuestion = async () => {
     if (!question.trim() || isStreaming) return;
 
-    // Find the best matching answer using similarity search
-    const bestAnswer = findBestAnswer(question);
-
-    // Reset answer and start streaming
     setAnswer("");
+    answerRef.current = "";
     setHasAnswer(false);
     setIsStreaming(true);
 
-    // Simulate streaming
-    let currentIndex = 0;
-    const streamInterval = setInterval(() => {
-      if (currentIndex < bestAnswer.length) {
-        setAnswer(bestAnswer.substring(0, currentIndex + 1));
-        currentIndex++;
-      } else {
-        clearInterval(streamInterval);
-        setIsStreaming(false);
-        setHasAnswer(true);
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      
+      if (!apiUrl) {
+        console.warn("API URL not configured, using local fallback");
+        const bestAnswer = findBestAnswer(question);
+        
+        let currentIndex = 0;
+        const streamInterval = setInterval(() => {
+          if (currentIndex < bestAnswer.length) {
+            answerRef.current = bestAnswer.substring(0, currentIndex + 1);
+            setAnswer(answerRef.current);
+            currentIndex++;
+          } else {
+            clearInterval(streamInterval);
+            setIsStreaming(false);
+            setHasAnswer(true);
+          }
+        }, 30);
+        return;
       }
-    }, 30); // Adjust speed here (lower = faster)
+
+      const response = await fetch(`${apiUrl}/api/chat/stream`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: question,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
+
+      const reader = response.body?.pipeThrough(new TextDecoderStream()).getReader();
+
+      if (!reader) {
+        throw new Error("No response body");
+      }
+
+      let chunkCount = 0;
+
+      while (true) {
+        const { done, value } = await reader.read();
+        
+        if (done) {
+          setIsStreaming(false);
+          setHasAnswer(true);
+          break;
+        }
+
+        chunkCount++;
+        
+        const lines = value.split('\n');
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            try {
+              const jsonData = JSON.parse(line.substring(6));
+              
+              if (jsonData.done) {
+                continue;
+              }
+              
+              if (jsonData.content) {
+                answerRef.current += jsonData.content;
+                setAnswer(answerRef.current);
+                console.log(`🔧 ✅ Added content, new length: ${answerRef.current.length}`);
+              }
+              
+              if (jsonData.error) {
+                console.error("🔧 Stream error:", jsonData.error);
+                throw new Error(jsonData.error);
+              }
+            } catch (e) {
+              if (e instanceof SyntaxError) {
+                console.warn("🔧 Skipping incomplete JSON chunk:", line);
+                continue;
+              }
+              throw e;
+            }
+          }
+        }
+      }
+
+    } catch (error) {
+      console.error("Error calling chat API:", error);
+      
+      const bestAnswer = findBestAnswer(question);
+      let currentIndex = 0;
+      const streamInterval = setInterval(() => {
+        if (currentIndex < bestAnswer.length) {
+          answerRef.current = bestAnswer.substring(0, currentIndex + 1);
+          setAnswer(answerRef.current);
+          currentIndex++;
+        } else {
+          clearInterval(streamInterval);
+          setIsStreaming(false);
+          setHasAnswer(true);
+        }
+      }, 30);
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -199,6 +284,7 @@ export const DataCardsDummyEmbed = () => {
   const handleRefresh = () => {
     setQuestion("");
     setAnswer("");
+    answerRef.current = "";
     setHasAnswer(false);
     setIsStreaming(false);
     setPlaceholderIndex(0);
@@ -222,7 +308,6 @@ export const DataCardsDummyEmbed = () => {
         onSubmit={handleSubmit}
         className="relative mt-[2.25em] w-full rounded-[1.5em] border-white/10 bg-white p-[1em] shadow-[0_4px_10px_0_rgba(0,0,0,0.15)]"
       >
-        {/* Built with DataCards link - appears when streaming and stays after */}
         {answer && (
           <a
             href="https://datacards.ai"
@@ -249,7 +334,12 @@ export const DataCardsDummyEmbed = () => {
 
         <button
           type={showRefresh ? "button" : "submit"}
-          onClick={showRefresh ? handleRefresh : undefined}
+          onClick={(e) => {
+            console.log("🔧 Button clicked", showRefresh ? "refresh" : "submit");
+            if (showRefresh) {
+              handleRefresh();
+            }
+          }}
           disabled={isStreaming || (!question.trim() && !showRefresh)}
           className="absolute bottom-[1em] right-[1em] w-[2em] h-[2em] rounded-full bg-black flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed transition-opacity hover:bg-black/90"
         >
