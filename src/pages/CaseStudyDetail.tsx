@@ -8,6 +8,7 @@ import {
   Calendar,
   Building,
   Users,
+  Quote,
 } from "lucide-react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { getCaseStudy } from "@/data/caseStudies";
@@ -211,6 +212,19 @@ const CaseStudyDetail = () => {
                       {study.testimonial.company}
                     </p>
                   </div>
+                  {study.interviewId && (
+                    <div className="mt-6">
+                      <Link to={`/interviews/${study.interviewId}`}>
+                        <Button
+                          variant="outline"
+                          className="border-primary text-primary hover:bg-primary/10"
+                        >
+                          <Quote className="mr-2 w-4 h-4" />
+                          Read Full Interview
+                        </Button>
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </Card>
             </section>

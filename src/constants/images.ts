@@ -21,6 +21,9 @@ export const CASE_STUDY_GOOGLE = "/images/case-studies/google-badges.png";
 export const CASE_STUDY_LEGAL_INTELLIGENCE_PLATFORM =
   "/images/case-studies/law-paper.png";
 
+export const CASE_STUDY_AI_LEGAL_RISK_DETECTION =
+  "/images/case-studies/law-ip.png";
+
 // Logos
 
 export const AI_FLOW_LOGO_SMALL = "/images/ai-flow-logo/Symbol_Full_Color.png";

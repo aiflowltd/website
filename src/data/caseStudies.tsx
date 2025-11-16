@@ -7,6 +7,7 @@ import {
   CASE_STUDY_SALES_INTELLIGENCE_PLATFORM,
   CASE_STUDY_SUPPLY_CHAIN_OPTIMIZATION,
   CASE_STUDY_CUSTOMER_SERVICE_PLATFORM,
+  CASE_STUDY_AI_LEGAL_RISK_DETECTION,
 } from "@/constants/images";
 import caseStudy2 from "@/assets/case-study-2.jpg";
 
@@ -53,6 +54,7 @@ export interface CaseStudy {
   tags: string[];
   testimonial?: Testimonial;
   description?: string;
+  interviewId?: string;
 }
 
 export const caseStudies: Record<string, CaseStudy> = {
@@ -148,6 +150,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     image: CASE_STUDY_MATERIALS_SCIENCE_PROPERTY_PREDICTION,
     duration: "8 weeks",
     teamSize: "2 engineers",
+    interviewId: "josua-exomatter",
     challenge:
       "Building ML models for material property prediction took 3-4 months per model",
     challengeDetail:
@@ -465,7 +468,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     title: "AI Legal Risk Detection with LLM + RAG",
     client: "Legal Tech Company",
     industry: "Legal Tech",
-    image: CASE_STUDY_FRAUD_DETECTION_SYSTEM,
+    image: CASE_STUDY_AI_LEGAL_RISK_DETECTION,
     duration: "6 weeks (POC)",
     teamSize: "2 engineers",
     challenge:
@@ -545,6 +548,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     image: caseStudy2,
     duration: "3 months",
     teamSize: "3 engineers",
+    interviewId: "deinestudienfinanzierung",
     challenge:
       "Outdated platform with deprecated technologies needed complete rewrite for scalability",
     challengeDetail:
