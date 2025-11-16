@@ -17,3 +17,10 @@ export const CASE_STUDY_STUDENT_FINANCING_PLATFORM =
 
 export const AI_FLOW_LOGO_SMALL = "/images/ai-flow-logo/Symbol_Full_Color.png";
 export const AI_FLOW_LOGO_LARGE = "/images/ai-flow-logo/Full_Color_Light.png";
+
+// Backgrounds
+
+export const NY_BACKGROUND = "/images/backgrounds/ny-background.jpg";
+export const DUBAI_BACKGROUND = "/images/backgrounds/dubai-background.jpg";
+export const DUBAI_BACKGROUND_2 = "/images/backgrounds/dubai-background2.jpg";
+export const DUBAI_BACKGROUND_3 = "/images/backgrounds/dubai-background3.jpg";

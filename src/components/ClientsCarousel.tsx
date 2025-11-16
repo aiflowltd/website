@@ -21,7 +21,7 @@ import upliftLogo from "@/assets/clients/uplift.png";
 import accesaLogo from "@/assets/clients/accesa.png";
 import upcLogo from "@/assets/clients/upc.png";
 
-export const GLOBAL_SCALE = 1.0;
+export const GLOBAL_SCALE = 1.8;
 export const ClientsCarousel = () => {
   const clients = [
     {
@@ -55,14 +55,14 @@ export const ClientsCarousel = () => {
       name: "BP",
       logo: bpLogo,
       scale: 0.4,
-      marginBottom: undefined,
+      marginBottom: "20px",
       marginX: "10px",
     },
     {
       name: "Exomatter",
       logo: exomatterLogo,
       scale: 1.0,
-      marginBottom: undefined,
+      marginBottom: "10px",
       marginX: undefined,
     },
     {
@@ -83,7 +83,7 @@ export const ClientsCarousel = () => {
       name: "Uplift",
       logo: upliftLogo,
       scale: 0.9,
-      marginBottom: undefined,
+      marginBottom: "10px",
       marginX: undefined,
     },
     {
