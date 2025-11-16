@@ -172,11 +172,11 @@ export const DataCardsDummyEmbed = () => {
 
     try {
       const apiUrl = import.meta.env.VITE_API_URL;
-      
+
       if (!apiUrl) {
         console.warn("API URL not configured, using local fallback");
         const bestAnswer = findBestAnswer(question);
-        
+
         let currentIndex = 0;
         const streamInterval = setInterval(() => {
           if (currentIndex < bestAnswer.length) {
@@ -206,7 +206,9 @@ export const DataCardsDummyEmbed = () => {
         throw new Error(`API error: ${response.status}`);
       }
 
-      const reader = response.body?.pipeThrough(new TextDecoderStream()).getReader();
+      const reader = response.body
+        ?.pipeThrough(new TextDecoderStream())
+        .getReader();
 
       if (!reader) {
         throw new Error("No response body");
@@ -216,7 +218,7 @@ export const DataCardsDummyEmbed = () => {
 
       while (true) {
         const { done, value } = await reader.read();
-        
+
         if (done) {
           setIsStreaming(false);
           setHasAnswer(true);
@@ -224,23 +226,25 @@ export const DataCardsDummyEmbed = () => {
         }
 
         chunkCount++;
-        
-        const lines = value.split('\n');
+
+        const lines = value.split("\n");
         for (const line of lines) {
-          if (line.startsWith('data: ')) {
+          if (line.startsWith("data: ")) {
             try {
               const jsonData = JSON.parse(line.substring(6));
-              
+
               if (jsonData.done) {
                 continue;
               }
-              
+
               if (jsonData.content) {
                 answerRef.current += jsonData.content;
                 setAnswer(answerRef.current);
-                console.log(`🔧 ✅ Added content, new length: ${answerRef.current.length}`);
+                console.log(
+                  `🔧 ✅ Added content, new length: ${answerRef.current.length}`
+                );
               }
-              
+
               if (jsonData.error) {
                 console.error("🔧 Stream error:", jsonData.error);
                 throw new Error(jsonData.error);
@@ -255,10 +259,9 @@ export const DataCardsDummyEmbed = () => {
           }
         }
       }
-
     } catch (error) {
       console.error("Error calling chat API:", error);
-      
+
       const bestAnswer = findBestAnswer(question);
       let currentIndex = 0;
       const streamInterval = setInterval(() => {
@@ -307,16 +310,14 @@ export const DataCardsDummyEmbed = () => {
         onSubmit={handleSubmit}
         className="relative mt-[2.25em] w-full rounded-[1.5em] border-white/10 bg-white p-[1em] shadow-[0_4px_10px_0_rgba(0,0,0,0.15)]"
       >
-        {answer && (
-          <a
-            href="https://datacards.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute top-[1em] right-[1em] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-sm hover:opacity-80 transition-opacity z-10"
-          >
-            Built with DataCards
-          </a>
-        )}
+        <a
+          href="https://datacards.ai"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute top-[1em] right-[1em] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-sm hover:opacity-80 transition-opacity z-10"
+        >
+          Built with DataCards
+        </a>
 
         <textarea
           ref={textareaRef}
@@ -334,7 +335,10 @@ export const DataCardsDummyEmbed = () => {
         <button
           type={showRefresh ? "button" : "submit"}
           onClick={(e) => {
-            console.log("🔧 Button clicked", showRefresh ? "refresh" : "submit");
+            console.log(
+              "🔧 Button clicked",
+              showRefresh ? "refresh" : "submit"
+            );
             if (showRefresh) {
               handleRefresh();
             }

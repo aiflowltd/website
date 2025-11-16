@@ -111,7 +111,7 @@ export const Hero = () => {
         <Link to="/contact#calendly">
           <Button
             size="lg"
-            className="bg-foreground text-background hover:bg-foreground/90 text-lg px-12 py-6 h-auto font-semibold"
+            className="bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 text-lg px-12 py-6 h-auto font-semibold"
           >
             Book a call with us
           </Button>

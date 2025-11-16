@@ -123,10 +123,8 @@ export const Navigation = () => {
               </a>
             </div>
 
-            <a
-              href={"/contact"}
-            >
-              <Button className="bg-primary hover:bg-primary/90 text-background font-semibold px-6">
+            <a href={"/contact"}>
+              <Button className="bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 font-semibold px-6">
                 Contact Us
               </Button>
             </a>
