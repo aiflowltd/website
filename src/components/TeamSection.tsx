@@ -101,7 +101,7 @@ export const TeamSection = () => {
                   <img
                     src={AI_FLOW_LOGO_SYMBOL}
                     alt="AI Flow"
-                    className="w-12 h-12 md:w-16 md:h-16 object-contain animate-logo-spin group-hover/logo:animate-none group-hover/logo:rotate-[360deg] transition-transform duration-1000 ease-in-out"
+                    className="w-12 h-12 md:w-16 md:h-16 object-contain animate-logo-spin"
                   />
                 </div>
               </div>
