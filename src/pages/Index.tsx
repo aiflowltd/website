@@ -6,6 +6,8 @@ import { ClientsCarousel } from "@/components/ClientsCarousel";
 import { TeamSection } from "@/components/TeamSection";
 import { CaseStudiesSection } from "@/components/CaseStudiesSection";
 import { ParallaxBackground } from "@/components/ParallaxBackground";
+import { GlobalPresenceSection } from "@/components/GlobalPresenceSection";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
 
 const Index = () => {
   return (
@@ -17,7 +19,9 @@ const Index = () => {
         <ServicesSection />
         <ClientsCarousel />
         <TeamSection />
+        <GlobalPresenceSection />
         <CaseStudiesSection />
+        <TestimonialsSection />
         <Footer />
       </div>
     </div>
