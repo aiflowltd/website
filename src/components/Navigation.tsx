@@ -124,9 +124,7 @@ export const Navigation = () => {
             </div>
 
             <a
-              href={companyInfo.meetingLink}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={"/contact"}
             >
               <Button className="bg-primary hover:bg-primary/90 text-background font-semibold px-6">
                 Contact Us
