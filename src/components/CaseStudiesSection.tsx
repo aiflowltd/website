@@ -3,57 +3,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import {
-  CASE_STUDY_SUPPLY_CHAIN_OPTIMIZATION,
-  CASE_STUDY_CUSTOMER_SERVICE_PLATFORM,
-  CASE_STUDY_FRAUD_DETECTION_SYSTEM,
-} from "@/constants/images";
+import { featuredCaseStudies } from "@/data/caseStudies";
 
 export const CaseStudiesSection = () => {
-  const caseStudies = [
-    {
-      id: "supply-chain-optimization",
-      title: "AI-Powered Supply Chain Optimization",
-      client: "Fortune 500 Manufacturer",
-      image: CASE_STUDY_SUPPLY_CHAIN_OPTIMIZATION,
-      description:
-        "Implemented ML-powered demand forecasting and automated inventory optimization system that reduced costs by 40% and improved forecast accuracy to 95%.",
-      metrics: [
-        { label: "Inventory Costs", value: "-40%" },
-        { label: "Decision Speed", value: "60%" },
-        { label: "Forecast Accuracy", value: "95%" },
-      ],
-      tags: ["Machine Learning", "Supply Chain", "Optimization"],
-    },
-    {
-      id: "customer-service-platform",
-      title: "Intelligent Customer Service Platform",
-      client: "E-commerce Leader",
-      image: CASE_STUDY_CUSTOMER_SERVICE_PLATFORM,
-      description:
-        "Developed AI chatbot with natural language understanding and sentiment analysis that handles 24/7 customer support with 90% satisfaction rate.",
-      metrics: [
-        { label: "Support Costs", value: "-70%" },
-        { label: "Response Time", value: "<1 min" },
-        { label: "Satisfaction", value: "90%" },
-      ],
-      tags: ["NLP", "Chatbot", "Customer Service"],
-    },
-    {
-      id: "fraud-detection-system",
-      title: "Real-Time Fraud Detection System",
-      client: "Global Financial Institution",
-      image: CASE_STUDY_FRAUD_DETECTION_SYSTEM,
-      description:
-        "Built real-time ML fraud detection system with <100ms detection time, preventing $50M+ in fraud annually with 99.7% accuracy.",
-      metrics: [
-        { label: "Fraud Prevented", value: "$50M+" },
-        { label: "Detection Time", value: "<100ms" },
-        { label: "Accuracy", value: "99.7%" },
-      ],
-      tags: ["AI/ML", "Fraud Detection", "Real-time"],
-    },
-  ];
 
   return (
     <section className="relative py-24 px-6">
@@ -68,7 +20,7 @@ export const CaseStudiesSection = () => {
         </div>
 
         <div className="max-w-6xl mx-auto space-y-12">
-          {caseStudies.map((study, index) => (
+          {featuredCaseStudies.map((study, index) => (
             <Card
               key={index}
               className="bg-card border-border overflow-hidden hover:border-primary transition-all duration-300 group"
@@ -99,7 +51,7 @@ export const CaseStudiesSection = () => {
                     </div>
 
                     <p className="text-muted-foreground mb-6 leading-relaxed">
-                      {study.description}
+                      {study.solution}
                     </p>
 
                     <div className="flex flex-wrap gap-2 mb-6">
@@ -117,13 +69,13 @@ export const CaseStudiesSection = () => {
 
                   <div>
                     <div className="grid grid-cols-3 gap-4 mb-6">
-                      {study.metrics.map((metric, metricIndex) => (
-                        <div key={metricIndex} className="text-center">
-                          <div className="text-2xl font-bold text-primary mb-1">
-                            {metric.value}
+                      {study.results.slice(0, 3).map((result, resultIndex) => (
+                        <div key={resultIndex} className="flex flex-col items-center text-center">
+                          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-2">
+                            {result.icon}
                           </div>
-                          <div className="text-xs text-muted-foreground">
-                            {metric.label}
+                          <div className="text-xs text-muted-foreground leading-tight">
+                            {result.label}
                           </div>
                         </div>
                       ))}
