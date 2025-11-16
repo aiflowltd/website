@@ -22,14 +22,14 @@ export const ServicesSection = () => {
         </div>
 
         {/* CTA Button */}
-        <div className="text-center mt-12">
+        {/* <div className="text-center mt-12">
           <Button
             size="lg"
             className="bg-foreground text-background hover:bg-foreground/90 text-lg px-12 py-6 h-auto font-semibold"
           >
             How does it work?
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>
   );
