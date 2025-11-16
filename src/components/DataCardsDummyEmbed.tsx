@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { ArrowUp, RefreshCw } from "lucide-react";
 import { AI_FLOW_LOGO_SYMBOL } from "@/constants/images";
 
 interface QAPair {
@@ -18,7 +17,7 @@ const QA_PAIRS: QAPair[] = [
   {
     question: "Who are the founders of AI Flow?",
     answer:
-      "AI Flow is co-founded by Mihai Anton and Irina Barbos. Mihai is the Lead AI/ML Engineer with nearly a decade of experience, having worked at Google on feature selection tools and at BP on production ML pipelines. Irina is the AI Solutions Consultant, specializing in full-stack development and system architecture with expertise in Next.js, React, and cloud infrastructure.",
+      "AI Flow is co-founded by Mihai Anton and Irina Barbos. Mihai is the Lead AI/ML Engineer with 10+ years of experience, having worked at Google on feature selection tools and at BP on production ML pipelines. Irina is the AI Solutions Consultant, specializing in full-stack development and system architecture with expertise in Next.js, React, and cloud infrastructure.",
     keywords: ["founders", "who", "team", "mihai", "irina", "co-founder"],
   },
   {
@@ -42,7 +41,7 @@ const QA_PAIRS: QAPair[] = [
   {
     question: "What is your experience with machine learning?",
     answer:
-      "Our team has extensive machine learning experience. Mihai has nearly a decade of experience in AI and ML, having worked at Google and BP. We specialize in predictive analytics, computer vision, natural language processing, recommendation systems, and building scalable ML pipelines for production environments.",
+      "Our team has extensive machine learning experience. Mihai has 10+ years of experience in AI and ML, having worked at Google and BP. We specialize in predictive analytics, computer vision, natural language processing, recommendation systems, and building scalable ML pipelines for production environments.",
     keywords: [
       "machine",
       "learning",
@@ -173,11 +172,11 @@ export const DataCardsDummyEmbed = () => {
 
     try {
       const apiUrl = import.meta.env.VITE_API_URL;
-      
+
       if (!apiUrl) {
         console.warn("API URL not configured, using local fallback");
         const bestAnswer = findBestAnswer(question);
-        
+
         let currentIndex = 0;
         const streamInterval = setInterval(() => {
           if (currentIndex < bestAnswer.length) {
@@ -207,7 +206,9 @@ export const DataCardsDummyEmbed = () => {
         throw new Error(`API error: ${response.status}`);
       }
 
-      const reader = response.body?.pipeThrough(new TextDecoderStream()).getReader();
+      const reader = response.body
+        ?.pipeThrough(new TextDecoderStream())
+        .getReader();
 
       if (!reader) {
         throw new Error("No response body");
@@ -217,7 +218,7 @@ export const DataCardsDummyEmbed = () => {
 
       while (true) {
         const { done, value } = await reader.read();
-        
+
         if (done) {
           setIsStreaming(false);
           setHasAnswer(true);
@@ -225,23 +226,25 @@ export const DataCardsDummyEmbed = () => {
         }
 
         chunkCount++;
-        
-        const lines = value.split('\n');
+
+        const lines = value.split("\n");
         for (const line of lines) {
-          if (line.startsWith('data: ')) {
+          if (line.startsWith("data: ")) {
             try {
               const jsonData = JSON.parse(line.substring(6));
-              
+
               if (jsonData.done) {
                 continue;
               }
-              
+
               if (jsonData.content) {
                 answerRef.current += jsonData.content;
                 setAnswer(answerRef.current);
-                console.log(`🔧 ✅ Added content, new length: ${answerRef.current.length}`);
+                console.log(
+                  `🔧 ✅ Added content, new length: ${answerRef.current.length}`
+                );
               }
-              
+
               if (jsonData.error) {
                 console.error("🔧 Stream error:", jsonData.error);
                 throw new Error(jsonData.error);
@@ -256,10 +259,9 @@ export const DataCardsDummyEmbed = () => {
           }
         }
       }
-
     } catch (error) {
       console.error("Error calling chat API:", error);
-      
+
       const bestAnswer = findBestAnswer(question);
       let currentIndex = 0;
       const streamInterval = setInterval(() => {
@@ -303,21 +305,19 @@ export const DataCardsDummyEmbed = () => {
   const showRefresh = hasAnswer && !isStreaming;
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full max-w-full md:max-w-4xl mx-auto">
       <form
         onSubmit={handleSubmit}
-        className="relative mt-[2.25em] w-full rounded-[1.5em] border-white/10 bg-white p-[1em] shadow-[0_4px_10px_0_rgba(0,0,0,0.15)]"
+        className="relative mt-[2.25em] w-full rounded-[1.5em] border-white/10 bg-white p-[1em] pt-[3em] md:pt-[1em] min-h-[120px] md:min-h-0 shadow-[0_4px_10px_0_rgba(0,0,0,0.15)]"
       >
-        {answer && (
-          <a
-            href="https://datacards.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute top-[1em] right-[1em] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-sm hover:opacity-80 transition-opacity z-10"
-          >
-            Built with DataCards
-          </a>
-        )}
+        <a
+          href="https://datacards.ai"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute top-[1em] right-[1em] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-sm hover:opacity-80 transition-opacity z-10"
+        >
+          Built with DataCards
+        </a>
 
         <textarea
           ref={textareaRef}
@@ -325,7 +325,7 @@ export const DataCardsDummyEmbed = () => {
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="block w-full resize-none bg-transparent text-[max(1rem,1.125em)] leading-[120%] text-black outline-none"
+          className="block w-full resize-none bg-transparent text-[max(1rem,1.125em)] leading-[120%] text-black outline-none mt-2 md:mt-0"
           rows={3}
           placeholder={PLACEHOLDER_PROMPTS[placeholderIndex]}
           autoFocus
@@ -335,7 +335,10 @@ export const DataCardsDummyEmbed = () => {
         <button
           type={showRefresh ? "button" : "submit"}
           onClick={(e) => {
-            console.log("🔧 Button clicked", showRefresh ? "refresh" : "submit");
+            console.log(
+              "🔧 Button clicked",
+              showRefresh ? "refresh" : "submit"
+            );
             if (showRefresh) {
               handleRefresh();
             }
@@ -344,9 +347,17 @@ export const DataCardsDummyEmbed = () => {
           className="absolute bottom-[1em] right-[1em] w-[2em] h-[2em] rounded-full bg-black flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed transition-opacity hover:bg-black/90"
         >
           {showRefresh ? (
-            <RefreshCw className="size-[1.2em] fill-white text-white" />
+            <img
+              src="/images/icons/anti-clockwise.svg"
+              alt="Refresh"
+              className="w-[1.2em] h-[1.2em]"
+            />
           ) : (
-            <ArrowUp className="size-[1.2em] fill-white text-white" />
+            <img
+              src="/images/icons/arrow-up.svg"
+              alt="Send"
+              className="w-[1.2em] h-[1.2em]"
+            />
           )}
         </button>
 

@@ -109,8 +109,8 @@ export const GlobalPresenceSection = () => {
           </p>
         </div>
 
-        <div className="w-[60%] mx-auto -my-20 md:-my-22">
-          <ComposableMap projectionConfig={{ scale: 180 }} className="w-full">
+        <div className="w-full md:w-[60%] mx-auto -my-20 md:-my-22">
+          <ComposableMap projectionConfig={{ scale: 200 }} className="w-full">
             <Geographies geography={geoUrl}>
               {({ geographies }) =>
                 geographies.map((geo) => (

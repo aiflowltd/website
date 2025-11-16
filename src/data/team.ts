@@ -30,7 +30,7 @@ export const teamMembers = {
     id: "mihai-anton",
     name: "Mihai Anton",
     role: "Co-Founder & Lead AI/ML Engineer",
-    bio: "Mihai has nearly a decade of experience in AI and machine learning, having worked at Google on feature selection tools and at BP on production ML pipelines. He specializes in building scalable AI solutions and has helped companies from startups to Fortune 500 enterprises leverage AI effectively.",
+    bio: "Mihai is an AI, ML and software engineer with nine years of hands-on experience building ML systems end to end. After working at Google, Bloomberg, and multiple startups, he founded AI Flow to help companies turn data into real, scalable products built with first principles and technical rigor.",
     photo: mihaiImage,
     linkedin: "https://www.linkedin.com/in/mihaianton98/",
     github: "https://github.com/mihaianton",

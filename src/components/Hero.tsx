@@ -67,8 +67,8 @@ export const Hero = () => {
   ]);
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20">
-      <div className="container mx-auto text-center max-w-7xl">
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-w pt-20">
+      <div className="container mx-auto text-center max-w-9xl">
         {/* Main Heading */}
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-alternates mb-6 leading-tight">
           We build AI powered
@@ -79,24 +79,24 @@ export const Hero = () => {
           </span>
         </h1>
         {/* Subheading */}
-        <p className="text-xl md:text-2xl text-muted-foreground mb-16 max-w-3xl mx-auto">
+        <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-3xl mx-auto">
           In AI & ML before the wave. Building products, not hype.
         </p>
         {/* Service Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16 max-w-5xl mx-auto">
-          <div className="flex flex-col items-center gap-4">
+        <div className="grid md:grid-cols-3 gap-4 mt-4 md:mt-12 mb-10 max-w-5xl mx-auto">
+          <div className="flex flex-col items-center gap-2">
             <div className="h-px w-full bg-border" />
             <h3 className="text-xl font-semibold">End-to-end products</h3>
             <p className="text-muted-foreground">Build the future</p>
           </div>
 
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-2">
             <div className="h-px w-full bg-border" />
             <h3 className="text-xl font-semibold">AI consulting</h3>
             <p className="text-muted-foreground">Keep up with the AI wave</p>
           </div>
 
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-2">
             <div className="h-px w-full bg-border" />
             <h3 className="text-xl font-semibold">ML pipelines</h3>
             <p className="text-muted-foreground">Monetize your data</p>
@@ -111,7 +111,7 @@ export const Hero = () => {
         <Link to="/contact#calendly">
           <Button
             size="lg"
-            className="bg-foreground text-background hover:bg-foreground/90 text-lg px-12 py-6 h-auto font-semibold"
+            className="bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 text-lg px-12 py-6 h-auto font-semibold"
           >
             Book a call with us
           </Button>
