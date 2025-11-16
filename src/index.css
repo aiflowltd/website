@@ -99,3 +99,51 @@ All colors MUST be HSL.
     font-weight: 300;
   }
 }
+
+/* Logo animations - rotate left, rotate right, or heartbeat bounce */
+@keyframes logo-rotate-left {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes logo-rotate-right {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes logo-heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.15);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+}
+
+@layer utilities {
+  .animate-logo-rotate-left {
+    animation: logo-rotate-left 1s ease-in-out infinite;
+  }
+  
+  .animate-logo-rotate-right {
+    animation: logo-rotate-right 1s ease-in-out infinite;
+  }
+  
+  .animate-logo-heartbeat {
+    animation: logo-heartbeat 1s ease-in-out infinite;
+  }
+}
