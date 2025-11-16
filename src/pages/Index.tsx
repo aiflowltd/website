@@ -3,12 +3,12 @@ import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { ServicesSection } from "@/components/ServicesSection";
 import { CaseStudiesSection } from "@/components/CaseStudiesSection";
-import { StarfieldBackground } from "@/components/StarfieldBackground";
+import { ParallaxBackground } from "@/components/ParallaxBackground";
 
 const Index = () => {
   return (
     <div className="relative min-h-screen bg-background text-foreground">
-      <StarfieldBackground />
+      <ParallaxBackground />
       <div className="relative z-10">
         <Navigation />
         <Hero />
