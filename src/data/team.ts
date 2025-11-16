@@ -18,7 +18,7 @@ export const teamMembers = {
   irina: {
     id: "irina-barbos",
     name: "Irina Barbos",
-    role: "Co-Founder & CEO",
+    role: "Co-Founder & AI Solutions Consultant",
     bio: "Irina brings deep expertise in full-stack development and system architecture. She has led the development of complex web platforms and specializes in building scalable, production-ready systems with modern technologies like Next.js, React, and cloud infrastructure.",
     photo: irinaImage,
     linkedin: "https://www.linkedin.com/in/irina-barbos",
@@ -29,7 +29,7 @@ export const teamMembers = {
   mihai: {
     id: "mihai-anton",
     name: "Mihai Anton",
-    role: "Co-Founder & CTO",
+    role: "Co-Founder & Lead Engineer",
     bio: "Mihai has nearly a decade of experience in AI and machine learning, having worked at Google on feature selection tools and at BP on production ML pipelines. He specializes in building scalable AI solutions and has helped companies from startups to Fortune 500 enterprises leverage AI effectively.",
     photo: mihaiImage,
     linkedin: "https://www.linkedin.com/in/mihaianton98/",
