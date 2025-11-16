@@ -1,7 +1,69 @@
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export const Hero = () => {
+  const words = [
+    "products.",
+    "agents.",
+    "workflows.",
+    "automations.",
+    "web apps.",
+    "data platforms.",
+  ];
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [currentText, setCurrentText] = useState("products.");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(100);
+  const [hasStarted, setHasStarted] = useState(false);
+
+  useEffect(() => {
+    // Start the animation after initial display of "products."
+    if (!hasStarted) {
+      const startTimer = setTimeout(() => {
+        setHasStarted(true);
+        setIsDeleting(true);
+      }, 3000); // Show "products." for 3 seconds before starting
+      return () => clearTimeout(startTimer);
+    }
+
+    const currentWord = words[currentWordIndex];
+
+    const handleTyping = () => {
+      if (!isDeleting) {
+        // Typing forward
+        if (currentText.length < currentWord.length) {
+          setCurrentText(currentWord.substring(0, currentText.length + 1));
+          setTypingSpeed(120);
+        } else {
+          // Finished typing, wait before deleting
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        // Deleting
+        if (currentText.length > 0) {
+          setCurrentText(currentText.substring(0, currentText.length - 1));
+          setTypingSpeed(70);
+        } else {
+          // Finished deleting, move to next word
+          setIsDeleting(false);
+          setCurrentWordIndex((prev) => (prev + 1) % words.length);
+          setTypingSpeed(100);
+        }
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [
+    currentText,
+    isDeleting,
+    currentWordIndex,
+    typingSpeed,
+    words,
+    hasStarted,
+  ]);
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20">
       <div className="container mx-auto text-center max-w-7xl">
@@ -9,7 +71,10 @@ export const Hero = () => {
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-alternates mb-6 leading-tight">
           We build AI powered
           <br />
-          <span className="text-primary ">products.</span>
+          <span className="text-primary inline-block min-h-[1em] mt-1">
+            {currentText || "\u00A0"}
+            {/* <span className="inline-block w-[2px] h-[1em] bg-primary animate-pulse ml-1" /> */}
+          </span>
         </h1>
 
         {/* Subheading */}

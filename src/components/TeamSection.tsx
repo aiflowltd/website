@@ -95,6 +95,62 @@ export const TeamSection = () => {
           ))}
         </div>
 
+        {/* Additional team members */}
+        <div className="max-w-4xl mx-auto mt-8 ">
+          <Card className="bg-card border-border p-6 hover:border-primary transition-all duration-300">
+            <div className="flex items-center justify-center">
+              <div className="flex items-center pl-2">
+                <div className="group relative z-20 hover:z-50 transition-all duration-300">
+                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
+                    <span className="text-xl text-muted-foreground">GB</span>
+                  </div>
+                </div>
+                <div className="group relative -ml-4 z-30 hover:z-50 transition-all duration-300">
+                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
+                    <span className="text-xl text-muted-foreground">MS</span>
+                  </div>
+                </div>
+                <div className="group relative -ml-4 z-30 hover:z-50 transition-all duration-300">
+                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
+                    <span className="text-xl text-muted-foreground">AD</span>
+                  </div>
+                </div>
+                <div className="group relative -ml-4 z-30 hover:z-50 transition-all duration-300">
+                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
+                    <span className="text-xl text-muted-foreground">FB</span>
+                  </div>
+                </div>
+                <div className="group relative -ml-4 z-30 hover:z-50 transition-all duration-300">
+                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
+                    <span className="text-xl text-muted-foreground">CE</span>
+                  </div>
+                </div>
+                <div className="group relative -ml-4 z-30 hover:z-50 transition-all duration-300">
+                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
+                    <span className="text-xl text-muted-foreground">CE</span>
+                  </div>
+                </div>
+                <div className="group relative -ml-4 z-30 hover:z-50 transition-all duration-300">
+                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
+                    <span className="text-xl text-muted-foreground">AD</span>
+                  </div>
+                </div>
+                <div className="group relative -ml-4 z-30 hover:z-50 transition-all duration-300">
+                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
+                    <span className="text-xl text-muted-foreground">DM</span>
+                  </div>
+                </div>
+                <span className="text-xl ml-2 text-foreground">
+                  {" "}
+                  <p className="text-muted-foreground leading-relaxed">
+                    + other senior ML, AI & Data engineers.
+                  </p>
+                </span>
+              </div>
+            </div>
+          </Card>
+        </div>
+
         {/* Optional: Stats or achievements */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
           <div className="text-center">

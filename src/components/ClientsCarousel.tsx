@@ -21,7 +21,7 @@ import upliftLogo from "@/assets/clients/uplift.png";
 import accesaLogo from "@/assets/clients/accesa.png";
 import upcLogo from "@/assets/clients/upc.png";
 
-export const GLOBAL_SCALE = 1.8;
+export const GLOBAL_SCALE = 2;
 export const ClientsCarousel = () => {
   const clients = [
     {
@@ -121,7 +121,6 @@ export const ClientsCarousel = () => {
           opts={{
             align: "start",
             loop: true,
-            dragFree: true,
             duration: 50,
           }}
           plugins={[

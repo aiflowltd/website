@@ -4,6 +4,7 @@ import {
   DUBAI_BACKGROUND,
   DUBAI_BACKGROUND_3,
   NY_BACKGROUND,
+  ZURICH_BACKGROUND,
 } from "@/constants/images";
 
 const backgrounds = [
@@ -11,10 +12,11 @@ const backgrounds = [
   DUBAI_BACKGROUND_2,
   DUBAI_BACKGROUND_3,
   NY_BACKGROUND,
+  ZURICH_BACKGROUND,
 ];
 
 export const ParallaxBackground = () => {
-  const [scale, setScale] = useState(1);
+  const [scale, setScale] = useState(1.4);
   const [randomBackground] = useState(() => {
     return backgrounds[Math.floor(Math.random() * backgrounds.length)];
   });
@@ -27,9 +29,12 @@ export const ParallaxBackground = () => {
       const scrollProgress = scrollY / maxScroll;
 
       // Zoom out effect: starts at 1.2 and goes to 1.0 as you scroll
-      const newScale = 1.2 - scrollProgress * 0.2;
+      const newScale = 1.4 - scrollProgress * 0.2;
       setScale(Math.max(1, newScale));
     };
+
+    // Set initial scale based on current scroll position
+    handleScroll();
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
