@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Mail, Globe } from "lucide-react";
+import { teamMembers, companyInfo } from "@/data/team";
 import logo from "@/assets/logo.png";
+import irinaPhoto from "@/assets/irina.png";
+import mihaiPhoto from "@/assets/mihai.png";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -15,11 +18,11 @@ export const Footer = () => {
               <img src={logo} alt="AI Flow Logo" className="h-8 w-auto" />
             </Link>
             <p className="text-sm text-muted-foreground mb-4">
-              Building AI-powered products. In AI & ML before the wave. Building products, not hype.
+              {companyInfo.tagline}
             </p>
             <div className="flex gap-4">
               <a
-                href="https://www.linkedin.com/company/aiflow-ltd"
+                href={companyInfo.linkedinCompany}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -27,13 +30,13 @@ export const Footer = () => {
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href="mailto:contact@aiflow.ltd"
+                href={`mailto:${companyInfo.email}`}
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 <Mail className="w-5 h-5" />
               </a>
               <a
-                href="https://aiflow.ltd"
+                href={companyInfo.website}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -96,7 +99,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://aiflow.ltd/meet"
+                  href={companyInfo.meetingLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -110,13 +113,13 @@ export const Footer = () => {
           {/* Contact */}
           <div>
             <h3 className="font-bold mb-4">Get in Touch</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2 mb-6">
               <li>
                 <a
-                  href="mailto:contact@aiflow.ltd"
+                  href={`mailto:${companyInfo.email}`}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  contact@aiflow.ltd
+                  {companyInfo.email}
                 </a>
               </li>
               <li>
@@ -130,13 +133,57 @@ export const Footer = () => {
                 </Link>
               </li>
             </ul>
+
+            {/* Socials */}
+            <div>
+              <h4 className="font-semibold text-sm mb-3">Connect With Us</h4>
+              <div className="flex gap-3">
+                <a
+                  href={teamMembers.irina.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative"
+                  title={`${teamMembers.irina.name} - LinkedIn`}
+                >
+                  <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300">
+                    <img
+                      src={irinaPhoto}
+                      alt={teamMembers.irina.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-4 h-4 bg-primary rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Linkedin className="w-2.5 h-2.5 text-background" />
+                  </div>
+                </a>
+
+                <a
+                  href={teamMembers.mihai.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative"
+                  title={`${teamMembers.mihai.name} - LinkedIn`}
+                >
+                  <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300">
+                    <img
+                      src={mihaiPhoto}
+                      alt={teamMembers.mihai.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-4 h-4 bg-primary rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Linkedin className="w-2.5 h-2.5 text-background" />
+                  </div>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} AI Flow. All rights reserved.
+            © {currentYear} {companyInfo.name}. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link to="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">

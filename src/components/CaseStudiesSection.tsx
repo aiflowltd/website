@@ -89,7 +89,7 @@ export const CaseStudiesSection = () => {
                       <img
                         src={study.clientLogo}
                         alt={study.client}
-                        className="w-12 h-12 rounded-lg bg-background/50 p-2"
+                        className="w-12 h-12 rounded-xl bg-background/50 p-2"
                       />
                       <div>
                         <h3 className="text-2xl font-bold">{study.title}</h3>

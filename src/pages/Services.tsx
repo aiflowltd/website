@@ -1,79 +1,12 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Code2, Brain, TrendingUp, Zap, Database, Sparkles, CheckCircle2, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ServiceCard } from "@/components/ServiceCard";
+import { services } from "@/data/services";
 
 const Services = () => {
-  const services = [
-    {
-      icon: <Code2 className="w-12 h-12" />,
-      title: "Custom AI Solutions",
-      description: "Tailored artificial intelligence products built for your specific business needs and challenges.",
-      features: [
-        "End-to-end AI product development",
-        "Custom model training and fine-tuning",
-        "Integration with existing systems",
-        "Scalable cloud-native architecture",
-      ],
-    },
-    {
-      icon: <Brain className="w-12 h-12" />,
-      title: "Machine Learning",
-      description: "Advanced ML models and algorithms to unlock insights from your data and automate processes.",
-      features: [
-        "Predictive analytics and forecasting",
-        "Computer vision solutions",
-        "Natural language processing",
-        "Recommendation systems",
-      ],
-    },
-    {
-      icon: <TrendingUp className="w-12 h-12" />,
-      title: "AI Strategy & Consulting",
-      description: "Strategic consulting to help you navigate the AI landscape and maximize ROI.",
-      features: [
-        "AI readiness assessment",
-        "Technology stack recommendations",
-        "ROI analysis and business case",
-        "Implementation roadmap",
-      ],
-    },
-    {
-      icon: <Zap className="w-12 h-12" />,
-      title: "Rapid Prototyping",
-      description: "Fast iteration and proof-of-concept development to validate your AI ideas quickly.",
-      features: [
-        "MVP development in 4-6 weeks",
-        "Quick validation of AI concepts",
-        "Iterative feedback loops",
-        "Production-ready architecture",
-      ],
-    },
-    {
-      icon: <Database className="w-12 h-12" />,
-      title: "Data Engineering",
-      description: "Build robust data pipelines and infrastructure to power your AI initiatives.",
-      features: [
-        "Data pipeline design and implementation",
-        "ETL/ELT process optimization",
-        "Data warehouse architecture",
-        "Real-time data processing",
-      ],
-    },
-    {
-      icon: <Sparkles className="w-12 h-12" />,
-      title: "AI Integration",
-      description: "Seamlessly integrate AI capabilities into your existing products and workflows.",
-      features: [
-        "API design and development",
-        "Legacy system integration",
-        "Microservices architecture",
-        "Performance optimization",
-      ],
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -94,31 +27,12 @@ const Services = () => {
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-20">
           {services.map((service, index) => (
-            <Card
-              key={index}
-              className="bg-card border-border p-8 hover:border-primary transition-all duration-300 group"
-            >
-              <div className="text-primary mb-6 group-hover:scale-110 transition-transform">
-                {service.icon}
-              </div>
-              <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                {service.description}
-              </p>
-              <ul className="space-y-3">
-                {service.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-muted-foreground">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
+            <ServiceCard key={index} service={service} variant="default" />
           ))}
         </div>
 
         {/* CTA Section */}
-        <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-12 text-center max-w-6xl mx-auto border border-primary/20">
+        <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-[20px] p-12 text-center max-w-6xl mx-auto border border-primary/20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Transform Your Business?
           </h2>
