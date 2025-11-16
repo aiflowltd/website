@@ -68,11 +68,39 @@ const Contact = () => {
   }, []);
 
   const onSubmit = async (data: ContactForm) => {
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log("Form submitted:", data);
-    toast.success("Message sent successfully! We'll get back to you soon.");
-    reset();
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      
+      if (!apiUrl) {
+        console.error("API URL not configured");
+        toast.error("Configuration error. Please try again later.");
+        return;
+      }
+
+      console.log("📨 Submitting contact form:", data);
+
+      const response = await fetch(`${apiUrl}/api/contact/submit`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to send message");
+      }
+
+      const result = await response.json();
+      console.log("✅ Contact form submitted successfully:", result);
+      
+      toast.success("Message sent successfully! We'll get back to you soon.");
+      reset();
+    } catch (error: any) {
+      console.error("❌ Error submitting contact form:", error);
+      toast.error(error.message || "Failed to send message. Please try again.");
+    }
   };
 
   return (
