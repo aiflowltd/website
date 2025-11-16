@@ -20,7 +20,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { toast } from "sonner";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const applicationSchema = z.object({
   fullName: z.string().min(2, "Name must be at least 2 characters"),
@@ -38,11 +38,15 @@ const JobDetail = () => {
   const { id } = useParams();
   const job = id ? getJob(id) : undefined;
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm<ApplicationForm>({
     resolver: zodResolver(applicationSchema),
@@ -60,12 +64,63 @@ const JobDetail = () => {
       
       toast.success("Application submitted successfully! We'll be in touch soon.");
       reset();
+      setSelectedFile(null);
     } catch (error) {
       console.error("Error submitting application:", error);
       toast.error("Failed to submit application. Please try again or email us directly.");
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+      setValue("resume", file.name);
+    }
+  };
+
+  const handleDragEnter = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+
+    const files = e.dataTransfer.files;
+    if (files && files.length > 0) {
+      const file = files[0];
+      // Check file type
+      const validTypes = ['.pdf', '.doc', '.docx'];
+      const fileExtension = '.' + file.name.split('.').pop()?.toLowerCase();
+      
+      if (validTypes.includes(fileExtension)) {
+        setSelectedFile(file);
+        setValue("resume", file.name);
+      } else {
+        toast.error("Please upload a PDF, DOC, or DOCX file");
+      }
+    }
+  };
+
+  const handleClick = () => {
+    fileInputRef.current?.click();
   };
 
   return (
@@ -288,19 +343,37 @@ const JobDetail = () => {
                   <label htmlFor="resume" className="block text-sm font-medium mb-2">
                     Resume / CV *
                   </label>
-                  <div className="border-2 border-dashed border-border rounded-lg p-6 text-center hover:border-primary transition-colors cursor-pointer">
-                    <Upload className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
-                    <p className="text-sm text-muted-foreground mb-1">
-                      Click to upload or drag and drop
-                    </p>
-                    <p className="text-xs text-muted-foreground">
-                      PDF, DOC, or DOCX (max 5MB)
-                    </p>
+                  <div
+                    className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors cursor-pointer 
+                      ${isDragging ? 'border-primary bg-primary/10' : 'border-border hover:border-primary'}`}
+                    onDragEnter={handleDragEnter}
+                    onDragLeave={handleDragLeave}
+                    onDragOver={handleDragOver}
+                    onDrop={handleDrop}
+                    onClick={handleClick}
+                  >
+                    {selectedFile ? (
+                      <div className="flex items-center justify-center gap-2 text-primary">
+                        <CheckCircle2 className="w-6 h-6" />
+                        <span className="text-sm font-medium">{selectedFile.name}</span>
+                      </div>
+                    ) : (
+                      <>
+                        <Upload className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
+                        <p className="text-sm text-muted-foreground mb-1">
+                          Click to upload or drag and drop
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          PDF, DOC, or DOCX (max 5MB)
+                        </p>
+                      </>
+                    )}
                     <input
                       type="file"
                       accept=".pdf,.doc,.docx"
                       className="hidden"
-                      {...register("resume")}
+                      ref={fileInputRef}
+                      onChange={handleFileChange}
                     />
                   </div>
                   {errors.resume && (
