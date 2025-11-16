@@ -95,8 +95,8 @@ const Contact = () => {
       const result = await response.json();
       console.log("✅ Contact form submitted successfully:", result);
       
-      toast.success("Message sent successfully! We'll get back to you soon.");
-      reset();
+    toast.success("Message sent successfully! We'll get back to you soon.");
+    reset();
     } catch (error: any) {
       console.error("❌ Error submitting contact form:", error);
       toast.error(error.message || "Failed to send message. Please try again.");

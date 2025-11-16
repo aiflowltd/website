@@ -65,22 +65,22 @@ const CaseStudyDetail = () => {
 
           <div className="flex flex-wrap gap-6 text-muted-foreground mb-8">
             {study.client && (
-              <div className="flex items-center gap-2">
-                <Building className="w-5 h-5 text-primary" />
-                <span>{study.client}</span>
-              </div>
+            <div className="flex items-center gap-2">
+              <Building className="w-5 h-5 text-primary" />
+              <span>{study.client}</span>
+            </div>
             )}
             {study.duration && (
-              <div className="flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-primary" />
-                <span>{study.duration}</span>
-              </div>
+            <div className="flex items-center gap-2">
+              <Calendar className="w-5 h-5 text-primary" />
+              <span>{study.duration}</span>
+            </div>
             )}
             {study.teamSize && (
-              <div className="flex items-center gap-2">
-                <Users className="w-5 h-5 text-primary" />
-                <span>{study.teamSize}</span>
-              </div>
+            <div className="flex items-center gap-2">
+              <Users className="w-5 h-5 text-primary" />
+              <span>{study.teamSize}</span>
+            </div>
             )}
           </div>
         </div>
@@ -119,38 +119,38 @@ const CaseStudyDetail = () => {
                 {study.solutionDetail}
               </p>
               {study.solutionPoints && (
-                <ul className="space-y-4">
-                  {study.solutionPoints.map((point: string, idx: number) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                      <span className="text-muted-foreground">{point}</span>
-                    </li>
-                  ))}
-                </ul>
+              <ul className="space-y-4">
+                {study.solutionPoints.map((point: string, idx: number) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                    <span className="text-muted-foreground">{point}</span>
+                  </li>
+                ))}
+              </ul>
               )}
             </Card>
           </section>
 
           {/* Technical Approach */}
           {study.technicalApproach && study.technicalApproach.length > 0 && (
-            <section>
-              <h2 className="text-3xl font-bold mb-6 text-primary">
-                Technical Approach
-              </h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                {study.technicalApproach.map((tech: any, idx: number) => (
-                  <Card
-                    key={idx}
-                    className="bg-card border-border p-6 hover:border-primary transition-all"
-                  >
-                    <h3 className="text-xl font-bold mb-3">{tech.title}</h3>
-                    <p className="text-muted-foreground text-sm">
-                      {tech.description}
-                    </p>
-                  </Card>
-                ))}
-              </div>
-            </section>
+          <section>
+            <h2 className="text-3xl font-bold mb-6 text-primary">
+              Technical Approach
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {study.technicalApproach.map((tech: any, idx: number) => (
+                <Card
+                  key={idx}
+                  className="bg-card border-border p-6 hover:border-primary transition-all"
+                >
+                  <h3 className="text-xl font-bold mb-3">{tech.title}</h3>
+                  <p className="text-muted-foreground text-sm">
+                    {tech.description}
+                  </p>
+                </Card>
+              ))}
+            </div>
+          </section>
           )}
 
           {/* Results */}
@@ -170,7 +170,7 @@ const CaseStudyDetail = () => {
                         {result.label}
                       </h3>
                       {result.detail && (
-                        <p className="text-muted-foreground">{result.detail}</p>
+                      <p className="text-muted-foreground">{result.detail}</p>
                       )}
                     </div>
                   </div>
@@ -178,40 +178,40 @@ const CaseStudyDetail = () => {
               ))}
 
               {study.additionalResults && study.additionalResults.length > 0 && (
-                <Card className="bg-card border-border p-8">
-                  <h3 className="text-xl font-bold mb-4">Additional Outcomes</h3>
-                  <ul className="space-y-3">
-                    {study.additionalResults.map(
-                      (result: string, idx: number) => (
-                        <li key={idx} className="flex items-start gap-3">
-                          <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                          <span className="text-muted-foreground">{result}</span>
-                        </li>
-                      )
-                    )}
-                  </ul>
-                </Card>
+              <Card className="bg-card border-border p-8">
+                <h3 className="text-xl font-bold mb-4">Additional Outcomes</h3>
+                <ul className="space-y-3">
+                  {study.additionalResults.map(
+                    (result: string, idx: number) => (
+                      <li key={idx} className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="text-muted-foreground">{result}</span>
+                      </li>
+                    )
+                  )}
+                </ul>
+              </Card>
               )}
             </div>
           </section>
 
           {/* Testimonial */}
           {study.testimonial && (
-            <section>
-              <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20 p-12">
-                <div className="text-center">
-                  <div className="text-6xl text-primary mb-4">"</div>
-                  <p className="text-xl md:text-2xl font-semibold mb-6 italic">
-                    {study.testimonial.quote}
+          <section>
+            <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20 p-12">
+              <div className="text-center">
+                <div className="text-6xl text-primary mb-4">"</div>
+                <p className="text-xl md:text-2xl font-semibold mb-6 italic">
+                  {study.testimonial.quote}
+                </p>
+                <div className="border-t border-border pt-6">
+                  <p className="font-bold text-lg">
+                    {study.testimonial.author}
                   </p>
-                  <div className="border-t border-border pt-6">
-                    <p className="font-bold text-lg">
-                      {study.testimonial.author}
-                    </p>
-                    <p className="text-muted-foreground">
-                      {study.testimonial.company}
-                    </p>
-                  </div>
+                  <p className="text-muted-foreground">
+                    {study.testimonial.company}
+                  </p>
+                </div>
                   {study.interviewId && (
                     <div className="mt-6">
                       <Link to={`/interviews/${study.interviewId}`}>
@@ -225,9 +225,9 @@ const CaseStudyDetail = () => {
                       </Link>
                     </div>
                   )}
-                </div>
-              </Card>
-            </section>
+              </div>
+            </Card>
+          </section>
           )}
 
           {/* CTA */}

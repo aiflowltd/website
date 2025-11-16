@@ -54,4 +54,28 @@ export const testimonials: Testimonial[] = [
     role: "CEO in the",
     company: "creative tech space",
   },
+  {
+    id: "bank-clutch",
+    quote:
+      "Irina provided immediate support with one of the most difficult technical issues we had. Literally don't know how she understood the issue, but we got to the root of the problem and were able to get an efficient solution. Massive thank you!",
+    author: "",
+    role: "Team at",
+    company: "bank",
+  },
+  {
+    id: "mobile-app",
+    quote:
+      "Irina supported our mobile app setup with unmatched perseverance and professionalism. She found a critical issue on our side with laser-sharp focus. Absolute massive kudos for the problem-solving skills!",
+    author: "",
+    role: "Team at",
+    company: "consulting company",
+  },
+  {
+    id: "bank-resilience",
+    quote:
+      "Special kudos to Irina for her extraordinary resilience and commitment. After weeks of relentless effort and extraordinary focus, she figured out how to elegantly jump over the highest hurdles and buggy configurations we faced. Simply exceptional problem-solving under pressure.",
+    author: "",
+    role: "Team at",
+    company: "bank",
+  },
 ];
