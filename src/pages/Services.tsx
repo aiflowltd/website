@@ -55,13 +55,15 @@ const Services = () => {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
+            <Link to="/case-studies">
             <Button
-              size="lg"
-              variant="outline"
-              className="border-primary text-primary hover:bg-primary/10"
-            >
-              View Case Studies
-            </Button>
+                size="lg"
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary/10"
+              >
+                View Case Studies
+              </Button>
+            </Link>
           </div>
         </div>
       </main>

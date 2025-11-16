@@ -189,10 +189,13 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold mb-1">Phone</h3>
                     <p className="text-muted-foreground">
-                      +40 721 658 931 (Romania)
+                      +41 76 777 11 31 (Switzerland)
                     </p>
                     <p className="text-muted-foreground">
-                      +41 76 777 11 31 (Switzerland)
+                      +971 58 655 8931 (Dubai)
+                    </p>
+                    <p className="text-muted-foreground">
+                      +40 721 658 931 (Romania)
                     </p>
                   </div>
                 </div>
@@ -204,9 +207,11 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold mb-1">Location</h3>
                     <p className="text-muted-foreground">
-                      Cluj-Napoca, Romania
-                      <br />
                       Zürich, Switzerland
+                      <br />
+                      Dubai, UAE
+                      <br />
+                      Cluj-Napoca, Romania
                     </p>
                   </div>
                 </div>

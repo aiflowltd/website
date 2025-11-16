@@ -37,14 +37,6 @@ export const Footer = () => {
               >
                 <Mail className="w-5 h-5" />
               </a>
-              <a
-                href={companyInfo.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Globe className="w-5 h-5" />
-              </a>
             </div>
           </div>
 
