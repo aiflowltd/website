@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Mail, Globe } from "lucide-react";
 import { teamMembers, companyInfo } from "@/data/team";
-import logo from "@/assets/logo.png";
+import { AI_FLOW_LOGO_SYMBOL } from "@/constants/images";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -13,7 +13,11 @@ export const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <img src={logo} alt="AI Flow Logo" className="h-8 w-auto" />
+              <img
+                src={AI_FLOW_LOGO_SYMBOL}
+                alt="AI Flow Logo"
+                className="h-8 w-auto"
+              />
             </Link>
             <p className="text-sm text-muted-foreground mb-4">
               {companyInfo.tagline}
@@ -49,32 +53,50 @@ export const Footer = () => {
             <h3 className="font-bold mb-4">Company</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/services" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  to="/services"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
                   Services
                 </Link>
               </li>
               <li>
-                <Link to="/case-studies" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  to="/case-studies"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
                   Case Studies
                 </Link>
               </li>
               <li>
-                <Link to="/team" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  to="/team"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
                   Team
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  to="/blog"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
                   Blog
                 </Link>
               </li>
               <li>
-                <Link to="/careers" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  to="/careers"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
                   Careers
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  to="/contact"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
                   Contact
                 </Link>
               </li>
@@ -86,12 +108,18 @@ export const Footer = () => {
             <h3 className="font-bold mb-4">Resources</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  to="/blog"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
                   Blog
                 </Link>
               </li>
               <li>
-                <Link to="/case-studies" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  to="/case-studies"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
                   Case Studies
                 </Link>
               </li>
@@ -121,13 +149,19 @@ export const Footer = () => {
                 </a>
               </li>
               <li>
-                <Link to="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Contact Form
+                <Link
+                  to="/contact"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Contact us
                 </Link>
               </li>
               <li>
-                <Link to="/careers" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Work With Us
+                <Link
+                  to="/careers"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Join our team
                 </Link>
               </li>
             </ul>
@@ -184,10 +218,16 @@ export const Footer = () => {
             © {currentYear} {companyInfo.name}. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link to="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            <Link
+              to="/privacy"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
               Privacy Policy
             </Link>
-            <Link to="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            <Link
+              to="/terms"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
               Terms of Service
             </Link>
           </div>
@@ -196,4 +236,3 @@ export const Footer = () => {
     </footer>
   );
 };
-

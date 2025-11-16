@@ -16,6 +16,7 @@ import caseStudy1 from "@/assets/case-study-1.jpg";
 import caseStudy2 from "@/assets/case-study-2.jpg";
 import caseStudy3 from "@/assets/case-study-3.jpg";
 import { CASE_STUDY_SUPPLY_CHAIN_OPTIMIZATION } from "@/constants/images";
+import { useEffect } from "react";
 
 const CaseStudyDetail = () => {
   const { id } = useParams();
@@ -588,6 +589,14 @@ const CaseStudyDetail = () => {
   };
 
   const study = id ? caseStudies[id] : null;
+
+  useEffect(() => {
+    if (study) {
+      document.title = `AI Flow | ${study.title}`;
+    } else {
+      document.title = "AI Flow | Case Study";
+    }
+  }, [study]);
 
   if (!study) {
     return <Navigate to="/case-studies" replace />;

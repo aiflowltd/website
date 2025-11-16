@@ -25,6 +25,7 @@ export const CASE_STUDY_LEGAL_INTELLIGENCE_PLATFORM =
 
 export const AI_FLOW_LOGO_SMALL = "/images/ai-flow-logo/Symbol_Full_Color.png";
 export const AI_FLOW_LOGO_LARGE = "/images/ai-flow-logo/Full_Color_Light.png";
+export const AI_FLOW_LOGO_SYMBOL = "/images/ai-flow-logo/logo-black-white.png";
 
 // Backgrounds
 

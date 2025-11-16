@@ -110,8 +110,9 @@ export const ClientsCarousel = () => {
             Trusted by <span className="text-primary">Industry Leaders</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            We're proud to work with some of the world's most innovative
-            companies
+            We're proud to work with some of the world's
+            <br />
+            most innovative companies
           </p>
         </div>
       </div>

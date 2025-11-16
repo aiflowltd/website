@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { NavLink } from "@/components/NavLink";
 import { Link } from "react-router-dom";
 import { teamMembers, companyInfo } from "@/data/team";
-import logo from "@/assets/logo.png";
 import { AI_FLOW_LOGO_LARGE, AI_FLOW_LOGO_SMALL } from "@/constants/images";
 
 export const Navigation = () => {
@@ -22,13 +21,36 @@ export const Navigation = () => {
             <img
               src={AI_FLOW_LOGO_LARGE}
               alt="AI Flow"
-              className="h-8 w-auto hidden lg:block"
+              className="h-10 w-auto hidden lg:block"
             />
           </Link>
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center gap-8">
             {/* Profile Circles */}
+
+            <NavLink
+              to="/case-studies"
+              className="text-foreground hover:text-primary transition-colors relative pb-1"
+              activeClassName="text-primary font-semibold after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
+            >
+              <h4 className="text-xl font-semibold">Case Studies</h4>
+            </NavLink>
+            <NavLink
+              to="/blog"
+              className="text-foreground hover:text-primary transition-colors relative pb-1"
+              activeClassName="text-primary font-semibold after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
+            >
+              <h4 className="text-xl font-semibold">Blog</h4>
+            </NavLink>
+            <NavLink
+              to="/careers"
+              className="text-foreground hover:text-primary transition-colors relative pb-1"
+              activeClassName="text-primary font-semibold after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
+            >
+              <h4 className="text-xl font-semibold">Careers</h4>
+            </NavLink>
+
             <div className="flex items-center pl-2 border-border">
               <a
                 href="#team"
@@ -101,35 +123,13 @@ export const Navigation = () => {
               </a>
             </div>
 
-            <NavLink
-              to="/case-studies"
-              className="text-foreground hover:text-primary transition-colors relative pb-1"
-              activeClassName="text-primary font-semibold after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
-            >
-              <h4 className="text-xl font-semibold">Case Studies</h4>
-            </NavLink>
-            <NavLink
-              to="/blog"
-              className="text-foreground hover:text-primary transition-colors relative pb-1"
-              activeClassName="text-primary font-semibold after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
-            >
-              <h4 className="text-xl font-semibold">Blog</h4>
-            </NavLink>
-            <NavLink
-              to="/careers"
-              className="text-foreground hover:text-primary transition-colors relative pb-1"
-              activeClassName="text-primary font-semibold after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
-            >
-              <h4 className="text-xl font-semibold">Careers</h4>
-            </NavLink>
-
             <a
               href={companyInfo.meetingLink}
               target="_blank"
               rel="noopener noreferrer"
             >
               <Button className="bg-primary hover:bg-primary/90 text-background font-semibold px-6">
-                BOOK A CALL
+                Contact Us
               </Button>
             </a>
           </div>

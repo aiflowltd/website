@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import caseStudy1 from "@/assets/case-study-1.jpg";
 import caseStudy2 from "@/assets/case-study-2.jpg";
@@ -154,6 +155,19 @@ export const CaseStudiesSection = () => {
               </div>
             </Card>
           ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Link to="/case-studies">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary/10 font-semibold"
+            >
+              Read More Case Studies
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

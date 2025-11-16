@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export const Hero = () => {
   const words = [
@@ -71,7 +72,7 @@ export const Hero = () => {
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-alternates mb-6 leading-tight">
           We build AI powered
           <br />
-          <span className="text-primary inline-block min-h-[1em] mt-1">
+          <span className="inline-block min-h-[1em] mt-1 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             {currentText || "\u00A0"}
             {/* <span className="inline-block w-[2px] h-[1em] bg-primary animate-pulse ml-1" /> */}
           </span>
@@ -104,12 +105,14 @@ export const Hero = () => {
         </div>
 
         {/* CTA Button */}
-        <Button
-          size="lg"
-          className="bg-foreground text-background hover:bg-foreground/90 text-lg px-12 py-6 h-auto font-semibold"
-        >
-          Book a call with us
-        </Button>
+        <Link to="/contact#calendly">
+          <Button
+            size="lg"
+            className="bg-foreground text-background hover:bg-foreground/90 text-lg px-12 py-6 h-auto font-semibold"
+          >
+            Book a call with us
+          </Button>
+        </Link>
 
         {/* Scroll Indicator */}
         <a
