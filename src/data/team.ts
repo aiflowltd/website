@@ -40,10 +40,7 @@ export const teamMembers = {
 } as const;
 
 // Array for easy iteration
-export const teamArray: TeamMember[] = [
-  teamMembers.irina,
-  teamMembers.mihai,
-];
+export const teamArray: TeamMember[] = [teamMembers.irina, teamMembers.mihai];
 
 // Author lookup by ID (for blog posts)
 export const authors: Record<string, TeamMember> = {
@@ -61,10 +58,10 @@ export type Author = TeamMember;
 // Company information
 export const companyInfo = {
   name: "AI Flow",
-  tagline: "Building AI-powered products. In AI & ML before the wave. Building products, not hype.",
+  tagline:
+    "Building AI-powered products. In AI & ML before the wave. Building products, not hype.",
   email: "contact@aiflow.ltd",
   website: "https://aiflow.ltd",
   meetingLink: "https://aiflow.ltd/meet",
   linkedinCompany: "https://www.linkedin.com/company/aiflow-ltd",
 } as const;
-
