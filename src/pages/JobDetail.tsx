@@ -20,7 +20,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { toast } from "sonner";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const applicationSchema = z.object({
   fullName: z.string().min(2, "Name must be at least 2 characters"),
@@ -51,6 +51,14 @@ const JobDetail = () => {
   } = useForm<ApplicationForm>({
     resolver: zodResolver(applicationSchema),
   });
+
+  useEffect(() => {
+    if (job) {
+      document.title = `AI Flow | ${job.title}`;
+    } else {
+      document.title = "AI Flow | Careers";
+    }
+  }, [job]);
 
   if (!job) {
     return <Navigate to="/careers" replace />;

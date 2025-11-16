@@ -10,6 +10,7 @@ import * as z from "zod";
 import { toast } from "sonner";
 import { Mail, Phone, MapPin, Calendar } from "lucide-react";
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -21,6 +22,7 @@ const contactSchema = z.object({
 type ContactForm = z.infer<typeof contactSchema>;
 
 const Contact = () => {
+  const location = useLocation();
   const {
     register,
     handleSubmit,
@@ -30,10 +32,30 @@ const Contact = () => {
     resolver: zodResolver(contactSchema),
   });
 
+  useEffect(() => {
+    document.title = "AI Flow | Contact";
+  }, []);
+
+  // Scroll to calendly section if hash is present
+  useEffect(() => {
+    if (location.hash === "#calendly") {
+      const element = document.getElementById("calendly");
+      if (element) {
+        // Small delay to ensure the page is rendered
+        setTimeout(() => {
+          const yOffset = -100; // Offset to account for navigation header
+          const y =
+            element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [location.hash]);
+
   // Load Calendly script
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
     script.async = true;
     document.body.appendChild(script);
 
@@ -56,7 +78,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       <main className="container mx-auto px-6 pt-32 pb-20">
         {/* Header */}
         <div className="text-center mb-16">
@@ -64,7 +86,8 @@ const Contact = () => {
             Get In Touch
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Ready to transform your business with AI? Let's discuss how we can help you achieve your goals.
+            Ready to transform your business with AI? Let's discuss how we can
+            help you achieve your goals.
           </p>
         </div>
 
@@ -82,7 +105,9 @@ const Contact = () => {
                   className="mt-2"
                 />
                 {errors.name && (
-                  <p className="text-destructive text-sm mt-1">{errors.name.message}</p>
+                  <p className="text-destructive text-sm mt-1">
+                    {errors.name.message}
+                  </p>
                 )}
               </div>
 
@@ -96,7 +121,9 @@ const Contact = () => {
                   className="mt-2"
                 />
                 {errors.email && (
-                  <p className="text-destructive text-sm mt-1">{errors.email.message}</p>
+                  <p className="text-destructive text-sm mt-1">
+                    {errors.email.message}
+                  </p>
                 )}
               </div>
 
@@ -109,7 +136,9 @@ const Contact = () => {
                   className="mt-2"
                 />
                 {errors.company && (
-                  <p className="text-destructive text-sm mt-1">{errors.company.message}</p>
+                  <p className="text-destructive text-sm mt-1">
+                    {errors.company.message}
+                  </p>
                 )}
               </div>
 
@@ -122,7 +151,9 @@ const Contact = () => {
                   className="mt-2 min-h-[150px]"
                 />
                 {errors.message && (
-                  <p className="text-destructive text-sm mt-1">{errors.message.message}</p>
+                  <p className="text-destructive text-sm mt-1">
+                    {errors.message.message}
+                  </p>
                 )}
               </div>
 
@@ -157,8 +188,12 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Phone</h3>
-                    <p className="text-muted-foreground">+40 721 658 931 (Romania)</p>
-                    <p className="text-muted-foreground">+41 76 777 11 31 (Switzerland)</p>
+                    <p className="text-muted-foreground">
+                      +40 721 658 931 (Romania)
+                    </p>
+                    <p className="text-muted-foreground">
+                      +41 76 777 11 31 (Switzerland)
+                    </p>
                   </div>
                 </div>
 
@@ -204,7 +239,7 @@ const Contact = () => {
 
         {/* Calendly Booking Section */}
         <div className="max-w-7xl mx-auto mt-20">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12" id="calendly">
             <div className="flex items-center justify-center gap-3 mb-4">
               <Calendar className="w-8 h-8 text-primary" />
               <h2 className="text-3xl md:text-4xl font-bold">
@@ -212,10 +247,11 @@ const Contact = () => {
               </h2>
             </div>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Prefer to talk directly? Book a 20-minute consultation call with us to discuss your AI project.
+              Prefer to talk directly? Book a 20-minute consultation call with
+              us to discuss your AI project.
             </p>
           </div>
-          
+
           <div className="bg-card border border-border rounded-lg overflow-hidden">
             <div
               className="calendly-inline-widget"

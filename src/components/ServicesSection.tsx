@@ -1,5 +1,6 @@
 import { ServiceCard } from "@/components/ServiceCard";
 import { services } from "@/data/services";
+import { Button } from "./ui/button";
 
 export const ServicesSection = () => {
   return (
@@ -18,6 +19,16 @@ export const ServicesSection = () => {
           {services.map((service, index) => (
             <ServiceCard key={index} service={service} variant="compact" />
           ))}
+        </div>
+
+        {/* CTA Button */}
+        <div className="text-center mt-12">
+          <Button
+            size="lg"
+            className="bg-foreground text-background hover:bg-foreground/90 text-lg px-12 py-6 h-auto font-semibold"
+          >
+            How does it work?
+          </Button>
         </div>
       </div>
     </section>

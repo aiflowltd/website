@@ -2,40 +2,57 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MapPin, Briefcase, Clock, ArrowRight, Heart, Zap, Users, TrendingUp } from "lucide-react";
+import {
+  MapPin,
+  Briefcase,
+  Clock,
+  ArrowRight,
+  Heart,
+  Zap,
+  Users,
+  TrendingUp,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { getAllJobs } from "@/data/jobs";
+import { useEffect } from "react";
 
 const Careers = () => {
+  useEffect(() => {
+    document.title = "AI Flow | Careers";
+  }, []);
   const openPositions = getAllJobs();
 
   const benefits = [
     {
       icon: <Zap className="w-8 h-8" />,
       title: "Cutting-Edge Projects",
-      description: "Work on real AI products for industry leaders, not just research papers.",
+      description:
+        "Work on real AI products for industry leaders, not just research papers.",
     },
     {
       icon: <Users className="w-8 h-8" />,
       title: "World-Class Team",
-      description: "Collaborate with experienced AI/ML engineers and researchers.",
+      description:
+        "Collaborate with experienced AI/ML engineers and researchers.",
     },
     {
       icon: <TrendingUp className="w-8 h-8" />,
       title: "Growth & Learning",
-      description: "Continuous learning budget, conferences, and mentorship programs.",
+      description:
+        "Continuous learning budget, conferences, and mentorship programs.",
     },
     {
       icon: <Heart className="w-8 h-8" />,
       title: "Work-Life Balance",
-      description: "Flexible hours, remote work options, and generous time off.",
+      description:
+        "Flexible hours, remote work options, and generous time off.",
     },
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       <main className="container mx-auto px-6 pt-32 pb-20">
         {/* Hero Section */}
         <div className="text-center mb-20">
@@ -43,8 +60,9 @@ const Careers = () => {
             Join Our Team
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Build the future of AI with a team that's been in the game since before it was cool. 
-            We're looking for talented individuals who are passionate about creating real AI products.
+            Build the future of AI with a team that's been in the game since
+            before it was cool. We're looking for talented individuals who are
+            passionate about creating real AI products.
           </p>
         </div>
 
@@ -63,7 +81,9 @@ const Careers = () => {
                   {benefit.icon}
                 </div>
                 <h3 className="text-lg font-bold mb-2">{benefit.title}</h3>
-                <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                <p className="text-sm text-muted-foreground">
+                  {benefit.description}
+                </p>
               </Card>
             ))}
           </div>
@@ -75,12 +95,17 @@ const Careers = () => {
             Open <span className="text-primary">Positions</span>
           </h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Join our growing team and work on challenging AI projects with real-world impact.
+            Join our growing team and work on challenging AI projects with
+            real-world impact.
           </p>
-          
+
           <div className="space-y-6 max-w-6xl mx-auto">
             {openPositions.map((position) => (
-              <Link key={position.id} to={`/careers/${position.id}`} className="block space-y-6">
+              <Link
+                key={position.id}
+                to={`/careers/${position.id}`}
+                className="block space-y-6"
+              >
                 <Card className="bg-card border-border p-8 hover:border-primary transition-all duration-300 group cursor-pointer">
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
                     <div className="flex-1">
@@ -92,7 +117,7 @@ const Careers = () => {
                           {position.department}
                         </span>
                       </div>
-                      
+
                       <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-4">
                         <div className="flex items-center gap-2">
                           <MapPin className="w-4 h-4" />
@@ -107,13 +132,13 @@ const Careers = () => {
                           <span>{position.experience}</span>
                         </div>
                       </div>
-                      
+
                       <p className="text-muted-foreground mb-4">
                         {position.shortDescription}
                       </p>
                     </div>
-                    
-                    <Button 
+
+                    <Button
                       className="bg-primary hover:bg-primary/90 text-background font-semibold whitespace-nowrap"
                       asChild
                     >
@@ -135,10 +160,14 @@ const Careers = () => {
             Don't See the Right Role?
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-            We're always looking for talented people. Send us your resume and let us know how you can contribute to our mission.
+            We're always looking for talented people. Send us your resume and
+            let us know how you can contribute to our mission.
           </p>
           <Link to="/contact">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-background font-semibold">
+            <Button
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-background font-semibold"
+            >
               Get in Touch
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
@@ -151,4 +180,3 @@ const Careers = () => {
 };
 
 export default Careers;
-

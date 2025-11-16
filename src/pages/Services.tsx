@@ -5,8 +5,13 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ServiceCard } from "@/components/ServiceCard";
 import { services } from "@/data/services";
+import { useEffect } from "react";
 
 const Services = () => {
+  useEffect(() => {
+    document.title = "AI Flow | Services";
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />

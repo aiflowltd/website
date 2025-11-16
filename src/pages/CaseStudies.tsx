@@ -13,8 +13,12 @@ import {
   CASE_STUDY_SALES_INTELLIGENCE_PLATFORM,
   CASE_STUDY_SUPPLY_CHAIN_OPTIMIZATION,
 } from "@/constants/images";
+import { useEffect } from "react";
 
 const CaseStudies = () => {
+  useEffect(() => {
+    document.title = "AI Flow | Case Studies";
+  }, []);
   const caseStudies = [
     {
       id: "oil-gas-invoice-automation",
