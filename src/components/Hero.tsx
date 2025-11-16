@@ -4,12 +4,12 @@ import { ChevronDown } from "lucide-react";
 export const Hero = () => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20">
-      <div className="container mx-auto text-center max-w-6xl">
+      <div className="container mx-auto text-center max-w-7xl">
         {/* Main Heading */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-alternates mb-6 leading-tight">
           We build AI powered
           <br />
-          <span className="text-primary">products.</span>
+          <span className="text-primary ">products.</span>
         </h1>
 
         {/* Subheading */}
@@ -39,7 +39,7 @@ export const Hero = () => {
         </div>
 
         {/* CTA Button */}
-        <Button 
+        <Button
           size="lg"
           className="bg-foreground text-background hover:bg-foreground/90 text-lg px-12 py-6 h-auto font-semibold"
         >
@@ -47,9 +47,23 @@ export const Hero = () => {
         </Button>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <a
+          href="#services"
+          onClick={(e) => {
+            e.preventDefault();
+            const element = document.getElementById("services");
+            if (element) {
+              element.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer hover:text-primary transition-colors"
+          title="Scroll to services"
+        >
           <ChevronDown className="w-8 h-8 text-muted-foreground" />
-        </div>
+        </a>
       </div>
     </section>
   );

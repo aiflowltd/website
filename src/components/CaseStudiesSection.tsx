@@ -8,6 +8,11 @@ import caseStudy3 from "@/assets/case-study-3.jpg";
 import clientTechGlobal from "@/assets/client-techglobal.png";
 import clientRetailCo from "@/assets/client-retailco.png";
 import clientManufact from "@/assets/client-manufact.png";
+import {
+  CASE_STUDY_SUPPLY_CHAIN_OPTIMIZATION,
+  CASE_STUDY_CUSTOMER_SERVICE_PLATFORM,
+  CASE_STUDY_FRAUD_DETECTION_SYSTEM,
+} from "@/constants/images";
 
 export const CaseStudiesSection = () => {
   const caseStudies = [
@@ -16,8 +21,9 @@ export const CaseStudiesSection = () => {
       title: "AI-Powered Supply Chain Optimization",
       client: "Fortune 500 Manufacturer",
       clientLogo: clientManufact,
-      image: caseStudy1,
-      description: "Implemented ML-powered demand forecasting and automated inventory optimization system that reduced costs by 40% and improved forecast accuracy to 95%.",
+      image: CASE_STUDY_SUPPLY_CHAIN_OPTIMIZATION,
+      description:
+        "Implemented ML-powered demand forecasting and automated inventory optimization system that reduced costs by 40% and improved forecast accuracy to 95%.",
       metrics: [
         { label: "Inventory Costs", value: "-40%" },
         { label: "Decision Speed", value: "60%" },
@@ -30,8 +36,9 @@ export const CaseStudiesSection = () => {
       title: "Intelligent Customer Service Platform",
       client: "E-commerce Leader",
       clientLogo: clientRetailCo,
-      image: caseStudy3,
-      description: "Developed AI chatbot with natural language understanding and sentiment analysis that handles 24/7 customer support with 90% satisfaction rate.",
+      image: CASE_STUDY_CUSTOMER_SERVICE_PLATFORM,
+      description:
+        "Developed AI chatbot with natural language understanding and sentiment analysis that handles 24/7 customer support with 90% satisfaction rate.",
       metrics: [
         { label: "Support Costs", value: "-70%" },
         { label: "Response Time", value: "<1 min" },
@@ -44,8 +51,9 @@ export const CaseStudiesSection = () => {
       title: "Real-Time Fraud Detection System",
       client: "Global Financial Institution",
       clientLogo: clientTechGlobal,
-      image: caseStudy2,
-      description: "Built real-time ML fraud detection system with <100ms detection time, preventing $50M+ in fraud annually with 99.7% accuracy.",
+      image: CASE_STUDY_FRAUD_DETECTION_SYSTEM,
+      description:
+        "Built real-time ML fraud detection system with <100ms detection time, preventing $50M+ in fraud annually with 99.7% accuracy.",
       metrics: [
         { label: "Fraud Prevented", value: "$50M+" },
         { label: "Detection Time", value: "<100ms" },
@@ -79,8 +87,12 @@ export const CaseStudiesSection = () => {
                     src={study.image}
                     alt={study.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    style={{
+                      filter: "saturate(0.9) brightness(0.8)",
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent md:hidden" />
+                  <div className="absolute inset-0 bg-background/20" />
                 </div>
 
                 <div className="p-8 flex flex-col justify-between">
@@ -93,7 +105,9 @@ export const CaseStudiesSection = () => {
                       />
                       <div>
                         <h3 className="text-2xl font-bold">{study.title}</h3>
-                        <p className="text-muted-foreground text-sm">{study.client}</p>
+                        <p className="text-muted-foreground text-sm">
+                          {study.client}
+                        </p>
                       </div>
                     </div>
 
@@ -128,7 +142,10 @@ export const CaseStudiesSection = () => {
                       ))}
                     </div>
 
-                    <Link to={`/case-studies/${study.id}`} className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all">
+                    <Link
+                      to={`/case-studies/${study.id}`}
+                      className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all"
+                    >
                       View Full Case Study
                       <ArrowUpRight className="w-4 h-4" />
                     </Link>

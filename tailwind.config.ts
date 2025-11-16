@@ -2,7 +2,13 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./constants/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -14,9 +20,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Nunito Sans', 'sans-serif'],
-        primary: ['Montserrat', 'sans-serif'],
-        secondary: ['Montserrat Alternates', 'sans-serif'],
+        sans: ["Montserrat", "sans-serif"],
+        primary: ["Montserrat", "sans-serif"],
+        secondary: ["Montserrat Alternates", "sans-serif"],
+        alternates: ["Montserrat Alternates", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -52,8 +59,8 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        'cyan-glow': "hsl(var(--cyan-glow))",
-        'dark-surface': "hsl(var(--dark-surface))",
+        "cyan-glow": "hsl(var(--cyan-glow))",
+        "dark-surface": "hsl(var(--dark-surface))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -77,7 +84,7 @@ export default {
             height: "0",
           },
         },
-        "float": {
+        float: {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-20px)" },
         },
@@ -89,7 +96,7 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "float": "float 3s ease-in-out infinite",
+        float: "float 3s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
       },
     },

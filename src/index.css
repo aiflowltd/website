@@ -57,8 +57,13 @@ All colors MUST be HSL.
     font-weight: 300;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h3, h4, h5, h6 {
     @apply font-primary;
+    font-weight: 700;
+  }
+
+  h1, h2 {
+    @apply font-alternates;
     font-weight: 700;
   }
 
@@ -81,12 +86,12 @@ All colors MUST be HSL.
   }
 
   .text-body-regular {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 400;
   }
 
   .text-body-light {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 300;
   }
 }

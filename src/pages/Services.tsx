@@ -7,11 +7,10 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { services } from "@/data/services";
 
 const Services = () => {
-
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       <main className="container mx-auto px-6 pt-32 pb-20">
         {/* Hero Section */}
         <div className="text-center mb-20">
@@ -19,8 +18,9 @@ const Services = () => {
             Our Services
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Comprehensive AI solutions to transform your business. From strategy to implementation, 
-            we deliver end-to-end AI products that drive real results.
+            Comprehensive AI solutions to transform your business. From strategy
+            to implementation, we deliver end-to-end AI products that drive real
+            results.
           </p>
         </div>
 
@@ -37,17 +37,24 @@ const Services = () => {
             Ready to Transform Your Business?
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-            Let's discuss how our AI solutions can help you achieve your goals. 
+            Let's discuss how our AI solutions can help you achieve your goals.
             Book a free consultation call with our experts.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-background font-semibold">
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-background font-semibold"
+              >
                 Get Started
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary/10"
+            >
               View Case Studies
             </Button>
           </div>
@@ -59,4 +66,3 @@ const Services = () => {
 };
 
 export default Services;
-
