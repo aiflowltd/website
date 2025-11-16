@@ -3,12 +3,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import caseStudy1 from "@/assets/case-study-1.jpg";
-import caseStudy2 from "@/assets/case-study-2.jpg";
-import caseStudy3 from "@/assets/case-study-3.jpg";
-import clientTechGlobal from "@/assets/client-techglobal.png";
-import clientRetailCo from "@/assets/client-retailco.png";
-import clientManufact from "@/assets/client-manufact.png";
 import {
   CASE_STUDY_SUPPLY_CHAIN_OPTIMIZATION,
   CASE_STUDY_CUSTOMER_SERVICE_PLATFORM,
@@ -21,7 +15,6 @@ export const CaseStudiesSection = () => {
       id: "supply-chain-optimization",
       title: "AI-Powered Supply Chain Optimization",
       client: "Fortune 500 Manufacturer",
-      clientLogo: clientManufact,
       image: CASE_STUDY_SUPPLY_CHAIN_OPTIMIZATION,
       description:
         "Implemented ML-powered demand forecasting and automated inventory optimization system that reduced costs by 40% and improved forecast accuracy to 95%.",
@@ -36,7 +29,6 @@ export const CaseStudiesSection = () => {
       id: "customer-service-platform",
       title: "Intelligent Customer Service Platform",
       client: "E-commerce Leader",
-      clientLogo: clientRetailCo,
       image: CASE_STUDY_CUSTOMER_SERVICE_PLATFORM,
       description:
         "Developed AI chatbot with natural language understanding and sentiment analysis that handles 24/7 customer support with 90% satisfaction rate.",
@@ -51,7 +43,6 @@ export const CaseStudiesSection = () => {
       id: "fraud-detection-system",
       title: "Real-Time Fraud Detection System",
       client: "Global Financial Institution",
-      clientLogo: clientTechGlobal,
       image: CASE_STUDY_FRAUD_DETECTION_SYSTEM,
       description:
         "Built real-time ML fraud detection system with <100ms detection time, preventing $50M+ in fraud annually with 99.7% accuracy.",
@@ -99,11 +90,6 @@ export const CaseStudiesSection = () => {
                 <div className="p-8 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center gap-3 mb-4">
-                      <img
-                        src={study.clientLogo}
-                        alt={study.client}
-                        className="w-12 h-12 rounded-xl bg-background/50 p-2"
-                      />
                       <div>
                         <h3 className="text-2xl font-bold">{study.title}</h3>
                         <p className="text-muted-foreground text-sm">
