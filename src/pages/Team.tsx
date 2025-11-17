@@ -123,6 +123,8 @@ const Team = () => {
     "E-commerce",
     "Materials Science",
     "Healthcare",
+    "Edtech",
+    "Entertainment"
   ];
 
   const achievements = [

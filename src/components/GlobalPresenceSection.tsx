@@ -97,7 +97,7 @@ export const GlobalPresenceSection = () => {
     <section
       id="global-presence"
       ref={sectionRef}
-      className="relative py-24 px-30"
+      className="relative py-24 pb-30 pt-10"
     >
       <div className="container mx-auto">
         <div className="text-center mb-16">
