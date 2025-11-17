@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import ReactMarkdown from "react-markdown";
 import { AI_FLOW_LOGO_SYMBOL } from "@/constants/images";
 
 interface QAPair {
@@ -153,6 +154,7 @@ export const DataCardsDummyEmbed = () => {
   const [typingText, setTypingText] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const answerRef = useRef<string>("");
+  const answerScrollRef = useRef<HTMLDivElement>(null);
   const loadingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const typingIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -172,6 +174,13 @@ export const DataCardsDummyEmbed = () => {
 
     return () => clearInterval(interval);
   }, [question, isStreaming]);
+
+  // Auto-scroll to bottom when answer updates
+  useEffect(() => {
+    if (answer && answerScrollRef.current) {
+      answerScrollRef.current.scrollTop = answerScrollRef.current.scrollHeight;
+    }
+  }, [answer]);
 
   // Handle loading messages progression
   useEffect(() => {
@@ -409,7 +418,7 @@ export const DataCardsDummyEmbed = () => {
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="block w-full resize-none bg-transparent text-[max(1rem,1.125em)] leading-[120%] text-black outline-none mt-2 md:mt-0"
+          className="block w-full resize-none bg-transparent text-[max(1rem,1.125em)] leading-[120%] text-black outline-none mt-2 md:mt-0 pr-32 md:pr-40"
           rows={3}
           placeholder={PLACEHOLDER_PROMPTS[placeholderIndex]}
           autoFocus
@@ -465,15 +474,74 @@ export const DataCardsDummyEmbed = () => {
         {/* Answer Display - Inside the white box */}
         {answer && (
           <div className="mt-2 pt-2 border-t border-black/10 w-full">
-            <div className="flex gap-3 w-[90%]">
+            <div className="flex gap-3 w-[100%]">
               <img
                 src={AI_FLOW_LOGO_SYMBOL}
                 alt="AI Flow"
                 className="w-8 h-8 rounded-full flex-shrink-0"
               />
-              <p className="text-[max(1rem,1.125em)] leading-[120%] text-black flex-1 text-left pt-1">
-                {answer}
-              </p>
+              <div
+                ref={answerScrollRef}
+                className="text-[max(1rem,1.125em)] leading-[120%] text-black flex-1 text-left pt-1 pr-10 max-h-[250px] overflow-y-auto prose prose-sm max-w-none custom-scrollbar"
+                style={{
+                  scrollbarWidth: "thin",
+                  scrollbarColor: "rgba(0, 0, 0, 0.15) transparent",
+                }}
+              >
+                <ReactMarkdown
+                  components={{
+                    p: ({ children }) => (
+                      <p className="mb-2 last:mb-0">{children}</p>
+                    ),
+                    ul: ({ children }) => (
+                      <ul className="list-disc list-inside mb-2">{children}</ul>
+                    ),
+                    ol: ({ children }) => (
+                      <ol className="list-decimal list-inside mb-2">
+                        {children}
+                      </ol>
+                    ),
+                    li: ({ children }) => <li className="mb-1">{children}</li>,
+                    h1: ({ children }) => (
+                      <h1 className="text-xl font-bold mb-2">{children}</h1>
+                    ),
+                    h2: ({ children }) => (
+                      <h2 className="text-lg font-bold mb-2">{children}</h2>
+                    ),
+                    h3: ({ children }) => (
+                      <h3 className="text-base font-bold mb-2">{children}</h3>
+                    ),
+                    code: ({ children }) => (
+                      <code className="bg-black/10 px-1 py-0.5 rounded text-sm font-mono">
+                        {children}
+                      </code>
+                    ),
+                    pre: ({ children }) => (
+                      <pre className="bg-black/10 p-2 rounded overflow-x-auto mb-2">
+                        {children}
+                      </pre>
+                    ),
+                    strong: ({ children }) => (
+                      <strong className="font-semibold">{children}</strong>
+                    ),
+                    em: ({ children }) => (
+                      <em className="italic">{children}</em>
+                    ),
+                    a: ({ href, children }) => (
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:underline"
+                      >
+                        {children}
+                      </a>
+                    ),
+                  }}
+                >
+                  {answer}
+                </ReactMarkdown>
+              </div>
             </div>
           </div>
         )}
