@@ -290,7 +290,7 @@ export const TeamSection = () => {
               How We <span className="text-primary">Work</span>
             </h3>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Flexible engagement models and proven processes to deliver
+              Flexible engagement models and proven processes <br /> to deliver
               exceptional results
             </p>
           </div>
