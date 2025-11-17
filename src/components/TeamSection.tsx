@@ -352,7 +352,7 @@ export const TeamSection = () => {
                 <div className="space-y-4">
                   <div>
                     <div className="text-4xl font-bold text-primary mb-1">
-                      1-12
+                      1-12+
                     </div>
                     <div className="text-sm text-muted-foreground">
                       Months (avg 3-6)
