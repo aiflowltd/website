@@ -136,14 +136,25 @@ const PLACEHOLDER_PROMPTS = [
   "Ask DataCards how we can help your business...",
 ];
 
+const LOADING_MESSAGES = [
+  "Thinking",
+  "Understanding context",
+  "Reasoning",
+  "Creating response...",
+];
+
 export const DataCardsDummyEmbed = () => {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
   const [hasAnswer, setHasAnswer] = useState(false);
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
+  const [loadingMessages, setLoadingMessages] = useState<string[]>([]);
+  const [typingText, setTypingText] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const answerRef = useRef<string>("");
+  const loadingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const typingIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -162,12 +173,85 @@ export const DataCardsDummyEmbed = () => {
     return () => clearInterval(interval);
   }, [question, isStreaming]);
 
+  // Handle loading messages progression
+  useEffect(() => {
+    if (!isStreaming || answer) {
+      setLoadingMessages([]);
+      setTypingText("");
+      if (loadingTimeoutRef.current) {
+        clearTimeout(loadingTimeoutRef.current);
+      }
+      if (typingIntervalRef.current) {
+        clearInterval(typingIntervalRef.current);
+      }
+      return;
+    }
+
+    // Show first message immediately
+    setLoadingMessages([LOADING_MESSAGES[0]]);
+
+    // Typing animation function
+    const startTyping = (message: string) => {
+      if (typingIntervalRef.current) {
+        clearInterval(typingIntervalRef.current);
+      }
+      let typingIndex = 0;
+      setTypingText("");
+      typingIntervalRef.current = setInterval(() => {
+        if (!isStreaming || answer) {
+          if (typingIntervalRef.current) {
+            clearInterval(typingIntervalRef.current);
+          }
+          return;
+        }
+        if (typingIndex < message.length) {
+          setTypingText(message.substring(0, typingIndex + 1));
+          typingIndex++;
+        } else {
+          if (typingIntervalRef.current) {
+            clearInterval(typingIntervalRef.current);
+          }
+        }
+      }, 50);
+    };
+
+    startTyping(LOADING_MESSAGES[0]);
+
+    // Add subsequent messages at 1.5 second intervals
+    let messageIndex = 1;
+    const addNextMessage = () => {
+      if (messageIndex < LOADING_MESSAGES.length && isStreaming && !answer) {
+        setLoadingMessages((prev) => {
+          const newMessages = [...prev, LOADING_MESSAGES[messageIndex]];
+          startTyping(LOADING_MESSAGES[messageIndex]);
+          return newMessages;
+        });
+        messageIndex++;
+        if (messageIndex < LOADING_MESSAGES.length) {
+          loadingTimeoutRef.current = setTimeout(addNextMessage, 1500);
+        }
+      }
+    };
+    loadingTimeoutRef.current = setTimeout(addNextMessage, 1500);
+
+    return () => {
+      if (loadingTimeoutRef.current) {
+        clearTimeout(loadingTimeoutRef.current);
+      }
+      if (typingIntervalRef.current) {
+        clearInterval(typingIntervalRef.current);
+      }
+    };
+  }, [isStreaming, answer]);
+
   const submitQuestion = async () => {
     if (!question.trim() || isStreaming) return;
 
     setAnswer("");
     answerRef.current = "";
     setHasAnswer(false);
+    setLoadingMessages([]);
+    setTypingText("");
     setIsStreaming(true);
 
     try {
@@ -361,6 +445,23 @@ export const DataCardsDummyEmbed = () => {
           )}
         </button>
 
+        {/* Loading State */}
+        {isStreaming && !answer && (
+          <div className="mt-0 w-full">
+            <p className="text-[max(1rem,1.125em)] leading-[120%] text-muted-foreground text-left">
+              {loadingMessages.slice(0, -1).map((msg, idx) => (
+                <span key={idx}>{msg}. </span>
+              ))}
+              {typingText && (
+                <span>
+                  {typingText}
+                  <span className="inline-block w-[2px] h-[1em] bg-primary animate-pulse ml-1" />
+                </span>
+              )}
+            </p>
+          </div>
+        )}
+
         {/* Answer Display - Inside the white box */}
         {answer && (
           <div className="mt-2 pt-2 border-t border-black/10 w-full">
@@ -370,7 +471,7 @@ export const DataCardsDummyEmbed = () => {
                 alt="AI Flow"
                 className="w-8 h-8 rounded-full flex-shrink-0"
               />
-              <p className="text-[max(1rem,1.125em)] leading-[120%] text-black flex-1 text-left">
+              <p className="text-[max(1rem,1.125em)] leading-[120%] text-black flex-1 text-left pt-1">
                 {answer}
               </p>
             </div>
