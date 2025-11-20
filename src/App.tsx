@@ -21,6 +21,7 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import InterviewDetail from "./pages/InterviewDetail";
 import NotFound from "./pages/NotFound";
+import { Analytics } from '@vercel/analytics/next';
 
 const queryClient = new QueryClient();
 
@@ -59,6 +60,7 @@ const App = () => {
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
+      <Analytics />
     </QueryClientProvider>
   );
 };
