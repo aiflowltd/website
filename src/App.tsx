@@ -21,7 +21,7 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import InterviewDetail from "./pages/InterviewDetail";
 import NotFound from "./pages/NotFound";
-import { Analytics } from '@vercel/analytics/next';
+import { Analytics } from '@vercel/analytics/react';
 
 const queryClient = new QueryClient();
 
