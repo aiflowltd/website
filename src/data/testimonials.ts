@@ -18,7 +18,7 @@ export const testimonials: Testimonial[] = [
     role: "CEO",
     company: "ExoMatter",
     caseStudyLink: "exomatter-automl",
-    caseStudyText: "Read THE CASE STUDY",
+    caseStudyText: "Read The Case Study",
   },
   {
     id: "marcus-drewes",

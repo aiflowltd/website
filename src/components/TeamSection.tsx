@@ -11,7 +11,13 @@ import { teamArray, type TeamMember } from "@/data/team";
 import { AI_FLOW_LOGO_SYMBOL } from "@/constants/images";
 import { useState, useEffect, useRef } from "react";
 
-const AnimatedCounter = ({ target, suffix = "" }: { target: number; suffix?: string }) => {
+const AnimatedCounter = ({
+  target,
+  suffix = "",
+}: {
+  target: number;
+  suffix?: string;
+}) => {
   const [count, setCount] = useState(1);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -53,8 +59,10 @@ const AnimatedCounter = ({ target, suffix = "" }: { target: number; suffix?: str
       const elapsed = Date.now() - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const easedProgress = easeOutQuart(progress);
-      
-      const currentValue = Math.floor(startValue + (target - startValue) * easedProgress);
+
+      const currentValue = Math.floor(
+        startValue + (target - startValue) * easedProgress
+      );
       setCount(currentValue);
 
       if (progress < 1) {
@@ -69,7 +77,8 @@ const AnimatedCounter = ({ target, suffix = "" }: { target: number; suffix?: str
 
   return (
     <div ref={ref} className="text-4xl font-bold text-primary mb-2">
-      {count}{suffix}
+      {count}
+      {suffix}
     </div>
   );
 };
@@ -281,146 +290,168 @@ export const TeamSection = () => {
               How We <span className="text-primary">Work</span>
             </h3>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Flexible engagement models and proven processes to deliver exceptional results
+              Flexible engagement models and proven processes <br /> to deliver
+              exceptional results
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-6">
-          {/* Technology Word Cloud */}
-          <Card className="bg-gradient-to-br from-card via-card to-card/50 border-border p-8 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="relative">
-              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                <span className="text-2xl">🛠️</span>
-                <span>Technologies</span>
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "Python",
-                  "TypeScript",
-                  "TensorFlow",
-                  "PyTorch",
-                  "React",
-                  "Next.js",
-                  "GCP",
-                  "LangChain",
-                  "OpenAI",
-                  "Kubernetes",
-                  "Pinecone",
-                  "Azure",
-                  "Databricks",
-                  "AWS",
-                  "Docker",
-                  "FastAPI",
-                  "Node.js",
-                  "PostgreSQL",
-                  "MongoDB",
-                  "Redis",
-                  "Claude",
-                  "Hugging Face",
-                  "... many more",
-                ].map((tech, index) => (
-                  <span
-                    key={index}
-                    className="text-xs px-3 py-1.5 bg-primary/10 text-primary rounded-lg border border-primary/20 font-medium hover:bg-primary hover:text-background transition-colors cursor-default"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </Card>
-
-          {/* Average Project Duration */}
-          <Card className="bg-gradient-to-br from-card via-card to-card/50 border-border p-8 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="relative">
-              <div className="flex items-center gap-2 mb-6">
-                <Clock className="w-6 h-6 text-primary" />
-                <h3 className="text-xl font-bold">Project Timeline</h3>
-              </div>
-              <div className="space-y-4">
-                <div>
-                  <div className="text-4xl font-bold text-primary mb-1">1-12</div>
-                  <div className="text-sm text-muted-foreground">Months (avg 3-6)</div>
+            {/* Technology Word Cloud */}
+            <Card className="relative bg-gradient-to-br from-card via-card to-card/50 border-border p-8 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
+              <div className="relative z-10">
+                <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                  <span className="text-2xl">🛠️</span>
+                  <span>Technologies</span>
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Python",
+                    "TypeScript",
+                    "TensorFlow",
+                    "PyTorch",
+                    "React",
+                    "Next.js",
+                    "GCP",
+                    "LangChain",
+                    "OpenAI",
+                    "Kubernetes",
+                    "Pinecone",
+                    "Azure",
+                    "Databricks",
+                    "AWS",
+                    "Docker",
+                    "FastAPI",
+                    "Node.js",
+                    "PostgreSQL",
+                    "MongoDB",
+                    "Redis",
+                    "Claude",
+                    "Hugging Face",
+                    "... many more",
+                  ].map((tech, index) => (
+                    <span
+                      key={index}
+                      className="text-xs px-3 py-1.5 bg-primary/10 text-primary rounded-lg border border-primary/20 font-medium hover:bg-primary hover:text-background transition-colors cursor-default"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
+              </div>
+            </Card>
 
-                {/* Timeline */}
-                <div className="relative">
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-primary"></div>
-                      <span className="text-xs text-muted-foreground">
-                        1 month
-                      </span>
+            {/* Average Project Duration */}
+            <Card className="relative bg-gradient-to-br from-card via-card to-card/50 border-border p-8 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
+              <div className="relative z-10">
+                <div className="flex items-center gap-2 mb-6">
+                  <Clock className="w-6 h-6 text-primary" />
+                  <h3 className="text-xl font-bold">Project Timeline</h3>
+                </div>
+                <div className="space-y-4">
+                  <div>
+                    <div className="text-4xl font-bold text-primary mb-1">
+                      1-12+
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs text-muted-foreground">
-                        12 months
-                      </span>
-                      <div className="w-2 h-2 rounded-full bg-primary"></div>
+                    <div className="text-sm text-muted-foreground">
+                      Months (avg 3-6)
                     </div>
                   </div>
-                  <div className="relative h-3 bg-muted rounded-full overflow-hidden">
-                    <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-primary/20 via-primary/40 to-primary/60"></div>
-                    <div className="absolute left-0 top-0 h-full w-[10%] bg-primary animate-pulse"></div>
-                  </div>
-                  <div className="flex items-center justify-between mt-2 text-xs font-medium text-foreground/70">
-                    <span>MVP/POC</span>
-                    <span>Enterprise</span>
-                  </div>
-                </div>
 
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  From rapid MVPs to comprehensive enterprise solutions, we adapt to your timeline.
+                  {/* Timeline */}
+                  <div className="relative">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-primary"></div>
+                        <span className="text-xs text-muted-foreground">
+                          1 month
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs text-muted-foreground">
+                          12 months
+                        </span>
+                        <div className="w-2 h-2 rounded-full bg-primary"></div>
+                      </div>
+                    </div>
+                    <div className="relative h-3 bg-muted rounded-full overflow-hidden">
+                      <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-primary/20 via-primary/40 to-primary/60"></div>
+                      <div className="absolute left-0 top-0 h-full w-[10%] bg-primary animate-pulse"></div>
+                    </div>
+                    <div className="flex items-center justify-between mt-2 text-xs font-medium text-foreground/70">
+                      <span>MVP/POC</span>
+                      <span>Enterprise</span>
+                    </div>
+                  </div>
+
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    From rapid MVPs to comprehensive enterprise solutions, we
+                    adapt to your timeline.
+                  </p>
+                </div>
+              </div>
+            </Card>
+
+            {/* Flexible Team Configurations */}
+            <Card className="relative bg-gradient-to-br from-card via-card to-card/50 border-border p-8 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
+              <div className="relative z-10">
+                <div className="flex items-center gap-2 mb-4">
+                  <TrendingUp className="w-6 h-6 text-primary" />
+                  <h3 className="text-xl font-bold">Flexible Engagement</h3>
+                </div>
+                <p className="text-xs text-muted-foreground mb-4">
+                  Choose the option that works best for your needs
                 </p>
+                <div className="space-y-2">
+                  <div className="flex items-start gap-2 p-2 rounded-lg bg-primary/10 hover:bg-primary/15 border border-primary/20 hover:border-primary/40 transition-all cursor-default group/item">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
+                    <div className="flex-1">
+                      <p className="text-xs font-semibold text-foreground">
+                        Hourly Consultants
+                      </p>
+                      <p className="text-[10px] text-muted-foreground">
+                        On-demand expertise
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2 p-2 rounded-lg bg-primary/10 hover:bg-primary/15 border border-primary/20 hover:border-primary/40 transition-all cursor-default group/item">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
+                    <div className="flex-1">
+                      <p className="text-xs font-semibold text-foreground">
+                        Dedicated Engineers
+                      </p>
+                      <p className="text-[10px] text-muted-foreground">
+                        Full/part-time capacity
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2 p-2 rounded-lg bg-primary/10 hover:bg-primary/15 border border-primary/20 hover:border-primary/40 transition-all cursor-default group/item">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
+                    <div className="flex-1">
+                      <p className="text-xs font-semibold text-foreground">
+                        Small Teams (2-3)
+                      </p>
+                      <p className="text-[10px] text-muted-foreground">
+                        Agile squads
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2 p-2 rounded-lg bg-primary/10 hover:bg-primary/15 border border-primary/20 hover:border-primary/40 transition-all cursor-default group/item">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
+                    <div className="flex-1">
+                      <p className="text-xs font-semibold text-foreground">
+                        Self-Managed Teams
+                      </p>
+                      <p className="text-[10px] text-muted-foreground">
+                        End-to-end delivery
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </Card>
-
-          {/* Flexible Team Configurations */}
-          <Card className="bg-gradient-to-br from-card via-card to-card/50 border-border p-8 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="relative">
-              <div className="flex items-center gap-2 mb-4">
-                <TrendingUp className="w-6 h-6 text-primary" />
-                <h3 className="text-xl font-bold">Flexible Engagement</h3>
-              </div>
-              <p className="text-xs text-muted-foreground mb-4">
-                Choose the option that works best for your needs
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-start gap-2 p-2 rounded-lg bg-primary/10 hover:bg-primary/15 border border-primary/20 hover:border-primary/40 transition-all cursor-default group/item">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
-                  <div className="flex-1">
-                    <p className="text-xs font-semibold text-foreground">Hourly Consultants</p>
-                    <p className="text-[10px] text-muted-foreground">On-demand expertise</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2 p-2 rounded-lg bg-primary/10 hover:bg-primary/15 border border-primary/20 hover:border-primary/40 transition-all cursor-default group/item">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
-                  <div className="flex-1">
-                    <p className="text-xs font-semibold text-foreground">Dedicated Engineers</p>
-                    <p className="text-[10px] text-muted-foreground">Full/part-time capacity</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2 p-2 rounded-lg bg-primary/10 hover:bg-primary/15 border border-primary/20 hover:border-primary/40 transition-all cursor-default group/item">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
-                  <div className="flex-1">
-                    <p className="text-xs font-semibold text-foreground">Small Teams (2-3)</p>
-                    <p className="text-[10px] text-muted-foreground">Agile squads</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2 p-2 rounded-lg bg-primary/10 hover:bg-primary/15 border border-primary/20 hover:border-primary/40 transition-all cursor-default group/item">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
-                  <div className="flex-1">
-                    <p className="text-xs font-semibold text-foreground">Self-Managed Teams</p>
-                    <p className="text-[10px] text-muted-foreground">End-to-end delivery</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Card>
+            </Card>
           </div>
         </div>
       </div>

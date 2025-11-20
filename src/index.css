@@ -100,37 +100,58 @@ All colors MUST be HSL.
   }
 }
 
-/* Logo animations - rotate left, rotate right, or heartbeat bounce */
-@keyframes logo-rotate-left {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
+/* Custom scrollbar styles */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
 }
 
-@keyframes logo-rotate-right {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
 }
 
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Logo heartbeat animation - 5 beats every 8 seconds */
 @keyframes logo-heartbeat {
   0%, 100% {
     transform: scale(1);
   }
-  25% {
-    transform: scale(1.15);
+  2% {
+    transform: scale(1.2);
   }
-  50% {
+  3% {
     transform: scale(1);
   }
-  75% {
-    transform: scale(1.1);
+  4% {
+    transform: scale(1.2);
+  }
+  5% {
+    transform: scale(1);
+  }
+  6% {
+    transform: scale(1.2);
+  }
+  7% {
+    transform: scale(1);
+  }
+  8% {
+    transform: scale(1.2);
+  }
+  9% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(1.2);
+  }
+  11%, 100% {
+    transform: scale(1);
   }
 }
 
