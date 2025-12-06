@@ -39,9 +39,17 @@ export default {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
@@ -61,6 +69,10 @@ export default {
         },
         "cyan-glow": "hsl(var(--cyan-glow))",
         "dark-surface": "hsl(var(--dark-surface))",
+        "dark-grey": "hsl(var(--dark-grey))",
+        "medium-grey": "hsl(var(--medium-grey))",
+        grey: "hsl(var(--grey))",
+        "light-grey": "hsl(var(--light-grey))",
       },
       borderRadius: {
         lg: "var(--radius)",

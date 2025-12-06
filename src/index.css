@@ -3,11 +3,35 @@
 @tailwind utilities;
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+Brand colors are defined in tailwind.config.ts as hex values.
+UI colors (background, foreground, etc.) are defined here as HSL for theming support.
 */
 
 @layer base {
   :root {
+    /* Brand & Status Colors */
+    --primary: 199 100% 55%; /* Azure Blue */
+    --primary-foreground: 0 0% 98%;
+    
+    --secondary: 229 96% 72%; /* Space Violet */
+    --secondary-foreground: 0 0% 98%;
+    
+    --success: 170 89% 45%; /* Alien Green */
+    --success-foreground: 0 0% 98%;
+    
+    --destructive: 350 82% 54%; /* Laser Red */
+    --destructive-foreground: 0 0% 98%;
+    
+    --warning: 46 100% 54%; /* Cosmic Yellow */
+    --warning-foreground: 0 0% 3%;
+
+    /* Neutral / Base Colors */
+    --dark-grey: 222 11% 18%;
+    --medium-grey: 222 9% 37%;
+    --grey: 222 12% 59%;
+    --light-grey: 226 33% 83%;
+
+    /* UI Colors */
     --background: 0 0% 3%;
     --foreground: 0 0% 98%;
 
@@ -17,20 +41,11 @@ All colors MUST be HSL.
     --popover: 0 0% 5%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 199 100% 55%;
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 229 96% 72%;
-    --secondary-foreground: 0 0% 98%;
-
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 65%;
 
     --accent: 199 100% 55%;
     --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
 
     --border: 0 0% 15%;
     --input: 0 0% 15%;
@@ -152,6 +167,21 @@ All colors MUST be HSL.
   }
   11%, 100% {
     transform: scale(1);
+  }
+}
+
+@keyframes flowMove {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
