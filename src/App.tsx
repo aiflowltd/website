@@ -21,7 +21,10 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import InterviewDetail from "./pages/InterviewDetail";
 import NotFound from "./pages/NotFound";
-import { Analytics } from '@vercel/analytics/react';
+import Legal from "./pages/industry/Legal";
+import RealEstate from "./pages/industry/RealEstate";
+import Marketing from "./pages/industry/Marketing";
+import { Analytics } from "@vercel/analytics/react";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +58,9 @@ const App = () => {
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/interviews/:id" element={<InterviewDetail />} />
+            <Route path="/industry/legal" element={<Legal />} />
+            <Route path="/industry/real-estate" element={<RealEstate />} />
+            <Route path="/industry/marketing" element={<Marketing />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

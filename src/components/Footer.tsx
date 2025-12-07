@@ -9,7 +9,7 @@ export const Footer = () => {
   return (
     <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-6 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4">
@@ -90,6 +90,37 @@ export const Footer = () => {
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Industries */}
+          <div>
+            <h3 className="font-bold mb-4">Industries</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  to="/industry/legal"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Legal
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/industry/real-estate"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Real Estate
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/industry/marketing"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Marketing
                 </Link>
               </li>
             </ul>
