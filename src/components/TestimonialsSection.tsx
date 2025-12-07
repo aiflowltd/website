@@ -19,7 +19,6 @@ export const TestimonialsSection = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => {
-              // Featured testimonials (with case studies) span 2 columns
               const isFeatured = testimonial.caseStudyLink;
               
               return (
