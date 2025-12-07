@@ -73,7 +73,7 @@ const Contact = () => {
       
       if (!apiUrl) {
         console.error("API URL not configured");
-        toast.error("Configuration error, please try again later.");
+        toast.error("Configuration error. Please try again later.");
         return;
       }
 
