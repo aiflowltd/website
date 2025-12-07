@@ -21,6 +21,14 @@ export const testimonials: Testimonial[] = [
     caseStudyText: "Read The Case Study",
   },
   {
+    id: "bank-clutch",
+    quote:
+      "Irina provided immediate support with one of the most difficult technical issues we had. Literally don't know how she understood the issue, but we got to the root of the problem and were able to get an efficient solution. Massive thank you!",
+    author: "",
+    role: "Team at",
+    company: "bank",
+  },
+  {
     id: "marcus-drewes",
     quote:
       "I really had the confidence to trust in you to make the right decision. I wouldn't doubt any technical decision that we have made in the last months.",
@@ -53,14 +61,6 @@ export const testimonials: Testimonial[] = [
     author: "",
     role: "CEO in the",
     company: "creative tech space",
-  },
-  {
-    id: "bank-clutch",
-    quote:
-      "Irina provided immediate support with one of the most difficult technical issues we had. Literally don't know how she understood the issue, but we got to the root of the problem and were able to get an efficient solution. Massive thank you!",
-    author: "",
-    role: "Team at",
-    company: "bank",
   },
   {
     id: "mobile-app",
