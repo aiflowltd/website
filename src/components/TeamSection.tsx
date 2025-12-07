@@ -220,6 +220,13 @@ export const TeamSection = () => {
                     <div className="group relative -ml-4 z-30 hover:z-50 transition-all duration-300">
                       <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
                         <span className="text-xl text-muted-foreground">
+                          RT
+                        </span>
+                      </div>
+                    </div>
+                    <div className="group relative -ml-4 z-30 hover:z-50 transition-all duration-300">
+                      <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
+                        <span className="text-xl text-muted-foreground">
                           CE
                         </span>
                       </div>

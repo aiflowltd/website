@@ -65,7 +65,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "mobile-app",
     quote:
-      "Irina supported our mobile app setup with unmatched perseverance and professionalism. She found a critical issue on our side with laser-sharp focus. Absolute massive kudos for the problem-solving skills!",
+      "Irina supported our AI setup with unmatched perseverance and professionalism. She found a critical issue on our side with laser-sharp focus. Absolute massive kudos for the problem-solving skills!",
     author: "",
     role: "Team at",
     company: "consulting company",
