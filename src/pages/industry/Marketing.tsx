@@ -13,29 +13,22 @@ import {
   BarChart,
   Shield,
   Workflow,
-  CheckCircle2,
   ArrowRight,
   Sparkles,
   Clock,
   TrendingUp,
   Target,
   Users,
-  Search,
-  Zap,
   Palette,
-  Megaphone,
-  TrendingDown,
   Layers,
   PieChart,
   Rocket,
   Filter,
-  Lightbulb,
-  Calendar,
-  Image,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { colors } from "@/constants/colors";
+import { JourneyAnimation } from "@/components/JourneyAnimation";
 
 // Agent Ideas for Carousel
 const agentIdeas = [
@@ -418,12 +411,6 @@ const Marketing = () => {
       iconColor: colors.warning,
       iconBg: colors.warning + "20",
       iconBorder: colors.warning + "40",
-      items: [
-        "Automated responses",
-        "Faster content rollout",
-        "Better lead data",
-        "Cleaned funnels",
-      ],
       uplift: [
         "More meetings booked",
         "Higher early-touch conversion",
@@ -437,11 +424,6 @@ const Marketing = () => {
       iconColor: colors.success,
       iconBg: colors.success + "20",
       iconBorder: colors.success + "40",
-      items: [
-        "Attribution clarity",
-        "Automated weekly reporting",
-        "Targeted nurture flows",
-      ],
       uplift: [
         "Lower CAC",
         "Increased qualified pipeline",
@@ -455,11 +437,6 @@ const Marketing = () => {
       iconColor: colors.primary,
       iconBg: colors.primary + "20",
       iconBorder: colors.primary + "40",
-      items: [
-        "Autonomous content cycles",
-        "Auto-adjusting campaigns",
-        "Predictive performance signals",
-      ],
       uplift: [
         "Higher LTV",
         "De-risked ad spend",
@@ -1035,15 +1012,11 @@ const Marketing = () => {
                   color: colors.lightGrey,
                 }}
               >
-                Most marketing teams don't fall behind because of{" "}
-                <span style={{ color: colors.primary }}>weak ideas</span>
+                Most marketing teams fall behind because of{" "}
+                <span style={{ color: colors.primary }}>delayed reporting</span>
+                {" "}and{" "}
+                <span style={{ color: colors.primary }}>fragmented data.</span>
               </h2>
-              <p
-                className="text-lg max-w-2xl mx-auto"
-                style={{ color: colors.grey }}
-              >
-                They fall behind because execution never catches up.
-              </p>
               <div className="grid md:grid-cols-2 gap-4 mt-8 text-left">
                 {[
                   {
@@ -1137,7 +1110,7 @@ const Marketing = () => {
               </div>
               <p
                 className="text-lg font-semibold mt-6"
-                style={{ color: colors.primary }}
+                style={{ color: colors.lightGrey }}
               >
                 AI Agents remove those delays.
               </p>
@@ -1163,16 +1136,13 @@ const Marketing = () => {
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-3 gap-6">
               {agentTypes.map((agent, index) => {
                 const IconComponent = agent.icon;
-                const isLarge = index === 0 || index === 3;
                 return (
                   <div
                     key={index}
-                    className={`group relative rounded-2xl p-8 border transition-all duration-300 hover:scale-[1.02] ${
-                      isLarge ? "lg:col-span-2" : ""
-                    }`}
+                    className={`group relative rounded-2xl p-8 border transition-all duration-300 hover:scale-[1.02]`}
                     style={{
                       backgroundColor: colors.mediumGrey + "50",
                       borderColor: colors.grey + "30",
@@ -1451,49 +1421,10 @@ const Marketing = () => {
                       </div>
                     </div>
                     <div className="space-y-4">
-                      <div>
-                        <p
-                          className="text-xs uppercase tracking-wider font-semibold mb-3"
-                          style={{ color: colors.primary }}
-                        >
-                          Outcomes
-                        </p>
-                        <div className="space-y-2.5">
-                          {result.items.map((item, idx) => (
-                            <div
-                              key={idx}
-                              className="flex items-start gap-3 p-2 rounded-lg"
-                              style={{
-                                backgroundColor: colors.darkGrey + "60",
-                              }}
-                            >
-                              <div
-                                className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0"
-                                style={{
-                                  backgroundColor: colors.success,
-                                  boxShadow: `0 0 4px ${colors.success}60`,
-                                }}
-                              />
-                              <span
-                                className="text-sm leading-relaxed"
-                                style={{ color: colors.grey }}
-                              >
-                                {item}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
                       <div
                         className="pt-4 border-t"
                         style={{ borderColor: colors.grey + "20" }}
                       >
-                        <p
-                          className="text-xs uppercase tracking-wider font-semibold mb-3"
-                          style={{ color: colors.secondary }}
-                        >
-                          Performance lift
-                        </p>
                         <div className="space-y-2.5">
                           {result.uplift.map((item, idx) => (
                             <div
@@ -1528,105 +1459,50 @@ const Marketing = () => {
           </div>
         </section>
 
-        {/* How Teams Begin - Minimal */}
         <section className="py-20 px-6">
           <div className="container mx-auto max-w-7xl">
-            <div className="text-center space-y-8 mb-16">
-              <h2
-                className="text-3xl md:text-4xl font-bold"
-                style={{
-                  letterSpacing: "-0.02em",
-                  color: colors.lightGrey,
-                }}
-              >
-                How Most Teams{" "}
-                <span style={{ color: colors.primary }}>Begin</span>
-              </h2>
-              <p
-                className="text-lg max-w-2xl mx-auto"
-                style={{ color: colors.grey }}
-              >
-                We run a short session focused on: content throughput gaps, lead
-                conversion drop points, campaign launch delays, reporting
-                inefficiencies.
-              </p>
-            </div>
-
             <div
-              className="rounded-2xl p-8 md:p-12 border"
+              className="relative rounded-2xl p-8 md:p-12 border"
               style={{
-                background: `linear-gradient(135deg, ${colors.primary}15, ${colors.secondary}15)`,
-                borderColor: colors.primary + "30",
+                backgroundColor: colors.mediumGrey + "40",
+                borderColor: colors.grey + "30",
+                boxShadow: `0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px ${colors.grey}20`,
               }}
             >
-              <div className="grid md:grid-cols-3 gap-8 text-center">
-                <div>
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
-                    style={{
-                      backgroundColor: colors.primary + "20",
-                    }}
-                  >
-                    <CheckCircle2
-                      className="w-6 h-6"
-                      style={{ color: colors.primary }}
-                    />
-                  </div>
-                  <p
-                    className="font-semibold mb-1"
-                    style={{ color: colors.lightGrey }}
-                  >
-                    Clear priorities
-                  </p>
-                </div>
-                <div>
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
-                    style={{
-                      backgroundColor: colors.primary + "20",
-                    }}
-                  >
-                    <CheckCircle2
-                      className="w-6 h-6"
-                      style={{ color: colors.primary }}
-                    />
-                  </div>
-                  <p
-                    className="font-semibold mb-1"
-                    style={{ color: colors.lightGrey }}
-                  >
-                    Expected ROI
-                  </p>
-                </div>
-                <div>
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
-                    style={{
-                      backgroundColor: colors.primary + "20",
-                    }}
-                  >
-                    <CheckCircle2
-                      className="w-6 h-6"
-                      style={{ color: colors.primary }}
-                    />
-                  </div>
-                  <p
-                    className="font-semibold mb-1"
-                    style={{ color: colors.lightGrey }}
-                  >
-                    Integration plan
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="text-center mt-12">
-              <p
-                className="text-lg font-semibold mb-2"
-                style={{ color: colors.lightGrey }}
-              >
-                And we build directly against those outcomes.
-              </p>
+              <JourneyAnimation
+                steps={[
+                  {
+                    label: "Discovery",
+                    description:
+                      "We start with a diagnostic conversation to understand your workflow bottlenecks, pain points, and where execution slows down.",
+                  },
+                  {
+                    label: "Workshop",
+                    description:
+                      "Together, we map out your current processes and identify specific areas where AI agents can deliver immediate value.",
+                  },
+                  {
+                    label: "Roadmap",
+                    description:
+                      "We create a clear implementation plan with prioritized agents, expected outcomes, and a timeline for rollout.",
+                  },
+                  {
+                    label: "Implementation",
+                    description:
+                      "Our team builds, integrates, and deploys working agents directly into your existing workflows and systems.",
+                  },
+                  {
+                    label: "Maintenance",
+                    description:
+                      "We monitor performance, refine agents based on real usage, and ensure they continue to deliver value over time.",
+                  },
+                  {
+                    label: "Follow ups",
+                    description:
+                      "Regular check-ins to optimize agents, add new capabilities, and ensure your team is getting maximum value.",
+                  },
+                ]}
+              />
             </div>
           </div>
         </section>

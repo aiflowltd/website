@@ -3,16 +3,14 @@ import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { authors, teamMembers } from "@/data/team";
+import { teamMembers } from "@/data/team";
 import { useEffect } from "react";
 import {
   Users,
   Code,
   Brain,
-  TrendingUp,
   Building2,
   Globe,
-  Zap,
   Shield,
   Rocket,
   Target,
@@ -20,12 +18,8 @@ import {
   Clock,
   Database,
   Cloud,
-  Layers,
   Cpu,
-  GitBranch,
   CheckCircle2,
-  Star,
-  BarChart3,
 } from "lucide-react";
 
 const Team = () => {
@@ -40,9 +34,7 @@ const Team = () => {
     { value: "100%", label: "Production-Ready", icon: Rocket },
     { value: "Fortune 500", label: "Enterprise Clients", icon: Building2 },
     { value: "Google & BP", label: "Previous Companies", icon: Award },
-    { value: "29+", label: "Languages Supported", icon: Globe },
     { value: "24/7", label: "Remote Team", icon: Globe },
-    { value: "End-to-End", label: "Product Development", icon: Code },
   ];
 
   // Medium feature cards
@@ -117,21 +109,16 @@ const Team = () => {
   ];
 
   const industries = [
+    "Real Estate",
+    "Marketing",
+    "Legal",
     "Oil & Gas",
-    "Legal Tech",
-    "Fintech",
-    "E-commerce",
-    "Materials Science",
+    "E-Commerce",
     "Healthcare",
-    "Edtech",
-    "Entertainment"
+    "EdTech",
+    "Entertainment",
+    "Manufacturing"
   ];
-
-  const achievements = [
-    { label: "Production Systems", value: "100%" },
-    { label: "On-Time Delivery", value: "100%" },
-  ];
-
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -169,21 +156,6 @@ const Team = () => {
               </Card>
             );
           })}
-
-          {/* Achievement Cards */}
-          {achievements.map((achievement, index) => (
-            <Card
-              key={`achievement-${index}`}
-              className="bg-card border-border p-4 md:p-5 text-center hover:border-primary/50 transition-all"
-            >
-              <div className="text-2xl md:text-3xl font-bold mb-1 text-primary">
-                {achievement.value}
-              </div>
-              <div className="text-xs md:text-sm text-muted-foreground">
-                {achievement.label}
-              </div>
-            </Card>
-          ))}
         </div>
 
         {/* Large Feature Cards - Span 2 columns */}

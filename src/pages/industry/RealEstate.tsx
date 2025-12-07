@@ -2,13 +2,6 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -24,23 +17,19 @@ import {
   BarChart,
   Shield,
   Workflow,
-  CheckCircle2,
   ArrowRight,
   Sparkles,
   Clock,
   TrendingUp,
   Target,
-  Zap,
   Users,
   Search,
   Bell,
-  TrendingDown,
-  FileCheck,
-  MapPin,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { colors } from "@/constants/colors";
+import { JourneyAnimation } from "@/components/JourneyAnimation";
 
 // Agent Ideas for Carousel
 const agentIdeas = [
@@ -389,12 +378,6 @@ const RealEstate = () => {
       iconColor: colors.warning, // Yellow for time, urgency
       iconBg: colors.warning + "20",
       iconBorder: colors.warning + "40",
-      items: [
-        "Faster response time",
-        "More pre-qualified leads",
-        "Earlier listing launch",
-        "Better accuracy in CMA preparation",
-      ],
       uplift: [
         "Conversion increase from first-touch automation",
         "4–7 hours per week recovered per agent",
@@ -408,11 +391,6 @@ const RealEstate = () => {
       iconColor: colors.success, // Green for growth, progress
       iconBg: colors.success + "20",
       iconBorder: colors.success + "40",
-      items: [
-        "Transaction milestones tracked automatically",
-        "Owners and buyers updated proactively",
-        "Renewals handled without manual chasing",
-      ],
       uplift: [
         "Lower fallout rates",
         "Coordinators handle more volume with less stress",
@@ -426,11 +404,6 @@ const RealEstate = () => {
       iconColor: colors.primary, // Blue for precision, goals
       iconBg: colors.primary + "20",
       iconBorder: colors.primary + "40",
-      items: [
-        "Up-to-date market intelligence",
-        "Real-time portfolio performance",
-        "Automated repeat tasks across departments",
-      ],
       uplift: [
         "Stronger NOI via fewer delays and missed events",
         "Faster investment decisions",
@@ -681,16 +654,11 @@ const RealEstate = () => {
                   color: colors.lightGrey,
                 }}
               >
-                Most real estate businesses aren't losing deals because of{" "}
-                <span style={{ color: colors.primary }}>market conditions</span>
+                Most real estate businesses are losing deals because of{" "}
+                <span style={{ color: colors.primary }}>slow follow-up, manual coordination,</span>
+                {" "}and{" "}
+                <span style={{ color: colors.primary }}>information arriving fragmented</span>.
               </h2>
-              <p
-                className="text-lg max-w-2xl mx-auto"
-                style={{ color: colors.grey }}
-              >
-                They lose deals due to slow follow-up, manual coordination, and
-                information arriving fragmented.
-              </p>
             </div>
           </div>
         </section>
@@ -972,49 +940,10 @@ const RealEstate = () => {
                       </div>
                     </div>
                     <div className="space-y-4">
-                      <div>
-                        <p
-                          className="text-xs uppercase tracking-wider font-semibold mb-3"
-                          style={{ color: colors.primary }}
-                        >
-                          Outcomes
-                        </p>
-                        <div className="space-y-2.5">
-                          {result.items.map((item, idx) => (
-                            <div
-                              key={idx}
-                              className="flex items-start gap-3 p-2 rounded-lg"
-                              style={{
-                                backgroundColor: colors.darkGrey + "60",
-                              }}
-                            >
-                              <div
-                                className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0"
-                                style={{
-                                  backgroundColor: colors.success,
-                                  boxShadow: `0 0 4px ${colors.success}60`,
-                                }}
-                              />
-                              <span
-                                className="text-sm leading-relaxed"
-                                style={{ color: colors.grey }}
-                              >
-                                {item}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
                       <div
                         className="pt-4 border-t"
                         style={{ borderColor: colors.grey + "20" }}
                       >
-                        <p
-                          className="text-xs uppercase tracking-wider font-semibold mb-3"
-                          style={{ color: colors.secondary }}
-                        >
-                          Uplift
-                        </p>
                         <div className="space-y-2.5">
                           {result.uplift.map((item, idx) => (
                             <div
@@ -1049,109 +978,50 @@ const RealEstate = () => {
           </div>
         </section>
 
-        {/* How Teams Begin - Minimal */}
         <section className="py-20 px-6">
           <div className="container mx-auto max-w-7xl">
-            <div className="text-center space-y-8 mb-16">
-              <h2
-                className="text-3xl md:text-4xl font-bold"
-                style={{
-                  letterSpacing: "-0.02em",
-                  color: colors.lightGrey,
-                }}
-              >
-                How Most Teams{" "}
-                <span style={{ color: colors.primary }}>Begin</span>
-              </h2>
-              <p
-                className="text-lg max-w-2xl mx-auto"
-                style={{ color: colors.grey }}
-              >
-                We start with a short review call focused on deal friction
-                points, follow-up gaps, listing bottlenecks, PM inefficiencies,
-                and decision delays.
-              </p>
-            </div>
-
             <div
-              className="rounded-2xl p-8 md:p-12 border"
+              className="relative rounded-2xl p-8 md:p-12 border"
               style={{
-                background: `linear-gradient(135deg, ${colors.primary}15, ${colors.secondary}15)`,
-                borderColor: colors.primary + "30",
+                backgroundColor: colors.mediumGrey + "40",
+                borderColor: colors.grey + "30",
+                boxShadow: `0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px ${colors.grey}20`,
               }}
             >
-              <div className="grid md:grid-cols-3 gap-8 text-center">
-                <div>
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
-                    style={{
-                      backgroundColor: colors.primary + "20",
-                    }}
-                  >
-                    <CheckCircle2
-                      className="w-6 h-6"
-                      style={{ color: colors.primary }}
-                    />
-                  </div>
-                  <p
-                    className="font-semibold mb-1"
-                    style={{ color: colors.lightGrey }}
-                  >
-                    Clear scope
-                  </p>
-                </div>
-                <div>
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
-                    style={{
-                      backgroundColor: colors.primary + "20",
-                    }}
-                  >
-                    <CheckCircle2
-                      className="w-6 h-6"
-                      style={{ color: colors.primary }}
-                    />
-                  </div>
-                  <p
-                    className="font-semibold mb-1"
-                    style={{ color: colors.lightGrey }}
-                  >
-                    Timeline and rollout plan
-                  </p>
-                </div>
-                <div>
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
-                    style={{
-                      backgroundColor: colors.primary + "20",
-                    }}
-                  >
-                    <CheckCircle2
-                      className="w-6 h-6"
-                      style={{ color: colors.primary }}
-                    />
-                  </div>
-                  <p
-                    className="font-semibold mb-1"
-                    style={{ color: colors.lightGrey }}
-                  >
-                    Measurable outcomes
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="text-center mt-12">
-              <p
-                className="text-lg font-semibold mb-2"
-                style={{ color: colors.lightGrey }}
-              >
-                Not software adoption. Not training sessions.
-              </p>
-              <p className="text-base" style={{ color: colors.grey }}>
-                Just targeted changes that improve volume, conversion, and
-                experience.
-              </p>
+              <JourneyAnimation
+                steps={[
+                  {
+                    label: "Discovery",
+                    description:
+                      "We start with a diagnostic conversation to understand your workflow bottlenecks, pain points, and where execution slows down.",
+                  },
+                  {
+                    label: "Workshop",
+                    description:
+                      "Together, we map out your current processes and identify specific areas where AI agents can deliver immediate value.",
+                  },
+                  {
+                    label: "Roadmap",
+                    description:
+                      "We create a clear implementation plan with prioritized agents, expected outcomes, and a timeline for rollout.",
+                  },
+                  {
+                    label: "Implementation",
+                    description:
+                      "Our team builds, integrates, and deploys working agents directly into your existing workflows and systems.",
+                  },
+                  {
+                    label: "Maintenance",
+                    description:
+                      "We monitor performance, refine agents based on real usage, and ensure they continue to deliver value over time.",
+                  },
+                  {
+                    label: "Follow ups",
+                    description:
+                      "Regular check-ins to optimize agents, add new capabilities, and ensure your team is getting maximum value.",
+                  },
+                ]}
+              />
             </div>
           </div>
         </section>
