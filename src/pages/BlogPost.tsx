@@ -81,7 +81,7 @@ const BlogPost = () => {
               </p>
               {block.author && (
                 <p className="text-sm text-muted-foreground">
-                  — {block.author}
+                   -  {block.author}
                 </p>
               )}
             </Card>

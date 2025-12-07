@@ -323,7 +323,7 @@ const Marketing = () => {
       title: "AI Creative Optimization",
       subtitle: "Agents",
       description:
-        "Let creatives iterate continuously—even when the team is busy.",
+        "Let creatives iterate continuously - even when the team is busy.",
       iconColor: colors.warning,
       iconBg: colors.warning + "20",
       iconBorder: colors.warning + "40",
@@ -403,7 +403,7 @@ const Marketing = () => {
       icon: Layers,
       title: "Modular agent architecture",
       description:
-        "You can start with one agent—then extend: Funnel Agent, Content Agent, Personalization Agent, Reporting Agent, Reallocation Agent. Each agent handles one stage of your growth engine.",
+        "You can start with one agent - then extend: Funnel Agent, Content Agent, Personalization Agent, Reporting Agent, Reallocation Agent. Each agent handles one stage of your growth engine.",
       iconColor: colors.success,
       iconBg: colors.success + "20",
       iconBorder: colors.success + "40",

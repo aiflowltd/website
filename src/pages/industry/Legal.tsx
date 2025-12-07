@@ -25,7 +25,6 @@ import {
   Gavel,
   BookOpen,
   Layers,
-  RefreshCw,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -640,7 +639,7 @@ const Legal = () => {
         "Generate structured intake records",
       ],
       effect:
-        "Cases activate earlier, and teams begin with full context—not scattered documents.",
+        "Cases activate earlier, and teams begin with full context - not scattered documents.",
     },
     {
       icon: ClipboardCheck,
@@ -717,7 +716,7 @@ const Legal = () => {
     {
       icon: Sparkles,
       title: "Full implementation ownership",
-      description: "We architect, build, deploy, and monitor—not just advise.",
+      description: "We architect, build, deploy, and monitor - not just advise.",
       iconColor: colors.warning,
       iconBg: colors.warning + "20",
       iconBorder: colors.warning + "40",
@@ -732,12 +731,6 @@ const Legal = () => {
       iconColor: colors.warning,
       iconBg: colors.warning + "20",
       iconBorder: colors.warning + "40",
-      items: [
-        "Faster case opening",
-        "Automated contract review",
-        "Earlier access to key facts",
-        "Reduced manual intake steps",
-      ],
       uplift: [
         "Cases activate 2-3x faster",
         "Review cycles shorten by 40-60%",
@@ -751,11 +744,6 @@ const Legal = () => {
       iconColor: colors.success,
       iconBg: colors.success + "20",
       iconBorder: colors.success + "40",
-      items: [
-        "Precedent retrieval automated",
-        "Research briefs generated automatically",
-        "Document review prioritized by risk",
-      ],
       uplift: [
         "Research time reduced by 50%+",
         "Better consistency across matters",
@@ -769,11 +757,6 @@ const Legal = () => {
       iconColor: colors.primary,
       iconBg: colors.primary + "20",
       iconBorder: colors.primary + "40",
-      items: [
-        "Knowledge base continuously updated",
-        "Workflow bottlenecks eliminated",
-        "Audit trails maintained automatically",
-      ],
       uplift: [
         "Higher throughput without headcount",
         "Improved client satisfaction",
@@ -1184,37 +1167,6 @@ const Legal = () => {
                       }
                     }
                   `}</style>
-
-                  {/* Refresh Button - Bottom Right */}
-                  <Button
-                    onClick={resetAnimation}
-                    disabled={!animationComplete}
-                    variant="outline"
-                    size="icon"
-                    className="absolute bottom-4 right-4 rounded-full w-10 h-10 p-0"
-                    style={{
-                      backgroundColor: animationComplete
-                        ? colors.mediumGrey + "60"
-                        : colors.darkGrey + "40",
-                      borderColor: animationComplete
-                        ? colors.grey + "40"
-                        : colors.grey + "20",
-                      color: animationComplete
-                        ? colors.lightGrey
-                        : colors.grey + "60",
-                      cursor: animationComplete ? "pointer" : "not-allowed",
-                      opacity: animationComplete ? 1 : 0.5,
-                    }}
-                  >
-                    <RefreshCw
-                      className="w-5 h-5"
-                      style={{
-                        color: animationComplete
-                          ? colors.primary
-                          : colors.grey + "60",
-                      }}
-                    />
-                  </Button>
                 </div>
               </div>
             </div>
@@ -1232,16 +1184,11 @@ const Legal = () => {
                   color: colors.lightGrey,
                 }}
               >
-                Modern legal practice doesn't struggle with{" "}
-                <span style={{ color: colors.primary }}>expertise</span>
+                Modern legal practice struggle with{" "}
+                <span style={{ color: colors.primary }}>volume</span>
+                {" "}and{" "}
+                <span style={{ color: colors.primary }}>fragmented information.</span>
               </h2>
-              <p
-                className="text-lg max-w-2xl mx-auto"
-                style={{ color: colors.grey }}
-              >
-                It struggles with volume, turnaround time, and fragmented
-                information.
-              </p>
               <div className="grid md:grid-cols-2 gap-4 mt-8 text-left">
                 {painPoints.map((point, idx) => {
                   const icons = [FileText, ClipboardCheck, Search, FileSearch];
@@ -1318,26 +1265,10 @@ const Legal = () => {
               </div>
               <p
                 className="text-lg font-semibold mt-6"
-                style={{ color: colors.primary }}
+                style={{ color: colors.lightGrey }}
               >
                 AI Agents eliminate these bottlenecks.
               </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Client Journey Animation */}
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-7xl">
-            <div
-              className="relative rounded-2xl p-8 md:p-12 border"
-              style={{
-                backgroundColor: colors.mediumGrey + "40",
-                borderColor: colors.grey + "30",
-                boxShadow: `0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px ${colors.grey}20`,
-              }}
-            >
-              <JourneyAnimation />
             </div>
           </div>
         </section>
@@ -1358,16 +1289,13 @@ const Legal = () => {
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 gap-6">
               {agentTypes.map((agent, index) => {
                 const IconComponent = agent.icon;
-                const isLarge = index === 0 || index === 2;
                 return (
                   <div
                     key={index}
-                    className={`group relative rounded-2xl p-8 border transition-all duration-300 hover:scale-[1.02] ${
-                      isLarge ? "lg:col-span-2" : ""
-                    }`}
+                    className={`group relative rounded-2xl p-8 border transition-all duration-300 hover:scale-[1.02]`}
                     style={{
                       backgroundColor: colors.mediumGrey + "50",
                       borderColor: colors.grey + "30",
@@ -1645,49 +1573,10 @@ const Legal = () => {
                       </div>
                     </div>
                     <div className="space-y-4">
-                      <div>
-                        <p
-                          className="text-xs uppercase tracking-wider font-semibold mb-3"
-                          style={{ color: colors.primary }}
-                        >
-                          Outcomes
-                        </p>
-                        <div className="space-y-2.5">
-                          {result.items.map((item, idx) => (
-                            <div
-                              key={idx}
-                              className="flex items-start gap-3 p-2 rounded-lg"
-                              style={{
-                                backgroundColor: colors.darkGrey + "60",
-                              }}
-                            >
-                              <div
-                                className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0"
-                                style={{
-                                  backgroundColor: colors.success,
-                                  boxShadow: `0 0 4px ${colors.success}60`,
-                                }}
-                              />
-                              <span
-                                className="text-sm leading-relaxed"
-                                style={{ color: colors.grey }}
-                              >
-                                {item}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
                       <div
                         className="pt-4 border-t"
                         style={{ borderColor: colors.grey + "20" }}
                       >
-                        <p
-                          className="text-xs uppercase tracking-wider font-semibold mb-3"
-                          style={{ color: colors.secondary }}
-                        >
-                          Performance lift
-                        </p>
                         <div className="space-y-2.5">
                           {result.uplift.map((item, idx) => (
                             <div
@@ -1722,109 +1611,17 @@ const Legal = () => {
           </div>
         </section>
 
-        {/* How Teams Begin - Minimal */}
         <section className="py-20 px-6">
           <div className="container mx-auto max-w-7xl">
-            <div className="text-center space-y-8 mb-16">
-              <h2
-                className="text-3xl md:text-4xl font-bold"
-                style={{
-                  letterSpacing: "-0.02em",
-                  color: colors.lightGrey,
-                }}
-              >
-                A Practical Way to{" "}
-                <span style={{ color: colors.primary }}>Begin</span>
-              </h2>
-              <p
-                className="text-lg max-w-2xl mx-auto"
-                style={{ color: colors.grey }}
-              >
-                Most teams start with a short diagnostic conversation focused on
-                where execution slows: repeated drafting, manual intake steps,
-                research loops, delayed access to key facts.
-              </p>
-            </div>
-
             <div
-              className="rounded-2xl p-8 md:p-12 border"
+              className="relative rounded-2xl p-8 md:p-12 border"
               style={{
-                background: `linear-gradient(135deg, ${colors.primary}15, ${colors.secondary}15)`,
-                borderColor: colors.primary + "30",
+                backgroundColor: colors.mediumGrey + "40",
+                borderColor: colors.grey + "30",
+                boxShadow: `0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px ${colors.grey}20`,
               }}
             >
-              <div className="grid md:grid-cols-3 gap-8 text-center">
-                <div>
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
-                    style={{
-                      backgroundColor: colors.primary + "20",
-                    }}
-                  >
-                    <CheckCircle2
-                      className="w-6 h-6"
-                      style={{ color: colors.primary }}
-                    />
-                  </div>
-                  <p
-                    className="font-semibold mb-1"
-                    style={{ color: colors.lightGrey }}
-                  >
-                    Clear scope
-                  </p>
-                </div>
-                <div>
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
-                    style={{
-                      backgroundColor: colors.primary + "20",
-                    }}
-                  >
-                    <CheckCircle2
-                      className="w-6 h-6"
-                      style={{ color: colors.primary }}
-                    />
-                  </div>
-                  <p
-                    className="font-semibold mb-1"
-                    style={{ color: colors.lightGrey }}
-                  >
-                    Measurable operational uplift
-                  </p>
-                </div>
-                <div>
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
-                    style={{
-                      backgroundColor: colors.primary + "20",
-                    }}
-                  >
-                    <CheckCircle2
-                      className="w-6 h-6"
-                      style={{ color: colors.primary }}
-                    />
-                  </div>
-                  <p
-                    className="font-semibold mb-1"
-                    style={{ color: colors.lightGrey }}
-                  >
-                    Defined risk and supervision boundaries
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="text-center mt-12">
-              <p
-                className="text-lg font-semibold mb-2"
-                style={{ color: colors.lightGrey }}
-              >
-                No disruption. No platform rollout.
-              </p>
-              <p className="text-base" style={{ color: colors.grey }}>
-                Just targeted, working systems that increase throughput and
-                consistency.
-              </p>
+              <JourneyAnimation />
             </div>
           </div>
         </section>

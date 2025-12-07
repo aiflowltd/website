@@ -154,7 +154,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     challenge:
       "Building ML models for material property prediction took 3-4 months per model",
     challengeDetail:
-      "ExoMatter deals with materials development and computation, helping companies find the right material for specific applications by replacing trial-and-error lab work with data. While simulations were computationally expensive, ML could predict properties more efficiently. However, building custom ML models took 3-4 months each—structuring data, choosing algorithms, and identifying important features. They needed a faster way to leverage their materials science data.",
+      "ExoMatter deals with materials development and computation, helping companies find the right material for specific applications by replacing trial-and-error lab work with data. While simulations were computationally expensive, ML could predict properties more efficiently. However, building custom ML models took 3-4 months each - structuring data, choosing algorithms, and identifying important features. They needed a faster way to leverage their materials science data.",
     solution:
       "Implemented AutoML pipeline using Google's Vertex AI for rapid model development",
     solutionDetail:
@@ -231,11 +231,11 @@ export const caseStudies: Record<string, CaseStudy> = {
     challenge:
       "High dimensionality in ML systems causing long training times and resource-intensive models",
     challengeDetail:
-      "At Google's scale, even small inefficiencies in machine learning pipelines can lead to massive time and cost implications. A key bottleneck was the high dimensionality of input data in ML systems—training times were long, models were resource-intensive, and the iteration cycle was slow. Google was already experimenting with cutting-edge techniques like Sequential Attention for feature selection, but sought to further improve the tradeoff between model performance, feature count, and training time.",
+      "At Google's scale, even small inefficiencies in machine learning pipelines can lead to massive time and cost implications. A key bottleneck was the high dimensionality of input data in ML systems - training times were long, models were resource-intensive, and the iteration cycle was slow. Google was already experimenting with cutting-edge techniques like Sequential Attention for feature selection, but sought to further improve the tradeoff between model performance, feature count, and training time.",
     solution:
       "Built advanced feature selection tool with Sequential Attention, reducing features by 64% while maintaining performance",
     solutionDetail:
-      "We developed a next-gen feature selection platform designed for scalability, interpretability, and performance—ideal for enterprise ML environments like Google's. The solution included intermediate Sequential Attention, ensemble-based feature voting, data subsampling with full-scale training, SVD-based feature budget estimation, and a production-grade feature masking tool.",
+      "We developed a next-gen feature selection platform designed for scalability, interpretability, and performance - ideal for enterprise ML environments like Google's. The solution included intermediate Sequential Attention, ensemble-based feature voting, data subsampling with full-scale training, SVD-based feature budget estimation, and a production-grade feature masking tool.",
     solutionPoints: [
       "Discovery: in-depth review of existing Sequential Attention implementation to identify optimization opportunities",
       "Design: proposed ensemble models, intermediate synchronization, and dataset sub-sampling strategies",
@@ -283,7 +283,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
     ],
     additionalResults: [
-      "High-quality models with only 20% of the data—comparable to full-dataset models",
+      "High-quality models with only 20% of the data - comparable to full-dataset models",
       "Open source codebase released alongside Google Research repository",
       "Production-ready tool enabling automated feature pruning across teams",
       "Transparent tradeoffs and reproducible metrics for decision-making",
@@ -396,7 +396,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     solutionDetail:
       "We developed a retrieval-augmented generation (RAG) platform integrated with custom LLM-based scrapers for job intelligence. The scraping engine uses BeautifulSoup and headless Chromium to extract structured content. Data cleaning pipelines strip irrelevant markup, resulting in faster and cheaper LLM inference with improved accuracy. LLM interactions managed using OpenAI's GPT-4-turbo with consistent JSON-based schema.",
     solutionPoints: [
-      "Discovery: identified biggest pain point—delayed visibility when jobs posted on LinkedIn",
+      "Discovery: identified biggest pain point - delayed visibility when jobs posted on LinkedIn",
       "Design: architected platform to monitor and interpret job listings at scale",
       "Implementation: robust scraping engine with real-time detection and AI-powered clustering",
       "Monitoring: real-time token usage tracking with tiktoken for cost optimization",
@@ -446,7 +446,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Investment indicators and purchase intent flagging for sales teams",
       "Modular, scalable, and cost-efficient architecture",
       "Cleanly structured outputs for easy downstream processing",
-      "Practical AI delivering value where it matters most—sales timing",
+      "Practical AI delivering value where it matters most - sales timing",
     ],
     tags: [
       "Web Scraping",
@@ -458,7 +458,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     testimonial: {
       quote:
-        "This platform gives us the competitive edge we need—spotting opportunities before our competitors even know they exist. The AI is smart, and the execution is flawless.",
+        "This platform gives us the competitive edge we need - spotting opportunities before our competitors even know they exist. The AI is smart, and the execution is flawless.",
       author: "Head of Sales",
       company: "Sales Intelligence Company",
     },
@@ -474,11 +474,11 @@ export const caseStudies: Record<string, CaseStudy> = {
     challenge:
       "Manual legal content review was tedious, costly, and struggled to scale across hundreds of pages",
     challengeDetail:
-      "Reviewing long-form content for legal risks is tedious, manual, and costly—especially when multiple categories of exposure must be considered. Traditional workflows struggle to scale or catch nuanced issues like defamation or privacy rights violations spread across hundreds of pages. Our client wanted to explore if language models + retrieval systems could automatically analyze large documents and pinpoint potential issues on a per-page basis, categorized by legal concern.",
+      "Reviewing long-form content for legal risks is tedious, manual, and costly - especially when multiple categories of exposure must be considered. Traditional workflows struggle to scale or catch nuanced issues like defamation or privacy rights violations spread across hundreds of pages. Our client wanted to explore if language models + retrieval systems could automatically analyze large documents and pinpoint potential issues on a per-page basis, categorized by legal concern.",
     solution:
       "Built AI system using GPT-4 and RAG to automatically flag legal risks per page with structured justifications",
     solutionDetail:
-      "We built a proof-of-concept system that uses GPT-4 and RAG (Retrieval-Augmented Generation) to flag potential legal risks across documents—per page, per issue. The pipeline automatically reviews text for copyright, trademark, privacy, and other legal concerns, providing clear, structured justifications for every flagged item.",
+      "We built a proof-of-concept system that uses GPT-4 and RAG (Retrieval-Augmented Generation) to flag potential legal risks across documents - per page, per issue. The pipeline automatically reviews text for copyright, trademark, privacy, and other legal concerns, providing clear, structured justifications for every flagged item.",
     solutionPoints: [
       "Discovery: defined key legal risk categories and desired output format for high signal, low noise alerts",
       "Design: assess each page and legal issue in isolation with Pinecone vector store paired with GPT-4",
@@ -505,7 +505,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       {
         title: "Structured Output",
         description:
-          "System returns clear results indicating whether risk exists, why it was flagged, and what part of page caused concern—all in JSON format.",
+          "System returns clear results indicating whether risk exists, why it was flagged, and what part of page caused concern - all in JSON format.",
       },
     ],
     results: [

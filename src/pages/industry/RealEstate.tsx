@@ -253,7 +253,7 @@ const RealEstate = () => {
       icon: Home,
       title: "Property Matching",
       subtitle: "Recommendation Agents",
-      description: "Send relevant options—not generic lists.",
+      description: "Send relevant options - not generic lists.",
       iconColor: colors.primary, // Blue for trust, intelligence
       iconBg: colors.primary + "20",
       iconBorder: colors.primary + "40",
@@ -356,7 +356,7 @@ const RealEstate = () => {
       icon: Shield,
       title: "Built for execution",
       description:
-        "These agents are plugged into your operations—not side tools or demos. They align with lead workflows, listing approval processes, document steps, escrow and closing rules, owner reporting, and regional compliance obligations.",
+        "These agents are plugged into your operations - not side tools or demos. They align with lead workflows, listing approval processes, document steps, escrow and closing rules, owner reporting, and regional compliance obligations.",
       iconColor: colors.primary, // Blue for security, reliability
       iconBg: colors.primary + "20",
       iconBorder: colors.primary + "40",
@@ -374,7 +374,7 @@ const RealEstate = () => {
       icon: Sparkles,
       title: "Full build, not advice",
       description:
-        "We take responsibility for architecture, integration, deployment, monitoring, and rollout to the team. You get working systems—not instructions.",
+        "We take responsibility for architecture, integration, deployment, monitoring, and rollout to the team. You get working systems - not instructions.",
       iconColor: colors.warning, // Yellow for magic, transformation
       iconBg: colors.warning + "20",
       iconBorder: colors.warning + "40",
