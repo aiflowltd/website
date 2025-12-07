@@ -36,7 +36,7 @@ const Team = () => {
   // Small spec cards
   const smallSpecs = [
     { value: "10+", label: "Years Experience", icon: Clock },
-    { value: "2", label: "Co-Founders", icon: Users },
+    { value: "2", label: "Founders", icon: Users },
     { value: "100%", label: "Production-Ready", icon: Rocket },
     { value: "Fortune 500", label: "Enterprise Clients", icon: Building2 },
     { value: "Google & BP", label: "Previous Companies", icon: Award },

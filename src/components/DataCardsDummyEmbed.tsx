@@ -18,8 +18,8 @@ const QA_PAIRS: QAPair[] = [
   {
     question: "Who are the founders of AI Flow?",
     answer:
-      "AI Flow is co-founded by Mihai Anton and Irina Barbos. Mihai is the Lead AI/ML Engineer with 10+ years of experience, having worked at Google on feature selection tools and at BP on production ML pipelines. Irina is the AI Solutions Consultant, specializing in full-stack development and system architecture with expertise in Next.js, React, and cloud infrastructure.",
-    keywords: ["founders", "who", "team", "mihai", "irina", "co-founder"],
+      "AI Flow is co-founded by Mihai Anton and Irina Barbos. Mihai is the Lead AI/ML Engineer with 10+ years of experience, having worked at Google on feature selection tools and at BP on production ML pipelines. Irina builds AI-driven products for organizations in the U.S. and Europe, including startups within NYU’s innovation ecosystem, designing scalable architectures and production-ready AI solutions.",
+    keywords: ["founders", "who", "team", "mihai", "irina", "founder"],
   },
   {
     question: "What is rapid prototyping?",

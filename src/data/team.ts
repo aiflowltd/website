@@ -18,8 +18,8 @@ export const teamMembers = {
   irina: {
     id: "irina-barbos",
     name: "Irina Barbos",
-    role: "Co-Founder & AI Solutions Consultant",
-    bio: "Irina brings deep expertise in full-stack development and system architecture. She has led the development of complex web platforms and specializes in building scalable, production-ready systems with modern technologies like Next.js, React, and cloud infrastructure.",
+    role: "Founder & AI Solutions Consultant",
+    bio: "Irina has built AI-focused products for organizations in the U.S. and Europe, including startups developed within NYU’s innovation ecosystem. With a strong engineering background, she designs scalable architectures and helps teams implement production-ready AI aligned with operational needs.",
     photo: irinaImage,
     linkedin: "https://www.linkedin.com/in/irina-barbos",
     github: "https://github.com/irinalarisabarbos",
@@ -29,7 +29,7 @@ export const teamMembers = {
   mihai: {
     id: "mihai-anton",
     name: "Mihai Anton",
-    role: "Co-Founder & Lead AI/ML Engineer",
+    role: "Founder & Lead AI/ML Engineer",
     bio: "Mihai is an AI, ML and software engineer with nine years of hands-on experience building ML systems end to end. After working at Google, Bloomberg, and multiple startups, he founded AI Flow to help companies turn data into real, scalable products built with first principles and technical rigor.",
     photo: mihaiImage,
     linkedin: "https://www.linkedin.com/in/mihaianton98/",
