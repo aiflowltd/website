@@ -10,12 +10,13 @@ import {
   Users,
   Quote,
 } from "lucide-react";
-import { Link, useParams, Navigate } from "react-router-dom";
+import { Link, useParams, Navigate, useNavigate } from "react-router-dom";
 import { getCaseStudy } from "@/data/caseStudies";
 import { useEffect } from "react";
 
 const CaseStudyDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const study = id ? getCaseStudy(id) : null;
 
   useEffect(() => {
@@ -30,21 +31,27 @@ const CaseStudyDetail = () => {
     return <Navigate to="/case-studies" replace />;
   }
 
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("/case-studies");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
 
       <main className="container mx-auto px-6 pt-32 pb-20">
         {/* Back Button */}
-        <Link to="/case-studies">
-          <Button
-            variant="ghost"
-            className="mb-8 text-primary hover:text-primary/80"
-          >
-            <ArrowLeft className="mr-2 w-4 h-4" />
-            Back to Case Studies
-          </Button>
-        </Link>
+        <button
+          onClick={handleBack}
+          className="inline-flex items-center gap-2 mb-8 text-primary hover:text-primary/80 transition-colors group cursor-pointer"
+        >
+          <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1" />
+          <span>Back</span>
+        </button>
 
         {/* Hero Section */}
         <div className="max-w-7xl mx-auto mb-12">

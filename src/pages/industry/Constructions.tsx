@@ -8,9 +8,12 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import {
-  MessageSquare,
+  Building,
+  Building2,
+  Package,
+  Layers,
+  ClipboardCheck,
   FileText,
-  BarChart,
   Shield,
   Workflow,
   ArrowRight,
@@ -18,88 +21,86 @@ import {
   Clock,
   TrendingUp,
   Target,
+  Calendar,
   Users,
-  Palette,
-  Layers,
-  PieChart,
-  Rocket,
-  Filter,
+  AlertTriangle,
+  MessageSquare,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { colors } from "@/constants/colors";
 import { JourneySection } from "@/components/JourneySection";
 import { journeySteps } from "@/data/journey";
+import { getCaseStudy } from "@/data/caseStudies";
+import { Card } from "@/components/ui/card";
 
-// Agent Ideas for Carousel
 const agentIdeas = [
   {
-    icon: FileText,
-    label: "Content Production",
-    description: "Copy & creative variants",
+    icon: Building,
+    label: "Project Planning",
+    description: "Blueprint analysis",
     color: colors.primary,
     bg: colors.primary + "20",
     border: colors.primary + "40",
   },
   {
-    icon: MessageSquare,
-    label: "Lead Qualification",
-    description: "Instant response & routing",
+    icon: ClipboardCheck,
+    label: "Safety Compliance",
+    description: "Regulatory checks",
     color: colors.success,
     bg: colors.success + "20",
     border: colors.success + "40",
+  },
+  {
+    icon: Package,
+    label: "Material Tracking",
+    description: "Inventory management",
+    color: colors.secondary,
+    bg: colors.secondary + "20",
+    border: colors.secondary + "40",
+  },
+  {
+    icon: Calendar,
+    label: "Schedule Optimization",
+    description: "Timeline management",
+    color: colors.warning,
+    bg: colors.warning + "20",
+    border: colors.warning + "40",
+  },
+  {
+    icon: FileText,
+    label: "Documentation",
+    description: "Progress reports",
+    color: colors.primary,
+    bg: colors.primary + "20",
+    border: colors.primary + "40",
   },
   {
     icon: Users,
-    label: "Personalization",
-    description: "Segmentation & targeting",
+    label: "Team Coordination",
+    description: "Workforce management",
     color: colors.secondary,
     bg: colors.secondary + "20",
     border: colors.secondary + "40",
   },
   {
-    icon: Palette,
-    label: "Creative Optimization",
-    description: "Performance-driven variants",
+    icon: AlertTriangle,
+    label: "Risk Assessment",
+    description: "Hazard detection",
     color: colors.warning,
     bg: colors.warning + "20",
     border: colors.warning + "40",
   },
   {
-    icon: BarChart,
-    label: "Analytics & Attribution",
-    description: "Automated insights",
-    color: colors.primary,
-    bg: colors.primary + "20",
-    border: colors.primary + "40",
-  },
-  {
-    icon: Rocket,
-    label: "Campaign Coordination",
-    description: "Launch & execution",
-    color: colors.secondary,
-    bg: colors.secondary + "20",
-    border: colors.secondary + "40",
-  },
-  {
-    icon: Filter,
-    label: "Funnel Agent",
-    description: "Journey optimization",
+    icon: Layers,
+    label: "Workflow",
+    description: "Process automation",
     color: colors.success,
     bg: colors.success + "20",
     border: colors.success + "40",
   },
-  {
-    icon: PieChart,
-    label: "Reporting Agent",
-    description: "Automated insights",
-    color: colors.warning,
-    bg: colors.warning + "20",
-    border: colors.warning + "40",
-  },
 ];
 
-// Carousel Component
 const AgentCarousel = () => {
   const [api, setApi] = useState<any>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -141,16 +142,14 @@ const AgentCarousel = () => {
               Math.abs(index - selectedIndex - agentIdeas.length)
             );
 
-            // More dynamic scaling for marketing - larger range
-            const scale = isCenter ? 1 : distance === 1 ? 0.8 : 0.55;
-            const opacity = isCenter ? 1 : distance === 1 ? 0.75 : 0.35;
+            const scale = isCenter ? 1 : distance === 1 ? 0.75 : 0.5;
+            const opacity = isCenter ? 1 : distance === 1 ? 0.7 : 0.4;
 
-            // Icon sizes with more variation
             const iconSize = isCenter
-              ? "56px"
+              ? "52px"
               : distance === 1
-              ? "42px"
-              : "28px";
+              ? "40px"
+              : "32px";
 
             return (
               <CarouselItem
@@ -163,10 +162,9 @@ const AgentCarousel = () => {
                     transform: `scale(${scale})`,
                     opacity: opacity,
                     transition:
-                      "transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.9s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                      "transform 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                   }}
                 >
-                  {/* Icon with square background */}
                   <div className="relative">
                     <div
                       className="relative rounded-xl p-3"
@@ -174,7 +172,7 @@ const AgentCarousel = () => {
                         backgroundColor: isCenter ? agent.bg : "transparent",
                         border: isCenter ? `2px solid ${agent.border}` : "none",
                         transition:
-                          "all 0.9s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                          "all 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                         transform: isCenter ? "scale(1.1)" : "scale(1)",
                       }}
                     >
@@ -189,12 +187,11 @@ const AgentCarousel = () => {
                             ? `drop-shadow(0 4px 10px ${agent.color}40)`
                             : `drop-shadow(0 2px 5px ${agent.color}20)`,
                           transition:
-                            "all 0.9s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                            "all 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                         }}
                       />
                     </div>
                   </div>
-                  {/* Label - always rendered with consistent height for smooth transitions */}
                   <div
                     className="mt-10 text-center"
                     style={{
@@ -202,7 +199,7 @@ const AgentCarousel = () => {
                       height: "70px",
                       minHeight: "70px",
                       transition:
-                        "opacity 0.9s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                        "opacity 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                     }}
                   >
                     <div
@@ -217,19 +214,6 @@ const AgentCarousel = () => {
                     >
                       {agent.description}
                     </div>
-                    {/* Animated metric indicator for center */}
-                    {isCenter && (
-                      <div
-                        className="mt-2 text-xs font-semibold"
-                        style={{
-                          color: agent.color,
-                          animation: "fadeInUp 0.9s ease-out",
-                        }}
-                      >
-                        <TrendingUp className="inline w-3 h-3 mr-1" />
-                        Active
-                      </div>
-                    )}
                   </div>
                 </div>
               </CarouselItem>
@@ -238,7 +222,6 @@ const AgentCarousel = () => {
         </CarouselContent>
       </Carousel>
 
-      {/* CSS Animations */}
       <style>{`
         @keyframes fadeInUp {
           from {
@@ -255,152 +238,177 @@ const AgentCarousel = () => {
   );
 };
 
-const Marketing = () => {
+const Constructions = () => {
+  const [isAssembled, setIsAssembled] = useState(false);
+  const [animationComplete, setAnimationComplete] = useState(false);
+  const [randomPositions, setRandomPositions] = useState(() => {
+    const positions: Array<{ x: number; y: number; rotate: number; size: number }> = [];
+    for (let i = 0; i < 12; i++) {
+      positions.push({
+        x: 50 + Math.random() * 350,
+        y: 30 + Math.random() * 200,
+        rotate: (Math.random() - 0.5) * 60,
+        size: 20 + Math.random() * 15,
+      });
+    }
+    return positions;
+  });
+
+  const resetAnimation = () => {
+    setIsAssembled(false);
+    setAnimationComplete(false);
+
+    const newPositions: Array<{ x: number; y: number; rotate: number; size: number }> = [];
+    for (let i = 0; i < 12; i++) {
+      newPositions.push({
+        x: 50 + Math.random() * 350,
+        y: 30 + Math.random() * 200,
+        rotate: (Math.random() - 0.5) * 60,
+        size: 20 + Math.random() * 15,
+      });
+    }
+    setRandomPositions(newPositions);
+
+    setTimeout(() => {
+      setIsAssembled(true);
+    }, 100);
+  };
+
   useEffect(() => {
-    document.title = "AI Flow | AI Agents for Marketing Teams";
+    document.title = "AI Flow | AI Agents for Construction Teams";
+
+    const timer = setTimeout(() => {
+      setIsAssembled(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (isAssembled) {
+      const completeTimer = setTimeout(() => {
+        setAnimationComplete(true);
+      }, 5000);
+      return () => clearTimeout(completeTimer);
+    } else {
+      setAnimationComplete(false);
+    }
+  }, [isAssembled]);
+
+  const buildingStructure = [
+    { x: 120, y: 200, size: 25, color: colors.primary },
+    { x: 150, y: 200, size: 25, color: colors.primary },
+    { x: 180, y: 200, size: 25, color: colors.primary },
+    { x: 210, y: 200, size: 25, color: colors.primary },
+    { x: 135, y: 170, size: 25, color: colors.success },
+    { x: 165, y: 170, size: 25, color: colors.success },
+    { x: 195, y: 170, size: 25, color: colors.success },
+    { x: 150, y: 140, size: 25, color: colors.secondary },
+    { x: 180, y: 140, size: 25, color: colors.secondary },
+    { x: 165, y: 110, size: 25, color: colors.warning },
+  ];
 
   const agentTypes = [
     {
-      icon: FileText,
-      title: "Content Production",
+      icon: Building2,
+      title: "Project Planning & Blueprint Agents",
       subtitle: "Agents",
-      description: "Ship more tests with less effort.",
+      description: "Transform blueprints into actionable workflows.",
       iconColor: colors.primary,
       iconBg: colors.primary + "20",
       iconBorder: colors.primary + "40",
       features: [
-        "Convert briefs into ready-to-launch copy",
-        "Produce versions for persona, channel, funnel stage",
-        "Generate visual variants and resize formats",
-        "Repurpose long-form content into micro-assets",
+        "Parse architectural drawings and extract key specifications",
+        "Generate task breakdowns from project plans",
+        "Identify dependencies and critical path items",
+        "Automate resource allocation based on project scope",
+        "Track progress against original blueprints",
       ],
       effect:
-        "Faster go-live cycles, brand tone consistency, increased testing volume.",
+        "Projects start with clear, actionable plans. Teams know exactly what to build and when.",
     },
     {
-      icon: MessageSquare,
-      title: "Lead Qualification and Routing",
+      icon: Package,
+      title: "Material Tracking & Inventory Agents",
       subtitle: "Agents",
-      description: "Engage while intent is still high.",
+      description: "Keep materials flowing without manual tracking.",
       iconColor: colors.success,
       iconBg: colors.success + "20",
       iconBorder: colors.success + "40",
       features: [
-        "Respond instantly to inbound leads",
-        "Score intent based on interaction and behavior",
-        "Ask for missing info",
-        "Push into CRM with structured fields",
+        "Monitor material deliveries and inventory levels",
+        "Predict material needs based on project timeline",
+        "Alert on shortages before they cause delays",
+        "Automate reordering for critical supplies",
+        "Track material costs and budget compliance",
       ],
       effect:
-        "Higher conversion to meeting, sales works warm leads only, no lost opportunities due to delayed response.",
+        "No more waiting for materials. Projects stay on schedule with proactive inventory management.",
     },
     {
-      icon: Users,
-      title: "Personalization & Segmentation",
+      icon: Shield,
+      title: "Safety Compliance & Risk Agents",
       subtitle: "Agents",
-      description: "Increase relevance automatically.",
-      iconColor: colors.secondary,
-      iconBg: colors.secondary + "20",
-      iconBorder: colors.secondary + "40",
-      features: [
-        "Cluster users into behavioral segments",
-        "Personalize content blocks",
-        "Trigger timing based on micro-events",
-        "Recommend next actions (resend, switch channel, escalate)",
-      ],
-      effect:
-        "Increased open & click rates, better sequencing of messaging, increased lifetime value.",
-    },
-    {
-      icon: Palette,
-      title: "AI Creative Optimization",
-      subtitle: "Agents",
-      description:
-        "Let creatives iterate continuously - even when the team is busy.",
+      description: "Prevent incidents before they happen.",
       iconColor: colors.warning,
       iconBg: colors.warning + "20",
       iconBorder: colors.warning + "40",
       features: [
-        "Pull performance data",
-        "Identify winning angles and formats",
-        "Produce optimized ad sets and variants",
-        "Send suggested creative replacements",
-      ],
-      effect: "Lower CAC, higher CTR, more controlled experiments.",
-    },
-    {
-      icon: BarChart,
-      title: "Analytics & Attribution",
-      subtitle: "Agents",
-      description: "Insights that arrive automatically, not weeks later.",
-      iconColor: colors.primary,
-      iconBg: colors.primary + "20",
-      iconBorder: colors.primary + "40",
-      features: [
-        "Read dashboards and channel data",
-        "Detect week-over-week anomalies",
-        "Attribute spend to performance outcomes",
-        "Create short reports for leadership",
+        "Monitor safety checklists and compliance requirements",
+        "Identify potential hazards from site photos and reports",
+        "Automate safety training reminders and certifications",
+        "Track incident reports and generate insights",
+        "Ensure regulatory compliance across all sites",
       ],
       effect:
-        "Faster decision cycles, better clarity on what drives revenue, no manual reporting workload.",
+        "Safer sites with fewer incidents. Compliance becomes automatic, not reactive.",
     },
     {
-      icon: Rocket,
-      title: "Campaign Coordination",
+      icon: Calendar,
+      title: "Schedule Optimization & Coordination Agents",
       subtitle: "Agents",
-      description: "Launch faster. Launch cleanly.",
+      description: "Keep projects on track despite complexity.",
       iconColor: colors.secondary,
       iconBg: colors.secondary + "20",
       iconBorder: colors.secondary + "40",
       features: [
-        "Turn ideas into tasks and dependencies",
-        "Track approvals",
-        "Follow up with stakeholders",
-        "Notify when assets are ready",
+        "Optimize crew schedules across multiple projects",
+        "Reschedule automatically when delays occur",
+        "Coordinate subcontractor availability",
+        "Predict completion dates based on current progress",
+        "Balance workloads to prevent bottlenecks",
       ],
       effect:
-        "No bottlenecks, no forgotten deliverables, smooth cross-team execution.",
+        "Projects finish on time. Schedules adapt to reality without manual intervention.",
     },
   ];
 
   const benefits = [
     {
-      icon: Shield,
-      title: "Built for execution",
+      icon: Building,
+      title: "Built for real construction sites",
       description:
-        "These agents live inside the workflows that matter: copy approval, funnel mapping, analytics review, targeting decisions, content scheduling. Not side tools. Not experiments. Actual delivery engines.",
+        "Agents integrate with your existing tools, from Procore to Bluebeam, and work with your current workflows.",
       iconColor: colors.primary,
       iconBg: colors.primary + "20",
       iconBorder: colors.primary + "40",
     },
     {
       icon: Workflow,
-      title: "Works within your existing platforms",
+      title: "Fits your construction processes",
       description:
-        "Agents integrate directly with HubSpot, Salesforce, Webflow, Google Ads, Meta Ads Manager, Google Analytics, Notion, Slack, Email automation tools, FIGMA files, brand asset libraries. Your workflow stays familiar. Your team stops manually filling the gaps.",
+        "We align to your project management style, safety protocols, reporting requirements, and team structure.",
       iconColor: colors.secondary,
       iconBg: colors.secondary + "20",
       iconBorder: colors.secondary + "40",
     },
     {
       icon: Sparkles,
-      title: "Full build, not suggestions",
-      description:
-        "We design, deploy, monitor, and refine. You get: working agents, measurable outcomes, clear adoption plan, real performance tracking.",
+      title: "Full implementation ownership",
+      description: "We architect, build, deploy, and monitor - not just advise.",
       iconColor: colors.warning,
       iconBg: colors.warning + "20",
       iconBorder: colors.warning + "40",
-    },
-    {
-      icon: Layers,
-      title: "Modular agent architecture",
-      description:
-        "You can start with one agent - then extend: Funnel Agent, Content Agent, Personalization Agent, Reporting Agent, Reallocation Agent. Each agent handles one stage of your growth engine.",
-      iconColor: colors.success,
-      iconBg: colors.success + "20",
-      iconBorder: colors.success + "40",
     },
   ];
 
@@ -413,9 +421,9 @@ const Marketing = () => {
       iconBg: colors.warning + "20",
       iconBorder: colors.warning + "40",
       uplift: [
-        "More meetings booked",
-        "Higher early-touch conversion",
-        "More assets live weekly",
+        "Project planning time reduced by 50%",
+        "Material delays cut by 60%",
+        "Safety compliance checks automated",
       ],
     },
     {
@@ -426,9 +434,9 @@ const Marketing = () => {
       iconBg: colors.success + "20",
       iconBorder: colors.success + "40",
       uplift: [
-        "Lower CAC",
-        "Increased qualified pipeline",
-        "Growth content delivered on time",
+        "Projects stay on schedule 40% more often",
+        "Material waste reduced by 30%",
+        "Fewer safety incidents and compliance issues",
       ],
     },
     {
@@ -439,11 +447,18 @@ const Marketing = () => {
       iconBg: colors.primary + "20",
       iconBorder: colors.primary + "40",
       uplift: [
-        "Higher LTV",
-        "De-risked ad spend",
-        "Better conversion from same budget",
+        "Higher project margins through efficiency",
+        "Improved client satisfaction and repeat business",
+        "Competitive advantage in bidding and execution",
       ],
     },
+  ];
+
+  const painPoints = [
+    "Projects fall behind because planning takes too long",
+    "Material shortages cause unexpected delays",
+    "Scheduling conflicts across multiple projects create bottlenecks",
+    "Customer inquiries take hours to convert into quotations, delaying sales",
   ];
 
   return (
@@ -451,11 +466,9 @@ const Marketing = () => {
       <Navigation />
 
       <main className="relative">
-        {/* Hero Section - Split Screen */}
         <section className="relative pt-40 pb-32 px-6 overflow-hidden">
           <div className="container mx-auto max-w-7xl">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              {/* Left: Headline + Value */}
               <div className="space-y-8">
                 <div className="space-y-6">
                   <h1
@@ -465,7 +478,7 @@ const Marketing = () => {
                       color: colors.lightGrey,
                     }}
                   >
-                    AI Agents for Marketing.
+                    AI Agents for Construction Teams.
                     <br />
                     <span
                       className="bg-gradient-to-r"
@@ -476,15 +489,14 @@ const Marketing = () => {
                         backgroundClip: "text",
                       }}
                     >
-                      Turn campaigns into continuous execution.
+                      Build smarter, faster.
                     </span>
                   </h1>
                   <p
                     className="text-lg md:text-xl max-w-xl"
                     style={{ color: colors.grey, lineHeight: "1.6" }}
                   >
-                    Increase conversions, compress launch cycles, and remove the
-                    operational drag slowing growth.
+                    Purpose-built AI that manages projects, tracks materials, ensures safety, and keeps construction on schedule.
                   </p>
                 </div>
                 <div className="flex gap-4 max-w-xl">
@@ -505,7 +517,6 @@ const Marketing = () => {
                 </div>
               </div>
 
-              {/* Right: Visual/Graphic - Marketing Funnel Network */}
               <div className="relative">
                 <div
                   className="relative rounded-2xl p-8 backdrop-blur-xl border"
@@ -515,16 +526,15 @@ const Marketing = () => {
                     boxShadow: `0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px ${colors.grey}20`,
                   }}
                 >
-                  {/* Marketing Workflow Graph */}
-                  <div className="relative h-80">
+                  <div className="relative h-80 flex items-center justify-center">
                     <svg
                       className="absolute inset-0 w-full h-full"
-                      viewBox="0 0 500 320"
+                      viewBox="0 0 450 300"
                       style={{ overflow: "visible" }}
                     >
                       <defs>
                         <linearGradient
-                          id="workflowGradient"
+                          id="blockGradient"
                           x1="0%"
                           y1="0%"
                           x2="100%"
@@ -534,27 +544,20 @@ const Marketing = () => {
                             offset="0%"
                             style={{
                               stopColor: colors.primary,
-                              stopOpacity: 0.8,
-                            }}
-                          />
-                          <stop
-                            offset="50%"
-                            style={{
-                              stopColor: colors.success,
-                              stopOpacity: 0.6,
+                              stopOpacity: 0.15,
                             }}
                           />
                           <stop
                             offset="100%"
                             style={{
                               stopColor: colors.secondary,
-                              stopOpacity: 0.8,
+                              stopOpacity: 0.15,
                             }}
                           />
                         </linearGradient>
-                        <filter id="nodeGlow">
+                        <filter id="blockShadow">
                           <feGaussianBlur
-                            stdDeviation="2"
+                            stdDeviation="3"
                             result="coloredBlur"
                           />
                           <feMerge>
@@ -564,435 +567,104 @@ const Marketing = () => {
                         </filter>
                       </defs>
 
-                      {/* Workflow nodes and connections */}
                       <g>
-                        {/* Top tier: Input nodes */}
-                        {/* Ideas */}
-                        <g>
-                          <rect
-                            x="50"
-                            y="30"
-                            width="80"
-                            height="45"
-                            rx="8"
-                            fill={colors.primary + "20"}
-                            stroke={colors.primary}
-                            strokeWidth="2"
-                            filter="url(#nodeGlow)"
-                            style={{
-                              animation: "pulse 2.5s ease-in-out infinite",
-                            }}
-                          />
-                          <text
-                            x="90"
-                            y="57"
-                            textAnchor="middle"
-                            fill={colors.primary}
-                            fontSize="11"
-                            fontWeight="600"
-                          >
-                            Ideas
-                          </text>
+                        {buildingStructure.map((block, i) => {
+                          const randomPos = randomPositions[i] || randomPositions[0];
+                          const currentX = isAssembled ? block.x : randomPos.x;
+                          const currentY = isAssembled ? block.y : randomPos.y;
+                          const currentRotate = isAssembled ? 0 : randomPos.rotate;
+                          const currentSize = isAssembled ? block.size : randomPos.size;
+
+                          return (
+                            <g
+                              key={`block-${i}`}
+                              style={{
+                                transform: `translate(${currentX}px, ${currentY}px) rotate(${currentRotate}deg)`,
+                                transition: isAssembled
+                                  ? "transform 2.5s cubic-bezier(0.34, 1.56, 0.64, 1)"
+                                  : "none",
+                                transitionDelay: isAssembled
+                                  ? `${i * 0.15}s`
+                                  : "0s",
+                              }}
+                            >
+                              <rect
+                                x={-currentSize / 2}
+                                y={-currentSize / 2}
+                                width={currentSize}
+                                height={currentSize}
+                                rx="2"
+                                fill={block.color + (isAssembled ? "30" : "20")}
+                                stroke={block.color}
+                                strokeWidth="2"
+                                opacity={isAssembled ? 0.9 : 0.7}
+                                style={{
+                                  filter: "url(#blockShadow)",
+                                  animation: isAssembled
+                                    ? `blockPulse ${4 + i * 0.3}s ease-in-out infinite`
+                                    : "none",
+                                  animationDelay: isAssembled
+                                    ? `${i * 0.3}s`
+                                    : "0s",
+                                  transition: "opacity 0.5s ease-out",
+                                }}
+                              />
+                            </g>
+                          );
+                        })}
+
+                        <g opacity="0.18">
+                          {[-3, -2, -1, 0, 1, 2, 3].map((i) => (
+                            <line
+                              key={`grid-h-${i}`}
+                              x1="10"
+                              y1={150 + i * 40}
+                              x2="440"
+                              y2={150 + i * 40}
+                              stroke={colors.primary}
+                              strokeWidth="1"
+                              strokeDasharray="2,4"
+                            />
+                          ))}
+                          {[-4, -3, -2, -1, 0, 1, 2, 3, 4].map((i) => (
+                            <line
+                              key={`grid-v-${i}`}
+                              x1={225 + i * 40}
+                              y1="10"
+                              x2={225 + i * 40}
+                              y2="290"
+                              stroke={colors.primary}
+                              strokeWidth="1"
+                              strokeDasharray="2,4"
+                            />
+                          ))}
                         </g>
-
-                        {/* BrandingMaterials */}
-                        <g>
-                          <rect
-                            x="210"
-                            y="30"
-                            width="80"
-                            height="45"
-                            rx="8"
-                            fill={colors.primary + "20"}
-                            stroke={colors.primary}
-                            strokeWidth="2"
-                            filter="url(#nodeGlow)"
-                            style={{
-                              animation: "pulse 2.5s ease-in-out infinite 0.3s",
-                            }}
-                          />
-                          <text
-                            x="250"
-                            y="57"
-                            textAnchor="middle"
-                            fill={colors.primary}
-                            fontSize="11"
-                            fontWeight="600"
-                          >
-                            Branding
-                          </text>
-                        </g>
-
-                        {/* TrendingPosts */}
-                        <g>
-                          <rect
-                            x="370"
-                            y="30"
-                            width="80"
-                            height="45"
-                            rx="8"
-                            fill={colors.primary + "20"}
-                            stroke={colors.primary}
-                            strokeWidth="2"
-                            filter="url(#nodeGlow)"
-                            style={{
-                              animation: "pulse 2.5s ease-in-out infinite 0.6s",
-                            }}
-                          />
-                          <text
-                            x="410"
-                            y="57"
-                            textAnchor="middle"
-                            fill={colors.primary}
-                            fontSize="11"
-                            fontWeight="600"
-                          >
-                            Trending
-                          </text>
-                        </g>
-
-                        {/* Middle: Automated Post Creation */}
-                        <g>
-                          <rect
-                            x="180"
-                            y="120"
-                            width="140"
-                            height="60"
-                            rx="10"
-                            fill={colors.success + "20"}
-                            stroke={colors.success}
-                            strokeWidth="2.5"
-                            filter="url(#nodeGlow)"
-                            style={{
-                              animation: "pulse 2s ease-in-out infinite 0.2s",
-                            }}
-                          />
-                          <text
-                            x="250"
-                            y="145"
-                            textAnchor="middle"
-                            fill={colors.success}
-                            fontSize="12"
-                            fontWeight="700"
-                          >
-                            Automated Post
-                          </text>
-                          <text
-                            x="250"
-                            y="165"
-                            textAnchor="middle"
-                            fill={colors.success}
-                            fontSize="12"
-                            fontWeight="700"
-                          >
-                            Creation
-                          </text>
-                        </g>
-
-                        {/* Bottom tier: Output nodes */}
-                        {/* Campaign creation */}
-                        <g>
-                          <rect
-                            x="80"
-                            y="240"
-                            width="120"
-                            height="50"
-                            rx="8"
-                            fill={colors.secondary + "20"}
-                            stroke={colors.secondary}
-                            strokeWidth="2"
-                            filter="url(#nodeGlow)"
-                            style={{
-                              animation: "pulse 1.8s ease-in-out infinite",
-                            }}
-                          />
-                          <text
-                            x="140"
-                            y="265"
-                            textAnchor="middle"
-                            fill={colors.secondary}
-                            fontSize="11"
-                            fontWeight="600"
-                          >
-                            Campaign
-                          </text>
-                          <text
-                            x="140"
-                            y="280"
-                            textAnchor="middle"
-                            fill={colors.secondary}
-                            fontSize="11"
-                            fontWeight="600"
-                          >
-                            Creation
-                          </text>
-                        </g>
-
-                        {/* Automated Scheduling */}
-                        <g>
-                          <rect
-                            x="300"
-                            y="240"
-                            width="120"
-                            height="50"
-                            rx="8"
-                            fill={colors.secondary + "20"}
-                            stroke={colors.secondary}
-                            strokeWidth="2"
-                            filter="url(#nodeGlow)"
-                            style={{
-                              animation: "pulse 1.8s ease-in-out infinite 0.4s",
-                            }}
-                          />
-                          <text
-                            x="360"
-                            y="265"
-                            textAnchor="middle"
-                            fill={colors.secondary}
-                            fontSize="11"
-                            fontWeight="600"
-                          >
-                            Automated
-                          </text>
-                          <text
-                            x="360"
-                            y="280"
-                            textAnchor="middle"
-                            fill={colors.secondary}
-                            fontSize="11"
-                            fontWeight="600"
-                          >
-                            Scheduling
-                          </text>
-                        </g>
-
-                        {/* Connection lines with animated flow */}
-                        <g>
-                          {/* Ideas → Automated Post Creation */}
-                          <line
-                            x1="90"
-                            y1="75"
-                            x2="220"
-                            y2="120"
-                            stroke={colors.primary}
-                            strokeWidth="2"
-                            opacity="0.5"
-                            style={{
-                              strokeDasharray: "6,6",
-                              animation: "dashFlow 2.5s linear infinite",
-                            }}
-                          />
-                          {/* BrandingMaterials → Automated Post Creation */}
-                          <line
-                            x1="250"
-                            y1="75"
-                            x2="250"
-                            y2="120"
-                            stroke={colors.primary}
-                            strokeWidth="2"
-                            opacity="0.5"
-                            style={{
-                              strokeDasharray: "6,6",
-                              animation: "dashFlow 2.5s linear infinite 0.5s",
-                            }}
-                          />
-                          {/* TrendingPosts → Automated Post Creation */}
-                          <line
-                            x1="410"
-                            y1="75"
-                            x2="280"
-                            y2="120"
-                            stroke={colors.primary}
-                            strokeWidth="2"
-                            opacity="0.5"
-                            style={{
-                              strokeDasharray: "6,6",
-                              animation: "dashFlow 2.5s linear infinite 1s",
-                            }}
-                          />
-                          {/* Automated Post Creation → Campaign creation */}
-                          <line
-                            x1="220"
-                            y1="180"
-                            x2="140"
-                            y2="240"
-                            stroke={colors.success}
-                            strokeWidth="2.5"
-                            opacity="0.6"
-                            style={{
-                              strokeDasharray: "8,8",
-                              animation: "dashFlow 2s linear infinite",
-                            }}
-                          />
-                          {/* Automated Post Creation → Automated Scheduling */}
-                          <line
-                            x1="280"
-                            y1="180"
-                            x2="360"
-                            y2="240"
-                            stroke={colors.success}
-                            strokeWidth="2.5"
-                            opacity="0.6"
-                            style={{
-                              strokeDasharray: "8,8",
-                              animation: "dashFlow 2s linear infinite 0.8s",
-                            }}
-                          />
-                        </g>
-
-                        {/* Animated data particles flowing - one per line */}
-                        {/* Ideas → Automated Post Creation */}
-                        <circle
-                          r="3"
-                          fill={colors.warning}
-                          opacity="0.9"
-                          style={{
-                            filter: `drop-shadow(0 0 4px ${colors.warning})`,
-                          }}
-                        >
-                          <animateMotion dur="2.5s" repeatCount="indefinite">
-                            <mpath href="#path-ideas-post" />
-                          </animateMotion>
-                        </circle>
-
-                        {/* BrandingMaterials → Automated Post Creation */}
-                        <circle
-                          r="3"
-                          fill={colors.warning}
-                          opacity="0.9"
-                          style={{
-                            filter: `drop-shadow(0 0 4px ${colors.warning})`,
-                          }}
-                        >
-                          <animateMotion
-                            dur="2.5s"
-                            repeatCount="indefinite"
-                            begin="0.5s"
-                          >
-                            <mpath href="#path-branding-post" />
-                          </animateMotion>
-                        </circle>
-
-                        {/* TrendingPosts → Automated Post Creation */}
-                        <circle
-                          r="3"
-                          fill={colors.warning}
-                          opacity="0.9"
-                          style={{
-                            filter: `drop-shadow(0 0 4px ${colors.warning})`,
-                          }}
-                        >
-                          <animateMotion
-                            dur="2.5s"
-                            repeatCount="indefinite"
-                            begin="1s"
-                          >
-                            <mpath href="#path-trending-post" />
-                          </animateMotion>
-                        </circle>
-
-                        {/* Automated Post Creation → Campaign creation */}
-                        <circle
-                          r="4"
-                          fill={colors.success}
-                          opacity="0.9"
-                          style={{
-                            filter: `drop-shadow(0 0 5px ${colors.success})`,
-                          }}
-                        >
-                          <animateMotion dur="2s" repeatCount="indefinite">
-                            <mpath href="#path-post-campaign" />
-                          </animateMotion>
-                        </circle>
-
-                        {/* Automated Post Creation → Automated Scheduling */}
-                        <circle
-                          r="4"
-                          fill={colors.success}
-                          opacity="0.9"
-                          style={{
-                            filter: `drop-shadow(0 0 5px ${colors.success})`,
-                          }}
-                        >
-                          <animateMotion
-                            dur="2s"
-                            repeatCount="indefinite"
-                            begin="0.8s"
-                          >
-                            <mpath href="#path-post-scheduling" />
-                          </animateMotion>
-                        </circle>
-
-                        {/* Hidden paths for animation */}
-                        <path
-                          id="path-ideas-post"
-                          d="M 90 75 L 220 120"
-                          fill="none"
-                          stroke="none"
-                        />
-                        <path
-                          id="path-branding-post"
-                          d="M 250 75 L 250 120"
-                          fill="none"
-                          stroke="none"
-                        />
-                        <path
-                          id="path-trending-post"
-                          d="M 410 75 L 280 120"
-                          fill="none"
-                          stroke="none"
-                        />
-                        <path
-                          id="path-post-campaign"
-                          d="M 220 180 L 140 240"
-                          fill="none"
-                          stroke="none"
-                        />
-                        <path
-                          id="path-post-scheduling"
-                          d="M 280 180 L 360 240"
-                          fill="none"
-                          stroke="none"
-                        />
                       </g>
                     </svg>
 
-                    {/* Top left annotation */}
-                    <div className="absolute top-0 left-0">
+                    <div className="absolute top-2 left-0 right-0 text-center">
                       <div
                         className="text-xs uppercase tracking-wider font-semibold"
                         style={{ color: colors.primary }}
                       >
-                        AI Agents to boost productivity
+                        Organized. Structured. Built.
                       </div>
                     </div>
 
-                    {/* Bottom right annotation */}
-                    <div className="absolute bottom-1 right-1">
+                    <div className="absolute bottom-2 left-0 right-0 text-center">
                       <div className="text-xs" style={{ color: colors.grey }}>
-                        Automated end-to-end
+                        AI-powered project coordination
                       </div>
                     </div>
                   </div>
 
-                  {/* CSS Animations */}
                   <style>{`
-                    @keyframes dashFlow {
-                      0% {
-                        stroke-dashoffset: 0;
+                    @keyframes blockPulse {
+                      0%, 100% {
+                        transform: translateY(0px) scale(1);
                       }
-                      100% {
-                        stroke-dashoffset: 20;
-                      }
-                    }
-                    @keyframes fadeInUp {
-                      from {
-                        opacity: 0;
-                        transform: translateY(20px);
-                      }
-                      to {
-                        opacity: 1;
-                        transform: translateY(0);
+                      50% {
+                        transform: translateY(-8px) scale(1.05);
                       }
                     }
                   `}</style>
@@ -1002,7 +674,6 @@ const Marketing = () => {
           </div>
         </section>
 
-        {/* Problem Statement - Minimal */}
         <section className="py-20 px-6">
           <div className="container mx-auto max-w-4xl">
             <div className="text-center space-y-6">
@@ -1013,39 +684,22 @@ const Marketing = () => {
                   color: colors.lightGrey,
                 }}
               >
-                Most marketing teams fall behind because of{" "}
-                <span style={{ color: colors.primary }}>delayed reporting</span>
+                Construction projects struggle with{" "}
+                <span style={{ color: colors.primary }}>coordination</span>
                 {" "}and{" "}
-                <span style={{ color: colors.primary }}>fragmented data.</span>
+                <span style={{ color: colors.primary }}>unexpected delays.</span>
               </h2>
               <div className="grid md:grid-cols-2 gap-4 mt-8 text-left">
-                {[
-                  {
-                    text: "Campaign ideas wait for creative assets",
-                    delay: 0,
-                    icon: FileText,
-                    color: colors.primary,
-                  },
-                  {
-                    text: "Reporting waits for data cleanup",
-                    delay: 0.1,
-                    icon: BarChart,
-                    color: colors.secondary,
-                  },
-                  {
-                    text: "Leads wait for qualification",
-                    delay: 0.2,
-                    icon: MessageSquare,
-                    color: colors.success,
-                  },
-                  {
-                    text: "Personalization waits for segmentation",
-                    delay: 0.3,
-                    icon: Users,
-                    color: colors.warning,
-                  },
-                ].map((item, idx) => {
-                  const IconComponent = item.icon;
+                {painPoints.map((point, idx) => {
+                  const icons = [Building2, Package, Shield, Calendar, MessageSquare];
+                  const iconColors = [
+                    colors.primary,
+                    colors.success,
+                    colors.warning,
+                    colors.secondary,
+                    colors.primary,
+                  ];
+                  const IconComponent = icons[idx];
                   return (
                     <div
                       key={idx}
@@ -1053,50 +707,49 @@ const Marketing = () => {
                       style={{
                         backgroundColor: colors.darkGrey + "60",
                         borderColor: colors.grey + "30",
-                        animation: `fadeInUp 0.6s ease-out ${item.delay}s both`,
+                        animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s both`,
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor = item.color + "60";
-                        e.currentTarget.style.boxShadow = `0 8px 24px ${item.color}20`;
+                        e.currentTarget.style.borderColor =
+                          iconColors[idx] + "60";
+                        e.currentTarget.style.boxShadow = `0 8px 24px ${iconColors[idx]}20`;
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.borderColor = colors.grey + "30";
                         e.currentTarget.style.boxShadow = "none";
                       }}
                     >
-                      {/* Animated background gradient on hover */}
                       <div
                         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                         style={{
-                          background: `linear-gradient(135deg, ${item.color}10, transparent)`,
+                          background: `linear-gradient(135deg, ${iconColors[idx]}10, transparent)`,
                         }}
                       />
                       <div className="relative flex items-center gap-3">
                         <div
                           className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
                           style={{
-                            backgroundColor: item.color + "20",
-                            border: `1px solid ${item.color}40`,
+                            backgroundColor: iconColors[idx] + "20",
+                            border: `1px solid ${iconColors[idx]}40`,
                           }}
                         >
                           <IconComponent
                             className="w-4 h-4"
-                            style={{ color: item.color }}
+                            style={{ color: iconColors[idx] }}
                           />
                         </div>
                         <p
                           className="text-sm flex-1"
                           style={{ color: colors.grey }}
                         >
-                          {item.text}
+                          {point}
                         </p>
                       </div>
-                      {/* Animated progress bar */}
                       <div
                         className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r transition-all duration-500 group-hover:h-1"
                         style={{
                           width: "0%",
-                          background: `linear-gradient(90deg, ${item.color}, ${item.color}80)`,
+                          background: `linear-gradient(90deg, ${iconColors[idx]}, ${iconColors[idx]}80)`,
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.width = "100%";
@@ -1113,13 +766,12 @@ const Marketing = () => {
                 className="text-lg font-semibold mt-6"
                 style={{ color: colors.lightGrey }}
               >
-                AI Agents remove those delays.
+                AI Agents eliminate these bottlenecks.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Agent Types - Bento Grid */}
         <section className="py-20 px-6">
           <div className="container mx-auto max-w-7xl">
             <div className="mb-16">
@@ -1131,13 +783,11 @@ const Marketing = () => {
                 }}
               >
                 Where AI Agents Strengthen{" "}
-                <span style={{ color: colors.primary }}>
-                  Your Marketing Operation
-                </span>
+                <span style={{ color: colors.primary }}>Construction Operations</span>
               </h2>
             </div>
 
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 gap-6">
               {agentTypes.map((agent, index) => {
                 const IconComponent = agent.icon;
                 return (
@@ -1160,7 +810,6 @@ const Marketing = () => {
                       e.currentTarget.style.boxShadow = `0 4px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px ${colors.grey}20`;
                     }}
                   >
-                    {/* Gradient line decoration - always visible but subtle */}
                     <div
                       className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl"
                       style={{
@@ -1168,7 +817,6 @@ const Marketing = () => {
                         opacity: 0.7,
                       }}
                     />
-                    {/* Glow effect on hover */}
                     <div
                       className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"
                       style={{
@@ -1271,7 +919,6 @@ const Marketing = () => {
           </div>
         </section>
 
-        {/* Why Choose AI Flow - Compact */}
         <section className="py-20 px-6">
           <div className="container mx-auto max-w-7xl">
             <div className="mb-12">
@@ -1282,12 +929,12 @@ const Marketing = () => {
                   color: colors.lightGrey,
                 }}
               >
-                Why Marketing Leaders Choose{" "}
+                Why Construction Teams Choose{" "}
                 <span style={{ color: colors.primary }}>AI Flow</span>
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-3 gap-6">
               {benefits.map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
@@ -1330,11 +977,9 @@ const Marketing = () => {
           </div>
         </section>
 
-        {/* Agent Ideas Carousel */}
         <section className="py-20 px-6 overflow-hidden">
           <div className="container mx-auto max-w-7xl">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              {/* Left: Text */}
               <div className="space-y-6">
                 <h2
                   className="text-3xl md:text-4xl font-bold"
@@ -1351,12 +996,10 @@ const Marketing = () => {
                   style={{ color: colors.grey }}
                 >
                   Create custom AI agents to automate specific tasks in your
-                  marketing pipeline. Each agent handles a distinct workflow
-                  stage.
+                  construction operations. Each agent handles a distinct workflow stage.
                 </p>
               </div>
 
-              {/* Right: Carousel */}
               <div className="relative w-full overflow-hidden">
                 <AgentCarousel />
               </div>
@@ -1364,7 +1007,6 @@ const Marketing = () => {
           </div>
         </section>
 
-        {/* Results - Timeline Style */}
         <section className="py-20 px-6">
           <div className="container mx-auto max-w-7xl">
             <div className="mb-16">
@@ -1462,7 +1104,165 @@ const Marketing = () => {
 
         <JourneySection steps={journeySteps} />
 
-        {/* Final CTA */}
+        <section className="py-20 px-6">
+          <div className="container mx-auto max-w-7xl">
+            <div className="mb-16">
+              <h2
+                className="text-3xl md:text-4xl font-bold mb-4"
+                style={{
+                  letterSpacing: "-0.02em",
+                  color: colors.lightGrey,
+                }}
+              >
+                Real{" "}
+                <span style={{ color: colors.primary }}>Construction Results</span>
+              </h2>
+            </div>
+
+            {(() => {
+              const caseStudy = getCaseStudy("construction-materials-retailer");
+              if (!caseStudy) return null;
+
+              return (
+                <Card
+                  className="overflow-hidden border"
+                  style={{
+                    backgroundColor: colors.mediumGrey + "40",
+                    borderColor: colors.grey + "30",
+                    boxShadow: `0 4px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px ${colors.grey}20`,
+                  }}
+                >
+                  <div className="grid md:grid-cols-2 gap-0">
+                    <div
+                      className="relative h-64 md:h-auto bg-cover bg-center"
+                      style={{
+                        backgroundImage: `url(${caseStudy.image})`,
+                      }}
+                    >
+                      <div
+                        className="absolute inset-0"
+                        style={{
+                          background: `linear-gradient(135deg, ${colors.primary}40, ${colors.secondary}40)`,
+                        }}
+                      />
+                    </div>
+
+                    <div className="p-8 md:p-12">
+                      <div className="mb-4">
+                        <span
+                          className="text-xs uppercase tracking-wider font-semibold px-3 py-1 rounded-full inline-block"
+                          style={{
+                            backgroundColor: colors.primary + "20",
+                            color: colors.primary,
+                          }}
+                        >
+                          {caseStudy.industry}
+                        </span>
+                      </div>
+
+                      <h3
+                        className="text-2xl md:text-3xl font-bold mb-4"
+                        style={{
+                          letterSpacing: "-0.02em",
+                          color: colors.lightGrey,
+                        }}
+                      >
+                        {caseStudy.title}
+                      </h3>
+
+                      <p
+                        className="text-base mb-6 leading-relaxed"
+                        style={{ color: colors.grey }}
+                      >
+                        {caseStudy.challenge}
+                      </p>
+
+                      <div className="grid grid-cols-3 gap-4 mb-6">
+                        {caseStudy.results.map((result, idx) => (
+                          <div
+                            key={idx}
+                            className="text-center p-4 rounded-lg"
+                            style={{
+                              backgroundColor: colors.darkGrey + "60",
+                            }}
+                          >
+                            <div
+                              className="w-8 h-8 rounded-lg flex items-center justify-center mx-auto mb-2"
+                              style={{
+                                backgroundColor: colors.primary + "20",
+                                color: colors.primary,
+                              }}
+                            >
+                              {result.icon}
+                            </div>
+                            <div
+                              className="text-sm font-semibold mb-1"
+                              style={{ color: colors.lightGrey }}
+                            >
+                              {result.label}
+                            </div>
+                            {result.detail && (
+                              <div
+                                className="text-xs"
+                                style={{ color: colors.grey }}
+                              >
+                                {result.detail}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+
+                      {caseStudy.metrics && (
+                        <div
+                          className="mb-6 p-4 rounded-lg border"
+                          style={{
+                            backgroundColor: colors.primary + "10",
+                            borderColor: colors.primary + "30",
+                          }}
+                        >
+                          <div className="grid grid-cols-3 gap-4 text-center">
+                            {caseStudy.metrics.map((metric, idx) => (
+                              <div key={idx}>
+                                <div
+                                  className="text-lg font-bold mb-1"
+                                  style={{ color: colors.primary }}
+                                >
+                                  {metric.value}
+                                </div>
+                                <div
+                                  className="text-xs"
+                                  style={{ color: colors.grey }}
+                                >
+                                  {metric.label}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      <Link to={`/case-studies/${caseStudy.id}`}>
+                        <Button
+                          className="w-full font-semibold"
+                          style={{
+                            background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
+                            color: "#FAFAFA",
+                            border: "none",
+                          }}
+                        >
+                          Read Full Case Study
+                          <ArrowRight className="ml-2 w-5 h-5" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </Card>
+              );
+            })()}
+          </div>
+        </section>
+
         <section className="py-32 px-6">
           <div className="container mx-auto max-w-7xl text-center">
             <h2
@@ -1472,7 +1272,7 @@ const Marketing = () => {
                 color: colors.lightGrey,
               }}
             >
-              AI Agents That Grow Your{" "}
+              AI Agents That Elevate{" "}
               <span
                 style={{
                   backgroundImage: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
@@ -1481,15 +1281,14 @@ const Marketing = () => {
                   backgroundClip: "text",
                 }}
               >
-                Marketing Engine
+                Construction Execution
               </span>
             </h2>
             <p
               className="text-lg mb-8 max-w-xl mx-auto"
               style={{ color: colors.grey }}
             >
-              Your team focuses on strategy, positioning, and creative
-              direction. Agents handle repetitive execution.
+              Expert systems that manage projects, track materials, ensure safety, and keep construction on schedule.
             </p>
             <Link to="/contact#calendly">
               <Button
@@ -1514,4 +1313,4 @@ const Marketing = () => {
   );
 };
 
-export default Marketing;
+export default Constructions;

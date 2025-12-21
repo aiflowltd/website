@@ -11,6 +11,8 @@ import {
 } from "@/constants/images";
 import caseStudy2 from "@/assets/case-study-2.jpg";
 
+const CASE_STUDY_CONSTRUCTION_MATERIALS_RETAILER = "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&h=600&fit=crop";
+
 export interface CaseStudyResult {
   icon: React.ReactNode;
   label: string;
@@ -627,6 +629,100 @@ export const caseStudies: Record<string, CaseStudy> = {
       company: "deineStudienfinanzierung",
     },
   },
+  "construction-materials-retailer": {
+    id: "construction-materials-retailer",
+    title: "Automating Customer Requests and Quotation for a Construction Materials Retailer",
+    client: "Construction Materials Retailer",
+    industry: "Construction",
+    image: CASE_STUDY_CONSTRUCTION_MATERIALS_RETAILER,
+    duration: "3 months",
+    teamSize: "2 engineers",
+    challenge:
+      "Manual customer inquiry handling and quotation generation was slow, error-prone, and didn't scale",
+    challengeDetail:
+      "A regional construction materials retailer approached us to streamline how customer inquiries are handled and converted into quotations. The store offers a wide variety of materials for residential and small commercial projects. Customers often reach out with unstructured requests — either through the website's inquiry form or messaging platforms — describing their project in general terms (e.g., 'I want materials for a new patio'). Staff were responsible for manually clarifying project requirements, translating requests into material lists, checking stock availability across multiple internal systems, and assembling preliminary quotes. This process was highly dependent on individual expertise, slow to scale, and prone to errors. As request volume increased, the company needed a system that could structure incoming requests, validate material dependencies, and support staff in generating accurate proposals and invoices efficiently.",
+    solution:
+      "Implemented AI-assisted workflow that automatically structures requests, identifies materials and dependencies, and validates stock before generating quotations",
+    solutionDetail:
+      "We implemented an AI-assisted workflow that automatically structures incoming customer requests, identifies necessary materials and dependencies, and validates stock before generating a preliminary quotation for review. The system integrates with internal inventory systems to check product availability, suggest alternatives if items are unavailable, and prevent incomplete proposals.",
+    solutionPoints: [
+      "Discovery: Reviewed common patterns in customer inquiries and identified points where expert knowledge was needed to determine material combinations. Mapped internal stock and product systems.",
+      "Design: Designed an AI intake process to guide customers through clarifying questions. Created dependency logic to ensure complete material lists (e.g., if ordering tiles → automatically include adhesives, grout, and accessories). Defined human review points to approve quotes before invoicing.",
+      "Implementation: Developed AI agents to structure inquiries from website forms or messaging channels. Connected the system to internal inventory to check stock and suggest alternatives. Automated generation of preliminary quotations and facilitated easy approval.",
+      "Testing: Iteratively tested with historical inquiries and real customer interactions. Validated that generated material lists were complete and feasible. Adjusted logic based on feedback from store staff.",
+      "Delivery: Deployed a production-ready workflow supporting both website and messaging channels. Provided training and documentation for internal teams. Enabled gradual adoption without disrupting daily operations.",
+    ],
+    technicalApproach: [
+      {
+        title: "Customer Intake & Structuring",
+        description:
+          "AI agents interact with customers via website forms or messaging channels, asking structured questions to clarify project scope and requirements.",
+      },
+      {
+        title: "Material Dependency & Validation",
+        description:
+          "The system uses internal rules and historical knowledge to ensure all necessary materials are included for each project type.",
+      },
+      {
+        title: "Stock Verification",
+        description:
+          "Integrated with internal systems to check product availability, suggest alternatives if items are unavailable, and prevent incomplete proposals.",
+      },
+      {
+        title: "Quotation & Invoice Support",
+        description:
+          "Generates a preliminary quotation for internal review. Once approved, it can automatically generate an invoice and hand off to the sales team.",
+      },
+    ],
+    results: [
+      {
+        icon: <Users />,
+        label: "20+ hrs/week saved per employee",
+        detail: "Reduced manual workload for customer relations staff",
+      },
+      {
+        icon: <TrendingUp />,
+        label: "20% boost in sales",
+        detail: "Faster turnaround from inquiry to quotation",
+      },
+      {
+        icon: <Zap />,
+        label: "ROI in ~8 months",
+        detail: "Platform cost recovered through efficiency gains and increased sales",
+      },
+    ],
+    metrics: [
+      {
+        label: "Time Saved",
+        value: "20+ hrs/week per customer relations employee",
+      },
+      {
+        label: "Sales Increase",
+        value: "20% boost in sales",
+      },
+      {
+        label: "ROI Timeline",
+        value: "~8 months",
+      },
+    ],
+    additionalResults: [
+      "Faster turnaround from inquiry to quotation",
+      "Improved accuracy and completeness of material lists",
+      "More consistent customer experience across all communication channels",
+      "Scalable workflow suitable for adding new product lines or locations",
+      "Reduced dependency on individual employee expertise",
+      "Structured data capture from previously unstructured inquiries",
+      "Foundation for further automation in sales and inventory management",
+    ],
+    tags: [
+      "AI Agents",
+      "Customer Service",
+      "Quotation Automation",
+      "Construction",
+      "Retail",
+      "Workflow Automation",
+    ],
+  },
 };
 
 // Export array for easy iteration
@@ -648,6 +744,7 @@ export const mainCaseStudies = [
   caseStudies["sales-intelligence-platform"],
   caseStudies["ai-legal-risk-detection"],
   caseStudies["student-financing-platform"],
+  caseStudies["construction-materials-retailer"],
 ];
 
 // Get case study by ID

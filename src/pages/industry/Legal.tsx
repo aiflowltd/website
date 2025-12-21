@@ -27,7 +27,8 @@ import {
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { colors } from "@/constants/colors";
-import { JourneyAnimation } from "@/components/JourneyAnimation";
+import { JourneySection } from "@/components/JourneySection";
+import { journeySteps } from "@/data/journey";
 
 // Agent Ideas for Carousel
 const agentIdeas = [
@@ -241,38 +242,6 @@ const AgentCarousel = () => {
 };
 
 const Legal = () => {
-  const journeySteps = [
-    {
-      label: "Discovery",
-      description:
-        "We start with a diagnostic conversation to understand your workflow bottlenecks, pain points, and where execution slows down.",
-    },
-    {
-      label: "Workshop",
-      description:
-        "Together, we map out your current processes and identify specific areas where AI agents can deliver immediate value.",
-    },
-    {
-      label: "Roadmap",
-      description:
-        "We create a clear implementation plan with prioritized agents, expected outcomes, and a timeline for rollout.",
-    },
-    {
-      label: "Implementation",
-      description:
-        "Our team builds, integrates, and deploys working agents directly into your existing workflows and systems.",
-    },
-    {
-      label: "Maintenance",
-      description:
-        "We monitor performance, refine agents based on real usage, and ensure they continue to deliver value over time.",
-    },
-    {
-      label: "Follow ups",
-      description:
-        "Regular check-ins to optimize agents, add new capabilities, and ensure your team is getting maximum value.",
-    },
-  ];
   const [isOrganized, setIsOrganized] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
   const [randomPositions, setRandomPositions] = useState(() => {
@@ -1356,20 +1325,7 @@ const Legal = () => {
           </div>
         </section>
 
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-7xl">
-            <div
-              className="relative rounded-2xl p-8 md:p-12 border"
-              style={{
-                backgroundColor: colors.mediumGrey + "40",
-                borderColor: colors.grey + "30",
-                boxShadow: `0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px ${colors.grey}20`,
-              }}
-            >
-              <JourneyAnimation steps={journeySteps} />
-            </div>
-          </div>
-        </section>
+        <JourneySection steps={journeySteps} />
 
         {/* Final CTA */}
         <section className="py-32 px-6">

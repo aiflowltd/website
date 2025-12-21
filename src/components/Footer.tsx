@@ -99,12 +99,20 @@ export const Footer = () => {
           <div>
             <h3 className="font-bold mb-4">Industries</h3>
             <ul className="space-y-2">
-              <li>
+              {/* <li>
                 <Link
                   to="/industry/legal"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Legal
+                </Link>
+              </li> */}
+              <li>
+                <Link
+                  to="/industry/constructions"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Constructions
                 </Link>
               </li>
               <li>
@@ -115,14 +123,14 @@ export const Footer = () => {
                   Real Estate
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   to="/industry/marketing"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Marketing
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 
