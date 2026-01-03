@@ -1,12 +1,6 @@
 export const CASE_STUDY_SUPPLY_CHAIN_OPTIMIZATION =
   "/images/case-studies/oil-extraction.png";
 
-export const CASE_STUDY_CUSTOMER_SERVICE_PLATFORM =
-  "/images/case-studies/customer-service-platform.png";
-
-export const CASE_STUDY_FRAUD_DETECTION_SYSTEM =
-  "/images/case-studies/law-paper.png";
-
 export const CASE_STUDY_SALES_INTELLIGENCE_PLATFORM =
   "/images/case-studies/customer-service-platform.png";
 

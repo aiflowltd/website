@@ -1,17 +1,17 @@
 import { TrendingUp, Users, Zap } from "lucide-react";
 import {
-  CASE_STUDY_FRAUD_DETECTION_SYSTEM,
   CASE_STUDY_GOOGLE,
   CASE_STUDY_LEGAL_INTELLIGENCE_PLATFORM,
   CASE_STUDY_MATERIALS_SCIENCE_PROPERTY_PREDICTION,
   CASE_STUDY_SALES_INTELLIGENCE_PLATFORM,
   CASE_STUDY_SUPPLY_CHAIN_OPTIMIZATION,
-  CASE_STUDY_CUSTOMER_SERVICE_PLATFORM,
   CASE_STUDY_AI_LEGAL_RISK_DETECTION,
 } from "@/constants/images";
 import caseStudy2 from "@/assets/case-study-2.jpg";
 
 const CASE_STUDY_CONSTRUCTION_MATERIALS_RETAILER = "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&h=600&fit=crop";
+const CASE_STUDY_CUSTOMER_INTAKE = "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=600&fit=crop";
+const CASE_STUDY_MATERIAL_VALIDATION = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=600&fit=crop";
 
 export interface CaseStudyResult {
   icon: React.ReactNode;
@@ -51,7 +51,6 @@ export interface CaseStudy {
   solutionPoints?: string[];
   technicalApproach?: TechnicalApproach[];
   results: CaseStudyResult[];
-  metrics?: CaseStudyMetric[];
   additionalResults?: string[];
   tags: string[];
   testimonial?: Testimonial;
@@ -691,20 +690,6 @@ export const caseStudies: Record<string, CaseStudy> = {
         detail: "Platform cost recovered through efficiency gains and increased sales",
       },
     ],
-    metrics: [
-      {
-        label: "Time Saved",
-        value: "20+ hrs/week per customer relations employee",
-      },
-      {
-        label: "Sales Increase",
-        value: "20% boost in sales",
-      },
-      {
-        label: "ROI Timeline",
-        value: "~8 months",
-      },
-    ],
     additionalResults: [
       "Faster turnaround from inquiry to quotation",
       "Improved accuracy and completeness of material lists",
@@ -723,6 +708,151 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Workflow Automation",
     ],
   },
+  "automated-customer-intake": {
+    id: "automated-customer-intake",
+    title: "Automating Customer Intake & Qualification for Construction Projects",
+    client: "Construction Services Company",
+    industry: "Construction",
+    image: CASE_STUDY_CUSTOMER_INTAKE,
+    duration: "3 months",
+    teamSize: "2 engineers",
+    challenge:
+      "Customer inquiries were unstructured, unclear, and often from leads that were not ready to proceed, wasting expert time.",
+    challengeDetail:
+      "Project managers and sales staff spent significant time handling inquiries from clients without clear budgets or realistic project expectations. Many leads were not qualified, leading to wasted calls, emails, and meetings. There was no system to structure inquiries, clarify requirements, or filter out unqualified leads, causing delays in responding to serious customers and reducing overall efficiency.",
+    solution:
+      "Implemented an AI-assisted intake system that structures inquiries, asks clarifying questions, and pre-qualifies leads before engaging human experts.",
+    solutionDetail:
+      "The AI agent interacts with customers via website forms, messaging, or email, asking structured questions to clarify project scope, budget, and requirements. It filters out low-priority or unrealistic leads and provides staff with a clear summary for quick follow-up. The system also captures structured data for future analytics and workflow improvement.",
+    solutionPoints: [
+      "Discovery: Analyzed common inquiry patterns and identified criteria for pre-qualification.",
+      "Design: Developed a question flow that extracts budget, scope, and urgency. Determined rules for lead prioritization.",
+      "Implementation: Built AI agents to interact with customers automatically and generate structured summaries for staff review.",
+      "Testing: Validated system with historical inquiries and real interactions. Adjusted thresholds and question flow based on feedback.",
+      "Delivery: Deployed across web and messaging channels. Provided training and guidelines for staff integration.",
+    ],
+    technicalApproach: [
+      {
+        title: "Lead Structuring & Qualification",
+        description:
+          "AI agents clarify client requirements, detect unrealistic expectations, and structure data for human review.",
+      },
+      {
+        title: "Priority Scoring",
+        description:
+          "System scores inquiries based on budget realism, readiness, and project complexity to help staff prioritize follow-ups.",
+      },
+      {
+        title: "Integration with Communication Channels",
+        description:
+          "Supports website forms, messaging apps, and email to ensure consistent intake across all entry points.",
+      },
+    ],
+    results: [
+      {
+        icon: <Users />,
+        label: "15+ hrs/week saved per project manager",
+        detail: "Staff spend less time chasing unqualified leads",
+      },
+      {
+        icon: <TrendingUp />,
+        label: "Faster lead response",
+        detail: "Qualified leads are contacted within hours instead of days",
+      },
+      {
+        icon: <Zap />,
+        label: "Better focus for experts",
+        detail: "Staff concentrate on projects that are feasible and high-priority",
+      },
+    ],
+    additionalResults: [
+      "Reduced false expectations from customers",
+      "Consistent intake process across all channels",
+      "Structured data capture for analytics",
+      "Improved team efficiency and morale",
+    ],
+    tags: [
+      "AI Agents",
+      "Lead Qualification",
+      "Customer Service",
+      "Construction",
+      "Workflow Automation",
+    ],
+  },
+
+  "material-validation-and-dependencies": {
+    id: "material-validation-and-dependencies",
+    title: "Preventing Material Shortages & Dependency Errors on Construction Projects",
+    client: "Construction Services Company",
+    industry: "Construction",
+    image: CASE_STUDY_MATERIAL_VALIDATION,
+    duration: "4 months",
+    teamSize: "2 engineers",
+    challenge:
+      "Projects often faced delays due to missing or incompatible materials, discovered only after work began.",
+    challengeDetail:
+      "Construction teams frequently encountered missing or incompatible materials on-site, causing rework, delays, and finger-pointing between subcontractors. There was no automated system to check material dependencies, availability, or proper sequencing. This resulted in frustration, reduced margins, and slower project execution.",
+    solution:
+      "Developed an AI-assisted workflow to validate material lists, check dependencies, and ensure stock availability before project execution.",
+    solutionDetail:
+      "The system reviews project requirements and generates complete material lists with all necessary dependencies (e.g., tiles → adhesives, grout, trims). It integrates with internal stock systems to confirm availability and suggests alternatives if needed. The AI flags missing items early and ensures all project stakeholders have accurate, validated information before work begins.",
+    solutionPoints: [
+      "Discovery: Mapped project types, material dependencies, and stock systems. Identified common sources of errors and delays.",
+      "Design: Created logic to automatically generate complete material lists and validate dependencies.",
+      "Implementation: Built AI agents to verify material completeness, check inventory, and propose alternatives.",
+      "Testing: Ran historical projects through the system to identify gaps and refine logic.",
+      "Delivery: Deployed workflow for ongoing projects, trained staff, and enabled gradual adoption without workflow disruption.",
+    ],
+    technicalApproach: [
+      {
+        title: "Material Dependency Mapping",
+        description:
+          "AI identifies all required materials for a project, including secondary and accessory items.",
+      },
+      {
+        title: "Stock Verification & Alternatives",
+        description:
+          "Checks real-time inventory, prevents incomplete material lists, and proposes substitutes when stock is unavailable.",
+      },
+      {
+        title: "Project Handoff & Alerts",
+        description:
+          "Generates validated material lists and notifies teams before project start to prevent delays.",
+      },
+    ],
+    results: [
+      {
+        icon: <Users />,
+        label: "Reduced rework",
+        detail: "Fewer errors caused by missing or incompatible materials",
+      },
+      {
+        icon: <TrendingUp />,
+        label: "Faster project execution",
+        detail: "Delays due to missing materials minimized",
+      },
+      {
+        icon: <Zap />,
+        label: "Higher satisfaction",
+        detail: "Teams and clients experience smoother project delivery",
+      },
+    ],
+    additionalResults: [
+      "Improved coordination between teams",
+      "Reduced dependency on individual expertise",
+      "Faster identification of potential material issues",
+      "Scalable system for multiple projects and locations",
+      "Structured data for future analytics and forecasting",
+    ],
+    tags: [
+      "AI Agents",
+      "Material Validation",
+      "Workflow Automation",
+      "Construction",
+      "Project Management",
+    ],
+  },
+
 };
 
 // Export array for easy iteration
@@ -730,13 +860,17 @@ export const caseStudiesArray = Object.values(caseStudies);
 
 // Featured case studies for homepage
 export const featuredCaseStudies = [
+  caseStudies["construction-materials-retailer"],
+  caseStudies["material-validation-and-dependencies"],
   caseStudies["oil-gas-invoice-automation"],
   caseStudies["sales-intelligence-platform"],
-  caseStudies["ai-legal-risk-detection"],
 ];
 
 // Main case studies for the case studies page
 export const mainCaseStudies = [
+  caseStudies["automated-customer-intake"],
+  caseStudies["material-validation-and-dependencies"],
+  caseStudies["construction-materials-retailer"],
   caseStudies["oil-gas-invoice-automation"],
   caseStudies["exomatter-automl"],
   caseStudies["google-ml-pipeline-optimization"],
@@ -744,7 +878,6 @@ export const mainCaseStudies = [
   caseStudies["sales-intelligence-platform"],
   caseStudies["ai-legal-risk-detection"],
   caseStudies["student-financing-platform"],
-  caseStudies["construction-materials-retailer"],
 ];
 
 // Get case study by ID

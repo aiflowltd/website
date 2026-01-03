@@ -32,7 +32,7 @@ import { colors } from "@/constants/colors";
 import { JourneySection } from "@/components/JourneySection";
 import { journeySteps } from "@/data/journey";
 import { getCaseStudy } from "@/data/caseStudies";
-import { Card } from "@/components/ui/card";
+import { CaseStudyCard } from "@/components/CaseStudyCard";
 
 const agentIdeas = [
   {
@@ -245,10 +245,10 @@ const Constructions = () => {
     const positions: Array<{ x: number; y: number; rotate: number; size: number }> = [];
     for (let i = 0; i < 12; i++) {
       positions.push({
-        x: 50 + Math.random() * 350,
-        y: 30 + Math.random() * 200,
+        x: 25 + Math.random() * 300,
+        y: 40 + Math.random() * 200,
         rotate: (Math.random() - 0.5) * 60,
-        size: 20 + Math.random() * 15,
+        size: 18 + Math.random() * 12,
       });
     }
     return positions;
@@ -261,10 +261,10 @@ const Constructions = () => {
     const newPositions: Array<{ x: number; y: number; rotate: number; size: number }> = [];
     for (let i = 0; i < 12; i++) {
       newPositions.push({
-        x: 50 + Math.random() * 350,
-        y: 30 + Math.random() * 200,
+        x: 25 + Math.random() * 300,
+        y: 40 + Math.random() * 200,
         rotate: (Math.random() - 0.5) * 60,
-        size: 20 + Math.random() * 15,
+        size: 18 + Math.random() * 12,
       });
     }
     setRandomPositions(newPositions);
@@ -296,106 +296,99 @@ const Constructions = () => {
   }, [isAssembled]);
 
   const buildingStructure = [
-    { x: 120, y: 200, size: 25, color: colors.primary },
-    { x: 150, y: 200, size: 25, color: colors.primary },
-    { x: 180, y: 200, size: 25, color: colors.primary },
-    { x: 210, y: 200, size: 25, color: colors.primary },
-    { x: 135, y: 170, size: 25, color: colors.success },
-    { x: 165, y: 170, size: 25, color: colors.success },
-    { x: 195, y: 170, size: 25, color: colors.success },
-    { x: 150, y: 140, size: 25, color: colors.secondary },
-    { x: 180, y: 140, size: 25, color: colors.secondary },
-    { x: 165, y: 110, size: 25, color: colors.warning },
+    { x: 145, y: 190, size: 22, color: colors.primary },
+    { x: 175, y: 190, size: 22, color: colors.primary },
+    { x: 205, y: 190, size: 22, color: colors.primary },
+    { x: 235, y: 190, size: 22, color: colors.primary },
+    { x: 160, y: 160, size: 22, color: colors.success },
+    { x: 190, y: 160, size: 22, color: colors.success },
+    { x: 220, y: 160, size: 22, color: colors.success },
+    { x: 175, y: 130, size: 22, color: colors.secondary },
+    { x: 205, y: 130, size: 22, color: colors.secondary },
+    { x: 190, y: 100, size: 22, color: colors.warning },
   ];
 
   const agentTypes = [
     {
       icon: Building2,
-      title: "Project Planning & Blueprint Agents",
-      subtitle: "Agents",
-      description: "Transform blueprints into actionable workflows.",
+      title: "Project Planning & Blueprint Intelligence",
+      description: "Turn plans into executable work - automatically.",
       iconColor: colors.primary,
       iconBg: colors.primary + "20",
       iconBorder: colors.primary + "40",
       features: [
-        "Parse architectural drawings and extract key specifications",
-        "Generate task breakdowns from project plans",
-        "Identify dependencies and critical path items",
-        "Automate resource allocation based on project scope",
-        "Track progress against original blueprints",
+        "Extract key specifications from drawings and documents",
+        "Break projects into structured, sequenced tasks",
+        "Identify missing elements and critical dependencies",
+        "Highlight risks before work starts",
+        "Track execution against original plans",
       ],
       effect:
-        "Projects start with clear, actionable plans. Teams know exactly what to build and when.",
+        "Projects start with clarity. Teams know what needs to happen, in what order, and why, before mistakes become expensive.",
     },
     {
       icon: Package,
-      title: "Material Tracking & Inventory Agents",
-      subtitle: "Agents",
-      description: "Keep materials flowing without manual tracking.",
+      title: "Material Tracking & Inventory Intelligence",
+      description: "Stop waiting for materials. Stop over-ordering.",
       iconColor: colors.success,
       iconBg: colors.success + "20",
       iconBorder: colors.success + "40",
       features: [
-        "Monitor material deliveries and inventory levels",
-        "Predict material needs based on project timeline",
-        "Alert on shortages before they cause delays",
-        "Automate reordering for critical supplies",
-        "Track material costs and budget compliance",
+        "Forecast material needs based on scope and timeline",
+        "Detect shortages before they block progress",
+        "Track inventory across systems and suppliers",
+        "Alert teams when costs drift off budget",
       ],
       effect:
-        "No more waiting for materials. Projects stay on schedule with proactive inventory management.",
+        "Materials arrive when needed. Capital isn’t locked in excess stock. Delays are prevented instead of explained.",
     },
     {
       icon: Shield,
-      title: "Safety Compliance & Risk Agents",
-      subtitle: "Agents",
-      description: "Prevent incidents before they happen.",
+      title: "Safety Compliance & Risk Monitoring",
+      description: "Make safety proactive, not reactive.",
       iconColor: colors.warning,
       iconBg: colors.warning + "20",
       iconBorder: colors.warning + "40",
       features: [
-        "Monitor safety checklists and compliance requirements",
-        "Identify potential hazards from site photos and reports",
-        "Automate safety training reminders and certifications",
-        "Track incident reports and generate insights",
-        "Ensure regulatory compliance across all sites",
+        "Track safety checklists and compliance requirements",
+        "Flag risks from site reports and images",
+        "Automate certification tracking and reminders",
+        "Consolidate incident data for insight and prevention",
       ],
       effect:
-        "Safer sites with fewer incidents. Compliance becomes automatic, not reactive.",
+        "Fewer incidents. Less paperwork. Compliance becomes part of daily operations.",
     },
     {
       icon: Calendar,
-      title: "Schedule Optimization & Coordination Agents",
-      subtitle: "Agents",
-      description: "Keep projects on track despite complexity.",
+      title: "Schedule Optimization & Team Coordination",
+      description: "Adapt schedules to reality and keep projects on track.",
       iconColor: colors.secondary,
       iconBg: colors.secondary + "20",
       iconBorder: colors.secondary + "40",
       features: [
-        "Optimize crew schedules across multiple projects",
-        "Reschedule automatically when delays occur",
+        "Balance crews across multiple projects",
+        "Recalculate schedules when delays occur",
         "Coordinate subcontractor availability",
-        "Predict completion dates based on current progress",
-        "Balance workloads to prevent bottlenecks",
+        "Predict completion dates based on real progress",
       ],
       effect:
-        "Projects finish on time. Schedules adapt to reality without manual intervention.",
+        "Schedules adjust automatically. Teams stay productive even when conditions change. Projects finish on time.",
     },
   ];
 
   const benefits = [
     {
       icon: Building,
-      title: "Built for real construction sites",
+      title: "Built for real construction operations",
       description:
-        "Agents integrate with your existing tools, from Procore to Bluebeam, and work with your current workflows.",
+        "We design AI systems for how construction actually works - fragmented data, changing plans, and real-world constraints.",
       iconColor: colors.primary,
       iconBg: colors.primary + "20",
       iconBorder: colors.primary + "40",
     },
     {
       icon: Workflow,
-      title: "Fits your construction processes",
+      title: "Fits your existing processes",
       description:
         "We align to your project management style, safety protocols, reporting requirements, and team structure.",
       iconColor: colors.secondary,
@@ -404,8 +397,8 @@ const Constructions = () => {
     },
     {
       icon: Sparkles,
-      title: "Full implementation ownership",
-      description: "We architect, build, deploy, and monitor - not just advise.",
+      title: "End-to-end ownership",
+      description: "We design, build, deploy, and maintain your AI workflows. No consultants disappearing after delivery.",
       iconColor: colors.warning,
       iconBg: colors.warning + "20",
       iconBorder: colors.warning + "40",
@@ -422,7 +415,7 @@ const Constructions = () => {
       iconBorder: colors.warning + "40",
       uplift: [
         "Project planning time reduced by 50%",
-        "Material delays cut by 60%",
+        "Material risks identified before procurement",
         "Safety compliance checks automated",
       ],
     },
@@ -435,7 +428,7 @@ const Constructions = () => {
       iconBorder: colors.success + "40",
       uplift: [
         "Projects stay on schedule 40% more often",
-        "Material waste reduced by 30%",
+        "Reduced material waste",
         "Fewer safety incidents and compliance issues",
       ],
     },
@@ -449,16 +442,16 @@ const Constructions = () => {
       uplift: [
         "Higher project margins through efficiency",
         "Improved client satisfaction and repeat business",
-        "Competitive advantage in bidding and execution",
+        "Stronger position in competitive bids",
       ],
     },
   ];
 
   const painPoints = [
+    "Customer inquiries take hours to convert into quotations, delaying sales",
     "Projects fall behind because planning takes too long",
     "Material shortages cause unexpected delays",
     "Scheduling conflicts across multiple projects create bottlenecks",
-    "Customer inquiries take hours to convert into quotations, delaying sales",
   ];
 
   return (
@@ -468,11 +461,11 @@ const Constructions = () => {
       <main className="relative">
         <section className="relative pt-40 pb-32 px-6 overflow-hidden">
           <div className="container mx-auto max-w-7xl">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-8">
+            <div className="grid lg:grid-cols-5 gap-12 items-center">
+              <div className="lg:col-span-3 space-y-8">
                 <div className="space-y-6">
                   <h1
-                    className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
+                    className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
                     style={{
                       letterSpacing: "-0.02em",
                       color: colors.lightGrey,
@@ -496,7 +489,7 @@ const Constructions = () => {
                     className="text-lg md:text-xl max-w-xl"
                     style={{ color: colors.grey, lineHeight: "1.6" }}
                   >
-                    Purpose-built AI that manages projects, tracks materials, ensures safety, and keeps construction on schedule.
+                    Purpose-built AI systems that help construction teams qualify requests, manage projects, track materials, ensures safety, and keeps construction on schedule - without adding admin work.
                   </p>
                 </div>
                 <div className="flex gap-4 max-w-xl">
@@ -517,19 +510,19 @@ const Constructions = () => {
                 </div>
               </div>
 
-              <div className="relative">
+              <div className="lg:col-span-2 relative">
                 <div
-                  className="relative rounded-2xl p-8 backdrop-blur-xl border"
+                  className="relative rounded-2xl p-6 backdrop-blur-xl border"
                   style={{
                     backgroundColor: colors.mediumGrey + "40",
                     borderColor: colors.grey + "30",
                     boxShadow: `0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px ${colors.grey}20`,
                   }}
                 >
-                  <div className="relative h-80 flex items-center justify-center">
+                  <div className="relative h-64 flex items-center justify-center">
                     <svg
                       className="absolute inset-0 w-full h-full"
-                      viewBox="0 0 450 300"
+                      viewBox="0 0 350 280"
                       style={{ overflow: "visible" }}
                     >
                       <defs>
@@ -578,8 +571,8 @@ const Constructions = () => {
                           return (
                             <g
                               key={`block-${i}`}
+                              transform={`translate(${currentX}, ${currentY}) rotate(${currentRotate})`}
                               style={{
-                                transform: `translate(${currentX}px, ${currentY}px) rotate(${currentRotate}deg)`,
                                 transition: isAssembled
                                   ? "transform 2.5s cubic-bezier(0.34, 1.56, 0.64, 1)"
                                   : "none",
@@ -614,25 +607,25 @@ const Constructions = () => {
                         })}
 
                         <g opacity="0.18">
-                          {[-3, -2, -1, 0, 1, 2, 3].map((i) => (
+                          {[-2, -1, 0, 1, 2].map((i) => (
                             <line
                               key={`grid-h-${i}`}
                               x1="10"
-                              y1={150 + i * 40}
-                              x2="440"
-                              y2={150 + i * 40}
+                              y1={140 + i * 35}
+                              x2="340"
+                              y2={140 + i * 35}
                               stroke={colors.primary}
                               strokeWidth="1"
                               strokeDasharray="2,4"
                             />
                           ))}
-                          {[-4, -3, -2, -1, 0, 1, 2, 3, 4].map((i) => (
+                          {[-3, -2, -1, 0, 1, 2, 3].map((i) => (
                             <line
                               key={`grid-v-${i}`}
-                              x1={225 + i * 40}
+                              x1={175 + i * 40}
                               y1="10"
-                              x2={225 + i * 40}
-                              y2="290"
+                              x2={175 + i * 40}
+                              y2="270"
                               stroke={colors.primary}
                               strokeWidth="1"
                               strokeDasharray="2,4"
@@ -852,12 +845,6 @@ const Constructions = () => {
                           >
                             {agent.title}
                           </h3>
-                          <p
-                            className="text-sm mb-3 font-medium"
-                            style={{ color: colors.primary }}
-                          >
-                            {agent.subtitle}
-                          </p>
                           <p
                             className="text-sm leading-relaxed"
                             style={{ color: colors.grey }}
@@ -1120,145 +1107,18 @@ const Constructions = () => {
             </div>
 
             {(() => {
-              const caseStudy = getCaseStudy("construction-materials-retailer");
-              if (!caseStudy) return null;
+              const caseStudies = [
+                getCaseStudy("construction-materials-retailer"),
+                getCaseStudy("material-validation-and-dependencies"),
+                getCaseStudy("automated-customer-intake"),
+              ];
 
-              return (
-                <Card
-                  className="overflow-hidden border"
-                  style={{
-                    backgroundColor: colors.mediumGrey + "40",
-                    borderColor: colors.grey + "30",
-                    boxShadow: `0 4px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px ${colors.grey}20`,
-                  }}
-                >
-                  <div className="grid md:grid-cols-2 gap-0">
-                    <div
-                      className="relative h-64 md:h-auto bg-cover bg-center"
-                      style={{
-                        backgroundImage: `url(${caseStudy.image})`,
-                      }}
-                    >
-                      <div
-                        className="absolute inset-0"
-                        style={{
-                          background: `linear-gradient(135deg, ${colors.primary}40, ${colors.secondary}40)`,
-                        }}
-                      />
-                    </div>
-
-                    <div className="p-8 md:p-12">
-                      <div className="mb-4">
-                        <span
-                          className="text-xs uppercase tracking-wider font-semibold px-3 py-1 rounded-full inline-block"
-                          style={{
-                            backgroundColor: colors.primary + "20",
-                            color: colors.primary,
-                          }}
-                        >
-                          {caseStudy.industry}
-                        </span>
-                      </div>
-
-                      <h3
-                        className="text-2xl md:text-3xl font-bold mb-4"
-                        style={{
-                          letterSpacing: "-0.02em",
-                          color: colors.lightGrey,
-                        }}
-                      >
-                        {caseStudy.title}
-                      </h3>
-
-                      <p
-                        className="text-base mb-6 leading-relaxed"
-                        style={{ color: colors.grey }}
-                      >
-                        {caseStudy.challenge}
-                      </p>
-
-                      <div className="grid grid-cols-3 gap-4 mb-6">
-                        {caseStudy.results.map((result, idx) => (
-                          <div
-                            key={idx}
-                            className="text-center p-4 rounded-lg"
-                            style={{
-                              backgroundColor: colors.darkGrey + "60",
-                            }}
-                          >
-                            <div
-                              className="w-8 h-8 rounded-lg flex items-center justify-center mx-auto mb-2"
-                              style={{
-                                backgroundColor: colors.primary + "20",
-                                color: colors.primary,
-                              }}
-                            >
-                              {result.icon}
-                            </div>
-                            <div
-                              className="text-sm font-semibold mb-1"
-                              style={{ color: colors.lightGrey }}
-                            >
-                              {result.label}
-                            </div>
-                            {result.detail && (
-                              <div
-                                className="text-xs"
-                                style={{ color: colors.grey }}
-                              >
-                                {result.detail}
-                              </div>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-
-                      {caseStudy.metrics && (
-                        <div
-                          className="mb-6 p-4 rounded-lg border"
-                          style={{
-                            backgroundColor: colors.primary + "10",
-                            borderColor: colors.primary + "30",
-                          }}
-                        >
-                          <div className="grid grid-cols-3 gap-4 text-center">
-                            {caseStudy.metrics.map((metric, idx) => (
-                              <div key={idx}>
-                                <div
-                                  className="text-lg font-bold mb-1"
-                                  style={{ color: colors.primary }}
-                                >
-                                  {metric.value}
-                                </div>
-                                <div
-                                  className="text-xs"
-                                  style={{ color: colors.grey }}
-                                >
-                                  {metric.label}
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      <Link to={`/case-studies/${caseStudy.id}`}>
-                        <Button
-                          className="w-full font-semibold"
-                          style={{
-                            background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                            color: "#FAFAFA",
-                            border: "none",
-                          }}
-                        >
-                          Read Full Case Study
-                          <ArrowRight className="ml-2 w-5 h-5" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </Card>
-              );
+              return caseStudies.map((caseStudy) => (
+                <>
+                  <CaseStudyCard key={caseStudy.id} study={caseStudy} />
+                  <br />
+                </>
+              ));
             })()}
           </div>
         </section>
