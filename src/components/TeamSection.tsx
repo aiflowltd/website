@@ -298,7 +298,7 @@ export const TeamSection = () => {
             </h3>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Flexible engagement models and proven processes <br /> to deliver
-              exceptional results
+              exceptional results.
             </p>
           </div>
 
