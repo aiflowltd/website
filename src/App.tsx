@@ -26,6 +26,8 @@ import RealEstate from "./pages/industry/RealEstate";
 import Marketing from "./pages/industry/Marketing";
 import { Analytics } from "@vercel/analytics/react";
 import Constructions from "./pages/industry/Constructions";
+import Deaclinic from "./pages/clients/Deaclinic";
+import Maurer from "./pages/clients/Maurer";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +65,8 @@ const App = () => {
             <Route path="/industry/constructions" element={<Constructions />} />
             <Route path="/industry/real-estate" element={<RealEstate />} />
             <Route path="/industry/marketing" element={<Marketing />} />
+            <Route path="/clients/deaclinic" element={<Deaclinic />} />
+            <Route path="/clients/maurer" element={<Maurer />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
