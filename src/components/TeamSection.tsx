@@ -171,17 +171,6 @@ export const TeamSection = () => {
                   </div>
                 </Card>
               ))}
-
-              {/* AI Flow Logo - At intersection (bottom corners of top boxes, top middle of bottom box) */}
-              <div className="hidden md:block absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/3 z-20">
-                <div className="bg-background p-3 rounded-full border-4 border-primary shadow-lg group/logo cursor-pointer">
-                  <img
-                    src={AI_FLOW_LOGO_SYMBOL}
-                    alt="AI Flow"
-                    className="w-12 h-12 md:w-16 md:h-16 object-contain animate-logo-spin"
-                  />
-                </div>
-              </div>
             </div>
 
             {/* Additional team members */}
@@ -273,19 +262,19 @@ export const TeamSection = () => {
         {/* Stats */}
         <div className="max-w-6xl mx-auto mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
           <Card className="bg-card border-border p-6 hover:border-primary transition-all text-center">
-            <AnimatedCounter target={10} suffix="+" />
+            <AnimatedCounter target={12} suffix="+" />
             <div className="text-muted-foreground">Years Experience</div>
           </Card>
           <Card className="bg-card border-border p-6 hover:border-primary transition-all text-center">
-            <AnimatedCounter target={50} suffix="+" />
+            <AnimatedCounter target={60} suffix="+" />
             <div className="text-muted-foreground">Projects Delivered</div>
           </Card>
           <Card className="bg-card border-border p-6 hover:border-primary transition-all text-center">
-            <AnimatedCounter target={20} suffix="+" />
+            <AnimatedCounter target={28} suffix="+" />
             <div className="text-muted-foreground">Enterprise Clients</div>
           </Card>
           <Card className="bg-card border-border p-6 hover:border-primary transition-all text-center">
-            <AnimatedCounter target={250} suffix="+" />
+            <AnimatedCounter target={248} suffix="+" />
             <div className="text-muted-foreground">AI Agents Delivered</div>
           </Card>
         </div>

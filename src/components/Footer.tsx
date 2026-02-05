@@ -109,10 +109,10 @@ export const Footer = () => {
               </li> */}
               <li>
                 <Link
-                  to="/industry/constructions"
+                  to="/industry/construction"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Constructions
+                  Construction
                 </Link>
               </li>
               <li>

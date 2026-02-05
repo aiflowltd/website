@@ -49,4 +49,3 @@ export const AuthorCard = ({ author }: AuthorCardProps) => {
     </Card>
   );
 };
-

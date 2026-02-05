@@ -196,21 +196,21 @@ const AgentCarousel = () => {
                     className="mt-10 text-center"
                     style={{
                       opacity: isCenter ? 1 : 0,
-                      height: "70px",
-                      minHeight: "70px",
+                      height: "80px",
+                      minHeight: "80px",
                       transition:
                         "opacity 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                     }}
                   >
                     <div
-                      className="text-sm uppercase tracking-wider font-semibold mb-2"
+                      className="text-m uppercase tracking-wider font-semibold mb-2"
                       style={{ color: colors.lightGrey }}
                     >
                       {agent.label}
                     </div>
                     <div
                       className="text-xs px-2"
-                      style={{ color: colors.grey }}
+                      style={{ color: colors.lightGrey }}
                     >
                       {agent.description}
                     </div>
@@ -238,11 +238,16 @@ const AgentCarousel = () => {
   );
 };
 
-const Constructions = () => {
+const Construction = () => {
   const [isAssembled, setIsAssembled] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
   const [randomPositions, setRandomPositions] = useState(() => {
-    const positions: Array<{ x: number; y: number; rotate: number; size: number }> = [];
+    const positions: Array<{
+      x: number;
+      y: number;
+      rotate: number;
+      size: number;
+    }> = [];
     for (let i = 0; i < 12; i++) {
       positions.push({
         x: 25 + Math.random() * 300,
@@ -258,7 +263,12 @@ const Constructions = () => {
     setIsAssembled(false);
     setAnimationComplete(false);
 
-    const newPositions: Array<{ x: number; y: number; rotate: number; size: number }> = [];
+    const newPositions: Array<{
+      x: number;
+      y: number;
+      rotate: number;
+      size: number;
+    }> = [];
     for (let i = 0; i < 12; i++) {
       newPositions.push({
         x: 25 + Math.random() * 300,
@@ -398,7 +408,8 @@ const Constructions = () => {
     {
       icon: Sparkles,
       title: "End-to-end ownership",
-      description: "We design, build, deploy, and maintain your AI workflows. No consultants disappearing after delivery.",
+      description:
+        "We design, build, deploy, and maintain your AI workflows. No consultants disappearing after delivery.",
       iconColor: colors.warning,
       iconBg: colors.warning + "20",
       iconBorder: colors.warning + "40",
@@ -487,9 +498,12 @@ const Constructions = () => {
                   </h1>
                   <p
                     className="text-lg md:text-xl max-w-xl"
-                    style={{ color: colors.grey, lineHeight: "1.6" }}
+                    style={{ color: colors.lightGrey, lineHeight: "1.6" }}
                   >
-                    Purpose-built AI systems that help construction teams qualify requests, manage projects, track materials, ensures safety, and keeps construction on schedule - without adding admin work.
+                    Purpose-built AI systems that help construction teams
+                    qualify requests, manage projects, track materials, ensures
+                    safety, and keeps construction on schedule - without adding
+                    admin work.
                   </p>
                 </div>
                 <div className="flex gap-4 max-w-xl">
@@ -562,11 +576,16 @@ const Constructions = () => {
 
                       <g>
                         {buildingStructure.map((block, i) => {
-                          const randomPos = randomPositions[i] || randomPositions[0];
+                          const randomPos =
+                            randomPositions[i] || randomPositions[0];
                           const currentX = isAssembled ? block.x : randomPos.x;
                           const currentY = isAssembled ? block.y : randomPos.y;
-                          const currentRotate = isAssembled ? 0 : randomPos.rotate;
-                          const currentSize = isAssembled ? block.size : randomPos.size;
+                          const currentRotate = isAssembled
+                            ? 0
+                            : randomPos.rotate;
+                          const currentSize = isAssembled
+                            ? block.size
+                            : randomPos.size;
 
                           return (
                             <g
@@ -594,7 +613,9 @@ const Constructions = () => {
                                 style={{
                                   filter: "url(#blockShadow)",
                                   animation: isAssembled
-                                    ? `blockPulse ${4 + i * 0.3}s ease-in-out infinite`
+                                    ? `blockPulse ${
+                                        4 + i * 0.3
+                                      }s ease-in-out infinite`
                                     : "none",
                                   animationDelay: isAssembled
                                     ? `${i * 0.3}s`
@@ -645,7 +666,10 @@ const Constructions = () => {
                     </div>
 
                     <div className="absolute bottom-2 left-0 right-0 text-center">
-                      <div className="text-xs" style={{ color: colors.grey }}>
+                      <div
+                        className="text-xs"
+                        style={{ color: colors.lightGrey }}
+                      >
                         AI-powered project coordination
                       </div>
                     </div>
@@ -678,13 +702,20 @@ const Constructions = () => {
                 }}
               >
                 Construction projects struggle with{" "}
-                <span style={{ color: colors.primary }}>coordination</span>
-                {" "}and{" "}
-                <span style={{ color: colors.primary }}>unexpected delays.</span>
+                <span style={{ color: colors.primary }}>coordination</span> and{" "}
+                <span style={{ color: colors.primary }}>
+                  unexpected delays.
+                </span>
               </h2>
               <div className="grid md:grid-cols-2 gap-4 mt-8 text-left">
                 {painPoints.map((point, idx) => {
-                  const icons = [Building2, Package, Shield, Calendar, MessageSquare];
+                  const icons = [
+                    Building2,
+                    Package,
+                    Shield,
+                    Calendar,
+                    MessageSquare,
+                  ];
                   const iconColors = [
                     colors.primary,
                     colors.success,
@@ -732,8 +763,8 @@ const Constructions = () => {
                           />
                         </div>
                         <p
-                          className="text-sm flex-1"
-                          style={{ color: colors.grey }}
+                          className="text-m flex-1"
+                          style={{ color: colors.lightGrey }}
                         >
                           {point}
                         </p>
@@ -776,7 +807,9 @@ const Constructions = () => {
                 }}
               >
                 Where AI Agents Strengthen{" "}
-                <span style={{ color: colors.primary }}>Construction Operations</span>
+                <span style={{ color: colors.primary }}>
+                  Construction Operations
+                </span>
               </h2>
             </div>
 
@@ -846,8 +879,8 @@ const Constructions = () => {
                             {agent.title}
                           </h3>
                           <p
-                            className="text-sm leading-relaxed"
-                            style={{ color: colors.grey }}
+                            className="text-m leading-relaxed"
+                            style={{ color: colors.lightGrey }}
                           >
                             {agent.description}
                           </p>
@@ -873,8 +906,8 @@ const Constructions = () => {
                               }}
                             />
                             <span
-                              className="text-sm leading-relaxed"
-                              style={{ color: colors.grey }}
+                              className="text-m leading-relaxed"
+                              style={{ color: colors.lightGrey }}
                             >
                               {feature}
                             </span>
@@ -882,7 +915,7 @@ const Constructions = () => {
                         ))}
                         <div
                           className="pt-4 mt-4 border-t"
-                          style={{ borderColor: colors.grey + "20" }}
+                          style={{ borderColor: colors.lightGrey + "20" }}
                         >
                           <p
                             className="text-xs uppercase tracking-wider font-semibold mb-2"
@@ -891,8 +924,8 @@ const Constructions = () => {
                             Impact:
                           </p>
                           <p
-                            className="text-sm leading-relaxed"
-                            style={{ color: colors.grey }}
+                            className="text-m leading-relaxed"
+                            style={{ color: colors.lightGrey }}
                           >
                             {agent.effect}
                           </p>
@@ -952,8 +985,8 @@ const Constructions = () => {
                       {benefit.title}
                     </h3>
                     <p
-                      className="text-sm leading-relaxed"
-                      style={{ color: colors.grey }}
+                      className="text-m leading-relaxed"
+                      style={{ color: colors.lightGrey }}
                     >
                       {benefit.description}
                     </p>
@@ -980,10 +1013,11 @@ const Constructions = () => {
                 </h2>
                 <p
                   className="text-lg leading-relaxed"
-                  style={{ color: colors.grey }}
+                  style={{ color: colors.lightGrey }}
                 >
                   Create custom AI agents to automate specific tasks in your
-                  construction operations. Each agent handles a distinct workflow stage.
+                  construction operations. Each agent handles a distinct
+                  workflow stage.
                 </p>
               </div>
 
@@ -1044,7 +1078,7 @@ const Constructions = () => {
                         </h3>
                         <p
                           className="text-xs font-medium"
-                          style={{ color: colors.grey }}
+                          style={{ color: colors.lightGrey }}
                         >
                           {result.timeframe}
                         </p>
@@ -1072,8 +1106,8 @@ const Constructions = () => {
                                 }}
                               />
                               <span
-                                className="text-sm leading-relaxed"
-                                style={{ color: colors.grey }}
+                                className="text-m leading-relaxed"
+                                style={{ color: colors.lightGrey }}
                               >
                                 {item}
                               </span>
@@ -1102,7 +1136,9 @@ const Constructions = () => {
                 }}
               >
                 Real{" "}
-                <span style={{ color: colors.primary }}>Construction Results</span>
+                <span style={{ color: colors.primary }}>
+                  Construction Results
+                </span>
               </h2>
             </div>
 
@@ -1146,9 +1182,10 @@ const Constructions = () => {
             </h2>
             <p
               className="text-lg mb-8 max-w-xl mx-auto"
-              style={{ color: colors.grey }}
+              style={{ color: colors.lightGrey }}
             >
-              Expert systems that manage projects, track materials, ensure safety, and keep construction on schedule.
+              Expert systems that manage projects, track materials, ensure
+              safety, and keep construction on schedule.
             </p>
             <Link to="/contact#calendly">
               <Button
@@ -1173,4 +1210,4 @@ const Constructions = () => {
   );
 };
 
-export default Constructions;
+export default Construction;

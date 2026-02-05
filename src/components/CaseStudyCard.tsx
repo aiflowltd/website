@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { CaseStudy } from "@/data/caseStudies";
+import { Tag } from "@/components/Tag";
 
 interface CaseStudyCardProps {
   study: CaseStudy;
@@ -24,12 +25,7 @@ export const CaseStudyCard = ({ study }: CaseStudyCardProps) => {
         <div className="p-8 md:p-12">
           <div className="flex gap-2 mb-4 flex-wrap">
             {study.tags.map((tag, idx) => (
-              <span
-                key={idx}
-                className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20"
-              >
-                {tag}
-              </span>
+              <Tag key={idx}>{tag}</Tag>
             ))}
           </div>
 
@@ -72,4 +68,3 @@ export const CaseStudyCard = ({ study }: CaseStudyCardProps) => {
     </Card>
   );
 };
-

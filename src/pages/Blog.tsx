@@ -2,10 +2,15 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, ArrowRight, Tag } from "lucide-react";
+import { Tag } from "@/components/Tag";
+import { Calendar, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { categories, getBlogPostsByCategory } from "@/data/blogPosts";
+import { useState, useEffect, useMemo } from "react";
+import {
+  categories,
+  getBlogPostsByCategory,
+  getAllBlogPosts,
+} from "@/data/blogPosts";
 
 const Blog = () => {
   useEffect(() => {
@@ -14,6 +19,15 @@ const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const filteredPosts = getBlogPostsByCategory(selectedCategory);
 
+  // Only show categories that have at least one post
+  const activeCategories = useMemo(() => {
+    const allPosts = getAllBlogPosts();
+    const categoriesWithPosts = new Set(allPosts.map((post) => post.category));
+    return categories.filter(
+      (category) => category === "All" || categoriesWithPosts.has(category)
+    );
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -21,7 +35,7 @@ const Blog = () => {
       <main className="container mx-auto px-6 pt-32 pb-20">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent pb-5">
             Blog & Insights
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -32,7 +46,7 @@ const Blog = () => {
 
         {/* Category Filter */}
         <div className="flex flex-wrap gap-3 justify-center mb-12">
-          {categories.map((category) => (
+          {activeCategories.map((category) => (
             <Button
               key={category}
               variant={selectedCategory === category ? "default" : "outline"}
@@ -73,11 +87,6 @@ const Blog = () => {
                       <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20" />
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                    <div className="absolute bottom-4 left-4">
-                      <span className="text-xs px-3 py-1 rounded-full bg-primary/20 text-primary border border-primary/30 backdrop-blur-sm">
-                        {post.category}
-                      </span>
-                    </div>
                   </div>
 
                   <div className="p-6">
@@ -102,20 +111,14 @@ const Blog = () => {
 
                     <div className="flex flex-wrap gap-2 mb-4">
                       {post.tags.map((tag, idx) => (
-                        <span
-                          key={idx}
-                          className="text-xs px-2 py-1 rounded bg-muted text-muted-foreground flex items-center gap-1"
-                        >
-                          <Tag className="w-3 h-3" />
-                          {tag}
-                        </span>
+                        <Tag key={idx}>{tag}</Tag>
                       ))}
                     </div>
 
-                    <span className="text-primary hover:text-primary/80 font-semibold flex items-center">
+                    {/* <span className="text-primary hover:text-primary/80 font-semibold flex items-center">
                       Read More
                       <ArrowRight className="ml-2 w-4 h-4" />
-                    </span>
+                    </span> */}
                   </div>
                 </Card>
               </Link>

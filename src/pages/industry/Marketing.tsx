@@ -206,14 +206,14 @@ const AgentCarousel = () => {
                     }}
                   >
                     <div
-                      className="text-sm uppercase tracking-wider font-semibold mb-2"
+                      className="text-m uppercase tracking-wider font-semibold mb-2"
                       style={{ color: colors.lightGrey }}
                     >
                       {agent.label}
                     </div>
                     <div
                       className="text-xs px-2"
-                      style={{ color: colors.grey }}
+                      style={{ color: colors.lightGrey }}
                     >
                       {agent.description}
                     </div>
@@ -459,7 +459,7 @@ const Marketing = () => {
               <div className="space-y-8">
                 <div className="space-y-6">
                   <h1
-                    className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
+                    className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
                     style={{
                       letterSpacing: "-0.02em",
                       color: colors.lightGrey,
@@ -481,7 +481,7 @@ const Marketing = () => {
                   </h1>
                   <p
                     className="text-lg md:text-xl max-w-xl"
-                    style={{ color: colors.grey, lineHeight: "1.6" }}
+                    style={{ color: colors.lightGrey, lineHeight: "1.6" }}
                   >
                     Increase conversions, compress launch cycles, and remove the
                     operational drag slowing growth.
@@ -969,7 +969,10 @@ const Marketing = () => {
 
                     {/* Bottom right annotation */}
                     <div className="absolute bottom-1 right-1">
-                      <div className="text-xs" style={{ color: colors.grey }}>
+                      <div
+                        className="text-xs"
+                        style={{ color: colors.lightGrey }}
+                      >
                         Automated end-to-end
                       </div>
                     </div>
@@ -1014,8 +1017,8 @@ const Marketing = () => {
                 }}
               >
                 Most marketing teams fall behind because of{" "}
-                <span style={{ color: colors.primary }}>delayed reporting</span>
-                {" "}and{" "}
+                <span style={{ color: colors.primary }}>delayed reporting</span>{" "}
+                and{" "}
                 <span style={{ color: colors.primary }}>fragmented data.</span>
               </h2>
               <div className="grid md:grid-cols-2 gap-4 mt-8 text-left">
@@ -1085,8 +1088,8 @@ const Marketing = () => {
                           />
                         </div>
                         <p
-                          className="text-sm flex-1"
-                          style={{ color: colors.grey }}
+                          className="text-m flex-1"
+                          style={{ color: colors.lightGrey }}
                         >
                           {item.text}
                         </p>
@@ -1205,14 +1208,14 @@ const Marketing = () => {
                             {agent.title}
                           </h3>
                           <p
-                            className="text-sm mb-3 font-medium"
+                            className="text-m mb-3 font-medium"
                             style={{ color: colors.primary }}
                           >
                             {agent.subtitle}
                           </p>
                           <p
-                            className="text-sm leading-relaxed"
-                            style={{ color: colors.grey }}
+                            className="text-m leading-relaxed"
+                            style={{ color: colors.lightGrey }}
                           >
                             {agent.description}
                           </p>
@@ -1238,8 +1241,8 @@ const Marketing = () => {
                               }}
                             />
                             <span
-                              className="text-sm leading-relaxed"
-                              style={{ color: colors.grey }}
+                              className="text-m leading-relaxed"
+                              style={{ color: colors.lightGrey }}
                             >
                               {feature}
                             </span>
@@ -1256,8 +1259,8 @@ const Marketing = () => {
                             Impact:
                           </p>
                           <p
-                            className="text-sm leading-relaxed"
-                            style={{ color: colors.grey }}
+                            className="text-m leading-relaxed"
+                            style={{ color: colors.lightGrey }}
                           >
                             {agent.effect}
                           </p>
@@ -1318,8 +1321,8 @@ const Marketing = () => {
                       {benefit.title}
                     </h3>
                     <p
-                      className="text-sm leading-relaxed"
-                      style={{ color: colors.grey }}
+                      className="text-m leading-relaxed"
+                      style={{ color: colors.lightGrey }}
                     >
                       {benefit.description}
                     </p>
@@ -1348,7 +1351,7 @@ const Marketing = () => {
                 </h2>
                 <p
                   className="text-lg leading-relaxed"
-                  style={{ color: colors.grey }}
+                  style={{ color: colors.lightGrey }}
                 >
                   Create custom AI agents to automate specific tasks in your
                   marketing pipeline. Each agent handles a distinct workflow
@@ -1415,7 +1418,7 @@ const Marketing = () => {
                         </h3>
                         <p
                           className="text-xs font-medium"
-                          style={{ color: colors.grey }}
+                          style={{ color: colors.lightGrey }}
                         >
                           {result.timeframe}
                         </p>
@@ -1443,8 +1446,8 @@ const Marketing = () => {
                                 }}
                               />
                               <span
-                                className="text-sm leading-relaxed"
-                                style={{ color: colors.grey }}
+                                className="text-m leading-relaxed"
+                                style={{ color: colors.lightGrey }}
                               >
                                 {item}
                               </span>
@@ -1486,7 +1489,7 @@ const Marketing = () => {
             </h2>
             <p
               className="text-lg mb-8 max-w-xl mx-auto"
-              style={{ color: colors.grey }}
+              style={{ color: colors.lightGrey }}
             >
               Your team focuses on strategy, positioning, and creative
               direction. Agents handle repetitive execution.
