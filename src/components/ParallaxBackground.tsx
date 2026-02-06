@@ -1,25 +1,8 @@
 import { useEffect, useState } from "react";
-import {
-  DUBAI_BACKGROUND_2,
-  DUBAI_BACKGROUND,
-  DUBAI_BACKGROUND_3,
-  NY_BACKGROUND,
-  ZURICH_BACKGROUND,
-} from "@/constants/images";
-
-const backgrounds = [
-  DUBAI_BACKGROUND,
-  DUBAI_BACKGROUND_2,
-  DUBAI_BACKGROUND_3,
-  NY_BACKGROUND,
-  ZURICH_BACKGROUND,
-];
+import { NY_BACKGROUND } from "@/constants/images";
 
 export const ParallaxBackground = () => {
   const [scale, setScale] = useState(1.4);
-  const [randomBackground] = useState(() => {
-    return backgrounds[Math.floor(Math.random() * backgrounds.length)];
-  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,9 +28,9 @@ export const ParallaxBackground = () => {
       <div
         className="absolute inset-0 bg-cover bg-center transition-transform duration-100 ease-out"
         style={{
-          backgroundImage: `url(${randomBackground})`,
+          backgroundImage: `url(${NY_BACKGROUND})`,
           transform: `scale(${scale})`,
-          filter: "grayscale(100%) opacity(0.4)",
+          filter: "grayscale(100%) opacity(0.3)",
         }}
       />
       <div className="absolute inset-0 bg-background/80" />

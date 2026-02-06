@@ -205,14 +205,14 @@ const AgentCarousel = () => {
                     }}
                   >
                     <div
-                      className="text-sm uppercase tracking-wider font-semibold mb-2"
+                      className="text-m uppercase tracking-wider font-semibold mb-2"
                       style={{ color: colors.lightGrey }}
                     >
                       {agent.label}
                     </div>
                     <div
                       className="text-xs px-2"
-                      style={{ color: colors.grey }}
+                      style={{ color: colors.lightGrey }}
                     >
                       {agent.description}
                     </div>
@@ -430,7 +430,8 @@ const Legal = () => {
     {
       icon: Sparkles,
       title: "Full implementation ownership",
-      description: "We architect, build, deploy, and monitor - not just advise.",
+      description:
+        "We architect, build, deploy, and monitor - not just advise.",
       iconColor: colors.warning,
       iconBg: colors.warning + "20",
       iconBorder: colors.warning + "40",
@@ -506,7 +507,7 @@ const Legal = () => {
               <div className="space-y-8">
                 <div className="space-y-6">
                   <h1
-                    className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
+                    className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
                     style={{
                       letterSpacing: "-0.02em",
                       color: colors.lightGrey,
@@ -528,7 +529,7 @@ const Legal = () => {
                   </h1>
                   <p
                     className="text-lg md:text-xl max-w-xl"
-                    style={{ color: colors.grey, lineHeight: "1.6" }}
+                    style={{ color: colors.lightGrey, lineHeight: "1.6" }}
                   >
                     Purpose-built AI that performs routine legal work reliably,
                     securely, and under supervision.
@@ -840,7 +841,10 @@ const Legal = () => {
 
                     {/* Bottom annotation */}
                     <div className="absolute bottom-2 left-0 right-0 text-center">
-                      <div className="text-xs" style={{ color: colors.grey }}>
+                      <div
+                        className="text-xs"
+                        style={{ color: colors.lightGrey }}
+                      >
                         AI-powered document management
                       </div>
                     </div>
@@ -899,9 +903,10 @@ const Legal = () => {
                 }}
               >
                 Modern legal practice struggle with{" "}
-                <span style={{ color: colors.primary }}>volume</span>
-                {" "}and{" "}
-                <span style={{ color: colors.primary }}>fragmented information.</span>
+                <span style={{ color: colors.primary }}>volume</span> and{" "}
+                <span style={{ color: colors.primary }}>
+                  fragmented information.
+                </span>
               </h2>
               <div className="grid md:grid-cols-2 gap-4 mt-8 text-left">
                 {painPoints.map((point, idx) => {
@@ -953,8 +958,8 @@ const Legal = () => {
                           />
                         </div>
                         <p
-                          className="text-sm flex-1"
-                          style={{ color: colors.grey }}
+                          className="text-m flex-1"
+                          style={{ color: colors.lightGrey }}
                         >
                           {point}
                         </p>
@@ -1071,14 +1076,14 @@ const Legal = () => {
                             {agent.title}
                           </h3>
                           <p
-                            className="text-sm mb-3 font-medium"
+                            className="text-m mb-3 font-medium"
                             style={{ color: colors.primary }}
                           >
                             {agent.subtitle}
                           </p>
                           <p
-                            className="text-sm leading-relaxed"
-                            style={{ color: colors.grey }}
+                            className="text-m leading-relaxed"
+                            style={{ color: colors.lightGrey }}
                           >
                             {agent.description}
                           </p>
@@ -1104,8 +1109,8 @@ const Legal = () => {
                               }}
                             />
                             <span
-                              className="text-sm leading-relaxed"
-                              style={{ color: colors.grey }}
+                              className="text-m leading-relaxed"
+                              style={{ color: colors.lightGrey }}
                             >
                               {feature}
                             </span>
@@ -1122,8 +1127,8 @@ const Legal = () => {
                             Impact:
                           </p>
                           <p
-                            className="text-sm leading-relaxed"
-                            style={{ color: colors.grey }}
+                            className="text-m leading-relaxed"
+                            style={{ color: colors.lightGrey }}
                           >
                             {agent.effect}
                           </p>
@@ -1184,8 +1189,8 @@ const Legal = () => {
                       {benefit.title}
                     </h3>
                     <p
-                      className="text-sm leading-relaxed"
-                      style={{ color: colors.grey }}
+                      className="text-m leading-relaxed"
+                      style={{ color: colors.lightGrey }}
                     >
                       {benefit.description}
                     </p>
@@ -1214,7 +1219,7 @@ const Legal = () => {
                 </h2>
                 <p
                   className="text-lg leading-relaxed"
-                  style={{ color: colors.grey }}
+                  style={{ color: colors.lightGrey }}
                 >
                   Create custom AI agents to automate specific tasks in your
                   legal practice. Each agent handles a distinct workflow stage.
@@ -1280,7 +1285,7 @@ const Legal = () => {
                         </h3>
                         <p
                           className="text-xs font-medium"
-                          style={{ color: colors.grey }}
+                          style={{ color: colors.lightGrey }}
                         >
                           {result.timeframe}
                         </p>
@@ -1308,8 +1313,8 @@ const Legal = () => {
                                 }}
                               />
                               <span
-                                className="text-sm leading-relaxed"
-                                style={{ color: colors.grey }}
+                                className="text-m leading-relaxed"
+                                style={{ color: colors.lightGrey }}
                               >
                                 {item}
                               </span>
@@ -1351,7 +1356,7 @@ const Legal = () => {
             </h2>
             <p
               className="text-lg mb-8 max-w-xl mx-auto"
-              style={{ color: colors.grey }}
+              style={{ color: colors.lightGrey }}
             >
               Expert systems that perform routine legal work reliably, securely,
               and under supervision.

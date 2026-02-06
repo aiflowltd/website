@@ -80,10 +80,11 @@ export const Hero = () => {
         </h1>
         {/* Subheading */}
         <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-3xl mx-auto">
-          In AI & ML before the wave. Building products, not hype.
+          Turn your data & insights into systems <br></br>that reduce cost,
+          time, and complexity.
         </p>
         {/* Service Cards */}
-        <div className="grid md:grid-cols-3 gap-4 mt-4 md:mt-12 mb-10 max-w-5xl mx-auto">
+        {/* <div className="grid md:grid-cols-3 gap-4 mt-4 md:mt-12 mb-10 max-w-5xl mx-auto">
           <div className="flex flex-col items-center gap-2">
             <div className="h-px w-full bg-border" />
             <h3 className="text-xl font-semibold">End-to-end products</h3>
@@ -101,10 +102,10 @@ export const Hero = () => {
             <h3 className="text-xl font-semibold">ML pipelines</h3>
             <p className="text-muted-foreground">Monetize your data</p>
           </div>
-        </div>
+        </div> */}
 
         {/* Data Cards Embed */}
-        <div className="mb-16 w-full">
+        <div className="mb-16 mt-24 w-full">
           <DataCardsDummyEmbed />
         </div>
         {/* CTA Button */}

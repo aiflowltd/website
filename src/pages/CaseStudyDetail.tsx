@@ -1,4 +1,5 @@
 import { Navigation } from "@/components/Navigation";
+import { Tag } from "@/components/Tag";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -57,12 +58,7 @@ const CaseStudyDetail = () => {
         <div className="max-w-7xl mx-auto mb-12">
           <div className="flex flex-wrap gap-2 mb-6">
             {study.tags.map((tag: string, idx: number) => (
-              <span
-                key={idx}
-                className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20"
-              >
-                {tag}
-              </span>
+              <Tag key={idx}>{tag}</Tag>
             ))}
           </div>
 
@@ -70,7 +66,7 @@ const CaseStudyDetail = () => {
             {study.title}
           </h1>
 
-          <div className="flex flex-wrap gap-6 text-muted-foreground mb-8">
+          <div className="flex flex-wrap gap-6 text-grey mb-8">
             {study.client && (
               <div className="flex items-center gap-2">
                 <Building className="w-5 h-5 text-primary" />
@@ -110,7 +106,7 @@ const CaseStudyDetail = () => {
               The Challenge
             </h2>
             <Card className="bg-card border-border p-8">
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-lg text-grey leading-relaxed">
                 {study.challengeDetail}
               </p>
             </Card>
@@ -122,7 +118,7 @@ const CaseStudyDetail = () => {
               Our Solution
             </h2>
             <Card className="bg-card border-border p-8">
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              <p className="text-lg text-grey leading-relaxed mb-6">
                 {study.solutionDetail}
               </p>
               {study.solutionPoints && (
@@ -130,7 +126,7 @@ const CaseStudyDetail = () => {
                   {study.solutionPoints.map((point: string, idx: number) => (
                     <li key={idx} className="flex items-start gap-3">
                       <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                      <span className="text-muted-foreground">{point}</span>
+                      <span className="text-grey">{point}</span>
                     </li>
                   ))}
                 </ul>
@@ -151,9 +147,7 @@ const CaseStudyDetail = () => {
                     className="bg-card border-border p-6 hover:border-primary transition-all"
                   >
                     <h3 className="text-xl font-bold mb-3">{tech.title}</h3>
-                    <p className="text-muted-foreground text-sm">
-                      {tech.description}
-                    </p>
+                    <p className="text-grey text-m">{tech.description}</p>
                   </Card>
                 ))}
               </div>
@@ -177,7 +171,7 @@ const CaseStudyDetail = () => {
                         {result.label}
                       </h3>
                       {result.detail && (
-                        <p className="text-muted-foreground">{result.detail}</p>
+                        <p className="text-grey">{result.detail}</p>
                       )}
                     </div>
                   </div>
@@ -195,9 +189,7 @@ const CaseStudyDetail = () => {
                         (result: string, idx: number) => (
                           <li key={idx} className="flex items-start gap-3">
                             <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                            <span className="text-muted-foreground">
-                              {result}
-                            </span>
+                            <span className="text-grey">{result}</span>
                           </li>
                         )
                       )}
@@ -220,9 +212,7 @@ const CaseStudyDetail = () => {
                     <p className="font-bold text-lg">
                       {study.testimonial.author}
                     </p>
-                    <p className="text-muted-foreground">
-                      {study.testimonial.company}
-                    </p>
+                    <p className="text-grey">{study.testimonial.company}</p>
                   </div>
                   {study.interviewId && (
                     <div className="mt-6">
@@ -248,7 +238,7 @@ const CaseStudyDetail = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Ready for Similar Results?
               </h2>
-              <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
+              <p className="text-lg text-grey mb-8 max-w-3xl mx-auto">
                 Let's discuss how we can help you achieve transformative
                 outcomes with AI.
               </p>
