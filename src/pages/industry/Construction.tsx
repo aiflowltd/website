@@ -526,14 +526,14 @@ const Construction = () => {
 
               <div className="lg:col-span-2 relative">
                 <div
-                  className="relative rounded-2xl p-6 backdrop-blur-xl border"
+                  className="relative rounded-2xl p-8 backdrop-blur-xl border"
                   style={{
                     backgroundColor: colors.mediumGrey + "40",
                     borderColor: colors.grey + "30",
                     boxShadow: `0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px ${colors.grey}20`,
                   }}
                 >
-                  <div className="relative h-64 flex items-center justify-center">
+                  <div className="relative h-80 flex items-center justify-center">
                     <svg
                       className="absolute inset-0 w-full h-full"
                       viewBox="0 0 350 280"

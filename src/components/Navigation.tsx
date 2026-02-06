@@ -4,7 +4,14 @@ import { NavLink } from "@/components/NavLink";
 import { Link, useLocation } from "react-router-dom";
 import { teamMembers, companyInfo } from "@/data/team";
 import { AI_FLOW_LOGO_LARGE, AI_FLOW_LOGO_SMALL } from "@/constants/images";
-import { Menu, Building2, Home, ChevronDown } from "lucide-react";
+import {
+  Menu,
+  Building2,
+  Building,
+  Home,
+  ChevronDown,
+  Layers,
+} from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -29,6 +36,24 @@ const solutionsItems = [
     description: "AI solutions for real estate industry",
     href: "/industry/real-estate",
     icon: Home,
+    color: colors.primary,
+    bgColor: colors.primary + "20",
+    borderColor: colors.primary + "40",
+  },
+  {
+    name: "PropTech",
+    description: "AI Agents for PropTech platforms",
+    href: "/industry/proptech",
+    icon: Building,
+    color: colors.secondary,
+    bgColor: colors.secondary + "20",
+    borderColor: colors.secondary + "40",
+  },
+  {
+    name: "Custom solutions",
+    description: "For your industry",
+    href: "/industry/agnostic",
+    icon: Layers,
     color: colors.primary,
     bgColor: colors.primary + "20",
     borderColor: colors.primary + "40",
@@ -90,7 +115,7 @@ export const Navigation = () => {
               <div className="relative group">
                 <button className="flex items-center gap-1 text-foreground hover:text-primary transition-colors relative pb-1">
                   <h4 className="text-lg lg:text-xl font-semibold">
-                    Solutions
+                    Industries
                   </h4>
                   <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                 </button>
@@ -106,21 +131,24 @@ export const Navigation = () => {
                           className="flex flex-col items-center justify-center gap-3 p-4 rounded-lg border transition-all duration-200 hover:scale-[1.02] w-32 h-32"
                           style={{
                             borderColor: item.borderColor,
-                            backgroundColor: item.bgColor,
+                            backgroundColor: "#000000",
                           }}
                         >
                           <div
                             className="flex items-center justify-center w-12 h-12 rounded-lg"
-                            style={{ backgroundColor: item.color + "30" }}
+                            style={{
+                              backgroundColor: "#000000",
+                              border: `1px solid ${colors.grey}40`,
+                            }}
                           >
                             <item.icon
                               className="w-6 h-6"
-                              style={{ color: item.color }}
+                              style={{ color: colors.lightGrey }}
                             />
                           </div>
                           <span
                             className="font-semibold text-sm text-center"
-                            style={{ color: item.color }}
+                            style={{ color: colors.lightGrey }}
                           >
                             {item.name}
                           </span>

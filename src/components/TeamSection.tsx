@@ -6,6 +6,7 @@ import {
   Clock,
   Calendar,
   TrendingUp,
+  Code,
 } from "lucide-react";
 import { teamArray, type TeamMember } from "@/data/team";
 import { AI_FLOW_LOGO_SYMBOL } from "@/constants/images";
@@ -297,7 +298,7 @@ export const TeamSection = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
               <div className="relative z-10">
                 <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                  <span className="text-2xl">🛠️</span>
+                  <Code className="w-5 h-5 text-primary" />
                   <span>Technologies</span>
                 </h3>
                 <div className="flex flex-wrap gap-2">

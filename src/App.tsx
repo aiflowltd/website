@@ -26,6 +26,8 @@ import RealEstate from "./pages/industry/RealEstate";
 import Marketing from "./pages/industry/Marketing";
 import { Analytics } from "@vercel/analytics/react";
 import Construction from "./pages/industry/Construction";
+import PropTech from "./pages/industry/PropTech";
+import Agnostic from "./pages/industry/Agnostic";
 import Deaclinic from "./pages/clients/Deaclinic";
 import Maurer from "./pages/clients/Maurer";
 
@@ -65,6 +67,8 @@ const App = () => {
             <Route path="/industry/construction" element={<Construction />} />
             <Route path="/industry/real-estate" element={<RealEstate />} />
             <Route path="/industry/marketing" element={<Marketing />} />
+            <Route path="/industry/proptech" element={<PropTech />} />
+            <Route path="/industry/agnostic" element={<Agnostic />} />
             <Route path="/clients/deaclinic" element={<Deaclinic />} />
             <Route path="/clients/maurer" element={<Maurer />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

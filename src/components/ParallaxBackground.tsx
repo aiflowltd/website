@@ -30,7 +30,7 @@ export const ParallaxBackground = () => {
         style={{
           backgroundImage: `url(${NY_BACKGROUND})`,
           transform: `scale(${scale})`,
-          filter: "grayscale(100%) opacity(0.15)",
+          filter: "grayscale(100%) opacity(0.3)",
         }}
       />
       <div className="absolute inset-0 bg-background/80" />

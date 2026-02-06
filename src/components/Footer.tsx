@@ -123,6 +123,22 @@ export const Footer = () => {
                   Real Estate
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/industry/proptech"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  PropTech
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/industry/agnostic"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Custom solutions for your industry
+                </Link>
+              </li>
               {/* <li>
                 <Link
                   to="/industry/marketing"
