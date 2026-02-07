@@ -4,15 +4,15 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
-import { 
-  MapPin, 
-  Briefcase, 
-  Clock, 
-  DollarSign, 
-  CheckCircle2, 
+import { Tag } from "@/components/Tag";
+import {
+  MapPin,
+  Briefcase,
+  Clock,
+  DollarSign,
+  CheckCircle2,
   ArrowLeft,
-  Upload
+  Upload,
 } from "lucide-react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { getJob } from "@/data/jobs";
@@ -26,8 +26,15 @@ const applicationSchema = z.object({
   fullName: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
   phone: z.string().min(10, "Please enter a valid phone number"),
-  linkedIn: z.string().min(1, "LinkedIn profile is required").url("Please enter a valid LinkedIn URL"),
-  portfolio: z.string().url("Please enter a valid portfolio URL").optional().or(z.literal("")),
+  linkedIn: z
+    .string()
+    .min(1, "LinkedIn profile is required")
+    .url("Please enter a valid LinkedIn URL"),
+  portfolio: z
+    .string()
+    .url("Please enter a valid portfolio URL")
+    .optional()
+    .or(z.literal("")),
   coverLetter: z.string().optional().or(z.literal("")),
   resume: z.string().optional(),
 });
@@ -90,7 +97,9 @@ const JobDetail = () => {
       console.log("🚀 Submitting to:", `${apiUrl}/api/applications/submit`);
 
       if (!apiUrl) {
-        throw new Error("Backend URL not configured. Please set VITE_API_URL=http://localhost:3001 in .env.local and restart dev server");
+        throw new Error(
+          "Backend URL not configured. Please set VITE_API_URL=http://localhost:3001 in .env.local and restart dev server"
+        );
       }
 
       const response = await fetch(`${apiUrl}/api/applications/submit`, {
@@ -99,7 +108,10 @@ const JobDetail = () => {
       });
 
       console.log("📡 Response status:", response.status);
-      console.log("📡 Response headers:", Object.fromEntries(response.headers.entries()));
+      console.log(
+        "📡 Response headers:",
+        Object.fromEntries(response.headers.entries())
+      );
 
       const contentType = response.headers.get("content-type");
       console.log("📡 Content-Type:", contentType);
@@ -133,16 +145,23 @@ const JobDetail = () => {
           result = { success: true };
         }
       } catch (e) {
-        console.error("⚠️ Could not parse response, but request was successful");
+        console.error(
+          "⚠️ Could not parse response, but request was successful"
+        );
         result = { success: true };
       }
-      
-      toast.success("Application submitted successfully! We'll be in touch soon.");
+
+      toast.success(
+        "Application submitted successfully! We'll be in touch soon."
+      );
       reset();
       setSelectedFile(null);
     } catch (error) {
       console.error("❌ Error submitting application:", error);
-      toast.error(error.message || "Failed to submit application. Please try again or email us directly.");
+      toast.error(
+        error.message ||
+          "Failed to submit application. Please try again or email us directly."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -182,9 +201,9 @@ const JobDetail = () => {
     if (files && files.length > 0) {
       const file = files[0];
       // Check file type
-      const validTypes = ['.pdf', '.doc', '.docx'];
-      const fileExtension = '.' + file.name.split('.').pop()?.toLowerCase();
-      
+      const validTypes = [".pdf", ".doc", ".docx"];
+      const fileExtension = "." + file.name.split(".").pop()?.toLowerCase();
+
       if (validTypes.includes(fileExtension)) {
         setSelectedFile(file);
         setValue("resume", file.name);
@@ -201,10 +220,13 @@ const JobDetail = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       <main className="container mx-auto px-6 pt-32 pb-20">
         {/* Back Button */}
-        <Link to="/careers" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mb-8">
+        <Link
+          to="/careers"
+          className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mb-8"
+        >
           <ArrowLeft className="w-4 h-4" />
           Back to Careers
         </Link>
@@ -232,9 +254,7 @@ const JobDetail = () => {
               </div>
             )}
           </div>
-          <Badge className="bg-primary/20 text-primary border-primary/30">
-            {job.department}
-          </Badge>
+          <Tag>{job.department}</Tag>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
@@ -242,11 +262,15 @@ const JobDetail = () => {
           <div className="lg:col-span-2 space-y-8">
             {/* Important Note */}
             <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20 p-6">
-              <h3 className="text-lg font-bold mb-3 text-primary">Important Note</h3>
+              <h3 className="text-lg font-bold mb-3 text-primary">
+                Important Note
+              </h3>
               <p className="text-muted-foreground leading-relaxed">
-                This is part of our ongoing effort to grow a pool of experts we can staff on projects as they arise. 
-                If your profile fits and you pass the interview, we'll connect you to paid opportunities as they land. 
-                We hire both freelancers (B2B/C2C) and employees. Individuals only, no agencies.
+                This is part of our ongoing effort to grow a pool of experts we
+                can staff on projects as they arise. If your profile fits and
+                you pass the interview, we'll connect you to paid opportunities
+                as they land. We hire both freelancers (B2B/C2C) and employees.
+                Individuals only, no agencies.
               </p>
             </Card>
 
@@ -317,10 +341,13 @@ const JobDetail = () => {
           <div className="lg:col-span-1">
             <Card className="bg-card border-border p-6 sticky top-24">
               <h2 className="text-2xl font-bold mb-6">Apply Now</h2>
-              
+
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div>
-                  <label htmlFor="fullName" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="fullName"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Full Name *
                   </label>
                   <Input
@@ -330,12 +357,17 @@ const JobDetail = () => {
                     className="bg-background border-border"
                   />
                   {errors.fullName && (
-                    <p className="text-destructive text-sm mt-1">{errors.fullName.message}</p>
+                    <p className="text-destructive text-sm mt-1">
+                      {errors.fullName.message}
+                    </p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Email *
                   </label>
                   <Input
@@ -346,12 +378,17 @@ const JobDetail = () => {
                     className="bg-background border-border"
                   />
                   {errors.email && (
-                    <p className="text-destructive text-sm mt-1">{errors.email.message}</p>
+                    <p className="text-destructive text-sm mt-1">
+                      {errors.email.message}
+                    </p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Phone *
                   </label>
                   <Input
@@ -362,12 +399,17 @@ const JobDetail = () => {
                     className="bg-background border-border"
                   />
                   {errors.phone && (
-                    <p className="text-destructive text-sm mt-1">{errors.phone.message}</p>
+                    <p className="text-destructive text-sm mt-1">
+                      {errors.phone.message}
+                    </p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="linkedIn" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="linkedIn"
+                    className="block text-sm font-medium mb-2"
+                  >
                     LinkedIn Profile *
                   </label>
                   <Input
@@ -378,13 +420,21 @@ const JobDetail = () => {
                     className="bg-background border-border"
                   />
                   {errors.linkedIn && (
-                    <p className="text-destructive text-sm mt-1">{errors.linkedIn.message}</p>
+                    <p className="text-destructive text-sm mt-1">
+                      {errors.linkedIn.message}
+                    </p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="portfolio" className="block text-sm font-medium mb-2">
-                    Portfolio / Website <span className="text-muted-foreground font-normal">(Optional)</span>
+                  <label
+                    htmlFor="portfolio"
+                    className="block text-sm font-medium mb-2"
+                  >
+                    Portfolio / Website{" "}
+                    <span className="text-muted-foreground font-normal">
+                      (Optional)
+                    </span>
                   </label>
                   <Input
                     id="portfolio"
@@ -394,13 +444,21 @@ const JobDetail = () => {
                     className="bg-background border-border"
                   />
                   {errors.portfolio && (
-                    <p className="text-destructive text-sm mt-1">{errors.portfolio.message}</p>
+                    <p className="text-destructive text-sm mt-1">
+                      {errors.portfolio.message}
+                    </p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="coverLetter" className="block text-sm font-medium mb-2">
-                    Cover Letter <span className="text-muted-foreground font-normal">(Optional)</span>
+                  <label
+                    htmlFor="coverLetter"
+                    className="block text-sm font-medium mb-2"
+                  >
+                    Cover Letter{" "}
+                    <span className="text-muted-foreground font-normal">
+                      (Optional)
+                    </span>
                   </label>
                   <Textarea
                     id="coverLetter"
@@ -410,17 +468,26 @@ const JobDetail = () => {
                     className="bg-background border-border resize-none"
                   />
                   {errors.coverLetter && (
-                    <p className="text-destructive text-sm mt-1">{errors.coverLetter.message}</p>
+                    <p className="text-destructive text-sm mt-1">
+                      {errors.coverLetter.message}
+                    </p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="resume" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="resume"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Resume / CV *
                   </label>
                   <div
                     className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors cursor-pointer 
-                      ${isDragging ? 'border-primary bg-primary/10' : 'border-border hover:border-primary'}`}
+                      ${
+                        isDragging
+                          ? "border-primary bg-primary/10"
+                          : "border-border hover:border-primary"
+                      }`}
                     onDragEnter={handleDragEnter}
                     onDragLeave={handleDragLeave}
                     onDragOver={handleDragOver}
@@ -430,7 +497,9 @@ const JobDetail = () => {
                     {selectedFile ? (
                       <div className="flex items-center justify-center gap-2 text-primary">
                         <CheckCircle2 className="w-6 h-6" />
-                        <span className="text-sm font-medium">{selectedFile.name}</span>
+                        <span className="text-sm font-medium">
+                          {selectedFile.name}
+                        </span>
                       </div>
                     ) : (
                       <>
@@ -452,7 +521,9 @@ const JobDetail = () => {
                     />
                   </div>
                   {errors.resume && (
-                    <p className="text-destructive text-sm mt-1">{errors.resume.message}</p>
+                    <p className="text-destructive text-sm mt-1">
+                      {errors.resume.message}
+                    </p>
                   )}
                 </div>
 
@@ -465,7 +536,8 @@ const JobDetail = () => {
                 </Button>
 
                 <p className="text-xs text-muted-foreground text-center">
-                  By submitting, you agree to our Privacy Policy and Terms of Service
+                  By submitting, you agree to our Privacy Policy and Terms of
+                  Service
                 </p>
               </form>
             </Card>
@@ -478,4 +550,3 @@ const JobDetail = () => {
 };
 
 export default JobDetail;
-

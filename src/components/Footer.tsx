@@ -109,10 +109,10 @@ export const Footer = () => {
               </li> */}
               <li>
                 <Link
-                  to="/industry/constructions"
+                  to="/industry/construction"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Constructions
+                  Construction
                 </Link>
               </li>
               <li>
@@ -121,6 +121,22 @@ export const Footer = () => {
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Real Estate
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/industry/proptech"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  PropTech
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/industry/agnostic"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Custom solutions for your industry
                 </Link>
               </li>
               {/* <li>

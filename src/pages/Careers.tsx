@@ -2,6 +2,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Tag } from "@/components/Tag";
 import {
   MapPin,
   Briefcase,
@@ -113,9 +114,7 @@ const Careers = () => {
                         <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
                           {position.title}
                         </h3>
-                        <span className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
-                          {position.department}
-                        </span>
+                        <Tag>{position.department}</Tag>
                       </div>
 
                       <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-4">

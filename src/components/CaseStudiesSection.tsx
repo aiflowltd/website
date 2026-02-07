@@ -1,12 +1,11 @@
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { featuredCaseStudies } from "@/data/caseStudies";
+import { Tag } from "@/components/Tag";
 
 export const CaseStudiesSection = () => {
-
   return (
     <section className="relative py-24 px-6">
       <div className="container mx-auto">
@@ -56,13 +55,7 @@ export const CaseStudiesSection = () => {
 
                     <div className="flex flex-wrap gap-2 mb-6">
                       {study.tags.map((tag, tagIndex) => (
-                        <Badge
-                          key={tagIndex}
-                          variant="secondary"
-                          className="bg-primary/10 text-primary border-primary/20"
-                        >
-                          {tag}
-                        </Badge>
+                        <Tag key={tagIndex}>{tag}</Tag>
                       ))}
                     </div>
                   </div>
@@ -70,7 +63,10 @@ export const CaseStudiesSection = () => {
                   <div>
                     <div className="grid grid-cols-3 gap-4 mb-6">
                       {study.results.slice(0, 3).map((result, resultIndex) => (
-                        <div key={resultIndex} className="flex flex-col items-center text-center">
+                        <div
+                          key={resultIndex}
+                          className="flex flex-col items-center text-center"
+                        >
                           <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-2">
                             {result.icon}
                           </div>

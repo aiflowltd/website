@@ -189,19 +189,22 @@ const AgentCarousel = () => {
                     className="mt-8 text-center"
                     style={{
                       opacity: isCenter ? 1 : 0,
-                      height: "60px",
-                      minHeight: "60px",
+                      height: "80px",
+                      minHeight: "80px",
                       transition:
                         "opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                     }}
                   >
                     <div
-                      className="text-sm uppercase tracking-wider font-semibold mb-1"
+                      className="text-m uppercase tracking-wider font-semibold mb-2"
                       style={{ color: colors.lightGrey }}
                     >
                       {agent.label}
                     </div>
-                    <div className="text-xs" style={{ color: colors.grey }}>
+                    <div
+                      className="text-xs"
+                      style={{ color: colors.lightGrey }}
+                    >
                       {agent.description}
                     </div>
                   </div>
@@ -426,7 +429,7 @@ const RealEstate = () => {
               <div className="space-y-8">
                 <div className="space-y-6">
                   <h1
-                    className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
+                    className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
                     style={{
                       letterSpacing: "-0.02em",
                       color: colors.lightGrey,
@@ -448,7 +451,7 @@ const RealEstate = () => {
                   </h1>
                   <p
                     className="text-lg md:text-xl max-w-xl"
-                    style={{ color: colors.grey, lineHeight: "1.6" }}
+                    style={{ color: colors.lightGrey, lineHeight: "1.6" }}
                   >
                     Increase closing rates, shorten deal cycles, and remove
                     operational drag across your pipeline.
@@ -632,7 +635,7 @@ const RealEstate = () => {
                     <div className="absolute bottom-4 right-4">
                       <div
                         className="text-xs"
-                        style={{ color: colors.grey, fontSize: "13px" }}
+                        style={{ color: colors.lightGrey, fontSize: "13px" }}
                       >
                         Automated at every step
                       </div>
@@ -656,9 +659,14 @@ const RealEstate = () => {
                 }}
               >
                 Most real estate businesses are losing deals because of{" "}
-                <span style={{ color: colors.primary }}>slow follow-up, manual coordination,</span>
-                {" "}and{" "}
-                <span style={{ color: colors.primary }}>information arriving fragmented</span>.
+                <span style={{ color: colors.primary }}>
+                  slow follow-up, manual coordination,
+                </span>{" "}
+                and{" "}
+                <span style={{ color: colors.primary }}>
+                  information arriving fragmented
+                </span>
+                .
               </h2>
             </div>
           </div>
@@ -745,14 +753,14 @@ const RealEstate = () => {
                             {agent.title}
                           </h3>
                           <p
-                            className="text-sm mb-3 font-medium"
+                            className="text-m mb-3 font-medium"
                             style={{ color: colors.primary }}
                           >
                             {agent.subtitle}
                           </p>
                           <p
-                            className="text-sm leading-relaxed"
-                            style={{ color: colors.grey }}
+                            className="text-m leading-relaxed"
+                            style={{ color: colors.lightGrey }}
                           >
                             {agent.description}
                           </p>
@@ -774,8 +782,8 @@ const RealEstate = () => {
                                 }}
                               />
                               <span
-                                className="text-sm leading-relaxed"
-                                style={{ color: colors.grey }}
+                                className="text-m leading-relaxed"
+                                style={{ color: colors.lightGrey }}
                               >
                                 {feature}
                               </span>
@@ -837,8 +845,8 @@ const RealEstate = () => {
                       {benefit.title}
                     </h3>
                     <p
-                      className="text-sm leading-relaxed"
-                      style={{ color: colors.grey }}
+                      className="text-m leading-relaxed"
+                      style={{ color: colors.lightGrey }}
                     >
                       {benefit.description}
                     </p>
@@ -867,7 +875,7 @@ const RealEstate = () => {
                 </h2>
                 <p
                   className="text-lg leading-relaxed"
-                  style={{ color: colors.grey }}
+                  style={{ color: colors.lightGrey }}
                 >
                   Create custom AI agents to automate specific tasks in your
                   real estate pipeline. Each agent handles a distinct workflow
@@ -934,7 +942,7 @@ const RealEstate = () => {
                         </h3>
                         <p
                           className="text-xs font-medium"
-                          style={{ color: colors.grey }}
+                          style={{ color: colors.lightGrey }}
                         >
                           {result.timeframe}
                         </p>
@@ -962,8 +970,8 @@ const RealEstate = () => {
                                 }}
                               />
                               <span
-                                className="text-sm leading-relaxed"
-                                style={{ color: colors.grey }}
+                                className="text-m leading-relaxed"
+                                style={{ color: colors.lightGrey }}
                               >
                                 {item}
                               </span>
@@ -1005,7 +1013,7 @@ const RealEstate = () => {
             </h2>
             <p
               className="text-lg mb-8 max-w-xl mx-auto"
-              style={{ color: colors.grey }}
+              style={{ color: colors.lightGrey }}
             >
               Let your team focus on conversations, negotiations, and closing
               while AI handles the busy-work.

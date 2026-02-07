@@ -19,7 +19,7 @@ import { useEffect } from "react";
 
 const BlogPost = () => {
   const { id } = useParams();
-  
+
   // Get blog post with all content from centralized data
   const post = id ? getBlogPostById(id) : null;
 
@@ -40,10 +40,7 @@ const BlogPost = () => {
       switch (block.type) {
         case "paragraph":
           return (
-            <p
-              key={index}
-              className="text-lg text-muted-foreground leading-relaxed mb-6"
-            >
+            <p key={index} className="text-lg leading-loose mb-10">
               {block.text}
             </p>
           );
@@ -51,21 +48,20 @@ const BlogPost = () => {
           return (
             <h2
               key={index}
-              className="text-2xl md:text-3xl font-bold mb-4 mt-8 text-primary"
+              className="text-2xl md:text-3xl font-bold mb-8 mt-16 text-primary"
             >
               {block.text}
             </h2>
           );
         case "list":
           return (
-            <ul key={index} className="space-y-3 mb-6 ml-6">
+            <ul
+              key={index}
+              className="space-y-5 mb-10 ml-8 list-disc marker:text-primary marker:text-xl"
+            >
               {block.items.map((item: string, idx: number) => (
-                <li
-                  key={idx}
-                  className="text-muted-foreground flex items-start gap-3"
-                >
-                  <span className="text-primary mt-1.5">•</span>
-                  <span>{item}</span>
+                <li key={idx} className="text-lg pl-2">
+                  {item}
                 </li>
               ))}
             </ul>
@@ -81,7 +77,7 @@ const BlogPost = () => {
               </p>
               {block.author && (
                 <p className="text-sm text-muted-foreground">
-                   -  {block.author}
+                  - {block.author}
                 </p>
               )}
             </Card>
@@ -154,22 +150,14 @@ const BlogPost = () => {
 
         {/* Article Header */}
         <article className="max-w-6xl mx-auto">
-          <div className="mb-8">
-            <span className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
-              {post.category}
-            </span>
-          </div>
-
           <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
             {post.title}
           </h1>
-
           <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
             {post.excerpt}
           </p>
-
           {/* Meta Info */}
-          <div className="flex flex-wrap gap-6 text-muted-foreground mb-8 pb-8 border-b border-border">
+          <div className="flex flex-wrap gap-6 text-muted-foreground mb-8 pb-8 border-border">
             <div className="flex items-center gap-2">
               <User className="w-5 h-5 text-primary" />
               <span>{getAuthor(post.authorId).name}</span>
@@ -183,9 +171,8 @@ const BlogPost = () => {
               <span>{post.readTime}</span>
             </div>
           </div>
-
           {/* Share Buttons */}
-          <div className="flex items-center gap-4 mb-12">
+          {/* <div className="flex items-center gap-4 mb-12">
             <span className="text-sm text-muted-foreground">Share:</span>
             <Button variant="outline" size="sm" className="gap-2">
               <Linkedin className="w-4 h-4" />
@@ -195,8 +182,7 @@ const BlogPost = () => {
               <Share2 className="w-4 h-4" />
               Copy Link
             </Button>
-          </div>
-
+          </div> */}
           {/* Featured Image */}
           {post.image && (
             <div className="relative h-96 rounded-2xl overflow-hidden mb-12">
@@ -211,19 +197,6 @@ const BlogPost = () => {
           {/* Article Content */}
           <div className="prose prose-lg max-w-none">
             {renderContent(post.content)}
-          </div>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-3 mt-12 pt-12 border-t border-border">
-            <Tag className="w-5 h-5 text-primary" />
-            {post.tags.map((tag: string, idx: number) => (
-              <span
-                key={idx}
-                className="text-sm px-3 py-1 rounded-full bg-muted text-muted-foreground"
-              >
-                {tag}
-              </span>
-            ))}
           </div>
 
           {/* Author Card */}
