@@ -1,6 +1,6 @@
 import ClientPageTemplate from "./ClientPageTemplate";
 
-const Maurer = () => {
+const Beta = () => {
   return (
     <ClientPageTemplate
       websiteUrl="https://www.maurerimobiliare.ro/"
@@ -10,5 +10,5 @@ const Maurer = () => {
   );
 };
 
-export default Maurer;
+export default Beta;
 

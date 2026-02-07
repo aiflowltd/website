@@ -1,6 +1,6 @@
 import ClientPageTemplate from "./ClientPageTemplate";
 
-const Deaclinic = () => {
+const Alpha = () => {
   return (
     <ClientPageTemplate
       websiteUrl="https://deaclinic.ro/"
@@ -10,5 +10,5 @@ const Deaclinic = () => {
   );
 };
 
-export default Deaclinic;
+export default Alpha;
 

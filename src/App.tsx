@@ -26,8 +26,10 @@ import RealEstate from "./pages/industry/RealEstate";
 import Marketing from "./pages/industry/Marketing";
 import { Analytics } from "@vercel/analytics/react";
 import Constructions from "./pages/industry/Constructions";
-import Deaclinic from "./pages/clients/Deaclinic";
-import Maurer from "./pages/clients/Maurer";
+import Alpha from "./pages/clients/Alpha";
+import Beta from "./pages/clients/Beta";
+import Gamma from "./pages/clients/Gamma";
+import Delta from "./pages/clients/Delta";
 
 const queryClient = new QueryClient();
 
@@ -65,8 +67,10 @@ const App = () => {
             <Route path="/industry/constructions" element={<Constructions />} />
             <Route path="/industry/real-estate" element={<RealEstate />} />
             <Route path="/industry/marketing" element={<Marketing />} />
-            <Route path="/clients/deaclinic" element={<Deaclinic />} />
-            <Route path="/clients/maurer" element={<Maurer />} />
+            <Route path="/clients/alpha-7x9k2m" element={<Alpha />} />
+            <Route path="/clients/beta-4p8q1n" element={<Beta />} />
+            <Route path="/clients/gamma-9w3r5t" element={<Gamma />} />
+            <Route path="/clients/delta-2k5m8p" element={<Delta />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
