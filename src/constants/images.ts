@@ -30,6 +30,8 @@ export const AI_FLOW_LOGO_SYMBOL =
 // Backgrounds
 
 export const NY_BACKGROUND = "/images/backgrounds/ny-background.jpg";
+export const BLUE_SPOT = "/images/blue-spot.svg";
+export const PURPLE_SPOT = "/images/purple-spot.svg";
 export const DUBAI_BACKGROUND = "/images/backgrounds/dubai-background.jpg";
 export const DUBAI_BACKGROUND_2 = "/images/backgrounds/dubai-background2.jpg";
 export const DUBAI_BACKGROUND_3 = "/images/backgrounds/dubai-background3.jpg";
