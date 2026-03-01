@@ -1,39 +1,37 @@
-import { useEffect, useState } from "react";
-import { NY_BACKGROUND } from "@/constants/images";
+import { BLUE_SPOT, PURPLE_SPOT } from "@/constants/images";
 
 export const ParallaxBackground = () => {
-  const [scale, setScale] = useState(1.4);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const maxScroll =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const scrollProgress = scrollY / maxScroll;
-
-      // Zoom out effect: starts at 1.2 and goes to 1.0 as you scroll
-      const newScale = 1.4 - scrollProgress * 0.2;
-      setScale(Math.max(1, newScale));
-    };
-
-    // Set initial scale based on current scroll position
-    handleScroll();
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <div className="fixed inset-0 z-0 overflow-hidden">
+    <div
+      className="fixed inset-0 z-0 overflow-hidden"
+      style={{ backgroundColor: "#141414" }}
+    >
+      {/* Purple – Top Left */}
       <div
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-100 ease-out"
+        className="absolute top-0 left-0 w-[250vw] h-[250vw] opacity-50 pointer-events-none"
         style={{
-          backgroundImage: `url(${NY_BACKGROUND})`,
-          transform: `scale(${scale})`,
-          filter: "grayscale(100%) opacity(0.3)",
+          backgroundImage: `url(${PURPLE_SPOT})`,
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "top left",
+          transform: "translate(-48%, -40%)",
+          backgroundColor: "#141414",
         }}
+        aria-hidden
       />
-      <div className="absolute inset-0 bg-background/80" />
+
+      {/* Blue – Bottom Right */}
+      <div
+        className="absolute bottom-0 right-0 w-[240vw] h-[240vw] opacity-40 pointer-events-none"
+        style={{
+          backgroundImage: `url(${BLUE_SPOT})`,
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "bottom right",
+          transform: "translate(55%, 30%)",
+        }}
+        aria-hidden
+      />
     </div>
   );
 };
