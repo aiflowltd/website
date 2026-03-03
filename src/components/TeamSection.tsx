@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { Tag } from "@/components/Tag";
 import {
   Linkedin,
   Github,
@@ -30,7 +31,7 @@ const AnimatedCounter = ({
           setIsVisible(true);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     const currentRef = ref.current;
@@ -62,7 +63,7 @@ const AnimatedCounter = ({
       const easedProgress = easeOutQuart(progress);
 
       const currentValue = Math.floor(
-        startValue + (target - startValue) * easedProgress
+        startValue + (target - startValue) * easedProgress,
       );
       setCount(currentValue);
 
@@ -175,7 +176,7 @@ export const TeamSection = () => {
             </div>
 
             {/* Additional team members */}
-            <div className="mt-4 relative z-0">
+            {/* <div className="mt-4 relative z-0">
               <Card className="bg-card border-border p-6 hover:border-primary transition-all duration-300">
                 <div className="flex items-center justify-center">
                   <div className="hidden md:flex items-center pl-2">
@@ -256,7 +257,7 @@ export const TeamSection = () => {
                   </div>
                 </div>
               </Card>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -327,12 +328,7 @@ export const TeamSection = () => {
                     "Hugging Face",
                     "... many more",
                   ].map((tech, index) => (
-                    <span
-                      key={index}
-                      className="text-xs px-3 py-1.5 bg-primary/10 text-primary rounded-lg border border-primary/20 font-medium hover:bg-primary hover:text-background transition-colors cursor-default"
-                    >
-                      {tech}
-                    </span>
+                    <Tag key={index}>{tech}</Tag>
                   ))}
                 </div>
               </div>
@@ -402,7 +398,7 @@ export const TeamSection = () => {
                   Choose the option that works best for your needs
                 </p>
                 <div className="space-y-2">
-                  <div className="flex items-start gap-2 p-2 rounded-lg bg-primary/10 hover:bg-primary/15 border border-primary/20 hover:border-primary/40 transition-all cursor-default group/item">
+                  <div className="flex items-start gap-2 p-2 rounded-lg bg-muted hover:bg-muted/90 border border-border hover:border-border transition-all cursor-default group/item">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
                     <div className="flex-1">
                       <p className="text-xs font-semibold text-foreground">
@@ -413,7 +409,7 @@ export const TeamSection = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-2 p-2 rounded-lg bg-primary/10 hover:bg-primary/15 border border-primary/20 hover:border-primary/40 transition-all cursor-default group/item">
+                  <div className="flex items-start gap-2 p-2 rounded-lg bg-muted hover:bg-muted/90 border border-border hover:border-border transition-all cursor-default group/item">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
                     <div className="flex-1">
                       <p className="text-xs font-semibold text-foreground">
@@ -424,7 +420,7 @@ export const TeamSection = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-2 p-2 rounded-lg bg-primary/10 hover:bg-primary/15 border border-primary/20 hover:border-primary/40 transition-all cursor-default group/item">
+                  <div className="flex items-start gap-2 p-2 rounded-lg bg-muted hover:bg-muted/90 border border-border hover:border-border transition-all cursor-default group/item">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
                     <div className="flex-1">
                       <p className="text-xs font-semibold text-foreground">
@@ -435,7 +431,7 @@ export const TeamSection = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-2 p-2 rounded-lg bg-primary/10 hover:bg-primary/15 border border-primary/20 hover:border-primary/40 transition-all cursor-default group/item">
+                  <div className="flex items-start gap-2 p-2 rounded-lg bg-muted hover:bg-muted/90 border border-border hover:border-border transition-all cursor-default group/item">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
                     <div className="flex-1">
                       <p className="text-xs font-semibold text-foreground">

@@ -18,9 +18,9 @@ export interface Service {
 export const services: Service[] = [
   {
     icon: <Code2 className="w-12 h-12" />,
-    title: "Custom AI Solutions",
+    title: "Custom AI Agents",
     description:
-      "Tailored artificial intelligence products built for your specific business needs and challenges.",
+      "Bespoke AI copilots, chatbots, and automations designed around your workflows.",
     features: [
       "End-to-end AI product development",
       "Custom model training and fine-tuning",
@@ -30,9 +30,9 @@ export const services: Service[] = [
   },
   {
     icon: <Brain className="w-12 h-12" />,
-    title: "Machine Learning",
+    title: "AI Strategy & Consulting",
     description:
-      "Advanced ML models and algorithms to unlock insights from your data and automate processes.",
+      "Hands-on guidance to identify high-impact AI use cases and ship them safely.",
     features: [
       "Predictive analytics and forecasting",
       "Computer vision solutions",
@@ -42,9 +42,9 @@ export const services: Service[] = [
   },
   {
     icon: <TrendingUp className="w-12 h-12" />,
-    title: "AI Strategy & Consulting",
+    title: "End to end tech solutions",
     description:
-      "Strategic consulting to help you navigate the AI landscape and maximize ROI.",
+      "From product strategy to architecture and implementation, we own the full stack for you.",
     features: [
       "AI readiness assessment",
       "Technology stack recommendations",

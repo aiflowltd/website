@@ -44,11 +44,11 @@ export const ServiceCard = ({
           {iconWithSize}
         </div>
 
-        <h3 className={`font-bold mb-3 ${isCompact ? "text-xl" : "text-2xl"}`}>
+        <h3 className={`font-bold mb-3 group-hover:text-white ${isCompact ? "text-xl" : "text-2xl"}`}>
           {service.title}
         </h3>
 
-        <p className={`text-muted-foreground leading-relaxed`}>
+        <p className="text-muted-foreground group-hover:text-white leading-relaxed">
           {service.description}
         </p>
       </Card>

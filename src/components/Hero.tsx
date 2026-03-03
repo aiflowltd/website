@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { DataCardsDummyEmbed } from "@/components/DataCardsDummyEmbed";
 
 export const Hero = () => {
   const words = [
@@ -105,8 +104,19 @@ export const Hero = () => {
         </div> */}
 
         {/* Data Cards Embed */}
-        <div className="mb-16 mt-24 w-full">
-          <DataCardsDummyEmbed />
+        <div className="mb-16 mt-24 w-full flex justify-center">
+          <iframe
+            title="Datacards"
+            style={{
+              borderRadius: "12px",
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
+              border: "none",
+              display: "block",
+              width: "min(100%, 800px)",
+            }}
+            src="https://app.datacards.ai/a/aiflow/company-questions"
+            height="200px"
+          />
         </div>
         {/* CTA Button */}
         <Link to="/contact#calendly">

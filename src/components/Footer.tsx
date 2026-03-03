@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { Linkedin, Mail, Globe } from "lucide-react";
 import { teamMembers, companyInfo } from "@/data/team";
 import { AI_FLOW_LOGO_SYMBOL } from "@/constants/images";
-
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
