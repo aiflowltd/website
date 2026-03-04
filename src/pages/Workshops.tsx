@@ -909,7 +909,7 @@ const Workshops = () => {
                   <h3 className="text-xl font-bold mb-2" style={{ color: colors.lightGrey }}>
                     {step.title}
                   </h3>
-                  <p className="text-m mb-4" style={{ color: colors.primary }}>
+                  <p className="text-m mb-4" style={{ color: colors.lightGrey }}>
                     {step.description}
                   </p>
                   <div
