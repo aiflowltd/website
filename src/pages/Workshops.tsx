@@ -47,6 +47,12 @@ const track1Activities: {
   periods: Record<Track1Period, boolean>;
 }[] = [
   {
+    activity: "Pre-session questionnaire",
+    time: "~1h written",
+    type: "client",
+    periods: { day1am: true, day1pm: false, day2am: false, day2pm: false, post: false },
+  },
+  {
     activity: "Introduction & AI landscape overview",
     time: "~2h",
     type: "joint",
@@ -68,6 +74,12 @@ const track1Activities: {
     activity: "Prioritisation & roadmap session",
     time: "~2h",
     type: "joint",
+    periods: { day1am: false, day1pm: false, day2am: false, day2pm: true, post: false },
+  },
+  {
+    activity: "Feedback & wrap-up",
+    time: "30 min",
+    type: "client",
     periods: { day1am: false, day1pm: false, day2am: false, day2pm: true, post: false },
   },
   {
@@ -102,6 +114,12 @@ const track2Activities: {
   periods: Record<Track2Period, boolean>;
 }[] = [
   {
+    activity: "Pre-session questionnaire & data access",
+    time: "~2h written",
+    type: "client",
+    periods: { wk1mon: true, wk1wed: false, wk1fri: false, wk2mon: false, wk2wed: false, wk2fri: false, post: false },
+  },
+  {
     activity: "Kick-off & current state review",
     time: "~3h",
     type: "joint",
@@ -109,7 +127,7 @@ const track2Activities: {
   },
   {
     activity: "Process mapping sessions",
-    time: "~3h/day",
+    time: "~3h",
     type: "joint",
     periods: { wk1mon: false, wk1wed: true, wk1fri: false, wk2mon: false, wk2wed: false, wk2fri: false, post: false },
   },
@@ -123,6 +141,12 @@ const track2Activities: {
     activity: "Use case identification & scoring",
     time: "~3h",
     type: "joint",
+    periods: { wk1mon: false, wk1wed: false, wk1fri: true, wk2mon: false, wk2wed: false, wk2fri: false, post: false },
+  },
+  {
+    activity: "Mid-point input & validation",
+    time: "~1h",
+    type: "client",
     periods: { wk1mon: false, wk1wed: false, wk1fri: true, wk2mon: false, wk2wed: false, wk2fri: false, post: false },
   },
   {
@@ -141,6 +165,12 @@ const track2Activities: {
     activity: "Roadmap finalisation & sign-off",
     time: "~2h",
     type: "joint",
+    periods: { wk1mon: false, wk1wed: false, wk1fri: false, wk2mon: false, wk2wed: false, wk2fri: true, post: false },
+  },
+  {
+    activity: "Final review & feedback",
+    time: "~1h",
+    type: "client",
     periods: { wk1mon: false, wk1wed: false, wk1fri: false, wk2mon: false, wk2wed: false, wk2fri: true, post: false },
   },
   {
