@@ -627,7 +627,7 @@ const Workshops = () => {
                       className="w-full text-base py-5 h-auto font-semibold hover:opacity-90 transition-opacity"
                       style={{
                         background: `linear-gradient(135deg, ${colors.secondary}, ${colors.secondary}CC)`,
-                        color: "#0a0a0a",
+                        color: "#FAFAFA",
                         border: "none",
                       }}
                     >
