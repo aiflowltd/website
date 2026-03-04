@@ -32,6 +32,7 @@ import Delta from "./pages/clients/Delta";
 import Construction from "./pages/industry/Construction";
 import PropTech from "./pages/industry/PropTech";
 import Agnostic from "./pages/industry/Agnostic";
+import Workshops from "./pages/Workshops";
 
 const queryClient = new QueryClient();
 
@@ -75,6 +76,7 @@ const App = () => {
             <Route path="/clients/delta-2k5m8p" element={<Delta />} />
             <Route path="/industry/proptech" element={<PropTech />} />
             <Route path="/industry/agnostic" element={<Agnostic />} />
+            <Route path="/workshops" element={<Workshops />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

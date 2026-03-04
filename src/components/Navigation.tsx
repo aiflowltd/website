@@ -160,6 +160,13 @@ export const Navigation = () => {
               </div>
 
               <NavLink
+                to="/workshops"
+                className="text-foreground hover:text-primary transition-colors relative pb-1"
+                activeClassName="text-primary font-semibold after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
+              >
+                <h4 className="text-lg lg:text-xl font-semibold">Workshops</h4>
+              </NavLink>
+              <NavLink
                 to="/case-studies"
                 className="text-foreground hover:text-primary transition-colors relative pb-1"
                 activeClassName="text-primary font-semibold after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
@@ -308,6 +315,14 @@ export const Navigation = () => {
               </div>
             </div>
 
+            <NavLink
+              to="/workshops"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-foreground hover:text-primary transition-colors"
+              activeClassName="text-primary font-semibold"
+            >
+              <h4 className="text-xl font-semibold">Workshops</h4>
+            </NavLink>
             <NavLink
               to="/case-studies"
               onClick={() => setIsMenuOpen(false)}
