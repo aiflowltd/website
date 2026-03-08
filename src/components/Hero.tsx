@@ -114,7 +114,7 @@ export const Hero = () => {
               display: "block",
               width: "min(100%, 800px)",
             }}
-            src="https://app.datacards.ai/a/aiflow/company-questions"
+            src="https://app.datacards.ai/a/aiflow/company-questions?theme=dark&scale=0"
             height="200px"
           />
         </div>
