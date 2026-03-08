@@ -121,7 +121,7 @@ const CATEGORIES = [
     locked: false,
     description:
       "These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously. This helps us improve how our website works.",
-    cookies: ["Google Analytics", "Umami Analytics", "Google Tag Manager", "Vercel Analytics"],
+    cookies: ["Google Analytics", "Microsoft Clarity", "Umami Analytics", "Google Tag Manager", "Vercel Analytics"],
   },
   {
     key: "marketing" as const,
