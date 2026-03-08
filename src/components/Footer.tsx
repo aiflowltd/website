@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { Linkedin, Mail, Globe } from "lucide-react";
 import { teamMembers, companyInfo } from "@/data/team";
 import { AI_FLOW_LOGO_SYMBOL } from "@/constants/images";
+import { useCookieConsent } from "@/contexts/CookieConsentContext";
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { openPreferences } = useCookieConsent();
 
   return (
     <footer className="bg-card border-t border-border">
@@ -284,6 +286,12 @@ export const Footer = () => {
             >
               Terms of Service
             </Link>
+            <button
+              onClick={openPreferences}
+              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              Cookie Settings
+            </button>
           </div>
         </div>
       </div>
