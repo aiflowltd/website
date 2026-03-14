@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { SiteButton } from "@/components/SiteButton";
-
+import { Section } from "@/components/Section";
+import { SectionHeader } from "@/components/SectionHeader";
 import { useState, useEffect, useRef } from "react";
 
 const AnimatedCounter = ({
@@ -120,18 +121,15 @@ const TeamIllustration = () => (
 
 export const TeamSection = () => {
   return (
-    <section id="team" className="relative py-24 px-6 scroll-mt-20">
-      <div className="container mx-auto max-w-6xl">
-        <div className="relative rounded-2xl border border-border bg-gradient-to-br from-primary/25 via-card to-card p-8 md:p-12 lg:p-16 overflow-hidden">
-          {/* Title spans full width */}
-          <div className="relative z-10 mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold font-alternates mb-2">
-              Senior expertise. Real-world results.
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Delivery experience across complex systems and global teams
-            </p>
-          </div>
+    <Section id="team" scrollMargin>
+      <div className="relative rounded-2xl border border-border bg-gradient-to-br from-primary/25 via-card to-card p-8 md:p-12 lg:p-16 overflow-hidden">
+        <div className="relative z-10 mb-10">
+          <SectionHeader
+            title="Senior expertise. Real-world results."
+            subtitle="Delivery experience across complex systems and global teams"
+            titleClassName="text-3xl md:text-4xl"
+          />
+        </div>
 
           <div className="relative z-10 lg:max-w-[55%]">
             <div>
@@ -181,7 +179,6 @@ export const TeamSection = () => {
             <TeamIllustration />
           </div>
         </div>
-      </div>
-    </section>
+    </Section>
   );
 };

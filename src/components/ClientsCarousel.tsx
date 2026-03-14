@@ -1,3 +1,4 @@
+import { Section } from "@/components/Section";
 import bitdefenderLogo from "@/assets/clients/bitdefender.png";
 import bloombergLogo from "@/assets/clients/bloomberg.png";
 import boschLogo from "@/assets/clients/bosch.png";
@@ -28,9 +29,8 @@ export const ClientsCarousel = () => {
   const duplicated = [...clients, ...clients, ...clients, ...clients];
 
   return (
-    <section className="relative py-12 px-6 w-full overflow-hidden">
-      <div className="container mx-auto max-w-7xl">
-        <div className="mb-8 text-center">
+    <Section padding="compact" maxWidth="wide" className="w-full" overflowHidden>
+      <div className="mb-8 text-center">
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Reliable AI, used and trusted by large organizations worldwide
           </p>
@@ -57,7 +57,6 @@ export const ClientsCarousel = () => {
             ))}
           </div>
         </div>
-      </div>
-    </section>
+    </Section>
   );
 };

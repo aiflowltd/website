@@ -5,8 +5,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SiteLink } from "@/components/SiteLink";
 import { featuredCaseStudies } from "@/data/caseStudies";
 import { Tag } from "@/components/Tag";
 
@@ -73,13 +74,13 @@ export const WorkSection = () => {
                   <p className="text-muted-foreground mb-4 leading-relaxed">
                     {industry.description}
                   </p>
-                  <Link
+                  <SiteLink
                     to={industry.href}
-                    className="inline-flex items-center gap-1 text-primary text-sm font-semibold hover:gap-2 transition-all"
+                    arrow="up-right"
+                    className="text-sm hover:gap-2 transition-all"
                   >
                     Learn more
-                    <ArrowUpRight className="w-4 h-4" />
-                  </Link>
+                  </SiteLink>
                 </AccordionContent>
               </AccordionItem>
             ))}
@@ -125,13 +126,13 @@ export const WorkSection = () => {
                         ))}
                       </div>
                     </div>
-                    <Link
+                    <SiteLink
                       to={`/case-studies/${study.id}`}
-                      className="inline-flex items-center gap-2 text-primary text-sm font-semibold hover:gap-3 transition-all"
+                      arrow="up-right"
+                      className="text-sm hover:gap-2 transition-all"
                     >
                       View Full Case Study
-                      <ArrowUpRight className="w-4 h-4" />
-                    </Link>
+                    </SiteLink>
                   </div>
                 </div>
               </div>

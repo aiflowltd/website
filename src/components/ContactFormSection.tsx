@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { SiteButton } from "@/components/SiteButton";
+import { Section } from "@/components/Section";
 import { cn } from "@/lib/utils";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -105,19 +106,17 @@ export const ContactFormSection = () => {
   };
 
   return (
-    <section id="contact" className="relative py-24 px-6 scroll-mt-20">
-      <div className="container mx-auto max-w-6xl">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* Left: same header alignment as other sections */}
-          <div>
-            <p className="text-4xl md:text-5xl text-muted-foreground mb-1">
-              Let's turn your
-            </p>
-            <h2 className="text-4xl md:text-5xl font-bold font-alternates">
-              AI ambitions into reality.
-            </h2>
-            <h2 className="text-3xl md:text-4xl font-bold font-alternates mb-2"></h2>
-            <p className="text-lg text-muted-foreground max-w-md">
+    <Section id="contact" scrollMargin>
+      <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        {/* Left: same header alignment as other sections */}
+        <div>
+          <p className="text-4xl md:text-5xl text-muted-foreground mb-1">
+            Let's turn your
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold font-alternates">
+            AI ambitions into reality.
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-md">
               Whether you're looking to start small or launch a transformative
               project, AI Flow is here to help you succeed. Get in touch for a
               friendly, no-pressure chat about your ideas and goals.
@@ -283,8 +282,7 @@ export const ContactFormSection = () => {
               </SiteButton>
             </div>
           </form>
-        </div>
       </div>
-    </section>
+    </Section>
   );
 };

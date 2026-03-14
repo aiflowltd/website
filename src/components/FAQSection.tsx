@@ -1,8 +1,8 @@
 import { useState } from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
-import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Section } from "@/components/Section";
+import { SiteLink } from "@/components/SiteLink";
 
 const faqIconPaths = [
   "/images/icons/faq-question.svg",
@@ -62,9 +62,8 @@ export const FAQSection = () => {
   const openIndex = parseInt(openFaq.replace("faq-", ""), 10) || 0;
 
   return (
-    <section className="relative py-24 px-6">
-      <div className="container mx-auto max-w-6xl">
-        <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+    <Section>
+      <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <div>
             <p className="mb-1 text-4xl text-muted-foreground md:text-5xl">
               Got questions?
@@ -77,13 +76,9 @@ export const FAQSection = () => {
             <p className="mb-1 text-muted-foreground">
               Not finding what you need?
             </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-1 font-semibold text-foreground transition-colors hover:text-primary"
-            >
+            <SiteLink to="/contact" arrow="up-right">
               Reach out and we'll help
-              <ArrowUpRight className="h-4 w-4" />
-            </Link>
+            </SiteLink>
           </div>
         </div>
 
@@ -180,7 +175,6 @@ export const FAQSection = () => {
             />
           </div>
         </div>
-      </div>
-    </section>
+    </Section>
   );
 };

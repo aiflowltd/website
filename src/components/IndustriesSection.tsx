@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight, MoreHorizontal } from "lucide-react";
 import { SiteButton } from "@/components/SiteButton";
+import { Section } from "@/components/Section";
+import { SectionHeader } from "@/components/SectionHeader";
 import { getCaseStudy } from "@/data/caseStudies";
 
 const industries = [
@@ -79,17 +81,13 @@ export const IndustriesSection = () => {
     : null;
 
   return (
-    <section ref={sectionRef} className="relative py-24 px-6 w-full">
-      <div className="container mx-auto max-w-6xl">
-        {/* Title and subtitle above both columns and the browser */}
-        <div className="mb-12 lg:mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold font-alternates mb-3">
-            Proven across industries
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            AI systems built around real constraints, not generic templates.
-          </p>
-        </div>
+    <Section ref={sectionRef} className="w-full">
+      <SectionHeader
+        title="Proven across industries"
+        subtitle="AI systems built around real constraints, not generic templates."
+        titleClassName="mb-3"
+        className="mb-12 lg:mb-16"
+      />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left: industry list, indented */}
@@ -197,7 +195,6 @@ export const IndustriesSection = () => {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+    </Section>
   );
 };

@@ -1,9 +1,10 @@
-import { Compass, Search, Bot } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Section } from "@/components/Section";
+import { SectionHeader } from "@/components/SectionHeader";
+import { SiteLink } from "@/components/SiteLink";
 
 const services = [
   {
-    icon: Compass,
+    icon: "/images/icons/services-ai-strategy.svg",
     title: "AI Strategy Consulting",
     subtitle: "Explore",
     description:
@@ -12,7 +13,7 @@ const services = [
     linkText: "View AI strategy consulting",
   },
   {
-    icon: Search,
+    icon: "/images/icons/services-discovery.svg",
     title: "Discovery Workshop",
     subtitle: "Understand",
     description:
@@ -21,7 +22,7 @@ const services = [
     linkText: "Explore discovery workshops",
   },
   {
-    icon: Bot,
+    icon: "/images/icons/services-custom-agents.svg",
     title: "Custom AI Agents",
     subtitle: "Build",
     description:
@@ -33,61 +34,64 @@ const services = [
 
 export const ServicesSection = () => {
   return (
-    <section id="services" className="relative py-24 px-6 scroll-mt-20">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold font-alternates mb-4">
-            Services built for real delivery
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            We help teams move from AI ideas to systems that run reliably over
-            time
-          </p>
-        </div>
+    <Section id="services" scrollMargin>
+      <SectionHeader
+        title="Services built for real delivery"
+        subtitle="We help teams move from AI ideas to systems that run reliably over time"
+        variant="centered"
+      />
 
-        <div className="grid md:grid-cols-3 gap-6 rounded-2xl border border-dashed border-border p-6">
-          {services.map((service, index) => {
-            const hoverGradientClasses =
-              index === 0
-                ? "hover:bg-gradient-to-br hover:from-primary/50 hover:via-sky-500/40 hover:to-secondary/50"
-                : index === 1
-                  ? "hover:bg-gradient-to-tr hover:from-secondary/40 hover:via-secondary/20 hover:to-primary/40"
-                  : "hover:bg-gradient-to-tl hover:from-success/50 hover:via-success/30 hover:to-secondary/50";
+      <div className="grid md:grid-cols-3 gap-6 rounded-2xl border border-dashed border-border p-6">
+        {services.map((service, index) => {
+          const hoverGradientClasses =
+            index === 0
+              ? "hover:bg-gradient-to-br hover:from-primary/50 hover:via-sky-500/40 hover:to-secondary/50"
+              : index === 1
+                ? "hover:bg-gradient-to-tr hover:from-secondary/40 hover:via-secondary/20 hover:to-primary/40"
+                : "hover:bg-gradient-to-tl hover:from-success/50 hover:via-success/30 hover:to-secondary/50";
 
-            return (
+          return (
+            <div
+              key={index}
+              className={`group flex flex-col p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all duration-300 ${hoverGradientClasses}`}
+            >
+              {/* Icon: 56×56, radial gradient, inset ring, icon 24×24 centered, opacity 0.6 */}
               <div
-                key={index}
-                className={`group flex flex-col p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all duration-300 ${hoverGradientClasses}`}
+                className="relative w-14 h-14 flex-none shrink-0 order-0 grow-0 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,rgba(255,255,255,0)_30%,rgba(255,255,255,0.15)_100%)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1)] mb-4"
+                style={{ mixBlendMode: "normal" }}
               >
-                <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-muted-foreground mb-4 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
-                  <service.icon className="w-6 h-6" />
-                </div>
-                <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
-                  {service.subtitle}
-                </p>
-                <h3 className="text-lg font-bold mb-3">{service.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
-                  {service.description}
-                </p>
-                <Link
-                  to={service.link}
-                  className="text-sm text-primary font-semibold hover:underline mt-auto inline-flex items-center gap-1"
-                >
-                  {service.linkText}
-                  <span className="text-primary">→</span>
-                </Link>
+                <img
+                  src={service.icon}
+                  alt=""
+                  className="absolute left-1/2 top-1/2 w-6 h-6 -translate-x-1/2 -translate-y-1/2 opacity-90"
+                  aria-hidden
+                />
               </div>
-            );
-          })}
-        </div>
-
-        <p className="text-center text-muted-foreground mt-8">
-          Have questions about our services or how we work?{" "}
-          <span className="text-foreground font-semibold">
-            Ask our AI on the right.
-          </span>
-        </p>
+              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
+                {service.subtitle}
+              </p>
+              <h3 className="text-lg font-bold mb-3">{service.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
+                {service.description}
+              </p>
+              <SiteLink
+                to={service.link}
+                arrow="right"
+                className="text-sm mt-auto hover:underline"
+              >
+                {service.linkText}
+              </SiteLink>
+            </div>
+          );
+        })}
       </div>
-    </section>
+
+      <p className="text-center text-muted-foreground mt-8">
+        Have questions about our services or how we work?{" "}
+        <span className="text-foreground font-semibold">
+          Ask our AI on the right.
+        </span>
+      </p>
+    </Section>
   );
 };

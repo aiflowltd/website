@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { SiteButton } from "@/components/SiteButton";
+import { SectionHeader } from "@/components/SectionHeader";
 
 const steps = [
   {
@@ -157,26 +158,22 @@ export const HowWeWorkSection = () => {
   return (
     <section className="relative py-24 px-6">
       <div ref={containerRef} className="container mx-auto max-w-6xl">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-10 gap-6">
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold font-alternates mb-2">
-              How we work
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              A structured delivery flow, flexible in how we engage
-            </p>
-          </div>
-          <Link to="/services">
-            <SiteButton
-              variant="primary"
-              arrow="up-right"
-              className="whitespace-nowrap"
-            >
-              Explore our services in depth
-            </SiteButton>
-          </Link>
-        </div>
+        <SectionHeader
+          title="How we work"
+          subtitle="A structured delivery flow, flexible in how we engage"
+          action={
+            <Link to="/services">
+              <SiteButton
+                variant="primary"
+                arrow="up-right"
+                className="whitespace-nowrap"
+              >
+                Explore our services in depth
+              </SiteButton>
+            </Link>
+          }
+          className="mb-10"
+        />
 
         {/* Divider line */}
         <div className="h-px bg-white/[0.08] mb-0" />

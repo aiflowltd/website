@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { SiteButton } from "@/components/SiteButton";
+import { Section } from "@/components/Section";
+import { SectionHeader } from "@/components/SectionHeader";
 import {
   ArrowUpRight,
   Search,
@@ -193,22 +195,19 @@ const engagementModels = [
 
 export const EngagementSection = () => {
   return (
-    <section className="relative py-24 px-6">
-      <div className="container mx-auto max-w-6xl">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold font-alternates mb-2">
-              Where are you in your AI journey?
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-xl">
-              We meet you at your current stage, through flexible engagement
-              models.
-            </p>
-          </div>
+    <Section>
+      <SectionHeader
+        title="Where are you in your AI journey?"
+        subtitle="We meet you at your current stage, through flexible engagement models."
+        action={
           <Link to="/contact">
             <SiteButton variant="secondary">Discuss your project</SiteButton>
           </Link>
-        </div>
+        }
+        titleClassName="text-3xl md:text-4xl"
+        subtitleClassName="max-w-xl"
+        className="mb-16"
+      />
 
         <div className="grid md:grid-cols-2 gap-6">
           {engagementModels.map((model, index) => {
@@ -256,7 +255,6 @@ export const EngagementSection = () => {
             );
           })}
         </div>
-      </div>
-    </section>
+    </Section>
   );
 };

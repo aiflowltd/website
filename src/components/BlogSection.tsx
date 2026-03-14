@@ -5,6 +5,8 @@ import type { BlogPost } from "@/data/blogPosts";
 import { Card } from "@/components/ui/card";
 import { Tag } from "@/components/Tag";
 import { SiteButton } from "@/components/SiteButton";
+import { Section } from "@/components/Section";
+import { SectionHeader } from "@/components/SectionHeader";
 
 const CYCLE_INTERVAL_MS = 3500;
 const UNPAUSE_DELAY_MS = 800;
@@ -73,24 +75,17 @@ export const BlogSection = () => {
   }, []);
 
   return (
-    <section
-      className="relative py-24 px-6 overflow-hidden"
-      onMouseLeave={handleSectionLeave}
-    >
-      <div className="container mx-auto max-w-6xl">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold font-alternates mb-2">
-              Latest thinking...
-            </h2>
-            <p className="text-muted-foreground">
-              Notes from the field, grounded in production work.
-            </p>
-          </div>
+    <Section overflowHidden onMouseLeave={handleSectionLeave}>
+      <SectionHeader
+        title="Latest thinking..."
+        subtitle="Notes from the field, grounded in production work."
+        action={
           <Link to="/blog">
             <SiteButton variant="secondary">Explore our blog</SiteButton>
           </Link>
-        </div>
+        }
+        className="mb-12"
+      />
 
         {/* Mobile: vertical stack, equal-sized cards */}
         <div className="flex flex-col gap-4 md:hidden">
@@ -193,7 +188,6 @@ export const BlogSection = () => {
             ))}
           </div>
         </div>
-      </div>
-    </section>
+    </Section>
   );
 };

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from "@/data/testimonials";
 import { Link } from "react-router-dom";
+import { Section } from "@/components/Section";
+import { SectionHeader } from "@/components/SectionHeader";
 
 export const TestimonialsSection = () => {
   const [current, setCurrent] = useState(0);
@@ -14,19 +16,15 @@ export const TestimonialsSection = () => {
   const t = testimonials[current];
 
   return (
-    <section id="testimonials" className="relative py-24 px-6 scroll-mt-20">
-      <div className="container mx-auto max-w-6xl">
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-16 gap-6">
-          <div>
-            <h2 className="text-4xl md:text-5xl  font-bold font-alternates mb-2">
-              What clients say
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl">
-              Stories from teams we&apos;ve worked with
-            </p>
-          </div>
-
-          {/* Page indicators: 01 ------ 02 03 04, line marks current in sight */}
+    <Section id="testimonials" scrollMargin>
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-16 gap-6">
+        <SectionHeader
+          title="What clients say"
+          subtitle="Stories from teams we've worked with"
+          subtitleClassName="max-w-2xl"
+          className="mb-0 flex-1"
+        />
+        {/* Page indicators: 01 ------ 02 03 04, line marks current in sight */}
           <div className="hidden md:flex items-center gap-3 text-sm text-muted-foreground shrink-0">
             {(() => {
               const n = testimonials.length;
@@ -125,7 +123,6 @@ export const TestimonialsSection = () => {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+    </Section>
   );
 };
