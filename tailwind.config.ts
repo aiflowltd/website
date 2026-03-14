@@ -26,31 +26,41 @@ export default {
         alternates: ["Montserrat Alternates", "sans-serif"],
       },
       colors: {
+        /* Theme palette — Primary, Status, Base (use only these, no random hex) */
+        primary: {
+          DEFAULT: "hsl(var(--primary))" /* #1AB8FF Azure Blue */,
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))" /* #748DFC Space Violet */,
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success))" /* #0DD9B7 Alien Green */,
+          foreground: "hsl(var(--success-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))" /* #EA2849 Laser Red */,
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        error: {
+          DEFAULT: "hsl(var(--destructive))" /* alias */,
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))" /* #FFC914 Cosmic Yellow */,
+          foreground: "hsl(var(--warning-foreground))",
+        },
+        "dark-grey": "hsl(var(--dark-grey))" /* #292C33 */,
+        "medium-grey": "hsl(var(--medium-grey))" /* #555A66 */,
+        grey: "hsl(var(--grey))" /* #8B92A3 */,
+        "light-grey": "hsl(var(--light-grey))" /* #C5CCE2 */,
+        /* UI (derived from theme) */
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        success: {
-          DEFAULT: "hsl(var(--success))",
-          foreground: "hsl(var(--success-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        warning: {
-          DEFAULT: "hsl(var(--warning))",
-          foreground: "hsl(var(--warning-foreground))",
-        },
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
@@ -69,10 +79,6 @@ export default {
         },
         "cyan-glow": "hsl(var(--cyan-glow))",
         "dark-surface": "hsl(var(--dark-surface))",
-        "dark-grey": "hsl(var(--dark-grey))",
-        "medium-grey": "hsl(var(--medium-grey))",
-        grey: "hsl(var(--grey))",
-        "light-grey": "hsl(var(--light-grey))",
       },
       borderRadius: {
         lg: "var(--radius)",

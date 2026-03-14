@@ -117,7 +117,7 @@ const Team = () => {
     "Healthcare",
     "EdTech",
     "Entertainment",
-    "Manufacturing"
+    "Manufacturing",
   ];
   return (
     <div className="min-h-screen bg-background">
@@ -147,7 +147,7 @@ const Team = () => {
                 <div className="text-primary mb-2 flex justify-center">
                   <Icon className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
-                <div className="text-2xl md:text-3xl font-bold mb-1">
+                <div className="text-3xl md:text-4xl font-bold mb-1">
                   {spec.value}
                 </div>
                 <div className="text-xs md:text-sm text-muted-foreground">

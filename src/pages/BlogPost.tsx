@@ -48,7 +48,7 @@ const BlogPost = () => {
           return (
             <h2
               key={index}
-              className="text-2xl md:text-3xl font-bold mb-8 mt-16 text-primary"
+              className="text-3xl md:text-4xl font-bold mb-8 mt-16 text-primary"
             >
               {block.text}
             </h2>

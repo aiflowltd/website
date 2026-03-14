@@ -1,13 +1,16 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
-import { ServicesSection } from "@/components/ServicesSection";
 import { ClientsCarousel } from "@/components/ClientsCarousel";
+import { ServicesSection } from "@/components/ServicesSection";
+import { HowWeWorkSection } from "@/components/HowWeWorkSection";
+import { EngagementSection } from "@/components/EngagementSection";
+import { IndustriesSection } from "@/components/IndustriesSection";
 import { TeamSection } from "@/components/TeamSection";
-import { CaseStudiesSection } from "@/components/CaseStudiesSection";
-import { ParallaxBackground } from "@/components/ParallaxBackground";
-import { GlobalPresenceSection } from "@/components/GlobalPresenceSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { BlogSection } from "@/components/BlogSection";
+import { FAQSection } from "@/components/FAQSection";
+import { ContactFormSection } from "@/components/ContactFormSection";
 import { useEffect } from "react";
 
 const Index = () => {
@@ -16,19 +19,20 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-background text-foreground ">
-      <ParallaxBackground />
-      <div className="relative z-10">
-        <Navigation />
-        <Hero />
-        <ServicesSection />
-        <ClientsCarousel />
-        <TeamSection />
-        <GlobalPresenceSection />
-        <CaseStudiesSection />
-        <TestimonialsSection />
-        <Footer />
-      </div>
+    <div className="relative min-h-screen bg-background text-foreground">
+      <Navigation />
+      <Hero />
+      <ClientsCarousel />
+      <ServicesSection />
+      <HowWeWorkSection />
+      <EngagementSection />
+      <IndustriesSection />
+      <TeamSection />
+      <TestimonialsSection />
+      <BlogSection />
+      <FAQSection />
+      <ContactFormSection />
+      <Footer />
     </div>
   );
 };

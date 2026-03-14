@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { Linkedin, Mail, Globe } from "lucide-react";
-import { teamMembers, companyInfo } from "@/data/team";
-import { AI_FLOW_LOGO_SYMBOL } from "@/constants/images";
+import { Linkedin } from "lucide-react";
+import { companyInfo } from "@/data/team";
+import { AI_FLOW_LOGO_LARGE } from "@/constants/images";
 import { useCookieConsent } from "@/contexts/CookieConsentContext";
+
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { openPreferences } = useCookieConsent();
@@ -10,33 +11,55 @@ export const Footer = () => {
   return (
     <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-6 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
-          {/* Company Info */}
-          <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+          {/* Logo & Info */}
+          <div>
+            <Link to="/" className="inline-block mb-4">
               <img
-                src={AI_FLOW_LOGO_SYMBOL}
-                alt="AI Flow Logo"
+                src={AI_FLOW_LOGO_LARGE}
+                alt="AI Flow"
                 className="h-8 w-auto"
               />
             </Link>
-            <p className="text-sm text-muted-foreground mb-4">
-              {companyInfo.tagline}
+            <p className="text-sm text-muted-foreground mb-4 max-w-xs leading-relaxed">
+              Building AI-powered products. In AI & ML
+              <br />
+              before the wave. Building products, not hype.
             </p>
-            <div className="flex gap-4">
+            <p className="text-sm text-muted-foreground mb-4">
+              {companyInfo.email}
+            </p>
+            <div className="flex gap-3">
               <a
                 href={companyInfo.linkedinCompany}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href={`mailto:${companyInfo.email}`}
-                className="text-muted-foreground hover:text-primary transition-colors"
+                href="https://x.com/aiflow"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="X (Twitter)"
               >
-                <Mail className="w-5 h-5" />
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </a>
+              <a
+                href="https://facebook.com/aiflow"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Facebook"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
               </a>
             </div>
           </div>
@@ -44,59 +67,51 @@ export const Footer = () => {
           {/* Company Links */}
           <div>
             <h3 className="font-bold mb-4">Company</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               <li>
                 <Link
                   to="/services"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Services
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/workshops"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Workshops
-                </Link>
-              </li>
-              <li>
-                <Link
                   to="/case-studies"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  Case Studies
+                  Our work
                 </Link>
               </li>
               <li>
                 <Link
                   to="/team"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  Team
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/blog"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Blog
+                  About us
                 </Link>
               </li>
               <li>
                 <Link
                   to="/careers"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Careers
                 </Link>
               </li>
               <li>
                 <Link
+                  to="/blog"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/contact"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Contact
                 </Link>
@@ -104,22 +119,14 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Industries */}
+          {/* Industries Links */}
           <div>
             <h3 className="font-bold mb-4">Industries</h3>
-            <ul className="space-y-2">
-              {/* <li>
-                <Link
-                  to="/industry/legal"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Legal
-                </Link>
-              </li> */}
+            <ul className="space-y-3">
               <li>
                 <Link
                   to="/industry/construction"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Construction
                 </Link>
@@ -127,168 +134,36 @@ export const Footer = () => {
               <li>
                 <Link
                   to="/industry/real-estate"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Real Estate
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/industry/proptech"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  PropTech
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/industry/agnostic"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Custom solutions for your industry
-                </Link>
-              </li>
-              {/* <li>
-                <Link
-                  to="/industry/marketing"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Marketing
-                </Link>
-              </li> */}
             </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h3 className="font-bold mb-4">Resources</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  to="/blog"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/case-studies"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Case Studies
-                </Link>
-              </li>
-              <li>
-                <a
-                  href={companyInfo.meetingLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Book a Call
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="font-bold mb-4">Get in Touch</h3>
-            <ul className="space-y-2 mb-6">
-              <li>
-                <a
-                  href={`mailto:${companyInfo.email}`}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {companyInfo.email}
-                </a>
-              </li>
-              <li>
-                <Link
-                  to="/contact"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Contact us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/careers"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Join our team
-                </Link>
-              </li>
-            </ul>
-
-            {/* Socials */}
-            <div>
-              <h4 className="font-semibold text-sm mb-3">Connect With Us</h4>
-              <div className="flex gap-3">
-                <a
-                  href={teamMembers.irina.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative"
-                  title={`${teamMembers.irina.name} - LinkedIn`}
-                >
-                  <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300">
-                    <img
-                      src={teamMembers.irina.photo}
-                      alt={teamMembers.irina.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute -top-1 -right-1 w-4 h-4 bg-primary rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Linkedin className="w-2.5 h-2.5 text-background" />
-                  </div>
-                </a>
-
-                <a
-                  href={teamMembers.mihai.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative"
-                  title={`${teamMembers.mihai.name} - LinkedIn`}
-                >
-                  <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300">
-                    <img
-                      src={teamMembers.mihai.photo}
-                      alt={teamMembers.mihai.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute -top-1 -right-1 w-4 h-4 bg-primary rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Linkedin className="w-2.5 h-2.5 text-background" />
-                  </div>
-                </a>
-              </div>
-            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} {companyInfo.name}. All rights reserved.
+            &copy;{currentYear} {companyInfo.name}. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link
-              to="/privacy"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <Link
               to="/terms"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               Terms of Service
             </Link>
+            <Link
+              to="/privacy"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Privacy Policy
+            </Link>
             <button
               onClick={openPreferences}
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               Cookie Settings
             </button>

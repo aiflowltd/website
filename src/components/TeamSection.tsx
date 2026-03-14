@@ -1,16 +1,6 @@
-import { Card } from "@/components/ui/card";
-import { Tag } from "@/components/Tag";
-import {
-  Linkedin,
-  Github,
-  Mail,
-  Clock,
-  Calendar,
-  TrendingUp,
-  Code,
-} from "lucide-react";
-import { teamArray, type TeamMember } from "@/data/team";
-import { AI_FLOW_LOGO_SYMBOL } from "@/constants/images";
+import { Link } from "react-router-dom";
+import { SiteButton } from "@/components/SiteButton";
+
 import { useState, useEffect, useRef } from "react";
 
 const AnimatedCounter = ({
@@ -49,19 +39,15 @@ const AnimatedCounter = ({
   useEffect(() => {
     if (!isVisible) return;
 
-    // Calculate duration based on target number (larger numbers = longer duration)
     const duration = Math.min(2500, Math.max(1200, target * 15));
     const startTime = Date.now();
     const startValue = 1;
-
-    // Easing function for smooth animation
     const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
 
     const animate = () => {
       const elapsed = Date.now() - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const easedProgress = easeOutQuart(progress);
-
       const currentValue = Math.floor(
         startValue + (target - startValue) * easedProgress,
       );
@@ -78,373 +64,121 @@ const AnimatedCounter = ({
   }, [isVisible, target]);
 
   return (
-    <div ref={ref} className="text-4xl font-bold text-primary mb-2">
+    <div ref={ref} className="text-4xl md:text-5xl font-bold text-foreground">
       {count}
       {suffix}
     </div>
   );
 };
 
-export const TeamSection = () => {
-  const team: TeamMember[] = teamArray;
+const stats = [
+  {
+    value: 10,
+    suffix: "+",
+    label: "years experience",
+    description: "building and shipping AI, ML, and data systems end to end",
+  },
+  {
+    value: 50,
+    suffix: "+",
+    label: "projects delivered",
+    description: "across startups, scale-ups, and enterprise environments",
+  },
+  {
+    value: 20,
+    suffix: "+",
+    label: "enterprise clients",
+    description:
+      "including teams connected to Google, Bloomberg, and leading industry players",
+  },
+  {
+    value: 250,
+    suffix: "+",
+    label: "AI agents delivered",
+    description: "– production systems supporting real users and workflows",
+  },
+];
 
+const TeamIllustration = () => (
+  <svg
+    width={251}
+    height={251}
+    viewBox="0 0 251 251"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-full h-full"
+  >
+    <path
+      d="M167.333 188.25L188.25 209.167L230.083 167.333M125.5 156.875H83.6665C64.1746 156.875 54.4287 156.875 46.7409 160.059C36.4906 164.305 28.3467 172.449 24.1009 182.699C20.9165 190.387 20.9165 200.133 20.9165 219.625M162.104 34.4159C177.435 40.6217 188.25 55.652 188.25 73.2083C188.25 90.7646 177.435 105.795 162.104 112.001M141.187 73.2083C141.187 96.3122 122.458 115.042 99.354 115.042C76.2501 115.042 57.5207 96.3122 57.5207 73.2083C57.5207 50.1044 76.2501 31.375 99.354 31.375C122.458 31.375 141.187 50.1044 141.187 73.2083Z"
+      stroke="#555A66"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeDasharray="6 6"
+    />
+  </svg>
+);
+
+export const TeamSection = () => {
   return (
     <section id="team" className="relative py-24 px-6 scroll-mt-20">
-      <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Meet Our <span className="text-primary">Team</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Industry veterans with deep expertise in AI/ML, having built
-            products for Google, Bloomberg, and more
-          </p>
-        </div>
-
-        <div className="max-w-6xl mx-auto">
-          {/* Team Members and Logo Layout */}
-          <div className="relative">
-            {/* Top Row: Two Team Members */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative">
-              {team.map((member, index) => (
-                <Card
-                  key={index}
-                  className={`bg-card border-border p-8 hover:border-primary transition-all duration-300 group relative z-0 ${
-                    member.id === "mihai-anton"
-                      ? "order-1 md:order-2"
-                      : "order-2 md:order-1"
-                  }`}
-                >
-                  <div className="flex flex-col items-center text-center">
-                    {/* Photo */}
-                    <div className="relative mb-6 group-hover:scale-105 transition-transform duration-300">
-                      <div className="w-32 h-32 rounded-full overflow-hidden group-hover:border-primary transition-colors">
-                        <img
-                          src={member.photo}
-                          alt={member.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Info */}
-                    <h3 className="text-2xl font-bold mb-2">{member.name}</h3>
-                    <div className="text-primary font-semibold mb-4">
-                      {member.role}
-                    </div>
-                    <p className="text-muted-foreground leading-relaxed mb-6">
-                      {member.bio}
-                    </p>
-
-                    {/* Social Links */}
-                    <div className="flex gap-4">
-                      {member.linkedin && (
-                        <a
-                          href={member.linkedin}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary flex items-center justify-center transition-colors group/icon"
-                          aria-label={`${member.name}'s LinkedIn`}
-                        >
-                          <Linkedin className="w-5 h-5 text-primary group-hover/icon:text-background transition-colors" />
-                        </a>
-                      )}
-                      {member.github && (
-                        <a
-                          href={member.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary flex items-center justify-center transition-colors group/icon"
-                          aria-label={`${member.name}'s GitHub`}
-                        >
-                          <Github className="w-5 h-5 text-primary group-hover/icon:text-background transition-colors" />
-                        </a>
-                      )}
-                      {member.email && (
-                        <a
-                          href={`mailto:${member.email}`}
-                          className="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary flex items-center justify-center transition-colors group/icon"
-                          aria-label={`Email ${member.name}`}
-                        >
-                          <Mail className="w-5 h-5 text-primary group-hover/icon:text-background transition-colors" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </Card>
-              ))}
-            </div>
-
-            {/* Additional team members */}
-            {/* <div className="mt-4 relative z-0">
-              <Card className="bg-card border-border p-6 hover:border-primary transition-all duration-300">
-                <div className="flex items-center justify-center">
-                  <div className="hidden md:flex items-center pl-2">
-                    <div className="group relative z-20 hover:z-50 transition-all duration-300">
-                      <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
-                        <span className="text-xl text-muted-foreground">
-                          GB
-                        </span>
-                      </div>
-                    </div>
-                    <div className="group relative -ml-4 z-30 hover:z-50 transition-all duration-300">
-                      <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
-                        <span className="text-xl text-muted-foreground">
-                          MS
-                        </span>
-                      </div>
-                    </div>
-                    <div className="group relative -ml-4 z-30 hover:z-50 transition-all duration-300">
-                      <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
-                        <span className="text-xl text-muted-foreground">
-                          AD
-                        </span>
-                      </div>
-                    </div>
-                    <div className="group relative -ml-4 z-30 hover:z-50 transition-all duration-300">
-                      <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
-                        <span className="text-xl text-muted-foreground">
-                          FB
-                        </span>
-                      </div>
-                    </div>
-                    <div className="group relative -ml-4 z-30 hover:z-50 transition-all duration-300">
-                      <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
-                        <span className="text-xl text-muted-foreground">
-                          RT
-                        </span>
-                      </div>
-                    </div>
-                    <div className="group relative -ml-4 z-30 hover:z-50 transition-all duration-300">
-                      <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
-                        <span className="text-xl text-muted-foreground">
-                          CE
-                        </span>
-                      </div>
-                    </div>
-                    <div className="group relative -ml-4 z-30 hover:z-50 transition-all duration-300">
-                      <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
-                        <span className="text-xl text-muted-foreground">
-                          CE
-                        </span>
-                      </div>
-                    </div>
-                    <div className="group relative -ml-4 z-30 hover:z-50 transition-all duration-300">
-                      <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
-                        <span className="text-xl text-muted-foreground">
-                          AD
-                        </span>
-                      </div>
-                    </div>
-                    <div className="group relative -ml-4 z-30 hover:z-50 transition-all duration-300">
-                      <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
-                        <span className="text-xl text-muted-foreground">
-                          DM
-                        </span>
-                      </div>
-                    </div>
-                    <span className="text-xl ml-2 text-foreground">
-                      {" "}
-                      <p className="text-muted-foreground leading-relaxed">
-                        + other senior ML, AI & Data engineers.
-                      </p>
-                    </span>
-                  </div>
-                  <div className="md:hidden">
-                    <p className="text-muted-foreground leading-relaxed text-xl">
-                      + other senior ML, AI & Data engineers.
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            </div> */}
-          </div>
-        </div>
-
-        {/* Stats */}
-        <div className="max-w-6xl mx-auto mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <Card className="bg-card border-border p-6 hover:border-primary transition-all text-center">
-            <AnimatedCounter target={12} suffix="+" />
-            <div className="text-muted-foreground">Years Experience</div>
-          </Card>
-          <Card className="bg-card border-border p-6 hover:border-primary transition-all text-center">
-            <AnimatedCounter target={60} suffix="+" />
-            <div className="text-muted-foreground">Projects Delivered</div>
-          </Card>
-          <Card className="bg-card border-border p-6 hover:border-primary transition-all text-center">
-            <AnimatedCounter target={28} suffix="+" />
-            <div className="text-muted-foreground">Enterprise Clients</div>
-          </Card>
-          <Card className="bg-card border-border p-6 hover:border-primary transition-all text-center">
-            <AnimatedCounter target={248} suffix="+" />
-            <div className="text-muted-foreground">AI Agents Delivered</div>
-          </Card>
-        </div>
-
-        {/* How We Work */}
-        <div className="mt-16 max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">
-              How We <span className="text-primary">Work</span>
-            </h3>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Flexible engagement models and proven processes <br /> to deliver
-              exceptional results.
+      <div className="container mx-auto max-w-6xl">
+        <div className="relative rounded-2xl border border-border bg-gradient-to-br from-primary/25 via-card to-card p-8 md:p-12 lg:p-16 overflow-hidden">
+          {/* Title spans full width */}
+          <div className="relative z-10 mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold font-alternates mb-2">
+              Senior expertise. Real-world results.
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Delivery experience across complex systems and global teams
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {/* Technology Word Cloud */}
-            <Card className="relative bg-gradient-to-br from-card via-card to-card/50 border-border p-8 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
-              <div className="relative z-10">
-                <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                  <Code className="w-5 h-5 text-primary" />
-                  <span>Technologies</span>
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "Python",
-                    "TypeScript",
-                    "TensorFlow",
-                    "PyTorch",
-                    "React",
-                    "Next.js",
-                    "GCP",
-                    "LangChain",
-                    "OpenAI",
-                    "Kubernetes",
-                    "Pinecone",
-                    "Azure",
-                    "Databricks",
-                    "AWS",
-                    "Docker",
-                    "FastAPI",
-                    "Node.js",
-                    "PostgreSQL",
-                    "MongoDB",
-                    "Redis",
-                    "Claude",
-                    "Hugging Face",
-                    "... many more",
-                  ].map((tech, index) => (
-                    <Tag key={index}>{tech}</Tag>
+          <div className="relative z-10 lg:max-w-[55%]">
+            <div>
+              <div className="border-t border-border pt-8">
+                <div className="grid grid-cols-2 gap-x-8 gap-y-8">
+                  {stats.map((stat) => (
+                    <div key={stat.label}>
+                      <AnimatedCounter
+                        target={stat.value}
+                        suffix={stat.suffix}
+                      />
+                      <p className="text-sm text-foreground mt-1">
+                        <span className="font-semibold">{stat.label}</span>{" "}
+                        <span className="text-muted-foreground">
+                          {stat.description}
+                        </span>
+                      </p>
+                    </div>
                   ))}
                 </div>
               </div>
-            </Card>
 
-            {/* Average Project Duration */}
-            <Card className="relative bg-gradient-to-br from-card via-card to-card/50 border-border p-8 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
-              <div className="relative z-10">
-                <div className="flex items-center gap-2 mb-6">
-                  <Clock className="w-6 h-6 text-primary" />
-                  <h3 className="text-xl font-bold">Project Timeline</h3>
-                </div>
-                <div className="space-y-4">
-                  <div>
-                    <div className="text-4xl font-bold text-primary mb-1">
-                      1-12+
-                    </div>
-                    <div className="text-sm text-muted-foreground">
-                      Months (avg 3-6)
-                    </div>
-                  </div>
-
-                  {/* Timeline */}
-                  <div className="relative">
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-primary"></div>
-                        <span className="text-xs text-muted-foreground">
-                          1 month
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs text-muted-foreground">
-                          12 months
-                        </span>
-                        <div className="w-2 h-2 rounded-full bg-primary"></div>
-                      </div>
-                    </div>
-                    <div className="relative h-3 bg-muted rounded-full overflow-hidden">
-                      <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-primary/20 via-primary/40 to-primary/60"></div>
-                      <div className="absolute left-0 top-0 h-full w-[10%] bg-primary animate-pulse"></div>
-                    </div>
-                    <div className="flex items-center justify-between mt-2 text-xs font-medium text-foreground/70">
-                      <span>MVP/POC</span>
-                      <span>Enterprise</span>
-                    </div>
-                  </div>
-
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    From rapid MVPs to comprehensive enterprise solutions, we
-                    adapt to your timeline.
-                  </p>
-                </div>
+              <div className="flex items-center gap-4 mt-10 whitespace-nowrap">
+                <Link to="/team">
+                  <SiteButton variant="primary" arrow="up-right">
+                    Discover more about us
+                  </SiteButton>
+                </Link>
+                <Link to="/careers">
+                  <SiteButton variant="secondary">
+                    Careers at AI Flow
+                  </SiteButton>
+                </Link>
               </div>
-            </Card>
+            </div>
 
-            {/* Flexible Team Configurations */}
-            <Card className="relative bg-gradient-to-br from-card via-card to-card/50 border-border p-8 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
-              <div className="relative z-10">
-                <div className="flex items-center gap-2 mb-4">
-                  <TrendingUp className="w-6 h-6 text-primary" />
-                  <h3 className="text-xl font-bold">Flexible Engagement</h3>
-                </div>
-                <p className="text-xs text-muted-foreground mb-4">
-                  Choose the option that works best for your needs
-                </p>
-                <div className="space-y-2">
-                  <div className="flex items-start gap-2 p-2 rounded-lg bg-muted hover:bg-muted/90 border border-border hover:border-border transition-all cursor-default group/item">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
-                    <div className="flex-1">
-                      <p className="text-xs font-semibold text-foreground">
-                        Hourly Consultants
-                      </p>
-                      <p className="text-[10px] text-muted-foreground">
-                        On-demand expertise
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-2 p-2 rounded-lg bg-muted hover:bg-muted/90 border border-border hover:border-border transition-all cursor-default group/item">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
-                    <div className="flex-1">
-                      <p className="text-xs font-semibold text-foreground">
-                        Dedicated Engineers
-                      </p>
-                      <p className="text-[10px] text-muted-foreground">
-                        Full/part-time capacity
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-2 p-2 rounded-lg bg-muted hover:bg-muted/90 border border-border hover:border-border transition-all cursor-default group/item">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
-                    <div className="flex-1">
-                      <p className="text-xs font-semibold text-foreground">
-                        Small Teams (2-3)
-                      </p>
-                      <p className="text-[10px] text-muted-foreground">
-                        Agile squads
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-2 p-2 rounded-lg bg-muted hover:bg-muted/90 border border-border hover:border-border transition-all cursor-default group/item">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
-                    <div className="flex-1">
-                      <p className="text-xs font-semibold text-foreground">
-                        Self-Managed Teams
-                      </p>
-                      <p className="text-[10px] text-muted-foreground">
-                        End-to-end delivery
-                      </p>
-                    </div>
-                  </div>
-                </div>
+            {/* Mobile: simplified team display */}
+            <div className="lg:hidden flex flex-wrap gap-2 justify-center mt-8">
+              <div className="w-full max-w-[280px] mx-auto">
+                <TeamIllustration />
               </div>
-            </Card>
+            </div>
+          </div>
+
+          {/* Right: Network SVG illustration */}
+          <div className="absolute right-8 top-1/2 -translate-y-1/2 w-[30%] hidden lg:block pointer-events-none">
+            <TeamIllustration />
           </div>
         </div>
       </div>

@@ -9,27 +9,25 @@ UI colors (background, foreground, etc.) are defined here as HSL for theming sup
 
 @layer base {
   :root {
-    /* Brand & Status Colors */
-    --primary: 199 100% 55%; /* Azure Blue */
+    /* Primary Colors — use only these theme colors */
+    --primary: 199 100% 55%; /* #1AB8FF Azure Blue */
     --primary-foreground: 0 0% 98%;
-    
-    --secondary: 229 96% 72%; /* Space Violet */
+    --secondary: 229 96% 72%; /* #748DFC Space Violet */
     --secondary-foreground: 0 0% 98%;
-    
-    --success: 170 89% 45%; /* Alien Green */
+
+    /* Status Colors */
+    --success: 170 89% 45%; /* #0DD9B7 Alien Green */
     --success-foreground: 0 0% 98%;
-    
-    --destructive: 350 82% 54%; /* Laser Red */
+    --destructive: 348 81% 54%; /* #EA2849 Laser Red (Error) */
     --destructive-foreground: 0 0% 98%;
-    
-    --warning: 46 100% 54%; /* Cosmic Yellow */
+    --warning: 47 100% 54%; /* #FFC914 Cosmic Yellow */
     --warning-foreground: 0 0% 3%;
 
-    /* Neutral / Base Colors */
-    --dark-grey: 222 11% 18%;
-    --medium-grey: 222 9% 37%;
-    --grey: 222 12% 59%;
-    --light-grey: 226 33% 83%;
+    /* Base / Neutral Colors */
+    --dark-grey: 222 11% 18%; /* #292C33 Dark Grey */
+    --medium-grey: 222 9% 37%; /* #555A66 Medium Grey */
+    --grey: 222 12% 59%; /* #8B92A3 Grey */
+    --light-grey: 226 33% 83%; /* #C5CCE2 Light Grey */
 
     /* UI Colors */
     --background: 0 0% 3%;
@@ -133,6 +131,14 @@ UI colors (background, foreground, etc.) are defined here as HSL for theming sup
   background: rgba(0, 0, 0, 0.25);
 }
 
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Logo heartbeat animation - 5 beats every 8 seconds */
 @keyframes logo-heartbeat {
   0%, 100% {
@@ -185,6 +191,15 @@ UI colors (background, foreground, etc.) are defined here as HSL for theming sup
   }
 }
 
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 @layer utilities {
   .animate-logo-rotate-left {
     animation: logo-rotate-left 1s ease-in-out infinite;
@@ -196,5 +211,36 @@ UI colors (background, foreground, etc.) are defined here as HSL for theming sup
   
   .animate-logo-heartbeat {
     animation: logo-heartbeat 1s ease-in-out infinite;
+  }
+
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+
+  .animate-dot-flash {
+    animation: dot-flash 4s ease-in-out infinite;
+  }
+}
+
+@keyframes dot-flash {
+  0% {
+    background-color: hsl(var(--grey));
+    box-shadow: 0 0 0 0 hsl(var(--success) / 0);
+  }
+  12% {
+    background-color: hsl(var(--success));
+    box-shadow: 0 0 8px 2px hsl(var(--success) / 0.4);
+  }
+  38% {
+    background-color: hsl(var(--success));
+    box-shadow: 0 0 8px 2px hsl(var(--success) / 0.4);
+  }
+  50% {
+    background-color: hsl(var(--grey));
+    box-shadow: 0 0 0 0 hsl(var(--success) / 0);
+  }
+  100% {
+    background-color: hsl(var(--grey));
+    box-shadow: 0 0 0 0 hsl(var(--success) / 0);
   }
 }

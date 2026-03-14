@@ -1,17 +1,10 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { NavLink } from "@/components/NavLink";
+import { SiteButton } from "@/components/SiteButton";
 import { Link, useLocation } from "react-router-dom";
 import { teamMembers, companyInfo } from "@/data/team";
 import { AI_FLOW_LOGO_LARGE, AI_FLOW_LOGO_SMALL } from "@/constants/images";
-import {
-  Menu,
-  Building2,
-  Building,
-  Home,
-  ChevronDown,
-  Layers,
-} from "lucide-react";
+import { Menu, Building2, Building, Home, Layers } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -76,7 +69,7 @@ export const Navigation = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/20 backdrop-blur-md ">
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-8 lg:px-32 py-6">
         <div className="flex items-center justify-between relative">
           {/* Logo - Left */}
           <Link
@@ -110,17 +103,34 @@ export const Navigation = () => {
           {/* Right side - Menus + Team + Button */}
           <div className="hidden md:flex items-center gap-4">
             {/* Navigation Links - centered on lg+ via absolute, flows with right content on md */}
-            <div className="flex items-center gap-8 lg:absolute lg:left-1/2 lg:-translate-x-1/2">
-              {/* Solutions Dropdown */}
-              <div className="relative group">
-                <button className="flex items-center gap-1 text-foreground hover:text-primary transition-colors relative pb-1">
-                  <h4 className="text-lg lg:text-xl font-semibold">
+            <div className="flex items-center gap-3 [&>*]:m-0 [&>*]:shrink-0 lg:absolute lg:left-1/2 lg:-translate-x-1/2">
+              <NavLink
+                to="/services"
+                className="group flex justify-center items-center py-5 px-1.5 gap-1 h-16 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate rounded-none transition-colors hover:text-white"
+                activeClassName="text-white"
+              >
+                <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
+                  Services
+                </span>
+              </NavLink>
+              <NavLink
+                to="/case-studies"
+                className="group flex justify-center items-center py-5 px-1.5 gap-1 h-16 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate rounded-none transition-colors hover:text-white"
+                activeClassName="text-white"
+              >
+                <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
+                  Our work
+                </span>
+              </NavLink>
+
+              {/* Industries Dropdown */}
+              <div className="relative group flex items-center min-h-[64px]">
+                <button className="flex justify-center items-center py-5 px-1.5 gap-1 h-16 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate rounded-none transition-colors cursor-pointer group-hover:text-white">
+                  <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
                     Industries
-                  </h4>
-                  <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                  </span>
                 </button>
 
-                {/* Dropdown Menu */}
                 <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                   <div className="bg-background/95 backdrop-blur-lg border border-border rounded-xl p-4 shadow-xl">
                     <div className="flex flex-row gap-3">
@@ -147,7 +157,7 @@ export const Navigation = () => {
                             />
                           </div>
                           <span
-                            className="font-semibold text-sm text-center"
+                            className="font-semibold text-m text-center"
                             style={{ color: colors.lightGrey }}
                           >
                             {item.name}
@@ -160,38 +170,35 @@ export const Navigation = () => {
               </div>
 
               <NavLink
-                to="/workshops"
-                className="text-foreground hover:text-primary transition-colors relative pb-1"
-                activeClassName="text-primary font-semibold after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
+                to="/team"
+                className="group flex justify-center items-center py-5 px-1.5 gap-1 h-16 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate rounded-none transition-colors hover:text-white"
+                activeClassName="text-white"
               >
-                <h4 className="text-lg lg:text-xl font-semibold">Workshops</h4>
-              </NavLink>
-              <NavLink
-                to="/case-studies"
-                className="text-foreground hover:text-primary transition-colors relative pb-1"
-                activeClassName="text-primary font-semibold after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
-              >
-                <h4 className="text-lg lg:text-xl font-semibold">
-                  Case Studies
-                </h4>
-              </NavLink>
-              <NavLink
-                to="/blog"
-                className="text-foreground hover:text-primary transition-colors relative pb-1"
-                activeClassName="text-primary font-semibold after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
-              >
-                <h4 className="text-lg lg:text-xl font-semibold">Blog</h4>
+                <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
+                  About us
+                </span>
               </NavLink>
               <NavLink
                 to="/careers"
-                className="text-foreground hover:text-primary transition-colors relative pb-1"
-                activeClassName="text-primary font-semibold after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
+                className="group flex justify-center items-center py-5 px-1.5 gap-1 h-16 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate rounded-none transition-colors hover:text-white"
+                activeClassName="text-white"
               >
-                <h4 className="text-lg lg:text-xl font-semibold">Careers</h4>
+                <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
+                  Careers
+                </span>
+              </NavLink>
+              <NavLink
+                to="/blog"
+                className="group flex justify-center items-center py-5 px-1.5 gap-1 h-16 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate rounded-none transition-colors hover:text-white"
+                activeClassName="text-white"
+              >
+                <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
+                  Blog
+                </span>
               </NavLink>
             </div>
             <div className="flex items-center">
-              <a
+              {/* <a
                 href="#team"
                 onClick={(e) => {
                   e.preventDefault();
@@ -213,8 +220,8 @@ export const Navigation = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-              </a>
-
+              </a> */}
+              {/* 
               <a
                 href="#team"
                 onClick={(e) => {
@@ -259,13 +266,11 @@ export const Navigation = () => {
                     + 10
                   </span>
                 </div>
-              </a>
+              </a>*/}
             </div>
 
             <a href={"/contact"}>
-              <Button className="bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 font-semibold px-6">
-                Contact Us
-              </Button>
+              <SiteButton variant="nav">Contact Us</SiteButton>
             </a>
           </div>
         </div>
@@ -277,11 +282,32 @@ export const Navigation = () => {
           <SheetHeader>
             <SheetTitle className="text-left">Menu</SheetTitle>
           </SheetHeader>
-          <div className="flex flex-col gap-6 mt-8">
-            {/* Solutions Section in Mobile */}
-            <div className="flex flex-col gap-3">
-              <h4 className="text-xl font-semibold text-foreground">
-                Solutions
+          <div className="flex flex-col gap-3 mt-8">
+            <NavLink
+              to="/services"
+              onClick={() => setIsMenuOpen(false)}
+              className="group flex justify-start items-center pl-0 py-4 px-0 gap-1 h-14 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate transition-colors hover:text-white"
+              activeClassName="text-white"
+            >
+              <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
+                Services
+              </span>
+            </NavLink>
+            <NavLink
+              to="/case-studies"
+              onClick={() => setIsMenuOpen(false)}
+              className="group flex justify-start items-center pl-0 py-4 px-0 gap-1 h-14 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate transition-colors hover:text-white"
+              activeClassName="text-white"
+            >
+              <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
+                Our work
+              </span>
+            </NavLink>
+
+            {/* Industries Section in Mobile */}
+            <div className="flex flex-col gap-3 m-0 p-0">
+              <h4 className="font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey m-0">
+                Industries
               </h4>
               <div className="flex flex-col gap-2 pl-2">
                 {solutionsItems.map((item) => (
@@ -316,40 +342,38 @@ export const Navigation = () => {
             </div>
 
             <NavLink
-              to="/workshops"
+              to="/team"
               onClick={() => setIsMenuOpen(false)}
-              className="text-foreground hover:text-primary transition-colors"
-              activeClassName="text-primary font-semibold"
+              className="group flex justify-start items-center pl-0 py-4 px-0 gap-1 h-14 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate transition-colors hover:text-white"
+              activeClassName="text-white"
             >
-              <h4 className="text-xl font-semibold">Workshops</h4>
-            </NavLink>
-            <NavLink
-              to="/case-studies"
-              onClick={() => setIsMenuOpen(false)}
-              className="text-foreground hover:text-primary transition-colors"
-              activeClassName="text-primary font-semibold"
-            >
-              <h4 className="text-xl font-semibold">Case Studies</h4>
-            </NavLink>
-            <NavLink
-              to="/blog"
-              onClick={() => setIsMenuOpen(false)}
-              className="text-foreground hover:text-primary transition-colors"
-              activeClassName="text-primary font-semibold"
-            >
-              <h4 className="text-xl font-semibold">Blog</h4>
+              <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
+                About us
+              </span>
             </NavLink>
             <NavLink
               to="/careers"
               onClick={() => setIsMenuOpen(false)}
-              className="text-foreground hover:text-primary transition-colors"
-              activeClassName="text-primary font-semibold"
+              className="group flex justify-start items-center pl-0 py-4 px-0 gap-1 h-14 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate transition-colors hover:text-white"
+              activeClassName="text-white"
             >
-              <h4 className="text-xl font-semibold">Careers</h4>
+              <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
+                Careers
+              </span>
+            </NavLink>
+            <NavLink
+              to="/blog"
+              onClick={() => setIsMenuOpen(false)}
+              className="group flex justify-start items-center pl-0 py-4 px-0 gap-1 h-14 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate transition-colors hover:text-white"
+              activeClassName="text-white"
+            >
+              <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
+                Blog
+              </span>
             </NavLink>
 
             <div className="flex items-center gap-2 pt-4 border-t border-border">
-              <a
+              {/* <a
                 href="#team"
                 onClick={(e) => {
                   e.preventDefault();
@@ -372,9 +396,9 @@ export const Navigation = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-              </a>
+              </a> */}
 
-              <a
+              {/* <a
                 href="#team"
                 onClick={(e) => {
                   e.preventDefault();
@@ -420,13 +444,13 @@ export const Navigation = () => {
                     + 10
                   </span>
                 </div>
-              </a>
+              </a>*/}
             </div>
 
             <a href="/contact" onClick={() => setIsMenuOpen(false)}>
-              <Button className="bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 font-semibold px-6 w-full">
+              <SiteButton variant="nav" className="w-full">
                 Contact Us
-              </Button>
+              </SiteButton>
             </a>
           </div>
         </SheetContent>

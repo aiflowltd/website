@@ -1,14 +1,3 @@
-import { Card } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-
-// Import client logos
 import bitdefenderLogo from "@/assets/clients/bitdefender.png";
 import bloombergLogo from "@/assets/clients/bloomberg.png";
 import boschLogo from "@/assets/clients/bosch.png";
@@ -21,161 +10,53 @@ import upliftLogo from "@/assets/clients/uplift.png";
 import accesaLogo from "@/assets/clients/accesa.png";
 import upcLogo from "@/assets/clients/upc.png";
 
-export const GLOBAL_SCALE = 2;
+const clients = [
+  { name: "Accesa", logo: accesaLogo },
+  { name: "Bitdefender", logo: bitdefenderLogo },
+  { name: "Bloomberg", logo: bloombergLogo },
+  { name: "Bosch", logo: boschLogo },
+  { name: "BP", logo: bpLogo },
+  { name: "Exomatter", logo: exomatterLogo },
+  { name: "Google", logo: googleLogo },
+  { name: "Metaphysic", logo: metaphysicLogo },
+  { name: "Metro Digital", logo: metroLogo },
+  { name: "Uplift", logo: upliftLogo },
+  { name: "UPC", logo: upcLogo },
+];
+
 export const ClientsCarousel = () => {
-  const clients = [
-    {
-      name: "Google",
-      logo: googleLogo,
-      scale: 1,
-      marginX: undefined,
-    },
-    {
-      name: "Bitdefender",
-      logo: bitdefenderLogo,
-      scale: 1.0,
-      marginBottom: "20px",
-      marginX: undefined,
-    },
-    {
-      name: "Bloomberg",
-      logo: bloombergLogo,
-      scale: 1.1,
-      marginBottom: undefined,
-      marginX: undefined,
-    },
-    {
-      name: "Bosch",
-      logo: boschLogo,
-      scale: 1.0,
-      marginBottom: undefined,
-      marginX: undefined,
-    },
-    {
-      name: "BP",
-      logo: bpLogo,
-      scale: 0.4,
-      marginBottom: "20px",
-      marginX: "10px",
-    },
-    {
-      name: "Exomatter",
-      logo: exomatterLogo,
-      scale: 1.0,
-      marginBottom: "10px",
-      marginX: undefined,
-    },
-    {
-      name: "Metaphysic",
-      logo: metaphysicLogo,
-      scale: 1.3,
-      marginBottom: "10px",
-      marginX: undefined,
-    },
-    {
-      name: "Metro",
-      logo: metroLogo,
-      scale: 1.1,
-      marginBottom: "10px",
-      marginX: undefined,
-    },
-    {
-      name: "Uplift",
-      logo: upliftLogo,
-      scale: 0.9,
-      marginBottom: "10px",
-      marginX: undefined,
-    },
-    {
-      name: "Accesa",
-      logo: accesaLogo,
-      scale: 0.8,
-      marginBottom: "25px",
-      marginX: undefined,
-    },
-    {
-      name: "UPC",
-      logo: upcLogo,
-      scale: 0.5,
-      marginBottom: undefined,
-      marginX: undefined,
-    },
-  ];
+  const duplicated = [...clients, ...clients, ...clients, ...clients];
 
   return (
-    <section className="relative py-24 w-full bg-transparent">
-      <div className="w-full px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Trusted by <span className="text-primary">Industry Leaders</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            We're proud to work with some of the world's
-            <br />
-            most innovative companies
+    <section className="relative py-12 px-6 w-full overflow-hidden">
+      <div className="container mx-auto max-w-7xl">
+        <div className="mb-8 text-center">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            Reliable AI, used and trusted by large organizations worldwide
           </p>
         </div>
-      </div>
 
-      <div className="w-[90%] mx-auto">
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-            duration: 50,
-          }}
-          plugins={[
-            Autoplay({
-              delay: 3000,
-              stopOnInteraction: true,
-            }),
-          ]}
-          className="w-full"
-        >
-          <CarouselContent className="ml-0">
-            {clients.map((client, index) => (
-              <CarouselItem
-                key={index}
-                className="pl-4 md:pl-6 basis-1/2 md:basis-1/4 lg:basis-1/6"
+        {/* Marquee container with 10% margin */}
+        <div className="relative overflow-hidden">
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
+          <div className="flex animate-marquee">
+            {duplicated.map((client, index) => (
+              <div
+                key={`${client.name}-${index}`}
+                className="flex-shrink-0 flex items-center justify-center px-8"
+                style={{ minWidth: "160px" }}
               >
-                <div
-                  className="p-1"
-                  style={{
-                    marginLeft: client.marginX,
-                    marginRight: client.marginX,
-                  }}
-                >
-                  <Card
-                    className="bg-transparent border-none flex items-center justify-center transition-all duration-300 group cursor-pointer hover:shadow-[0_8px_16px_-4px_rgba(0,0,0,0.2)]"
-                    style={{
-                      height: "128px",
-                      minHeight: "128px",
-                      maxHeight: "128px",
-                      width: "124px",
-                      padding: "32px",
-                      boxSizing: "border-box",
-                    }}
-                  >
-                    <img
-                      src={client.logo}
-                      alt={`${client.name} logo`}
-                      className="object-contain opacity-90 group-hover:opacity-100 transition-opacity"
-                      style={{
-                        transform:
-                          client.scale !== 1
-                            ? `scale(${client.scale * GLOBAL_SCALE})`
-                            : `scale(${GLOBAL_SCALE})`,
-                        marginBottom: client.marginBottom,
-                        marginLeft: client.marginX,
-                        marginRight: client.marginX,
-                      }}
-                    />
-                  </Card>
-                </div>
-              </CarouselItem>
+                <img
+                  src={client.logo}
+                  alt={`${client.name} logo`}
+                  className="h-8 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                />
+              </div>
             ))}
-          </CarouselContent>
-        </Carousel>
+          </div>
+        </div>
       </div>
     </section>
   );

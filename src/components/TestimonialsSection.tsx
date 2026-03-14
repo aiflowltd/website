@@ -1,103 +1,128 @@
-import { Card } from "@/components/ui/card";
-import { Quote } from "lucide-react";
+import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from "@/data/testimonials";
 import { Link } from "react-router-dom";
 
 export const TestimonialsSection = () => {
+  const [current, setCurrent] = useState(0);
+
+  const prev = () =>
+    setCurrent((c) => (c === 0 ? testimonials.length - 1 : c - 1));
+  const next = () =>
+    setCurrent((c) => (c === testimonials.length - 1 ? 0 : c + 1));
+
+  const t = testimonials[current];
+
   return (
     <section id="testimonials" className="relative py-24 px-6 scroll-mt-20">
-      <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            What are our <span className="text-primary">clients saying?</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Real feedback from clients we've helped transform with AI
-          </p>
+      <div className="container mx-auto max-w-6xl">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-16 gap-6">
+          <div>
+            <h2 className="text-4xl md:text-5xl  font-bold font-alternates mb-2">
+              What clients say
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl">
+              Stories from teams we&apos;ve worked with
+            </p>
+          </div>
+
+          {/* Page indicators: 01 ------ 02 03 04, line marks current in sight */}
+          <div className="hidden md:flex items-center gap-3 text-sm text-muted-foreground shrink-0">
+            {(() => {
+              const n = testimonials.length;
+              const size = 4;
+              const start = Math.max(0, Math.min(current - 1, n - size));
+              const indices = Array.from(
+                { length: size },
+                (_, i) => start + i,
+              ).filter((i) => i < n);
+              return (
+                <>
+                  {indices.map((i) => (
+                    <span key={i} className="contents">
+                      <button
+                        type="button"
+                        onClick={() => setCurrent(i)}
+                        className={`transition-colors ${
+                          i === current
+                            ? "text-foreground font-bold"
+                            : "text-muted-foreground hover:text-foreground"
+                        }`}
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </button>
+                      {i === current && (
+                        <div
+                          className="w-8 sm:w-12 h-px bg-foreground shrink-0"
+                          aria-hidden
+                        />
+                      )}
+                    </span>
+                  ))}
+                </>
+              );
+            })()}
+          </div>
         </div>
 
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => {
-              const isFeatured = testimonial.caseStudyLink;
-              
-              return (
-                <Card
-                  key={testimonial.id}
-                  className={`
-                    relative overflow-hidden
-                    bg-gradient-to-br from-card via-card to-card/50
-                    border-border
-                    p-8
-                    hover:border-primary hover:shadow-lg hover:shadow-primary/10
-                    transition-all duration-500
-                    group
-                    flex flex-col
-                    ${isFeatured ? 'lg:col-span-2' : ''}
-                    hover:scale-[1.02]
-                  `}
-                  style={{
-                    animationDelay: `${index * 100}ms`,
-                  }}
-                >
-                  {/* Background gradient effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
-                  <div className="relative flex-1 flex flex-col">
-                    {/* Quote icon */}
-                    <div className="flex items-center justify-between mb-4">
-                      <Quote className="w-10 h-10 text-primary/40 group-hover:text-primary/60 transition-colors" />
-                    </div>
+        {/* Testimonial content — fixed height so prev/next don't jump */}
+        <div className="min-h-[260px] md:min-h-[280px] flex flex-col">
+          <blockquote className="text-3xl md:text-4xl lg:text-4xl leading-relaxed mb-12 text-foreground/90 font-light flex-1 min-h-[180px] md:min-h-[200px]">
+            &ldquo;{t.quote}&rdquo;
+          </blockquote>
 
-                    {/* Quote text */}
-                    <p className="text-base leading-relaxed mb-6 flex-1 text-foreground/90 group-hover:text-foreground transition-colors">
-                      {testimonial.quote.startsWith('"')
-                        ? testimonial.quote
-                        : `"${testimonial.quote}"`}
-                    </p>
+          <div className="flex items-center justify-between flex-shrink-0 min-h-[3.5rem]">
+            <div className="flex items-center gap-4 min-h-14">
+              {t.avatar ? (
+                <img
+                  src={t.avatar}
+                  alt={t.author}
+                  className="w-14 h-14 shrink-0 rounded-lg object-cover"
+                />
+              ) : t.author ? (
+                <div className="w-14 h-14 shrink-0 rounded-lg bg-muted flex items-center justify-center">
+                  <span className="text-foreground font-bold text-lg">
+                    {t.author.charAt(0)}
+                  </span>
+                </div>
+              ) : null}
+              <div className="min-h-[3.5rem] flex flex-col justify-center">
+                {t.author && (
+                  <p className="font-semibold text-lg">{t.author}</p>
+                )}
+                <p className="text-sm text-muted-foreground">
+                  {t.role}
+                  {t.role && t.company ? " at " : ""}
+                  {t.company}
+                </p>
+                {t.caseStudyLink && t.caseStudyText && (
+                  <Link
+                    to={`/case-studies/${t.caseStudyLink}`}
+                    className="text-xs text-primary font-semibold hover:underline"
+                  >
+                    {t.caseStudyText} →
+                  </Link>
+                )}
+              </div>
+            </div>
 
-                    {/* Author info */}
-                    <div className="space-y-3 pt-4 border-t border-border/50">
-                      {(testimonial.author || testimonial.role || testimonial.company) && (
-                        <div className="flex items-center gap-3">
-                          {/* Avatar placeholder */}
-                          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                            <span className="text-primary font-bold text-sm">
-                              {testimonial.author 
-                                ? testimonial.author.charAt(0)
-                                : testimonial.company.charAt(0).toUpperCase()}
-                            </span>
-                          </div>
-                          
-                          <div className="flex-1">
-                            {testimonial.author && (
-                              <p className="font-semibold text-foreground">
-                                {testimonial.author}
-                              </p>
-                            )}
-                            <p className="text-sm text-muted-foreground">
-                              {testimonial.role && <span>{testimonial.role} </span>}
-                              {testimonial.company && <span>{testimonial.company}</span>}
-                            </p>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Case study link */}
-                      {testimonial.caseStudyLink && testimonial.caseStudyText && (
-                        <Link
-                          to={`/case-studies/${testimonial.caseStudyLink}`}
-                          className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors text-sm font-semibold group/link"
-                        >
-                          <span>{testimonial.caseStudyText}</span>
-                          <span className="group-hover/link:translate-x-1 transition-transform">→</span>
-                        </Link>
-                      )}
-                    </div>
-                  </div>
-                </Card>
-              );
-            })}
+            {/* Navigation arrows */}
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={prev}
+                className="w-12 h-12 rounded-lg bg-card border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                type="button"
+                onClick={next}
+                className="w-12 h-12 rounded-lg bg-card border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
