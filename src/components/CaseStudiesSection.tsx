@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { SiteButton } from "@/components/SiteButton";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { featuredCaseStudies } from "@/data/caseStudies";
 import { Tag } from "@/components/Tag";
@@ -93,14 +93,9 @@ export const CaseStudiesSection = () => {
 
         <div className="text-center mt-12">
           <Link to="/case-studies">
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-primary text-primary hover:bg-primary/10 font-semibold"
-            >
-              Read More Case Studies
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
+            <SiteButton variant="secondary" arrow="right">
+              Read more case studies
+            </SiteButton>
           </Link>
         </div>
       </div>

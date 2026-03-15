@@ -5,30 +5,30 @@ import { SiteLink } from "@/components/SiteLink";
 const services = [
   {
     icon: "/images/icons/services-ai-strategy.svg",
-    title: "AI Strategy Consulting",
-    subtitle: "Explore",
+    title: "AI Clarity Session",
+    subtitle: "Diagnose",
     description:
-      "4-hour session to understand your processes, identify AI opportunities, and answer your questions.",
+      "A focused session with your operational or investment team. You leave with a clear answer on where AI creates measurable value, and what it would cost to capture it.",
     link: "/services#ai-strategy",
-    linkText: "View AI strategy consulting",
+    linkText: "Learn more",
   },
   {
     icon: "/images/icons/services-discovery.svg",
-    title: "Discovery Workshop",
+    title: "AI Opportunity Audit",
     subtitle: "Understand",
     description:
-      "2-week audit of your system and AI proof of value. We map your data, processes, and deliver a clear roadmap.",
-    link: "/services#ai-engineering",
-    linkText: "Explore discovery workshops",
+      "A structured two-week engagement. We map your data, workflows, and decision points. You leave with a scoped roadmap and a business case ready for leadership sign-off.",
+    link: "/services#ai-workshops",
+    linkText: "Learn more",
   },
   {
     icon: "/images/icons/services-custom-agents.svg",
-    title: "Custom AI Agents",
+    title: "Custom AI Systems",
     subtitle: "Build",
     description:
-      "We deliver AI-native results, measure impact, and iterate on feedback until the system brings real impact.",
-    link: "/services#data-systems",
-    linkText: "Learn more about the service",
+      "End-to-end delivery. Senior level delivery, with the client in the loop at all times. We build, deploy, and iterate until the system delivers what we scoped it to deliver.",
+    link: "/services#custom-ai-agents",
+    linkText: "Learn more",
   },
 ];
 
@@ -36,9 +36,9 @@ export const ServicesSection = () => {
   return (
     <Section id="services" scrollMargin>
       <SectionHeader
-        title="Services built for real delivery"
-        subtitle="We help teams move from AI ideas to systems that run reliably over time"
-        variant="centered"
+        title="Services built for business outcomes"
+        subtitle="Three entry points. One delivery standard. Guided by providing value."
+        className="mb-10"
       />
 
       <div className="grid md:grid-cols-3 gap-6 rounded-2xl border border-dashed border-border p-6">
@@ -85,13 +85,6 @@ export const ServicesSection = () => {
           );
         })}
       </div>
-
-      <p className="text-center text-muted-foreground mt-8">
-        Have questions about our services or how we work?{" "}
-        <span className="text-foreground font-semibold">
-          Ask our AI on the right.
-        </span>
-      </p>
     </Section>
   );
 };

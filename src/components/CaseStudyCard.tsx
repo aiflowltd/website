@@ -1,9 +1,8 @@
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { CaseStudy } from "@/data/caseStudies";
 import { Tag } from "@/components/Tag";
+import { SiteButton } from "@/components/SiteButton";
 
 interface CaseStudyCardProps {
   study: CaseStudy;
@@ -11,7 +10,7 @@ interface CaseStudyCardProps {
 
 export const CaseStudyCard = ({ study }: CaseStudyCardProps) => {
   return (
-    <Card className="bg-card border-border overflow-hidden hover:border-primary transition-all duration-300">
+    <Card className="bg-card border-border overflow-hidden hover:border-white/20 hover:shadow-lg transition-all duration-300">
       <div className="grid md:grid-cols-2 gap-0">
         <div className="relative h-64 md:h-auto">
           <img
@@ -30,26 +29,26 @@ export const CaseStudyCard = ({ study }: CaseStudyCardProps) => {
           </div>
 
           <h2 className="text-3xl font-bold mb-2">{study.title}</h2>
-          <p className="text-muted-foreground mb-6">
+          <p className="text-grey mb-6">
             {study.client} • {study.industry}
           </p>
 
           <div className="space-y-4 mb-8">
             <div>
-              <h4 className="font-semibold text-primary mb-2">Challenge</h4>
-              <p className="text-muted-foreground">{study.challenge}</p>
+              <h4 className="font-semibold text-foreground mb-2">Challenge</h4>
+              <p className="text-grey">{study.challenge}</p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-primary mb-2">Solution</h4>
-              <p className="text-muted-foreground">{study.solution}</p>
+              <h4 className="font-semibold text-foreground mb-2">Solution</h4>
+              <p className="text-grey">{study.solution}</p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 gap-4 mb-6">
             {study.results.map((result, idx) => (
               <div key={idx} className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-foreground flex-shrink-0">
                   {result.icon}
                 </div>
                 <span className="font-semibold">{result.label}</span>
@@ -58,10 +57,9 @@ export const CaseStudyCard = ({ study }: CaseStudyCardProps) => {
           </div>
 
           <Link to={`/case-studies/${study.id}`}>
-            <Button className="bg-primary hover:bg-primary/90 text-background font-semibold">
-              Read Full Case Study
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+            <SiteButton variant="primary" arrow="up-right">
+              Read full case study
+            </SiteButton>
           </Link>
         </div>
       </div>

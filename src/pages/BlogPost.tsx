@@ -1,7 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AuthorCard } from "@/components/AuthorCard";
-import { Button } from "@/components/ui/button";
+import { SiteButton } from "@/components/SiteButton";
 import { Card } from "@/components/ui/card";
 import {
   ArrowLeft,
@@ -12,13 +12,14 @@ import {
   Share2,
   Linkedin,
 } from "lucide-react";
-import { Link, useParams, Navigate } from "react-router-dom";
+import { Link, useParams, Navigate, useNavigate } from "react-router-dom";
 import { getAuthor } from "@/data/team";
 import { getBlogPostById } from "@/data/blogPosts";
 import { useEffect } from "react";
 
 const BlogPost = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   // Get blog post with all content from centralized data
   const post = id ? getBlogPostById(id) : null;
@@ -48,7 +49,7 @@ const BlogPost = () => {
           return (
             <h2
               key={index}
-              className="text-3xl md:text-4xl font-bold mb-8 mt-16 text-primary"
+              className="text-3xl md:text-4xl font-bold font-alternates mb-8 mt-16 text-foreground"
             >
               {block.text}
             </h2>
@@ -57,7 +58,7 @@ const BlogPost = () => {
           return (
             <ul
               key={index}
-              className="space-y-5 mb-10 ml-8 list-disc marker:text-primary marker:text-xl"
+              className="space-y-5 mb-10 ml-8 list-disc marker:text-grey marker:text-xl"
             >
               {block.items.map((item: string, idx: number) => (
                 <li key={idx} className="text-lg pl-2">
@@ -70,13 +71,13 @@ const BlogPost = () => {
           return (
             <Card
               key={index}
-              className="bg-primary/5 border-primary/20 p-6 my-8 border-l-4 border-l-primary"
+              className="bg-muted border-border p-6 my-8 border-l-4 border-l-grey"
             >
               <p className="text-lg italic text-foreground mb-2">
                 "{block.text}"
               </p>
               {block.author && (
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-grey">
                   - {block.author}
                 </p>
               )}
@@ -89,7 +90,7 @@ const BlogPost = () => {
               className="bg-card border-border p-6 my-6 overflow-x-auto"
             >
               <pre className="text-sm">
-                <code className="text-primary">{block.code}</code>
+                <code className="text-foreground">{block.code}</code>
               </pre>
             </Card>
           );
@@ -105,7 +106,7 @@ const BlogPost = () => {
                     {block.headers.map((header: string, idx: number) => (
                       <th
                         key={idx}
-                        className="text-left p-3 font-bold text-primary"
+                        className="text-left p-3 font-bold text-foreground"
                       >
                         {header}
                       </th>
@@ -116,7 +117,7 @@ const BlogPost = () => {
                   {block.rows.map((row: string[], rowIdx: number) => (
                     <tr key={rowIdx} className="border-b border-border/50">
                       {row.map((cell: string, cellIdx: number) => (
-                        <td key={cellIdx} className="p-3 text-muted-foreground">
+                        <td key={cellIdx} className="p-3 text-grey">
                           {cell}
                         </td>
                       ))}
@@ -137,37 +138,37 @@ const BlogPost = () => {
       <Navigation />
 
       <main className="container mx-auto px-6 pt-32 pb-20">
-        {/* Back Button */}
-        <Link to="/blog">
-          <Button
-            variant="ghost"
-            className="mb-8 text-primary hover:text-primary/80"
+        <div className="max-w-6xl mx-auto">
+          {/* Back Button */}
+          <button
+            type="button"
+            onClick={() => navigate("/blog")}
+            className="inline-flex items-center gap-2 mb-8 text-grey hover:text-foreground transition-colors group cursor-pointer"
           >
-            <ArrowLeft className="mr-2 w-4 h-4" />
-            Back to Blog
-          </Button>
-        </Link>
+            <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1" />
+            <span>Back to blog</span>
+          </button>
 
-        {/* Article Header */}
-        <article className="max-w-6xl mx-auto">
+          {/* Article */}
+          <article>
           <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
             {post.title}
           </h1>
-          <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+          <p className="text-xl text-grey mb-8 leading-relaxed">
             {post.excerpt}
           </p>
           {/* Meta Info */}
-          <div className="flex flex-wrap gap-6 text-muted-foreground mb-8 pb-8 border-border">
+          <div className="flex flex-wrap gap-6 text-grey mb-8 pb-8 border-border">
             <div className="flex items-center gap-2">
-              <User className="w-5 h-5 text-primary" />
+              <User className="w-5 h-5 text-grey" />
               <span>{getAuthor(post.authorId).name}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Calendar className="w-5 h-5 text-primary" />
+              <Calendar className="w-5 h-5 text-grey" />
               <span>{post.date}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Clock className="w-5 h-5 text-primary" />
+              <Clock className="w-5 h-5 text-grey" />
               <span>{post.readTime}</span>
             </div>
           </div>
@@ -205,35 +206,27 @@ const BlogPost = () => {
           </div>
 
           {/* CTA */}
-          <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20 p-12 text-center mt-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Need Help with AI Implementation?
+          <Card className="bg-gradient-to-br from-card via-card to-muted/50 border border-border p-12 text-center mt-12">
+            <h2 className="text-3xl md:text-4xl font-bold font-alternates mb-4">
+              Need help with AI implementation?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
+            <p className="text-lg text-grey mb-8 max-w-3xl mx-auto">
               Let's discuss how we can help you build production-ready AI
               systems that deliver real business value.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
-                <Button
-                  size="lg"
-                  className="bg-primary hover:bg-primary/90 text-background font-semibold"
-                >
-                  Get in Touch
-                </Button>
+                <SiteButton variant="primary" arrow="up-right">
+                  Get in touch
+                </SiteButton>
               </Link>
               <Link to="/blog">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-primary text-primary hover:bg-primary/10"
-                >
-                  Read More Articles
-                </Button>
+                <SiteButton variant="secondary">Read more articles</SiteButton>
               </Link>
             </div>
           </Card>
-        </article>
+          </article>
+        </div>
       </main>
       <Footer />
     </div>

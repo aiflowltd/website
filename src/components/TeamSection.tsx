@@ -90,7 +90,7 @@ const stats = [
     suffix: "+",
     label: "enterprise clients",
     description:
-      "including teams connected to Google, Bloomberg, and leading industry players",
+      "— including a top-5 global oil & gas firm and teams connected to Google and Bloomberg",
   },
   {
     value: 250,

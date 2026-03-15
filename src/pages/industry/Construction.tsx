@@ -1,6 +1,8 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Button } from "@/components/ui/button";
+import { SiteButton } from "@/components/SiteButton";
+import { Section } from "@/components/Section";
+import { SectionHeader } from "@/components/SectionHeader";
 import {
   Carousel,
   CarouselContent,
@@ -16,7 +18,6 @@ import {
   FileText,
   Shield,
   Workflow,
-  ArrowRight,
   Sparkles,
   Clock,
   TrendingUp,
@@ -139,7 +140,7 @@ const AgentCarousel = () => {
             const distance = Math.min(
               Math.abs(index - selectedIndex),
               Math.abs(index - selectedIndex + agentIdeas.length),
-              Math.abs(index - selectedIndex - agentIdeas.length)
+              Math.abs(index - selectedIndex - agentIdeas.length),
             );
 
             const scale = isCenter ? 1 : distance === 1 ? 0.75 : 0.5;
@@ -148,8 +149,8 @@ const AgentCarousel = () => {
             const iconSize = isCenter
               ? "52px"
               : distance === 1
-              ? "40px"
-              : "32px";
+                ? "40px"
+                : "32px";
 
             return (
               <CarouselItem
@@ -184,8 +185,8 @@ const AgentCarousel = () => {
                           filter: isCenter
                             ? `drop-shadow(0 8px 20px ${agent.color}70) brightness(1.2)`
                             : distance === 1
-                            ? `drop-shadow(0 4px 10px ${agent.color}40)`
-                            : `drop-shadow(0 2px 5px ${agent.color}20)`,
+                              ? `drop-shadow(0 4px 10px ${agent.color}40)`
+                              : `drop-shadow(0 2px 5px ${agent.color}20)`,
                           transition:
                             "all 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                         }}
@@ -202,16 +203,10 @@ const AgentCarousel = () => {
                         "opacity 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                     }}
                   >
-                    <div
-                      className="text-m uppercase tracking-wider font-semibold mb-2"
-                      style={{ color: colors.lightGrey }}
-                    >
+                    <div className="text-m uppercase tracking-wider font-semibold mb-2 text-grey">
                       {agent.label}
                     </div>
-                    <div
-                      className="text-xs px-2"
-                      style={{ color: colors.lightGrey }}
-                    >
+                    <div className="text-xs px-2 text-grey">
                       {agent.description}
                     </div>
                   </div>
@@ -466,216 +461,172 @@ const Construction = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-background text-foreground">
       <Navigation />
 
       <main className="relative">
-        <section className="relative pt-40 pb-32 px-6 overflow-hidden">
-          <div className="container mx-auto max-w-7xl">
-            <div className="grid lg:grid-cols-5 gap-12 items-center">
-              <div className="lg:col-span-3 space-y-8">
-                <div className="space-y-6">
-                  <h1
-                    className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
-                    style={{
-                      letterSpacing: "-0.02em",
-                      color: colors.lightGrey,
-                    }}
-                  >
-                    AI Agents for Construction Teams.
-                    <br />
-                    <span
-                      className="bg-gradient-to-r"
-                      style={{
-                        backgroundImage: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                        backgroundClip: "text",
-                      }}
-                    >
-                      Build smarter, faster.
-                    </span>
-                  </h1>
-                  <p
-                    className="text-lg md:text-xl max-w-xl"
-                    style={{ color: colors.lightGrey, lineHeight: "1.6" }}
-                  >
-                    Purpose-built AI systems that help construction teams
-                    qualify requests, manage projects, track materials, ensures
-                    safety, and keeps construction on schedule - without adding
-                    admin work.
-                  </p>
-                </div>
-                <div className="flex gap-4 max-w-xl">
-                  <Link to="/contact#calendly" className="w-1/2">
-                    <Button
-                      size="lg"
-                      className="text-base px-4 py-6 h-auto w-full font-semibold hover:opacity-90 transition-opacity inline-flex"
-                      style={{
-                        background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                        color: "#FAFAFA",
-                        border: "none",
-                      }}
-                    >
-                      Talk to us
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </Button>
-                  </Link>
-                </div>
+        <Section padding="hero" className="overflow-hidden">
+          <div className="grid lg:grid-cols-5 gap-12 items-center">
+            <div className="lg:col-span-3 space-y-8">
+              <div className="space-y-6">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-alternates leading-tight text-foreground">
+                  AI agents for construction teams
+                </h1>
+                <p className="text-lg md:text-xl max-w-xl text-grey leading-relaxed">
+                  Purpose-built AI systems that help construction teams qualify
+                  requests, manage projects, track materials, ensure safety, and
+                  keep construction on schedule - without adding admin work.
+                </p>
               </div>
+              <div className="flex gap-4 max-w-xl">
+                <Link to="/contact#calendly" className="w-1/2">
+                  <SiteButton
+                    variant="primary"
+                    arrow="up-right"
+                    className="w-full"
+                  >
+                    Talk to us
+                  </SiteButton>
+                </Link>
+              </div>
+            </div>
 
-              <div className="lg:col-span-2 relative">
-                <div
-                  className="relative rounded-2xl p-8 backdrop-blur-xl border"
-                  style={{
-                    backgroundColor: colors.mediumGrey + "40",
-                    borderColor: colors.grey + "30",
-                    boxShadow: `0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px ${colors.grey}20`,
-                  }}
-                >
-                  <div className="relative h-80 flex items-center justify-center">
-                    <svg
-                      className="absolute inset-0 w-full h-full"
-                      viewBox="0 0 350 280"
-                      style={{ overflow: "visible" }}
-                    >
-                      <defs>
-                        <linearGradient
-                          id="blockGradient"
-                          x1="0%"
-                          y1="0%"
-                          x2="100%"
-                          y2="100%"
-                        >
-                          <stop
-                            offset="0%"
+            <div className="lg:col-span-2 relative">
+              <div className="relative rounded-2xl p-8 bg-card border border-border shadow-xl">
+                <div className="relative h-80 flex items-center justify-center">
+                  <svg
+                    className="absolute inset-0 w-full h-full"
+                    viewBox="0 0 350 280"
+                    style={{ overflow: "visible" }}
+                  >
+                    <defs>
+                      <linearGradient
+                        id="blockGradient"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="100%"
+                      >
+                        <stop
+                          offset="0%"
+                          style={{
+                            stopColor: colors.primary,
+                            stopOpacity: 0.15,
+                          }}
+                        />
+                        <stop
+                          offset="100%"
+                          style={{
+                            stopColor: colors.secondary,
+                            stopOpacity: 0.15,
+                          }}
+                        />
+                      </linearGradient>
+                      <filter id="blockShadow">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                        <feMerge>
+                          <feMergeNode in="coloredBlur" />
+                          <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                      </filter>
+                    </defs>
+
+                    <g>
+                      {buildingStructure.map((block, i) => {
+                        const randomPos =
+                          randomPositions[i] || randomPositions[0];
+                        const currentX = isAssembled ? block.x : randomPos.x;
+                        const currentY = isAssembled ? block.y : randomPos.y;
+                        const currentRotate = isAssembled
+                          ? 0
+                          : randomPos.rotate;
+                        const currentSize = isAssembled
+                          ? block.size
+                          : randomPos.size;
+
+                        return (
+                          <g
+                            key={`block-${i}`}
+                            transform={`translate(${currentX}, ${currentY}) rotate(${currentRotate})`}
                             style={{
-                              stopColor: colors.primary,
-                              stopOpacity: 0.15,
+                              transition: isAssembled
+                                ? "transform 2.5s cubic-bezier(0.34, 1.56, 0.64, 1)"
+                                : "none",
+                              transitionDelay: isAssembled
+                                ? `${i * 0.15}s`
+                                : "0s",
                             }}
-                          />
-                          <stop
-                            offset="100%"
-                            style={{
-                              stopColor: colors.secondary,
-                              stopOpacity: 0.15,
-                            }}
-                          />
-                        </linearGradient>
-                        <filter id="blockShadow">
-                          <feGaussianBlur
-                            stdDeviation="3"
-                            result="coloredBlur"
-                          />
-                          <feMerge>
-                            <feMergeNode in="coloredBlur" />
-                            <feMergeNode in="SourceGraphic" />
-                          </feMerge>
-                        </filter>
-                      </defs>
-
-                      <g>
-                        {buildingStructure.map((block, i) => {
-                          const randomPos =
-                            randomPositions[i] || randomPositions[0];
-                          const currentX = isAssembled ? block.x : randomPos.x;
-                          const currentY = isAssembled ? block.y : randomPos.y;
-                          const currentRotate = isAssembled
-                            ? 0
-                            : randomPos.rotate;
-                          const currentSize = isAssembled
-                            ? block.size
-                            : randomPos.size;
-
-                          return (
-                            <g
-                              key={`block-${i}`}
-                              transform={`translate(${currentX}, ${currentY}) rotate(${currentRotate})`}
+                          >
+                            <rect
+                              x={-currentSize / 2}
+                              y={-currentSize / 2}
+                              width={currentSize}
+                              height={currentSize}
+                              rx="2"
+                              fill={block.color + (isAssembled ? "30" : "20")}
+                              stroke={block.color}
+                              strokeWidth="2"
+                              opacity={isAssembled ? 0.9 : 0.7}
                               style={{
-                                transition: isAssembled
-                                  ? "transform 2.5s cubic-bezier(0.34, 1.56, 0.64, 1)"
+                                filter: "url(#blockShadow)",
+                                animation: isAssembled
+                                  ? `blockPulse ${
+                                      4 + i * 0.3
+                                    }s ease-in-out infinite`
                                   : "none",
-                                transitionDelay: isAssembled
-                                  ? `${i * 0.15}s`
+                                animationDelay: isAssembled
+                                  ? `${i * 0.3}s`
                                   : "0s",
+                                transition: "opacity 0.5s ease-out",
                               }}
-                            >
-                              <rect
-                                x={-currentSize / 2}
-                                y={-currentSize / 2}
-                                width={currentSize}
-                                height={currentSize}
-                                rx="2"
-                                fill={block.color + (isAssembled ? "30" : "20")}
-                                stroke={block.color}
-                                strokeWidth="2"
-                                opacity={isAssembled ? 0.9 : 0.7}
-                                style={{
-                                  filter: "url(#blockShadow)",
-                                  animation: isAssembled
-                                    ? `blockPulse ${
-                                        4 + i * 0.3
-                                      }s ease-in-out infinite`
-                                    : "none",
-                                  animationDelay: isAssembled
-                                    ? `${i * 0.3}s`
-                                    : "0s",
-                                  transition: "opacity 0.5s ease-out",
-                                }}
-                              />
-                            </g>
-                          );
-                        })}
+                            />
+                          </g>
+                        );
+                      })}
 
-                        <g opacity="0.18">
-                          {[-2, -1, 0, 1, 2].map((i) => (
-                            <line
-                              key={`grid-h-${i}`}
-                              x1="10"
-                              y1={140 + i * 35}
-                              x2="340"
-                              y2={140 + i * 35}
-                              stroke={colors.primary}
-                              strokeWidth="1"
-                              strokeDasharray="2,4"
-                            />
-                          ))}
-                          {[-3, -2, -1, 0, 1, 2, 3].map((i) => (
-                            <line
-                              key={`grid-v-${i}`}
-                              x1={175 + i * 40}
-                              y1="10"
-                              x2={175 + i * 40}
-                              y2="270"
-                              stroke={colors.primary}
-                              strokeWidth="1"
-                              strokeDasharray="2,4"
-                            />
-                          ))}
-                        </g>
+                      <g opacity="0.18">
+                        {[-2, -1, 0, 1, 2].map((i) => (
+                          <line
+                            key={`grid-h-${i}`}
+                            x1="10"
+                            y1={140 + i * 35}
+                            x2="340"
+                            y2={140 + i * 35}
+                            stroke={colors.primary}
+                            strokeWidth="1"
+                            strokeDasharray="2,4"
+                          />
+                        ))}
+                        {[-3, -2, -1, 0, 1, 2, 3].map((i) => (
+                          <line
+                            key={`grid-v-${i}`}
+                            x1={175 + i * 40}
+                            y1="10"
+                            x2={175 + i * 40}
+                            y2="270"
+                            stroke={colors.primary}
+                            strokeWidth="1"
+                            strokeDasharray="2,4"
+                          />
+                        ))}
                       </g>
-                    </svg>
+                    </g>
+                  </svg>
 
-                    <div className="absolute top-2 left-0 right-0 text-center">
-                      <div
-                        className="text-xs uppercase tracking-wider font-semibold"
-                        style={{ color: colors.primary }}
-                      >
-                        Organized. Structured. Built.
-                      </div>
-                    </div>
-
-                    <div className="absolute bottom-2 left-0 right-0 text-center">
-                      <div
-                        className="text-xs"
-                        style={{ color: colors.lightGrey }}
-                      >
-                        AI-powered project coordination
-                      </div>
+                  <div className="absolute top-2 left-0 right-0 text-center">
+                    <div className="text-xs uppercase tracking-wider font-semibold text-grey">
+                      Organized. Structured. Built.
                     </div>
                   </div>
 
-                  <style>{`
+                  <div className="absolute bottom-2 left-0 right-0 text-center">
+                    <div className="text-xs text-grey">
+                      AI-powered project coordination
+                    </div>
+                  </div>
+                </div>
+
+                <style>{`
                     @keyframes blockPulse {
                       0%, 100% {
                         transform: translateY(0px) scale(1);
@@ -685,463 +636,221 @@ const Construction = () => {
                       }
                     }
                   `}</style>
-                </div>
               </div>
             </div>
           </div>
-        </section>
+        </Section>
 
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-4xl">
-            <div className="text-center space-y-6">
-              <h2
-                className="text-3xl md:text-4xl font-bold"
-                style={{
-                  letterSpacing: "-0.02em",
-                  color: colors.lightGrey,
-                }}
-              >
-                Construction projects struggle with{" "}
-                <span style={{ color: colors.primary }}>coordination</span> and{" "}
-                <span style={{ color: colors.primary }}>
-                  unexpected delays.
-                </span>
-              </h2>
-              <div className="grid md:grid-cols-2 gap-4 mt-8 text-left">
-                {painPoints.map((point, idx) => {
-                  const icons = [
-                    Building2,
-                    Package,
-                    Shield,
-                    Calendar,
-                    MessageSquare,
-                  ];
-                  const iconColors = [
-                    colors.primary,
-                    colors.success,
-                    colors.warning,
-                    colors.secondary,
-                    colors.primary,
-                  ];
-                  const IconComponent = icons[idx];
-                  return (
-                    <div
-                      key={idx}
-                      className="group relative p-4 rounded-lg border overflow-hidden transition-all duration-300 hover:scale-[1.02]"
-                      style={{
-                        backgroundColor: colors.darkGrey + "60",
-                        borderColor: colors.grey + "30",
-                        animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s both`,
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor =
-                          iconColors[idx] + "60";
-                        e.currentTarget.style.boxShadow = `0 8px 24px ${iconColors[idx]}20`;
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = colors.grey + "30";
-                        e.currentTarget.style.boxShadow = "none";
-                      }}
-                    >
-                      <div
-                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                        style={{
-                          background: `linear-gradient(135deg, ${iconColors[idx]}10, transparent)`,
-                        }}
-                      />
-                      <div className="relative flex items-center gap-3">
-                        <div
-                          className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                          style={{
-                            backgroundColor: iconColors[idx] + "20",
-                            border: `1px solid ${iconColors[idx]}40`,
-                          }}
-                        >
-                          <IconComponent
-                            className="w-4 h-4"
-                            style={{ color: iconColors[idx] }}
-                          />
-                        </div>
-                        <p
-                          className="text-m flex-1"
-                          style={{ color: colors.lightGrey }}
-                        >
-                          {point}
+        <Section maxWidth="narrow">
+          <SectionHeader
+            title="Construction projects struggle with coordination and unexpected delays"
+            subtitle="AI agents eliminate these bottlenecks."
+            variant="centered"
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+            subtitleClassName="text-grey mt-6"
+          />
+          <div className="grid md:grid-cols-2 gap-4 mt-8 text-left">
+            {painPoints.map((point, idx) => {
+              const icons = [
+                Building2,
+                Package,
+                Shield,
+                Calendar,
+                MessageSquare,
+              ];
+              const IconComponent = icons[idx];
+              return (
+                <div
+                  key={idx}
+                  className="group relative p-4 rounded-lg border border-border bg-card overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:border-primary/40 hover:shadow-lg"
+                  style={{
+                    animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s both`,
+                  }}
+                >
+                  <div className="relative flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-muted border border-border">
+                      <IconComponent className="w-4 h-4 text-grey" />
+                    </div>
+                    <p className="text-m flex-1 text-grey">{point}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </Section>
+
+        <Section>
+          <SectionHeader
+            title={
+              <>
+                Where AI agents <span className="text-primary">strengthen</span>{" "}
+                construction operations
+              </>
+            }
+            subtitle="Purpose-built workflows for planning, materials, safety, and scheduling."
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+            subtitleClassName="text-grey max-w-2xl"
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+            {agentTypes.map((agent, index) => {
+              const IconComponent = agent.icon;
+              return (
+                <div
+                  key={index}
+                  className="group relative rounded-2xl p-8 border border-border bg-card transition-all duration-300 hover:border-primary/40 hover:shadow-lg overflow-hidden"
+                >
+                  <div className="absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl bg-muted" />
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-5 mb-6">
+                      <div className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 bg-muted border border-border group-hover:border-primary/30 group-hover:bg-primary/10 group-hover:scale-105 transition-all duration-300">
+                        <IconComponent className="w-7 h-7 text-grey group-hover:text-primary transition-colors" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-xl font-bold font-alternates mb-2 text-foreground">
+                          {agent.title}
+                        </h3>
+                        <p className="text-grey leading-relaxed">
+                          {agent.description}
                         </p>
                       </div>
-                      <div
-                        className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r transition-all duration-500 group-hover:h-1"
-                        style={{
-                          width: "0%",
-                          background: `linear-gradient(90deg, ${iconColors[idx]}, ${iconColors[idx]}80)`,
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.width = "100%";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.width = "0%";
-                        }}
-                      />
                     </div>
-                  );
-                })}
-              </div>
-              <p
-                className="text-lg font-semibold mt-6"
-                style={{ color: colors.lightGrey }}
-              >
-                AI Agents eliminate these bottlenecks.
+                    <div className="space-y-3 mt-6 pt-6 border-t border-border">
+                      <p className="text-xs uppercase tracking-wider font-semibold mb-2 text-grey">
+                        Agents
+                      </p>
+                      {agent.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 bg-grey" />
+                          <span className="text-grey leading-relaxed text-sm">
+                            {feature}
+                          </span>
+                        </div>
+                      ))}
+                      <div className="pt-4 mt-4 border-t border-border">
+                        <p className="text-xs uppercase tracking-wider font-semibold mb-2 text-grey">
+                          Impact
+                        </p>
+                        <p className="text-grey leading-relaxed text-sm">
+                          {agent.effect}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </Section>
+
+        <Section>
+          <SectionHeader
+            title="Why construction teams choose AI Flow"
+            subtitle="We design for how construction actually works - fragmented data, changing plans, and real-world constraints."
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+            subtitleClassName="text-grey max-w-2xl"
+          />
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            {benefits.map((benefit, index) => {
+              const IconComponent = benefit.icon;
+              return (
+                <div
+                  key={index}
+                  className="group rounded-xl p-6 border border-border bg-card hover:border-primary/40 hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 bg-muted border border-border group-hover:border-primary/30 group-hover:bg-primary/10 transition-colors">
+                    <IconComponent className="w-5 h-5 text-grey group-hover:text-primary transition-colors" />
+                  </div>
+                  <h3 className="text-lg font-semibold font-alternates mb-3 text-foreground">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-grey leading-relaxed text-sm">
+                    {benefit.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </Section>
+
+        <Section className="overflow-hidden">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-6">
+              <h2 className="text-3xl md:text-4xl font-bold font-alternates text-foreground">
+                Flexible agent workflows
+              </h2>
+              <p className="text-lg text-grey leading-relaxed max-w-xl">
+                Create custom AI agents to automate specific tasks in your
+                construction operations. Each agent handles a distinct workflow
+                stage.
               </p>
             </div>
-          </div>
-        </section>
-
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-7xl">
-            <div className="mb-16">
-              <h2
-                className="text-3xl md:text-4xl font-bold mb-4"
-                style={{
-                  letterSpacing: "-0.02em",
-                  color: colors.lightGrey,
-                }}
-              >
-                Where AI Agents Strengthen{" "}
-                <span style={{ color: colors.primary }}>
-                  Construction Operations
-                </span>
-              </h2>
+            <div className="relative w-full overflow-hidden">
+              <AgentCarousel />
             </div>
+          </div>
+        </Section>
 
-            <div className="grid grid-cols-2 gap-6">
-              {agentTypes.map((agent, index) => {
-                const IconComponent = agent.icon;
-                return (
-                  <div
-                    key={index}
-                    className={`group relative rounded-2xl p-8 border transition-all duration-300 hover:scale-[1.02]`}
-                    style={{
-                      backgroundColor: colors.mediumGrey + "50",
-                      borderColor: colors.grey + "30",
-                      boxShadow: `0 4px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px ${colors.grey}20`,
-                      position: "relative",
-                      overflow: "hidden",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = colors.primary + "60";
-                      e.currentTarget.style.boxShadow = `0 12px 40px rgba(26, 136, 255, 0.25), 0 0 0 1px ${colors.primary}40`;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = colors.grey + "30";
-                      e.currentTarget.style.boxShadow = `0 4px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px ${colors.grey}20`;
-                    }}
-                  >
-                    <div
-                      className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl"
-                      style={{
-                        background: `linear-gradient(90deg, ${agent.iconColor}, ${agent.iconColor}80)`,
-                        opacity: 0.7,
-                      }}
-                    />
-                    <div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"
-                      style={{
-                        background: `radial-gradient(circle at center, ${agent.iconColor}15, transparent 70%)`,
-                      }}
-                    />
-                    <div className="relative z-10">
-                      <div className="flex items-start gap-5 mb-6">
-                        <div
-                          className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 border group-hover:scale-110 transition-transform duration-300"
-                          style={{
-                            backgroundColor: agent.iconBg,
-                            borderColor: agent.iconBorder,
-                            boxShadow: `0 0 0 0 ${agent.iconColor}40`,
-                            transition: "all 0.3s ease-out",
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.boxShadow = `0 0 20px ${agent.iconColor}50`;
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.boxShadow = `0 0 0 0 ${agent.iconColor}40`;
-                          }}
-                        >
-                          <IconComponent
-                            className="w-7 h-7 group-hover:rotate-12 transition-transform duration-300"
-                            style={{ color: agent.iconColor }}
-                          />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h3
-                            className="text-xl font-bold mb-2"
-                            style={{ color: colors.lightGrey }}
+        <Section>
+          <SectionHeader
+            title="What results look like"
+            subtitle="From immediate wins to long-term advantage."
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+            subtitleClassName="text-grey max-w-2xl"
+          />
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            {results.map((result, index) => {
+              const IconComponent = result.icon;
+              return (
+                <div
+                  key={index}
+                  className="group rounded-2xl p-6 border border-border bg-card hover:border-primary/40 hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-muted border border-border group-hover:border-primary/30 group-hover:bg-primary/10 transition-colors">
+                      <IconComponent className="w-6 h-6 text-grey group-hover:text-primary transition-colors" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold font-alternates mb-1 text-foreground">
+                        {result.period}
+                      </h3>
+                      <p className="text-xs font-medium text-grey">
+                        {result.timeframe}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="pt-4 border-t border-border">
+                      <div className="space-y-2.5">
+                        {result.uplift.map((item, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-start gap-3 p-2 rounded-lg bg-muted/50"
                           >
-                            {agent.title}
-                          </h3>
-                          <p
-                            className="text-m leading-relaxed"
-                            style={{ color: colors.lightGrey }}
-                          >
-                            {agent.description}
-                          </p>
-                        </div>
-                      </div>
-                      <div
-                        className="space-y-3 mt-6 pt-6 border-t"
-                        style={{ borderColor: colors.grey + "20" }}
-                      >
-                        <p
-                          className="text-xs uppercase tracking-wider font-semibold mb-2"
-                          style={{ color: colors.primary }}
-                        >
-                          Agents:
-                        </p>
-                        {agent.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-start gap-3">
-                            <div
-                              className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0"
-                              style={{
-                                backgroundColor: colors.success,
-                                boxShadow: `0 0 6px ${colors.success}60`,
-                              }}
-                            />
-                            <span
-                              className="text-m leading-relaxed"
-                              style={{ color: colors.lightGrey }}
-                            >
-                              {feature}
+                            <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 bg-grey" />
+                            <span className="text-grey leading-relaxed text-sm">
+                              {item}
                             </span>
                           </div>
                         ))}
-                        <div
-                          className="pt-4 mt-4 border-t"
-                          style={{ borderColor: colors.lightGrey + "20" }}
-                        >
-                          <p
-                            className="text-xs uppercase tracking-wider font-semibold mb-2"
-                            style={{ color: colors.secondary }}
-                          >
-                            Impact:
-                          </p>
-                          <p
-                            className="text-m leading-relaxed"
-                            style={{ color: colors.lightGrey }}
-                          >
-                            {agent.effect}
-                          </p>
-                        </div>
                       </div>
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
-        </section>
-
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-7xl">
-            <div className="mb-12">
-              <h2
-                className="text-3xl md:text-4xl font-bold mb-4"
-                style={{
-                  letterSpacing: "-0.02em",
-                  color: colors.lightGrey,
-                }}
-              >
-                Why Construction Teams Choose{" "}
-                <span style={{ color: colors.primary }}>AI Flow</span>
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {benefits.map((benefit, index) => {
-                const IconComponent = benefit.icon;
-                return (
-                  <div
-                    key={index}
-                    className="rounded-xl p-6 border"
-                    style={{
-                      backgroundColor: colors.mediumGrey + "30",
-                      borderColor: colors.grey + "20",
-                    }}
-                  >
-                    <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 border"
-                      style={{
-                        backgroundColor: benefit.iconBg,
-                        borderColor: benefit.iconBorder,
-                      }}
-                    >
-                      <IconComponent
-                        className="w-5 h-5"
-                        style={{ color: benefit.iconColor }}
-                      />
-                    </div>
-                    <h3
-                      className="text-lg font-semibold mb-3"
-                      style={{ color: colors.lightGrey }}
-                    >
-                      {benefit.title}
-                    </h3>
-                    <p
-                      className="text-m leading-relaxed"
-                      style={{ color: colors.lightGrey }}
-                    >
-                      {benefit.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        <section className="py-20 px-6 overflow-hidden">
-          <div className="container mx-auto max-w-7xl">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-6">
-                <h2
-                  className="text-3xl md:text-4xl font-bold"
-                  style={{
-                    letterSpacing: "-0.02em",
-                    color: colors.lightGrey,
-                  }}
-                >
-                  Flexible agent{" "}
-                  <span style={{ color: colors.primary }}>workflows</span>
-                </h2>
-                <p
-                  className="text-lg leading-relaxed"
-                  style={{ color: colors.lightGrey }}
-                >
-                  Create custom AI agents to automate specific tasks in your
-                  construction operations. Each agent handles a distinct
-                  workflow stage.
-                </p>
-              </div>
-
-              <div className="relative w-full overflow-hidden">
-                <AgentCarousel />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-7xl">
-            <div className="mb-16">
-              <h2
-                className="text-3xl md:text-4xl font-bold mb-4"
-                style={{
-                  letterSpacing: "-0.02em",
-                  color: colors.lightGrey,
-                }}
-              >
-                What{" "}
-                <span style={{ color: colors.primary }}>Results Look Like</span>
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {results.map((result, index) => {
-                const IconComponent = result.icon;
-                return (
-                  <div
-                    key={index}
-                    className="rounded-2xl p-6 border"
-                    style={{
-                      backgroundColor: colors.mediumGrey + "40",
-                      borderColor: colors.grey + "30",
-                      boxShadow: `0 4px 20px rgba(0, 0, 0, 0.2), 0 0 0 1px ${colors.grey}20`,
-                    }}
-                  >
-                    <div className="flex items-start gap-4 mb-6">
-                      <div
-                        className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 border"
-                        style={{
-                          backgroundColor: result.iconBg,
-                          borderColor: result.iconBorder,
-                        }}
-                      >
-                        <IconComponent
-                          className="w-6 h-6"
-                          style={{ color: result.iconColor }}
-                        />
-                      </div>
-                      <div>
-                        <h3
-                          className="text-lg font-bold mb-1"
-                          style={{ color: colors.lightGrey }}
-                        >
-                          {result.period}
-                        </h3>
-                        <p
-                          className="text-xs font-medium"
-                          style={{ color: colors.lightGrey }}
-                        >
-                          {result.timeframe}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="space-y-4">
-                      <div
-                        className="pt-4 border-t"
-                        style={{ borderColor: colors.grey + "20" }}
-                      >
-                        <div className="space-y-2.5">
-                          {result.uplift.map((item, idx) => (
-                            <div
-                              key={idx}
-                              className="flex items-start gap-3 p-2 rounded-lg"
-                              style={{
-                                backgroundColor: colors.darkGrey + "60",
-                              }}
-                            >
-                              <div
-                                className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0"
-                                style={{
-                                  backgroundColor: colors.primary,
-                                  boxShadow: `0 0 4px ${colors.primary}60`,
-                                }}
-                              />
-                              <span
-                                className="text-m leading-relaxed"
-                                style={{ color: colors.lightGrey }}
-                              >
-                                {item}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
+        </Section>
 
         <JourneySection steps={journeySteps} />
 
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-7xl">
-            <div className="mb-16">
-              <h2
-                className="text-3xl md:text-4xl font-bold mb-4"
-                style={{
-                  letterSpacing: "-0.02em",
-                  color: colors.lightGrey,
-                }}
-              >
-                Real{" "}
-                <span style={{ color: colors.primary }}>
-                  Construction Results
-                </span>
-              </h2>
-            </div>
-
+        <Section>
+          <SectionHeader
+            title="Real construction results"
+            subtitle="See how we've helped construction and retail teams deliver with AI."
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+            subtitleClassName="text-grey max-w-2xl"
+          />
+          <div className="space-y-12 mt-12">
             {(() => {
               const caseStudies = [
                 getCaseStudy("construction-materials-retailer"),
@@ -1150,59 +859,30 @@ const Construction = () => {
               ];
 
               return caseStudies.map((caseStudy) => (
-                <>
-                  <CaseStudyCard key={caseStudy.id} study={caseStudy} />
-                  <br />
-                </>
+                <CaseStudyCard key={caseStudy.id} study={caseStudy} />
               ));
             })()}
           </div>
-        </section>
+        </Section>
 
-        <section className="py-32 px-6">
-          <div className="container mx-auto max-w-7xl text-center">
-            <h2
-              className="text-4xl md:text-5xl font-bold mb-6"
-              style={{
-                letterSpacing: "-0.02em",
-                color: colors.lightGrey,
-              }}
-            >
-              AI Agents That Elevate{" "}
-              <span
-                style={{
-                  backgroundImage: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                Construction Execution
-              </span>
-            </h2>
-            <p
-              className="text-lg mb-8 max-w-xl mx-auto"
-              style={{ color: colors.lightGrey }}
-            >
-              Expert systems that manage projects, track materials, ensure
-              safety, and keep construction on schedule.
-            </p>
-            <Link to="/contact#calendly">
-              <Button
-                size="lg"
-                className="text-base px-8 py-6 h-auto font-semibold hover:opacity-90 transition-opacity"
-                style={{
-                  background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                  color: "#FAFAFA",
-                  border: "none",
-                }}
-              >
-                Talk to us
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
+        <Section padding="default">
+          <div className="rounded-2xl border border-border bg-gradient-to-br from-card via-card to-primary/5 p-12 md:p-16 text-center">
+            <SectionHeader
+              title="AI agents that elevate construction execution"
+              subtitle="Expert systems that manage projects, track materials, ensure safety, and keep construction on schedule."
+              variant="centered"
+              titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+              subtitleClassName="text-grey max-w-xl mx-auto mb-8"
+              action={
+                <Link to="/contact#calendly">
+                  <SiteButton variant="primary" arrow="up-right">
+                    Talk to us
+                  </SiteButton>
+                </Link>
+              }
+            />
           </div>
-        </section>
+        </Section>
       </main>
 
       <Footer />

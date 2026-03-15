@@ -134,7 +134,7 @@ const SmallTeamIllustration = () => {
 
 const PartnerTeamIllustration = () => (
   <div className="relative h-48 overflow-hidden flex items-center justify-center">
-    {/* Dashed circle — using a div to guarantee roundness */}
+    {/* Dashed circle - using a div to guarantee roundness */}
     <div className="absolute w-[120px] h-[120px] rounded-full border border-dashed border-white/10" />
     {/* Abstract rays */}
     <div className="absolute w-48 h-1 bg-gradient-to-r from-transparent via-white/[0.04] to-transparent rotate-12" />
@@ -165,30 +165,32 @@ const illustrations = [
 
 const engagementModels = [
   {
-    tagline: "You need direction & decisions",
-    title: "Advisory",
-    description:
-      "Senior guidance to validate strategy, architecture, and critical AI decisions before and during delivery.",
+    situation: "We know AI matters. We don't know where to start.",
+    solution: "One session. A concrete answer.",
+    body:
+      "Your team is spending time on decisions that should be informed by data — but the right system isn't in place yet. We run a focused session and give you a concrete answer.",
     highlight: "success" as const,
   },
   {
-    tagline: "You need delivery acceleration",
-    title: "Team augmentation",
-    description: "A senior engineer embedded in your team to drive delivery.",
+    situation: "Our analysts are doing work that shouldn't require analysts.",
+    solution: "Automate the analysis. Keep the judgment.",
+    body:
+      "Research, benchmarking, document review, and reporting that should take minutes is taking hours. We build systems that remove the manual layer without removing the human oversight that matters.",
     highlight: "primary" as const,
   },
   {
-    tagline: "You need focused builds",
-    title: "Small delivery team",
-    description:
-      "A compact team owning end-to-end delivery of a defined system.",
+    situation:
+      "Compliance and operational risk is growing. We're managing it with spreadsheets.",
+    solution: "Replace the spreadsheet. Reduce the risk.",
+    body:
+      "Regulatory monitoring, document processing, supplier risk, maintenance records — the volume is increasing and the cost of a missed signal is significant. We remove the manual layer.",
     highlight: "primary" as const,
   },
   {
-    tagline: "You need production-level ownership",
-    title: "Partner team",
-    description:
-      "Full ownership of delivery for production systems, with clear accountability from build to long-term operation.",
+    situation: "We're making decisions on information that's already outdated.",
+    solution: "Real-time signals. Always current data.",
+    body:
+      "By the time market intelligence is manually compiled, the window has closed. We build systems that surface pricing signals, counterparty risk, and sector shifts as they happen.",
     highlight: "primary" as const,
   },
 ];
@@ -198,10 +200,16 @@ export const EngagementSection = () => {
     <Section>
       <SectionHeader
         title="Where are you in your AI journey?"
-        subtitle="We meet you at your current stage, through flexible engagement models."
+        subtitle="The data exists. The question is whether you can use it faster than your competition."
         action={
           <Link to="/contact">
-            <SiteButton variant="secondary">Discuss your project</SiteButton>
+            <SiteButton
+              variant="primary"
+              arrow="up-right"
+              className="whitespace-nowrap"
+            >
+              Book a discovery call
+            </SiteButton>
           </Link>
         }
         titleClassName="text-3xl md:text-4xl"
@@ -209,52 +217,68 @@ export const EngagementSection = () => {
         className="mb-16"
       />
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {engagementModels.map((model, index) => {
-            const Illustration = illustrations[index];
-            const highlightHoverClass =
-              model.highlight === "primary"
-                ? "group-hover:bg-primary group-hover:blur-[218px]"
-                : "group-hover:bg-success group-hover:blur-[270px]";
-            return (
-              <Link
-                key={model.title}
-                to="/contact"
-                className="group relative flex flex-col p-6 rounded-xl bg-card border border-border isolate overflow-hidden transition-all duration-300 hover:bg-dark-grey hover:border-primary/50 hover:shadow-[inset_0_2px_0_rgba(255,255,255,0.1)]"
-              >
-                {/* Highlight glow – only on hover */}
-                <div
-                  className={`absolute w-[498px] h-[129px] -left-6 -top-16 blur-[270px] z-0 pointer-events-none opacity-0 transition-opacity duration-200 group-hover:opacity-80 ${highlightHoverClass}`}
-                  aria-hidden
-                />
+      <div className="grid md:grid-cols-2 gap-6">
+        {engagementModels.map((model, index) => {
+          const Illustration = illustrations[index];
+          const highlightHoverClass =
+            model.highlight === "primary"
+              ? "group-hover:bg-primary group-hover:blur-[218px]"
+              : "group-hover:bg-success group-hover:blur-[270px]";
+          return (
+            <Link
+              key={model.solution}
+              to="/contact"
+              className="group relative flex flex-col p-6 rounded-xl bg-card border border-border isolate overflow-hidden transition-all duration-300 hover:bg-dark-grey hover:border-primary/50 hover:shadow-[inset_0_2px_0_rgba(255,255,255,0.1)]"
+            >
+              {/* Highlight glow – only on hover */}
+              <div
+                className={`absolute w-[498px] h-[129px] -left-6 -top-16 blur-[270px] z-0 pointer-events-none opacity-0 transition-opacity duration-200 group-hover:opacity-80 ${highlightHoverClass}`}
+                aria-hidden
+              />
 
-                {/* Card-specific illustration */}
-                <div className="relative z-10 w-full h-[129px] shrink-0">
-                  <Illustration />
+              {/* Card-specific illustration */}
+              <div className="relative z-10 w-full h-[129px] shrink-0">
+                <Illustration />
+              </div>
+
+              {/* Content: Situation (first) → Solution → Body */}
+              <div className="relative z-10 flex flex-col gap-5 pt-2">
+                {/* 1. Situation — most visible, first thing they see */}
+                <div>
+                  <p className="font-sans text-[10px] font-medium uppercase tracking-[0.15em] text-muted-foreground mb-2">
+                    Situation
+                  </p>
+                  <p className="font-sans text-base font-medium leading-snug text-foreground">
+                    &ldquo;{model.situation}&rdquo;
+                  </p>
                 </div>
 
-                {/* Content */}
-                <div className="relative z-10 flex flex-col gap-4 pt-2">
-                  <p className="font-sans font-light text-sm leading-[1.4] tracking-[0.09em] uppercase text-grey opacity-60">
-                    {model.tagline}
+                {/* 2. Solution — 5-word punchline */}
+                <div>
+                  <p className="font-sans text-[10px] font-medium uppercase tracking-[0.15em] text-muted-foreground mb-2">
+                    Solution
                   </p>
-                  <h3 className="font-sans font-medium text-2xl leading-[1.36] text-white">
-                    {model.title}
+                  <h3 className="font-sans font-medium text-xl leading-tight text-white">
+                    {model.solution}
                   </h3>
-                  <hr className="border-0 border-t border-dark-grey m-0" />
-                  <p className="font-sans font-light text-base leading-[1.5] text-grey">
-                    {model.description}
-                  </p>
                 </div>
 
-                {/* Arrow icon */}
-                <div className="absolute w-7 h-7 right-4 top-4 z-20 flex items-center justify-center rounded-full border border-dark-grey transition-colors group-hover:border-white">
-                  <ArrowUpRight className="w-5 h-5 text-dark-grey transition-colors group-hover:text-white" />
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+                <hr className="border-0 border-t border-dark-grey m-0" />
+
+                {/* 3. Body — description */}
+                <p className="font-sans font-light text-sm leading-[1.5] text-grey">
+                  {model.body}
+                </p>
+              </div>
+
+              {/* Arrow icon */}
+              <div className="absolute w-7 h-7 right-4 top-4 z-20 flex items-center justify-center rounded-full border border-dark-grey transition-colors group-hover:border-white">
+                <ArrowUpRight className="w-5 h-5 text-dark-grey transition-colors group-hover:text-white" />
+              </div>
+            </Link>
+          );
+        })}
+      </div>
     </Section>
   );
 };

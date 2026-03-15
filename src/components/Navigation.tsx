@@ -11,45 +11,32 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { colors } from "@/constants/colors";
 
-// Solutions dropdown items
+// Solutions dropdown items (Industries)
 const solutionsItems = [
   {
     name: "Construction",
     description: "AI solutions for construction projects",
     href: "/industry/construction",
     icon: Building2,
-    color: colors.warning,
-    bgColor: colors.warning + "20",
-    borderColor: colors.warning + "40",
   },
   {
     name: "Real Estate",
     description: "AI solutions for real estate industry",
     href: "/industry/real-estate",
     icon: Home,
-    color: colors.primary,
-    bgColor: colors.primary + "20",
-    borderColor: colors.primary + "40",
   },
   {
     name: "PropTech",
     description: "AI Agents for PropTech platforms",
     href: "/industry/proptech",
     icon: Building,
-    color: colors.secondary,
-    bgColor: colors.secondary + "20",
-    borderColor: colors.secondary + "40",
   },
   {
     name: "Custom solutions",
     description: "For your industry",
     href: "/industry/agnostic",
     icon: Layers,
-    color: colors.primary,
-    bgColor: colors.primary + "20",
-    borderColor: colors.primary + "40",
   },
 ];
 
@@ -138,28 +125,12 @@ export const Navigation = () => {
                         <Link
                           key={item.name}
                           to={item.href}
-                          className="flex flex-col items-center justify-center gap-3 p-4 rounded-lg border transition-all duration-200 hover:scale-[1.02] w-32 h-32"
-                          style={{
-                            borderColor: item.borderColor,
-                            backgroundColor: "#000000",
-                          }}
+                          className="flex flex-col items-center justify-center gap-3 p-4 rounded-lg border border-border bg-card text-foreground transition-all duration-200 hover:scale-[1.02] hover:border-white/20 hover:shadow-lg w-32 h-32"
                         >
-                          <div
-                            className="flex items-center justify-center w-12 h-12 rounded-lg"
-                            style={{
-                              backgroundColor: "#000000",
-                              border: `1px solid ${colors.grey}40`,
-                            }}
-                          >
-                            <item.icon
-                              className="w-6 h-6"
-                              style={{ color: colors.lightGrey }}
-                            />
+                          <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-muted border border-border">
+                            <item.icon className="w-6 h-6 text-grey" />
                           </div>
-                          <span
-                            className="font-semibold text-m text-center"
-                            style={{ color: colors.lightGrey }}
-                          >
+                          <span className="font-semibold text-sm text-center text-foreground">
                             {item.name}
                           </span>
                         </Link>
@@ -315,25 +286,12 @@ export const Navigation = () => {
                     key={item.name}
                     to={item.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className="flex items-center gap-3 p-3 rounded-lg border transition-all duration-200"
-                    style={{
-                      borderColor: item.borderColor,
-                      backgroundColor: item.bgColor,
-                    }}
+                    className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card text-foreground transition-all duration-200 hover:border-white/20"
                   >
-                    <div
-                      className="flex items-center justify-center w-8 h-8 rounded-lg"
-                      style={{ backgroundColor: item.color + "30" }}
-                    >
-                      <item.icon
-                        className="w-4 h-4"
-                        style={{ color: item.color }}
-                      />
+                    <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-muted border border-border">
+                      <item.icon className="w-4 h-4 text-grey" />
                     </div>
-                    <span
-                      className="font-medium text-sm"
-                      style={{ color: item.color }}
-                    >
+                    <span className="font-medium text-sm text-foreground">
                       {item.name}
                     </span>
                   </Link>

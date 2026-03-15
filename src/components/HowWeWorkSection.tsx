@@ -8,31 +8,31 @@ const steps = [
     number: "01",
     title: "Discover",
     description:
-      "Clarify the outcome, constraints, and what success looks like. Review data, systems, stakeholders, and metrics.",
+      "Define the outcome, the constraints, and what success looks like in measurable terms. Review data, systems, and decision-making processes.",
   },
   {
     number: "02",
     title: "Design",
     description:
-      "Define architecture, evaluation, and iteration loop. Align on interfaces, security, and ownership.",
+      "Scope the architecture, data flows, and evaluation criteria. Align on security requirements, integrations, and ownership before a line of code is written.",
   },
   {
     number: "03",
     title: "Build",
     description:
-      "Implement the system: data pipelines, models/LLMs, services, UI, and integrations.",
+      "Implement the full system: data pipelines, models, agents, interfaces, and integrations. Senior engineers from start to finish.",
   },
   {
     number: "04",
     title: "Deploy",
     description:
-      "Productionize with monitoring, guardrails, and feedback loops. Make performance measurable.",
+      "Ship to production with monitoring, guardrails, and audit trails in place. Performance is measurable from day one.",
   },
   {
     number: "05",
     title: "Improve",
     description:
-      "Iterate on accuracy, latency, cost, and user experience. Continuously refine based on production data.",
+      "Iterate on accuracy, latency, and cost based on real usage. The system gets more valuable over time, not less.",
   },
 ];
 

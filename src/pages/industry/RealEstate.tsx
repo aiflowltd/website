@@ -1,6 +1,8 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Button } from "@/components/ui/button";
+import { SiteButton } from "@/components/SiteButton";
+import { Section } from "@/components/Section";
+import { SectionHeader } from "@/components/SectionHeader";
 import {
   Carousel,
   CarouselContent,
@@ -139,7 +141,7 @@ const AgentCarousel = () => {
             const distance = Math.min(
               Math.abs(index - selectedIndex),
               Math.abs(index - selectedIndex + agentIdeas.length),
-              Math.abs(index - selectedIndex - agentIdeas.length)
+              Math.abs(index - selectedIndex - agentIdeas.length),
             );
 
             // Scale: center = 1, 2nd/4th = 0.75, 1st/5th = 0.5
@@ -150,8 +152,8 @@ const AgentCarousel = () => {
             const iconSize = isCenter
               ? "48px"
               : distance === 1
-              ? "40px"
-              : "36px";
+                ? "40px"
+                : "36px";
 
             return (
               <CarouselItem
@@ -177,8 +179,8 @@ const AgentCarousel = () => {
                         filter: isCenter
                           ? `drop-shadow(0 8px 16px ${agent.color}60)`
                           : distance === 1
-                          ? `drop-shadow(0 4px 8px ${agent.color}40)`
-                          : `drop-shadow(0 2px 4px ${agent.color}20)`,
+                            ? `drop-shadow(0 4px 8px ${agent.color}40)`
+                            : `drop-shadow(0 2px 4px ${agent.color}20)`,
                         transition:
                           "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                       }}
@@ -417,623 +419,351 @@ const RealEstate = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-background text-foreground">
       <Navigation />
 
       <main className="relative">
-        {/* Hero Section - Split Screen */}
-        <section className="relative pt-40 pb-32 px-6 overflow-hidden">
-          <div className="container mx-auto max-w-7xl">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              {/* Left: Headline + Value */}
-              <div className="space-y-8">
-                <div className="space-y-6">
-                  <h1
-                    className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
-                    style={{
-                      letterSpacing: "-0.02em",
-                      color: colors.lightGrey,
-                    }}
-                  >
-                    AI Agents for real estate.
-                    <br />
-                    <span
-                      className="bg-gradient-to-r"
-                      style={{
-                        backgroundImage: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                        backgroundClip: "text",
-                      }}
-                    >
-                      Close more deals.
-                    </span>
-                  </h1>
-                  <p
-                    className="text-lg md:text-xl max-w-xl"
-                    style={{ color: colors.lightGrey, lineHeight: "1.6" }}
-                  >
-                    Increase closing rates, shorten deal cycles, and remove
-                    operational drag across your pipeline.
-                  </p>
-                </div>
-                <div className="flex gap-4 max-w-xl">
-                  <Link to="/contact#calendly" className="w-1/2">
-                    <Button
-                      size="lg"
-                      className="text-base px-4 py-6 h-auto w-full font-semibold hover:opacity-90 transition-opacity inline-flex"
-                      style={{
-                        background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                        color: "#FAFAFA",
-                        border: "none",
-                      }}
-                    >
-                      Talk to us
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Right: Visual/Graphic */}
-              <div className="relative">
-                <div
-                  className="relative rounded-2xl p-8 backdrop-blur-xl border"
-                  style={{
-                    backgroundColor: colors.mediumGrey + "40",
-                    borderColor: colors.grey + "30",
-                    boxShadow: `0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px ${colors.grey}20`,
-                  }}
-                >
-                  {/* Flow visualization */}
-                  <div className="relative h-80">
-                    {/* Curved flow line */}
-                    <svg
-                      className="absolute inset-0 w-full h-full"
-                      viewBox="0 0 400 250"
-                      style={{ overflow: "visible" }}
-                    >
-                      {/* Gradient definition */}
-                      <defs>
-                        <linearGradient
-                          id="flowGradient"
-                          x1="0%"
-                          y1="0%"
-                          x2="100%"
-                          y2="0%"
-                        >
-                          <stop
-                            offset="0%"
-                            style={{ stopColor: colors.primary }}
-                          />
-                          <stop
-                            offset="100%"
-                            style={{ stopColor: colors.secondary }}
-                          />
-                        </linearGradient>
-                      </defs>
-                      {/* Flow curve - thicker and more prominent */}
-                      <path
-                        d="M 20 120 Q 100 60, 200 90 T 380 120"
-                        fill="none"
-                        stroke="url(#flowGradient)"
-                        strokeWidth="3"
-                        style={{
-                          filter:
-                            "drop-shadow(0 0 12px rgba(26, 136, 255, 0.6))",
-                        }}
-                      />
-                      {/* AI Agent indicators along the flow */}
-                      <g>
-                        {/* Agent at start */}
-                        <circle
-                          cx="20"
-                          cy="120"
-                          r="6"
-                          fill={colors.success}
-                          style={{
-                            filter: `drop-shadow(0 0 8px ${colors.success})`,
-                            animation: "pulse 2s ease-in-out infinite",
-                          }}
-                        />
-                        {/* Agent in middle */}
-                        <circle
-                          cx="200"
-                          cy="90"
-                          r="6"
-                          fill={colors.primary}
-                          style={{
-                            filter: `drop-shadow(0 0 8px ${colors.primary})`,
-                            animation: "pulse 2s ease-in-out infinite 0.5s",
-                          }}
-                        />
-                        {/* Agent at end */}
-                        <circle
-                          cx="380"
-                          cy="120"
-                          r="6"
-                          fill={colors.secondary}
-                          style={{
-                            filter: `drop-shadow(0 0 8px ${colors.secondary})`,
-                            animation: "pulse 2s ease-in-out infinite 1s",
-                          }}
-                        />
-                      </g>
-                      {/* Animated particles moving along the flow */}
-                      <circle
-                        r="3"
-                        fill={colors.warning}
-                        style={{
-                          filter: `drop-shadow(0 0 6px ${colors.warning})`,
-                          animation: "flowMove 3s linear infinite",
-                        }}
-                      >
-                        <animateMotion
-                          dur="3s"
-                          repeatCount="indefinite"
-                          path="M 20 120 Q 100 60, 200 90 T 380 120"
-                        />
-                      </circle>
-                    </svg>
-                    {/* Top annotation labels */}
-                    <div className="absolute top-4 left-4 space-y-2">
-                      <div
-                        className="uppercase tracking-wider font-semibold"
-                        style={{ color: colors.primary, fontSize: "13px" }}
-                      >
-                        AI Agents Guide Your Flow
-                      </div>
-                      <div
-                        className="font-medium"
-                        style={{ color: colors.lightGrey, fontSize: "13px" }}
-                      >
-                        Lead → Qualify → Close
-                      </div>
-                    </div>
-                    {/* Agent names positioned below the dots */}
-                    <div
-                      className="absolute"
-                      style={{ top: "48%", left: "5%", width: "90%" }}
-                    >
-                      <div className="flex justify-between items-start px-2">
-                        <div className="text-center " style={{ width: "20%" }}>
-                          <div
-                            className="font-semibold mt-10"
-                            style={{ color: colors.success, fontSize: "13px" }}
-                          >
-                            Inbound Agent
-                          </div>
-                        </div>
-                        <div
-                          className="text-center"
-                          style={{ width: "20%", marginTop: "-30px" }}
-                        >
-                          <div
-                            className="font-semibold mt-10"
-                            style={{ color: colors.primary, fontSize: "13px" }}
-                          >
-                            Qualification Agent
-                          </div>
-                        </div>
-                        <div
-                          className="text-center mt-10"
-                          style={{ width: "20%" }}
-                        >
-                          <div
-                            className="font-semibold"
-                            style={{
-                              color: colors.secondary,
-                              fontSize: "13px",
-                            }}
-                          >
-                            Closing Agent
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    {/* Bottom annotation */}
-                    <div className="absolute bottom-4 right-4">
-                      <div
-                        className="text-xs"
-                        style={{ color: colors.lightGrey, fontSize: "13px" }}
-                      >
-                        Automated at every step
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Problem Statement - Minimal */}
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-4xl">
-            <div className="text-center space-y-6">
-              <h2
-                className="text-3xl md:text-4xl font-bold"
-                style={{
-                  letterSpacing: "-0.02em",
-                  color: colors.lightGrey,
-                }}
-              >
-                Most real estate businesses are losing deals because of{" "}
-                <span style={{ color: colors.primary }}>
-                  slow follow-up, manual coordination,
-                </span>{" "}
-                and{" "}
-                <span style={{ color: colors.primary }}>
-                  information arriving fragmented
-                </span>
-                .
-              </h2>
-            </div>
-          </div>
-        </section>
-
-        {/* Agent Types - Bento Grid */}
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-7xl">
-            <div className="mb-16">
-              <h2
-                className="text-3xl md:text-4xl font-bold mb-4"
-                style={{
-                  letterSpacing: "-0.02em",
-                  color: colors.lightGrey,
-                }}
-              >
-                Where AI Agents Strengthen{" "}
-                <span style={{ color: colors.primary }}>
-                  Real Estate Operations
-                </span>
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {agentTypes.map((agent, index) => {
-                const IconComponent = agent.icon;
-                const isLarge = index === 0 || index === 3;
-                return (
-                  <div
-                    key={index}
-                    className={`group relative rounded-2xl p-8 border transition-all duration-300 hover:scale-[1.02] ${
-                      isLarge ? "lg:col-span-2" : ""
-                    }`}
-                    style={{
-                      backgroundColor: colors.mediumGrey + "50",
-                      borderColor: colors.grey + "30",
-                      boxShadow: `0 4px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px ${colors.grey}20`,
-                      position: "relative",
-                      overflow: "hidden",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = colors.primary + "60";
-                      e.currentTarget.style.boxShadow = `0 12px 40px rgba(26, 136, 255, 0.25), 0 0 0 1px ${colors.primary}40`;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = colors.grey + "30";
-                      e.currentTarget.style.boxShadow = `0 4px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px ${colors.grey}20`;
-                    }}
-                  >
-                    {/* Gradient line decoration - always visible but subtle */}
-                    <div
-                      className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl"
-                      style={{
-                        background: `linear-gradient(90deg, ${agent.iconColor}, ${agent.iconColor}80)`,
-                        opacity: 0.7,
-                      }}
-                    />
-                    {/* Glow effect on hover */}
-                    <div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"
-                      style={{
-                        background: `radial-gradient(circle at center, ${agent.iconColor}15, transparent 70%)`,
-                      }}
-                    />
-                    <div className="relative z-10">
-                      <div className="flex items-start gap-5 mb-6">
-                        <div
-                          className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 border"
-                          style={{
-                            backgroundColor: agent.iconBg,
-                            borderColor: agent.iconBorder,
-                          }}
-                        >
-                          <IconComponent
-                            className="w-7 h-7"
-                            style={{ color: agent.iconColor }}
-                          />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h3
-                            className="text-xl font-bold mb-2"
-                            style={{ color: colors.lightGrey }}
-                          >
-                            {agent.title}
-                          </h3>
-                          <p
-                            className="text-m mb-3 font-medium"
-                            style={{ color: colors.primary }}
-                          >
-                            {agent.subtitle}
-                          </p>
-                          <p
-                            className="text-m leading-relaxed"
-                            style={{ color: colors.lightGrey }}
-                          >
-                            {agent.description}
-                          </p>
-                        </div>
-                      </div>
-                      <div
-                        className="space-y-3 mt-6 pt-6 border-t"
-                        style={{ borderColor: colors.grey + "20" }}
-                      >
-                        {agent.features
-                          .slice(0, isLarge ? 4 : 3)
-                          .map((feature, idx) => (
-                            <div key={idx} className="flex items-start gap-3">
-                              <div
-                                className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0"
-                                style={{
-                                  backgroundColor: colors.success,
-                                  boxShadow: `0 0 6px ${colors.success}60`,
-                                }}
-                              />
-                              <span
-                                className="text-m leading-relaxed"
-                                style={{ color: colors.lightGrey }}
-                              >
-                                {feature}
-                              </span>
-                            </div>
-                          ))}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Why Choose AI Flow - Compact */}
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-7xl">
-            <div className="mb-12">
-              <h2
-                className="text-3xl md:text-4xl font-bold mb-4"
-                style={{
-                  letterSpacing: "-0.02em",
-                  color: colors.lightGrey,
-                }}
-              >
-                Why Real Estate Leaders Choose{" "}
-                <span style={{ color: colors.primary }}>AI Flow</span>
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {benefits.map((benefit, index) => {
-                const IconComponent = benefit.icon;
-                return (
-                  <div
-                    key={index}
-                    className="rounded-xl p-6 border"
-                    style={{
-                      backgroundColor: colors.mediumGrey + "30",
-                      borderColor: colors.grey + "20",
-                    }}
-                  >
-                    <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 border"
-                      style={{
-                        backgroundColor: benefit.iconBg,
-                        borderColor: benefit.iconBorder,
-                      }}
-                    >
-                      <IconComponent
-                        className="w-5 h-5"
-                        style={{ color: benefit.iconColor }}
-                      />
-                    </div>
-                    <h3
-                      className="text-lg font-semibold mb-3"
-                      style={{ color: colors.lightGrey }}
-                    >
-                      {benefit.title}
-                    </h3>
-                    <p
-                      className="text-m leading-relaxed"
-                      style={{ color: colors.lightGrey }}
-                    >
-                      {benefit.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Agent Ideas Carousel */}
-        <section className="py-20 px-6 overflow-hidden">
-          <div className="container mx-auto max-w-7xl">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              {/* Left: Text */}
+        <Section padding="hero" className="overflow-hidden">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
               <div className="space-y-6">
-                <h2
-                  className="text-3xl md:text-4xl font-bold"
-                  style={{
-                    letterSpacing: "-0.02em",
-                    color: colors.lightGrey,
-                  }}
-                >
-                  Flexible agent{" "}
-                  <span style={{ color: colors.primary }}>workflows</span>
-                </h2>
-                <p
-                  className="text-lg leading-relaxed"
-                  style={{ color: colors.lightGrey }}
-                >
-                  Create custom AI agents to automate specific tasks in your
-                  real estate pipeline. Each agent handles a distinct workflow
-                  stage.
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-alternates leading-tight text-foreground">
+                  AI agents for real estate
+                </h1>
+                <p className="text-lg md:text-xl max-w-xl text-grey leading-relaxed">
+                  Increase closing rates, shorten deal cycles, and remove
+                  operational drag across your pipeline.
                 </p>
               </div>
+              <div className="flex gap-4 max-w-xl">
+                <Link to="/contact#calendly" className="w-1/2">
+                  <SiteButton
+                    variant="primary"
+                    arrow="up-right"
+                    className="w-full"
+                  >
+                    Talk to us
+                  </SiteButton>
+                </Link>
+              </div>
+            </div>
 
-              {/* Right: Carousel */}
-              <div className="relative w-full overflow-hidden">
-                <AgentCarousel />
+            <div className="relative">
+              <div className="relative rounded-2xl p-8 bg-card border border-border shadow-xl">
+                {/* Flow visualization */}
+                <div className="relative h-80">
+                  {/* Curved flow line */}
+                  <svg
+                    className="absolute inset-0 w-full h-full"
+                    viewBox="0 0 400 250"
+                    style={{ overflow: "visible" }}
+                  >
+                    {/* Gradient definition */}
+                    <defs>
+                      <linearGradient
+                        id="flowGradient"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="0%"
+                      >
+                        <stop
+                          offset="0%"
+                          style={{ stopColor: colors.primary }}
+                        />
+                        <stop
+                          offset="100%"
+                          style={{ stopColor: colors.secondary }}
+                        />
+                      </linearGradient>
+                    </defs>
+                    {/* Flow curve - thicker and more prominent */}
+                    <path
+                      d="M 20 120 Q 100 60, 200 90 T 380 120"
+                      fill="none"
+                      stroke="url(#flowGradient)"
+                      strokeWidth="3"
+                      style={{
+                        filter: "drop-shadow(0 0 12px rgba(26, 136, 255, 0.6))",
+                      }}
+                    />
+                    {/* AI Agent indicators along the flow */}
+                    <g>
+                      {/* Agent at start */}
+                      <circle
+                        cx="20"
+                        cy="120"
+                        r="6"
+                        fill={colors.success}
+                        style={{
+                          filter: `drop-shadow(0 0 8px ${colors.success})`,
+                          animation: "pulse 2s ease-in-out infinite",
+                        }}
+                      />
+                      {/* Agent in middle */}
+                      <circle
+                        cx="200"
+                        cy="90"
+                        r="6"
+                        fill={colors.primary}
+                        style={{
+                          filter: `drop-shadow(0 0 8px ${colors.primary})`,
+                          animation: "pulse 2s ease-in-out infinite 0.5s",
+                        }}
+                      />
+                      {/* Agent at end */}
+                      <circle
+                        cx="380"
+                        cy="120"
+                        r="6"
+                        fill={colors.secondary}
+                        style={{
+                          filter: `drop-shadow(0 0 8px ${colors.secondary})`,
+                          animation: "pulse 2s ease-in-out infinite 1s",
+                        }}
+                      />
+                    </g>
+                    {/* Animated particles moving along the flow */}
+                    <circle
+                      r="3"
+                      fill={colors.warning}
+                      style={{
+                        filter: `drop-shadow(0 0 6px ${colors.warning})`,
+                        animation: "flowMove 3s linear infinite",
+                      }}
+                    >
+                      <animateMotion
+                        dur="3s"
+                        repeatCount="indefinite"
+                        path="M 20 120 Q 100 60, 200 90 T 380 120"
+                      />
+                    </circle>
+                  </svg>
+                  {/* Top annotation labels */}
+                  <div className="absolute top-4 left-4 space-y-2">
+                    <div className="uppercase tracking-wider font-semibold text-grey text-[13px]">
+                      AI agents guide your flow
+                    </div>
+                    <div className="font-medium text-grey text-[13px]">
+                      Lead → Qualify → Close
+                    </div>
+                  </div>
+                  {/* Agent names positioned below the dots */}
+                  <div className="absolute top-[48%] left-[5%] w-[90%]">
+                    <div className="flex justify-between items-start px-2">
+                      <div className="text-center w-[20%]">
+                        <div className="font-semibold mt-10 text-grey text-[13px]">
+                          Inbound Agent
+                        </div>
+                      </div>
+                      <div className="text-center w-[20%] -mt-[30px]">
+                        <div className="font-semibold mt-10 text-grey text-[13px]">
+                          Qualification Agent
+                        </div>
+                      </div>
+                      <div className="text-center mt-10 w-[20%]">
+                        <div className="font-semibold text-grey text-[13px]">
+                          Closing Agent
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Bottom annotation */}
+                  <div className="absolute bottom-4 right-4">
+                    <div className="text-xs text-grey text-[13px]">
+                      Automated at every step
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </section>
+        </Section>
 
-        {/* Results - Timeline Style */}
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-7xl">
-            <div className="mb-16">
-              <h2
-                className="text-3xl md:text-4xl font-bold mb-4"
-                style={{
-                  letterSpacing: "-0.02em",
-                  color: colors.lightGrey,
-                }}
-              >
-                What{" "}
-                <span style={{ color: colors.primary }}>Results Look Like</span>
-              </h2>
-            </div>
+        <Section maxWidth="narrow">
+          <SectionHeader
+            title="Most real estate businesses lose deals because of slow follow-up, manual coordination, and fragmented information"
+            variant="centered"
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+          />
+        </Section>
 
-            <div className="grid md:grid-cols-3 gap-6">
-              {results.map((result, index) => {
-                const IconComponent = result.icon;
-                return (
-                  <div
-                    key={index}
-                    className="rounded-2xl p-6 border"
-                    style={{
-                      backgroundColor: colors.mediumGrey + "40",
-                      borderColor: colors.grey + "30",
-                      boxShadow: `0 4px 20px rgba(0, 0, 0, 0.2), 0 0 0 1px ${colors.grey}20`,
-                    }}
-                  >
-                    <div className="flex items-start gap-4 mb-6">
-                      <div
-                        className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 border"
-                        style={{
-                          backgroundColor: result.iconBg,
-                          borderColor: result.iconBorder,
-                        }}
-                      >
-                        <IconComponent
-                          className="w-6 h-6"
-                          style={{ color: result.iconColor }}
-                        />
+        <Section>
+          <SectionHeader
+            title={
+              <>
+                Where AI agents <span className="text-primary">strengthen</span>{" "}
+                real estate operations
+              </>
+            }
+            subtitle="Purpose-built workflows for leads, qualification, and closing."
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+            subtitleClassName="text-grey max-w-2xl"
+          />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+            {agentTypes.map((agent, index) => {
+              const IconComponent = agent.icon;
+              const isLarge = index === 0 || index === 3;
+              return (
+                <div
+                  key={index}
+                  className={`group relative rounded-2xl p-8 border border-border bg-card transition-all duration-300 hover:border-primary/40 hover:shadow-lg overflow-hidden ${isLarge ? "lg:col-span-2" : ""}`}
+                >
+                  <div className="absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl bg-muted" />
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-5 mb-6">
+                      <div className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 bg-muted border border-border">
+                        <IconComponent className="w-7 h-7 text-grey" />
                       </div>
-                      <div>
-                        <h3
-                          className="text-lg font-bold mb-1"
-                          style={{ color: colors.lightGrey }}
-                        >
-                          {result.period}
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-xl font-bold font-alternates mb-2 text-foreground">
+                          {agent.title}
                         </h3>
-                        <p
-                          className="text-xs font-medium"
-                          style={{ color: colors.lightGrey }}
-                        >
-                          {result.timeframe}
+                        <p className="text-m mb-3 font-medium text-grey">
+                          {agent.subtitle}
+                        </p>
+                        <p className="text-grey leading-relaxed text-sm">
+                          {agent.description}
                         </p>
                       </div>
                     </div>
-                    <div className="space-y-4">
-                      <div
-                        className="pt-4 border-t"
-                        style={{ borderColor: colors.grey + "20" }}
-                      >
-                        <div className="space-y-2.5">
-                          {result.uplift.map((item, idx) => (
-                            <div
-                              key={idx}
-                              className="flex items-start gap-3 p-2 rounded-lg"
-                              style={{
-                                backgroundColor: colors.darkGrey + "60",
-                              }}
-                            >
-                              <div
-                                className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0"
-                                style={{
-                                  backgroundColor: colors.primary,
-                                  boxShadow: `0 0 4px ${colors.primary}60`,
-                                }}
-                              />
-                              <span
-                                className="text-m leading-relaxed"
-                                style={{ color: colors.lightGrey }}
-                              >
-                                {item}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
+                    <div className="space-y-3 mt-6 pt-6 border-t border-border">
+                      {agent.features
+                        .slice(0, isLarge ? 4 : 3)
+                        .map((feature, idx) => (
+                          <div key={idx} className="flex items-start gap-3">
+                            <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 bg-grey" />
+                            <span className="text-grey leading-relaxed text-sm">
+                              {feature}
+                            </span>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </Section>
+
+        <Section>
+          <SectionHeader
+            title="Why real estate leaders choose AI Flow"
+            subtitle="We design for how real estate actually works - pipelines, coordination, and closing."
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+            subtitleClassName="text-grey max-w-2xl"
+          />
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            {benefits.map((benefit, index) => {
+              const IconComponent = benefit.icon;
+              return (
+                <div
+                  key={index}
+                  className="group rounded-xl p-6 border border-border bg-card hover:border-primary/40 hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 bg-muted border border-border group-hover:border-primary/30 group-hover:bg-primary/10 transition-colors">
+                    <IconComponent className="w-5 h-5 text-grey group-hover:text-primary transition-colors" />
+                  </div>
+                  <h3 className="text-lg font-semibold font-alternates mb-3 text-foreground">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-grey leading-relaxed text-sm">
+                    {benefit.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </Section>
+
+        <Section className="overflow-hidden">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-6">
+              <h2 className="text-3xl md:text-4xl font-bold font-alternates text-foreground">
+                Flexible agent workflows
+              </h2>
+              <p className="text-lg text-grey leading-relaxed max-w-xl">
+                Create custom AI agents to automate specific tasks in your real
+                estate pipeline. Each agent handles a distinct workflow stage.
+              </p>
+            </div>
+            <div className="relative w-full overflow-hidden">
+              <AgentCarousel />
+            </div>
+          </div>
+        </Section>
+
+        <Section>
+          <SectionHeader
+            title="What results look like"
+            subtitle="From immediate wins to long-term advantage."
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+            subtitleClassName="text-grey max-w-2xl"
+          />
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            {results.map((result, index) => {
+              const IconComponent = result.icon;
+              return (
+                <div
+                  key={index}
+                  className="group rounded-2xl p-6 border border-border bg-card hover:border-primary/40 hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-muted border border-border group-hover:border-primary/30 group-hover:bg-primary/10 transition-colors">
+                      <IconComponent className="w-6 h-6 text-grey group-hover:text-primary transition-colors" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold font-alternates mb-1 text-foreground">
+                        {result.period}
+                      </h3>
+                      <p className="text-xs font-medium text-grey">
+                        {result.timeframe}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="pt-4 border-t border-border">
+                      <div className="space-y-2.5">
+                        {result.uplift.map((item, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-start gap-3 p-2 rounded-lg bg-muted/50"
+                          >
+                            <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 bg-grey" />
+                            <span className="text-grey leading-relaxed text-sm">
+                              {item}
+                            </span>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
-        </section>
+        </Section>
 
         <JourneySection steps={journeySteps} />
 
-        {/* Final CTA */}
-        <section className="py-32 px-6">
-          <div className="container mx-auto max-w-7xl text-center">
-            <h2
-              className="text-4xl md:text-5xl font-bold mb-6"
-              style={{
-                letterSpacing: "-0.02em",
-                color: colors.lightGrey,
-              }}
-            >
-              AI Agents That Grow Your{" "}
-              <span
-                style={{
-                  backgroundImage: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                Pipeline
-              </span>
-            </h2>
-            <p
-              className="text-lg mb-8 max-w-xl mx-auto"
-              style={{ color: colors.lightGrey }}
-            >
-              Let your team focus on conversations, negotiations, and closing
-              while AI handles the busy-work.
-            </p>
-            <Link to="/contact#calendly">
-              <Button
-                size="lg"
-                className="text-base px-8 py-6 h-auto font-semibold hover:opacity-90 transition-opacity"
-                style={{
-                  background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                  color: "#FAFAFA",
-                  border: "none",
-                }}
-              >
-                Talk to us
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
+        <Section>
+          <div className="rounded-2xl border border-border bg-gradient-to-br from-card via-card to-primary/5 p-12 md:p-16 text-center">
+            <SectionHeader
+              title="AI agents that grow your pipeline"
+              subtitle="Let your team focus on conversations, negotiations, and closing while AI handles the busy-work."
+              variant="centered"
+              titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+              subtitleClassName="text-grey max-w-xl mx-auto mb-8"
+              action={
+                <Link to="/contact#calendly">
+                  <SiteButton variant="primary" arrow="up-right">
+                    Talk to us
+                  </SiteButton>
+                </Link>
+              }
+            />
           </div>
-        </section>
+        </Section>
       </main>
 
       <Footer />

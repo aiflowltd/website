@@ -1,7 +1,6 @@
 import { Navigation } from "@/components/Navigation";
 import { Tag } from "@/components/Tag";
 import { Footer } from "@/components/Footer";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
   ArrowLeft,
@@ -14,6 +13,8 @@ import {
 import { Link, useParams, Navigate, useNavigate } from "react-router-dom";
 import { getCaseStudy } from "@/data/caseStudies";
 import { useEffect } from "react";
+import { Section } from "@/components/Section";
+import { SiteButton } from "@/components/SiteButton";
 
 const CaseStudyDetail = () => {
   const { id } = useParams();
@@ -41,55 +42,55 @@ const CaseStudyDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-background text-foreground">
       <Navigation />
 
-      <main className="container mx-auto px-6 pt-32 pb-20">
-        {/* Back Button */}
+      {/* Hero: back, title, meta, image */}
+      <Section padding="hero" maxWidth="default">
         <button
+          type="button"
           onClick={handleBack}
-          className="inline-flex items-center gap-2 mb-8 text-primary hover:text-primary/80 transition-colors group cursor-pointer"
+          className="inline-flex items-center gap-2 mb-8 text-grey hover:text-foreground transition-colors group cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1" />
-          <span>Back</span>
+          <span>Back to case studies</span>
         </button>
 
-        {/* Hero Section */}
-        <div className="max-w-7xl mx-auto mb-12">
-          <div className="flex flex-wrap gap-2 mb-6">
-            {study.tags.map((tag: string, idx: number) => (
-              <Tag key={idx}>{tag}</Tag>
-            ))}
-          </div>
-
-          <h1 className="text-4xl md:text-6xl font-bold mb-6  bg-clip-text">
-            {study.title}
-          </h1>
-
-          <div className="flex flex-wrap gap-6 text-grey mb-8">
-            {study.client && (
-              <div className="flex items-center gap-2">
-                <Building className="w-5 h-5 text-primary" />
-                <span>{study.client}</span>
-              </div>
-            )}
-            {study.duration && (
-              <div className="flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-primary" />
-                <span>{study.duration}</span>
-              </div>
-            )}
-            {study.teamSize && (
-              <div className="flex items-center gap-2">
-                <Users className="w-5 h-5 text-primary" />
-                <span>{study.teamSize}</span>
-              </div>
-            )}
-          </div>
+        <div className="flex flex-wrap gap-2 mb-6">
+          {study.tags.map((tag: string, idx: number) => (
+            <Tag key={idx}>{tag}</Tag>
+          ))}
         </div>
 
-        {/* Hero Image */}
-        <div className="relative h-96 rounded-2xl overflow-hidden mb-16 max-w-7xl mx-auto">
+        <h1 className="text-4xl md:text-6xl font-bold font-alternates mb-3">
+          {study.title}
+        </h1>
+        <p className="text-lg text-grey max-w-3xl mb-8">
+          How we delivered measurable impact for {study.client || "our client"}.
+        </p>
+
+        <div className="flex flex-wrap gap-6 text-grey mb-10">
+          {study.client && (
+            <div className="flex items-center gap-2">
+              <Building className="w-5 h-5 text-grey" />
+              <span>{study.client}</span>
+            </div>
+          )}
+          {study.duration && (
+            <div className="flex items-center gap-2">
+              <Calendar className="w-5 h-5 text-grey" />
+              <span>{study.duration}</span>
+            </div>
+          )}
+          {study.teamSize && (
+            <div className="flex items-center gap-2">
+              <Users className="w-5 h-5 text-grey" />
+              <span>{study.teamSize}</span>
+            </div>
+          )}
+        </div>
+
+        <div className="relative h-96 rounded-2xl overflow-hidden">
           <img
             src={study.image}
             alt={study.title}
@@ -97,14 +98,19 @@ const CaseStudyDetail = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
         </div>
+      </Section>
 
-        {/* Content */}
-        <div className="max-w-6xl mx-auto space-y-16">
+      {/* Content */}
+      <Section>
+        <div className="space-y-16">
           {/* Challenge */}
           <section>
-            <h2 className="text-3xl font-bold mb-6 text-primary">
-              The Challenge
+            <h2 className="text-3xl font-bold font-alternates mb-3 text-foreground">
+              Challenge
             </h2>
+            <p className="text-grey mb-6 max-w-2xl">
+              The problem we were asked to solve.
+            </p>
             <Card className="bg-card border-border p-8">
               <p className="text-lg text-grey leading-relaxed">
                 {study.challengeDetail}
@@ -114,9 +120,12 @@ const CaseStudyDetail = () => {
 
           {/* Solution */}
           <section>
-            <h2 className="text-3xl font-bold mb-6 text-primary">
-              Our Solution
+            <h2 className="text-3xl font-bold font-alternates mb-3 text-foreground">
+              Solution
             </h2>
+            <p className="text-grey mb-6 max-w-2xl">
+              How we approached it and what we built.
+            </p>
             <Card className="bg-card border-border p-8">
               <p className="text-lg text-grey leading-relaxed mb-6">
                 {study.solutionDetail}
@@ -125,7 +134,7 @@ const CaseStudyDetail = () => {
                 <ul className="space-y-4">
                   {study.solutionPoints.map((point: string, idx: number) => (
                     <li key={idx} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                      <CheckCircle2 className="w-6 h-6 text-grey flex-shrink-0 mt-1" />
                       <span className="text-grey">{point}</span>
                     </li>
                   ))}
@@ -137,9 +146,12 @@ const CaseStudyDetail = () => {
           {/* Technical Approach */}
           {study.technicalApproach && study.technicalApproach.length > 0 && (
             <section>
-              <h2 className="text-3xl font-bold mb-6 text-primary">
-                Technical Approach
+              <h2 className="text-3xl font-bold font-alternates mb-6 text-foreground">
+                Technical approach
               </h2>
+              <p className="text-grey mb-6 max-w-2xl">
+                The architecture and methods we used to deliver this outcome.
+              </p>
               <div className="grid md:grid-cols-2 gap-6">
                 {study.technicalApproach.map((tech: any, idx: number) => (
                   <Card
@@ -156,14 +168,17 @@ const CaseStudyDetail = () => {
 
           {/* Results */}
           <section>
-            <h2 className="text-3xl font-bold mb-6 text-primary">
-              Results & Impact
+            <h2 className="text-3xl font-bold font-alternates mb-3 text-foreground">
+              Results and impact
             </h2>
+            <p className="text-grey mb-6 max-w-2xl">
+              Measurable outcomes and lasting value delivered.
+            </p>
             <div className="space-y-6">
               {study.results.map((result: any, idx: number) => (
                 <Card key={idx} className="bg-card border-border p-8">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                    <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center text-foreground flex-shrink-0">
                       {result.icon}
                     </div>
                     <div>
@@ -181,14 +196,14 @@ const CaseStudyDetail = () => {
               {study.additionalResults &&
                 study.additionalResults.length > 0 && (
                   <Card className="bg-card border-border p-8">
-                    <h3 className="text-xl font-bold mb-4">
-                      Additional Outcomes
+                    <h3 className="text-xl font-bold font-alternates mb-4">
+                      Additional outcomes
                     </h3>
                     <ul className="space-y-3">
                       {study.additionalResults.map(
                         (result: string, idx: number) => (
                           <li key={idx} className="flex items-start gap-3">
-                            <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                            <CheckCircle2 className="w-5 h-5 text-grey flex-shrink-0 mt-0.5" />
                             <span className="text-grey">{result}</span>
                           </li>
                         )
@@ -204,7 +219,7 @@ const CaseStudyDetail = () => {
             <section>
               <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20 p-12">
                 <div className="text-center">
-                  <div className="text-6xl text-primary mb-4">"</div>
+                  <div className="text-6xl text-grey mb-4">"</div>
                   <p className="text-xl md:text-2xl font-semibold mb-6 italic">
                     {study.testimonial.quote}
                   </p>
@@ -217,13 +232,10 @@ const CaseStudyDetail = () => {
                   {study.interviewId && (
                     <div className="mt-6">
                       <Link to={`/interviews/${study.interviewId}`}>
-                        <Button
-                          variant="outline"
-                          className="border-primary text-primary hover:bg-primary/10"
-                        >
+                        <SiteButton variant="secondary">
                           <Quote className="mr-2 w-4 h-4" />
-                          Read Full Interview
-                        </Button>
+                          Read full interview
+                        </SiteButton>
                       </Link>
                     </div>
                   )}
@@ -234,37 +246,28 @@ const CaseStudyDetail = () => {
 
           {/* CTA */}
           <section>
-            <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20 p-12 text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Ready for Similar Results?
+            <div className="rounded-2xl border border-border bg-gradient-to-br from-card via-card to-primary/5 p-10 md:p-16 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold font-alternates mb-4">
+                Ready to achieve similar results?
               </h2>
               <p className="text-lg text-grey mb-8 max-w-3xl mx-auto">
-                Let's discuss how we can help you achieve transformative
-                outcomes with AI.
+                Discuss your project with our team. We deliver AI systems that
+                scale and drive real impact.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact">
-                  <Button
-                    size="lg"
-                    className="bg-primary hover:bg-primary/90 text-background font-semibold"
-                  >
-                    Start Your Project
-                  </Button>
+                  <SiteButton variant="primary" arrow="up-right">
+                    Start your project
+                  </SiteButton>
                 </Link>
                 <Link to="/case-studies">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-primary text-primary hover:bg-primary/10"
-                  >
-                    View More Case Studies
-                  </Button>
+                  <SiteButton variant="secondary">View more case studies</SiteButton>
                 </Link>
               </div>
-            </Card>
+            </div>
           </section>
         </div>
-      </main>
+      </Section>
       <Footer />
     </div>
   );

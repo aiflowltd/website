@@ -26,7 +26,7 @@ export default {
         alternates: ["Montserrat Alternates", "sans-serif"],
       },
       colors: {
-        /* Theme palette — Primary, Status, Base (use only these, no random hex) */
+        /* Theme palette - Primary, Status, Base (use only these, no random hex) */
         primary: {
           DEFAULT: "hsl(var(--primary))" /* #1AB8FF Azure Blue */,
           foreground: "hsl(var(--primary-foreground))",

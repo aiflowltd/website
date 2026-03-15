@@ -1,7 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { SiteButton } from "@/components/SiteButton";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Tag } from "@/components/Tag";
@@ -14,7 +14,7 @@ import {
   ArrowLeft,
   Upload,
 } from "lucide-react";
-import { Link, useParams, Navigate } from "react-router-dom";
+import { Link, useParams, Navigate, useNavigate } from "react-router-dom";
 import { getJob } from "@/data/jobs";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -43,6 +43,7 @@ type ApplicationForm = z.infer<typeof applicationSchema>;
 
 const JobDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const job = id ? getJob(id) : undefined;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -222,34 +223,36 @@ const JobDetail = () => {
       <Navigation />
 
       <main className="container mx-auto px-6 pt-32 pb-20">
-        {/* Back Button */}
-        <Link
-          to="/careers"
-          className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mb-8"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Back to Careers
-        </Link>
+        <div className="max-w-6xl mx-auto">
+          {/* Back Button */}
+          <button
+            type="button"
+            onClick={() => navigate("/careers")}
+            className="inline-flex items-center gap-2 mb-8 text-grey hover:text-foreground transition-colors group cursor-pointer"
+          >
+            <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1" />
+            <span>Back to careers</span>
+          </button>
 
-        {/* Job Header */}
-        <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{job.title}</h1>
-          <div className="flex flex-wrap gap-4 text-muted-foreground mb-6">
+          {/* Job Header */}
+          <div className="mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold font-alternates mb-4 text-foreground">{job.title}</h1>
+          <div className="flex flex-wrap gap-4 text-grey mb-6">
             <div className="flex items-center gap-2">
-              <MapPin className="w-5 h-5 text-primary" />
+              <MapPin className="w-5 h-5 text-grey" />
               <span>{job.location}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Briefcase className="w-5 h-5 text-primary" />
+              <Briefcase className="w-5 h-5 text-grey" />
               <span>{job.type}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Clock className="w-5 h-5 text-primary" />
+              <Clock className="w-5 h-5 text-grey" />
               <span>{job.experience}</span>
             </div>
             {job.salary && (
               <div className="flex items-center gap-2">
-                <DollarSign className="w-5 h-5 text-primary" />
+                <DollarSign className="w-5 h-5 text-grey" />
                 <span>{job.salary}</span>
               </div>
             )}
@@ -261,11 +264,11 @@ const JobDetail = () => {
           {/* Left Column - Job Details */}
           <div className="lg:col-span-2 space-y-8">
             {/* Important Note */}
-            <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20 p-6">
-              <h3 className="text-lg font-bold mb-3 text-primary">
-                Important Note
+            <Card className="bg-muted/50 border border-border p-6">
+              <h3 className="text-lg font-bold font-alternates mb-3 text-foreground">
+                Important note
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-grey leading-relaxed">
                 This is part of our ongoing effort to grow a pool of experts we
                 can staff on projects as they arise. If your profile fits and
                 you pass the interview, we'll connect you to paid opportunities
@@ -276,20 +279,20 @@ const JobDetail = () => {
 
             {/* About the Role */}
             <Card className="bg-card border-border p-8">
-              <h2 className="text-2xl font-bold mb-4">About the Role</h2>
-              <p className="text-muted-foreground leading-relaxed">
+              <h2 className="text-2xl font-bold font-alternates mb-4 text-foreground">About the role</h2>
+              <p className="text-grey leading-relaxed">
                 {job.description}
               </p>
             </Card>
 
             {/* Responsibilities */}
             <Card className="bg-card border-border p-8">
-              <h2 className="text-2xl font-bold mb-6">Responsibilities</h2>
+              <h2 className="text-2xl font-bold font-alternates mb-6 text-foreground">Responsibilities</h2>
               <ul className="space-y-3">
                 {job.responsibilities.map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">{item}</span>
+                    <CheckCircle2 className="w-5 h-5 text-grey flex-shrink-0 mt-0.5" />
+                    <span className="text-grey">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -297,12 +300,12 @@ const JobDetail = () => {
 
             {/* Requirements */}
             <Card className="bg-card border-border p-8">
-              <h2 className="text-2xl font-bold mb-6">Requirements</h2>
+              <h2 className="text-2xl font-bold font-alternates mb-6 text-foreground">Requirements</h2>
               <ul className="space-y-3">
                 {job.requirements.map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">{item}</span>
+                    <CheckCircle2 className="w-5 h-5 text-grey flex-shrink-0 mt-0.5" />
+                    <span className="text-grey">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -311,12 +314,12 @@ const JobDetail = () => {
             {/* Nice to Have */}
             {job.niceToHave.length > 0 && (
               <Card className="bg-card border-border p-8">
-                <h2 className="text-2xl font-bold mb-6">Nice to Have</h2>
+                <h2 className="text-2xl font-bold font-alternates mb-6 text-foreground">Nice to have</h2>
                 <ul className="space-y-3">
                   {job.niceToHave.map((item, index) => (
                     <li key={index} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                      <span className="text-muted-foreground">{item}</span>
+                      <CheckCircle2 className="w-5 h-5 text-grey flex-shrink-0 mt-0.5" />
+                      <span className="text-grey">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -325,12 +328,12 @@ const JobDetail = () => {
 
             {/* Benefits */}
             <Card className="bg-card border-border p-8">
-              <h2 className="text-2xl font-bold mb-6">Benefits</h2>
+              <h2 className="text-2xl font-bold font-alternates mb-6 text-foreground">Benefits</h2>
               <ul className="space-y-3">
                 {job.benefits.map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">{item}</span>
+                    <CheckCircle2 className="w-5 h-5 text-grey flex-shrink-0 mt-0.5" />
+                    <span className="text-grey">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -340,7 +343,7 @@ const JobDetail = () => {
           {/* Right Column - Application Form */}
           <div className="lg:col-span-1">
             <Card className="bg-card border-border p-6 sticky top-24">
-              <h2 className="text-2xl font-bold mb-6">Apply Now</h2>
+              <h2 className="text-2xl font-bold font-alternates mb-6 text-foreground">Apply now</h2>
 
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div>
@@ -432,7 +435,7 @@ const JobDetail = () => {
                     className="block text-sm font-medium mb-2"
                   >
                     Portfolio / Website{" "}
-                    <span className="text-muted-foreground font-normal">
+                    <span className="text-grey font-normal">
                       (Optional)
                     </span>
                   </label>
@@ -456,7 +459,7 @@ const JobDetail = () => {
                     className="block text-sm font-medium mb-2"
                   >
                     Cover Letter{" "}
-                    <span className="text-muted-foreground font-normal">
+                    <span className="text-grey font-normal">
                       (Optional)
                     </span>
                   </label>
@@ -485,8 +488,8 @@ const JobDetail = () => {
                     className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors cursor-pointer 
                       ${
                         isDragging
-                          ? "border-primary bg-primary/10"
-                          : "border-border hover:border-primary"
+                          ? "border-white/20 bg-muted"
+                          : "border-border hover:border-white/20"
                       }`}
                     onDragEnter={handleDragEnter}
                     onDragLeave={handleDragLeave}
@@ -495,19 +498,19 @@ const JobDetail = () => {
                     onClick={handleClick}
                   >
                     {selectedFile ? (
-                      <div className="flex items-center justify-center gap-2 text-primary">
-                        <CheckCircle2 className="w-6 h-6" />
+                      <div className="flex items-center justify-center gap-2 text-foreground">
+                        <CheckCircle2 className="w-6 h-6 text-grey" />
                         <span className="text-sm font-medium">
                           {selectedFile.name}
                         </span>
                       </div>
                     ) : (
                       <>
-                        <Upload className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
-                        <p className="text-sm text-muted-foreground mb-1">
+                        <Upload className="w-8 h-8 text-grey mx-auto mb-2" />
+                        <p className="text-sm text-grey mb-1">
                           Click to upload or drag and drop
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-xs text-grey">
                           PDF, DOC, or DOCX (max 5MB)
                         </p>
                       </>
@@ -527,21 +530,23 @@ const JobDetail = () => {
                   )}
                 </div>
 
-                <Button
+                <SiteButton
                   type="submit"
-                  className="w-full bg-primary hover:bg-primary/90 text-background font-semibold"
+                  variant="primary"
+                  className="w-full"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Submitting..." : "Submit Application"}
-                </Button>
+                  {isSubmitting ? "Submitting..." : "Submit application"}
+                </SiteButton>
 
-                <p className="text-xs text-muted-foreground text-center">
+                <p className="text-xs text-grey text-center">
                   By submitting, you agree to our Privacy Policy and Terms of
                   Service
                 </p>
               </form>
             </Card>
           </div>
+        </div>
         </div>
       </main>
       <Footer />

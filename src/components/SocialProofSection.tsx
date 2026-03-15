@@ -9,10 +9,10 @@ const stats = [
 
 const quotes = [
   {
-    text: "Mihai Anton — Founder & Lead AI/ML Engineer. Ex-Google, Bloomberg.",
+    text: "Mihai Anton - Founder & Lead AI/ML Engineer. Ex-Google, Bloomberg.",
   },
   {
-    text: "Irina Barbos — Founder & AI Solutions Consultant.",
+    text: "Irina Barbos - Founder & AI Solutions Consultant.",
   },
 ];
 
@@ -21,7 +21,7 @@ export const SocialProofSection = () => {
     <section className="relative py-24 px-6">
       <div className="container mx-auto max-w-6xl">
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Left side — stats */}
+          {/* Left side - stats */}
           <div>
             <h2 className="text-3xl md:text-4xl font-bold font-alternates mb-4">
               Senior expertise that
@@ -43,7 +43,7 @@ export const SocialProofSection = () => {
             </div>
           </div>
 
-          {/* Right side — team credibility */}
+          {/* Right side - team credibility */}
           <div className="flex flex-col gap-6">
             <div className="rounded-xl border border-border bg-card p-6">
               <div className="flex items-center gap-4 mb-4">

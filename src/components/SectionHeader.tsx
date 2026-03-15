@@ -45,7 +45,7 @@ export function SectionHeader({
             {subtitle}
           </p>
         )}
-        {action && <div className="mt-6">{action}</div>}
+        {action && <div className="mt-6 flex justify-center">{action}</div>}
       </div>
     );
   }
@@ -53,7 +53,7 @@ export function SectionHeader({
   return (
     <div
       className={cn(
-        "flex flex-col md:flex-row md:items-end md:justify-between gap-6",
+        "flex flex-col md:flex-row md:items-start md:justify-between gap-6",
         className,
       )}
     >

@@ -1,14 +1,15 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Button } from "@/components/ui/button";
+import { SiteButton } from "@/components/SiteButton";
 import { Card } from "@/components/ui/card";
 import { ArrowLeft, Quote, Building, Calendar, User } from "lucide-react";
-import { Link, useParams, Navigate } from "react-router-dom";
+import { Link, useParams, Navigate, useNavigate } from "react-router-dom";
 import { getInterview } from "@/data/interviews";
 import { useEffect } from "react";
 
 const InterviewDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const interview = id ? getInterview(id) : null;
 
   useEffect(() => {
@@ -28,107 +29,99 @@ const InterviewDetail = () => {
       <Navigation />
 
       <main className="container mx-auto px-6 pt-32 pb-20">
-        {/* Back Button */}
-        <Link to={`/case-studies/${interview.caseStudyId}`}>
-          <Button
-            variant="ghost"
-            className="mb-8 text-primary hover:text-primary/80"
+        <div className="max-w-6xl mx-auto">
+          {/* Back Button */}
+          <button
+            type="button"
+            onClick={() => navigate(`/case-studies/${interview.caseStudyId}`)}
+            className="inline-flex items-center gap-2 mb-8 text-grey hover:text-foreground transition-colors group cursor-pointer"
           >
-            <ArrowLeft className="mr-2 w-4 h-4" />
-            Back to Case Study
-          </Button>
-        </Link>
+            <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1" />
+            <span>Back to case study</span>
+          </button>
 
-        {/* Hero Section */}
-        <div className="max-w-4xl mx-auto mb-12">
-          <div className="flex items-center gap-2 text-primary mb-4">
+          {/* Hero Section */}
+          <div className="mb-12">
+          <div className="flex items-center gap-2 text-grey mb-4">
             <Quote className="w-6 h-6" />
             <span className="text-sm font-semibold uppercase tracking-wider">
-              Client Interview
+              Client interview
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Interview with <span className="text-primary">{interview.clientName}</span>
+          <h1 className="text-4xl md:text-5xl font-bold font-alternates mb-6 text-foreground">
+            Interview with {interview.clientName}
           </h1>
 
-          <div className="flex flex-wrap gap-6 text-muted-foreground mb-6">
+          <div className="flex flex-wrap gap-6 text-grey mb-6">
             <div className="flex items-center gap-2">
-              <User className="w-5 h-5 text-primary" />
+              <User className="w-5 h-5 text-grey" />
               <span>
                 {interview.clientRole} at {interview.clientCompany}
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <Calendar className="w-5 h-5 text-primary" />
+              <Calendar className="w-5 h-5 text-grey" />
               <span>{interview.date}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Building className="w-5 h-5 text-primary" />
+              <Building className="w-5 h-5 text-grey" />
               <Link
                 to={`/case-studies/${interview.caseStudyId}`}
-                className="text-primary hover:underline"
+                className="text-grey hover:text-foreground hover:underline"
               >
-                View Case Study
+                View case study
               </Link>
             </div>
           </div>
 
-          <p className="text-lg text-muted-foreground leading-relaxed">
+          <p className="text-lg text-grey leading-relaxed">
             {interview.introduction}
           </p>
-        </div>
+          </div>
 
-        {/* Interview Content */}
-        <div className="max-w-4xl mx-auto space-y-8">
+          {/* Interview Content */}
+          <div className="space-y-8">
           {interview.questions.map((qa, index) => (
             <Card key={index} className="bg-card border-border p-8">
               <div className="space-y-4">
                 <div>
                   <div className="flex items-start gap-3 mb-3">
-                    <Quote className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                    <h3 className="text-xl font-bold text-primary">
+                    <Quote className="w-5 h-5 text-grey flex-shrink-0 mt-1" />
+                    <h3 className="text-xl font-bold font-alternates text-foreground">
                       {qa.question}
                     </h3>
                   </div>
-                  <p className="text-muted-foreground leading-relaxed ml-8">
+                  <p className="text-grey leading-relaxed ml-8">
                     {qa.answer}
                   </p>
                 </div>
               </div>
             </Card>
           ))}
-        </div>
+          </div>
 
-        {/* CTA Section */}
-        <div className="max-w-4xl mx-auto mt-16">
-          <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20 p-12 text-center">
-            <h2 className="text-3xl font-bold mb-4">
-              Ready to Achieve Similar Results?
+          {/* CTA Section */}
+          <div className="mt-16">
+          <Card className="bg-gradient-to-br from-card via-card to-muted/50 border border-border p-12 text-center">
+            <h2 className="text-3xl font-bold font-alternates mb-4 text-foreground">
+              Ready to achieve similar results?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-grey mb-8 max-w-2xl mx-auto">
               Let's discuss how we can help transform your business with AI solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
-                <Button
-                  size="lg"
-                  className="bg-primary hover:bg-primary/90 text-background font-semibold"
-                >
-                  Get in Touch
-                </Button>
+                <SiteButton variant="primary" arrow="up-right">
+                  Get in touch
+                </SiteButton>
               </Link>
               <Link to={`/case-studies/${interview.caseStudyId}`}>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-primary text-primary hover:bg-primary/10"
-                >
-                  Read Full Case Study
-                </Button>
+                <SiteButton variant="secondary">Read full case study</SiteButton>
               </Link>
             </div>
           </Card>
+          </div>
         </div>
       </main>
 

@@ -14,7 +14,7 @@ export function LabelBadge({ children, className }: LabelBadgeProps) {
         className,
       )}
     >
-      {/* Left gradient glow — covers left ~70%, fades to transparent */}
+      {/* Left gradient glow - covers left ~70%, fades to transparent */}
       <div
         className="absolute inset-y-[3px] left-0 rounded-full"
         style={{

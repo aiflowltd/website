@@ -1,9 +1,10 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { ServiceCard } from "@/components/ServiceCard";
+import { SiteButton } from "@/components/SiteButton";
+import { Section } from "@/components/Section";
+import { SectionHeader } from "@/components/SectionHeader";
+import { ServiceBlock } from "@/components/ServiceBlock";
 import { services } from "@/data/services";
 import { useEffect } from "react";
 
@@ -13,59 +14,75 @@ const Services = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-background text-foreground">
       <Navigation />
 
-      <main className="container mx-auto px-6 pt-32 pb-20">
-        {/* Hero Section */}
-        <div className="text-center mb-20">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            Our Services
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Comprehensive AI solutions to transform your business. From strategy
-            to implementation, we deliver end-to-end AI products that drive real
-            results.
-          </p>
-        </div>
+      <main>
+        <Section padding="hero" className="!pb-8">
+          <SectionHeader
+            title="Our services"
+            subtitle="Three entry points. One delivery standard. Each engagement is scoped for clarity, with defined deliverables and timelines. Below: what each service includes, who it’s for, and how to see proof."
+            variant="centered"
+            titleClassName="text-4xl md:text-6xl font-alternates text-foreground"
+            subtitleClassName="text-lg text-grey max-w-3xl mx-auto leading-relaxed"
+          />
+        </Section>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-20">
-          {services.map((service, index) => (
-            <ServiceCard key={index} service={service} variant="default" />
-          ))}
-        </div>
-
-        {/* CTA Section */}
-        <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-[20px] p-12 text-center max-w-6xl mx-auto border border-primary/20">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Transform Your Business?
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-            Let's discuss how our AI solutions can help you achieve your goals.
-            Book a free consultation call with our experts.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact">
-              <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-background font-semibold"
-              >
-                Get Started
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-            <Link to="/case-studies">
-            <Button
-                size="lg"
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary/10"
-              >
-                View Case Studies
-              </Button>
-            </Link>
+        <Section padding="compact" className="pt-2">
+          <div className="relative rounded-2xl border border-border bg-gradient-to-br from-medium-grey/50 to-dark-grey/50 p-6 md:p-8 overflow-hidden">
+            <h2 className="text-xl md:text-2xl font-bold font-alternates text-foreground text-center mb-2">
+              Ask our AI about our services
+            </h2>
+            <p className="text-grey text-center max-w-2xl mx-auto mb-6">
+              Not sure which service fits your situation? Ask about what we
+              offer, typical timelines, industries we work with, or how we'd
+              approach your use case.
+            </p>
+            <div className="w-full flex justify-center">
+              <iframe
+                title="Ask about AI Flow services"
+                className="rounded-xl border-0 w-full max-w-[900px] block"
+                style={{
+                  boxShadow: "0 20px 24px rgba(0, 0, 0, 0.24)",
+                }}
+                src="https://app.datacards.ai/a/aiflow/services?theme=dark&scale=0"
+                height="300px"
+              />
+            </div>
           </div>
-        </div>
+        </Section>
+
+        <Section>
+          <div className="space-y-12 md:space-y-16">
+            {services.map((service) => (
+              <ServiceBlock key={service.slug} service={service} />
+            ))}
+          </div>
+        </Section>
+
+        <Section>
+          <div className="rounded-2xl border border-border bg-gradient-to-br from-card via-card to-primary/5 p-10 md:p-14 text-center">
+            <SectionHeader
+              title="Ready to get started?"
+              subtitle="Book a scoping call or explore our case studies to see how we deliver."
+              variant="centered"
+              titleClassName="text-2xl md:text-3xl font-alternates text-foreground"
+              subtitleClassName="text-grey max-w-xl mx-auto mb-8"
+              action={
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link to="/contact#calendly">
+                    <SiteButton variant="primary" arrow="up-right">
+                      Book a scoping call
+                    </SiteButton>
+                  </Link>
+                  <Link to="/case-studies">
+                    <SiteButton variant="secondary">View case studies</SiteButton>
+                  </Link>
+                </div>
+              }
+            />
+          </div>
+        </Section>
       </main>
       <Footer />
     </div>

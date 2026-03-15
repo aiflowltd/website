@@ -61,7 +61,7 @@ export interface CaseStudy {
 export const caseStudies: Record<string, CaseStudy> = {
   "oil-gas-invoice-automation": {
     id: "oil-gas-invoice-automation",
-    title: "Oil & Gas Invoice Automation with Databricks & Azure",
+    title: "Automating Invoice Processing for a Top-5 Global Oil & Gas Firm",
     client: "Top-5 Oil & Gas Firm",
     industry: "Oil & Gas",
     image: CASE_STUDY_SUPPLY_CHAIN_OPTIMIZATION,
@@ -72,7 +72,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     challengeDetail:
       "Our client reached out in 2023 with a comprehensive plan to automate as much of their processes as possible. The problem we helped solve was the ingestion of unstructured documents from thousands of sources, each with tens of document types, arriving daily or monthly. There was no standardized API or generic way to extract prices, cap tables, accounting data, locations, and financial information from those documents. Legacy methods weren't scalable, and accuracy was too low to be useful. With AI picking up and competitors leveraging it for smart automation, our client needed competent people with relevant expertise to work on the problem end-to-end.",
     solution:
-      "Built end-to-end ETL pipeline with Databricks on Azure, AI document intelligence, and Power BI",
+      "Built an end-to-end automated pipeline replacing a large manual invoicing operation — processing tens of thousands of documents at scale, with full audit trails and Power BI reporting.",
     solutionDetail:
       "We implemented the solution on Microsoft Azure, which the client was already familiar with. The pipeline captured data from email attachments or SharePoint, triggered jobs for each file, used Databricks workflows and AI models to parse documents and extract information, wrote to parquet files, curated data into Azure SQL Database, and created PowerBI reports for business decision-making.",
     solutionPoints: [

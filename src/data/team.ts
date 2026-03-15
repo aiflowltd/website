@@ -13,13 +13,13 @@ export interface TeamMember {
   website?: string;
 }
 
-// Team member data - Single source of truth
+// Team member data - single source of truth
 export const teamMembers = {
   irina: {
     id: "irina-barbos",
     name: "Irina Barbos",
-    role: "Founder & AI Solutions Consultant",
-    // bio: "Irina has built AI-focused products for organizations in the U.S. and Europe, including startups developed within NYU’s innovation ecosystem. With a strong engineering background, she designs scalable architectures and helps teams implement production-ready AI aligned with operational needs.",
+    role: "Co‑founder & AI Strategy",
+    bio: "Irina designs and delivers AI systems for organisations in the US and Europe. She brings an engineering mindset to strategy and execution: scalable architecture, clear product logic, and production-ready AI that fits how teams actually work. Prior to AI Flow she built AI-focused products in the NYU innovation ecosystem and advised teams on implementation and governance.",
     photo: irinaImage,
     linkedin: "https://www.linkedin.com/in/irina-barbos",
     github: "https://github.com/irinalarisabarbos",
@@ -29,8 +29,8 @@ export const teamMembers = {
   mihai: {
     id: "mihai-anton",
     name: "Mihai Anton",
-    role: "Founder & Lead AI/ML Engineer",
-    // bio: "Mihai is an AI, ML and software engineer with nine years of hands-on experience building ML systems end to end. After working at Google, Bloomberg, and multiple startups, he founded AI Flow to help companies turn data into real, scalable products built with first principles and technical rigor.",
+    role: "Co‑founder & Lead AI/ML Engineer",
+    bio: "Mihai has spent over nine years building ML systems end to end - at Google, Bloomberg, and multiple startups. He founded AI Flow to help companies turn data and requirements into real, scalable AI products. He focuses on first-principles design, clean architecture, and delivery that goes from discovery to production without shortcuts.",
     photo: mihaiImage,
     linkedin: "https://www.linkedin.com/in/mihaianton98/",
     github: "https://github.com/mihaianton",
@@ -59,8 +59,8 @@ export type Author = TeamMember;
 export const companyInfo = {
   name: "AI Flow",
   tagline:
-    "Building AI-powered products. In AI & ML before the wave. Building products, not hype.",
+    "Your deep tech engineering partner. We build AI systems that actually scale - real delivery, no hype.",
   email: "contact@aiflow.ltd",
   meetingLink: "/contact",
-  linkedinCompany: "https://www.linkedin.com/company/ai-flow/",
+  linkedinCompany: "https://www.linkedin.com/company/ai-flow",
 } as const;

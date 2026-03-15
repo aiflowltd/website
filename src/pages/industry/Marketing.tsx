@@ -1,6 +1,6 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Button } from "@/components/ui/button";
+import { SiteButton } from "@/components/SiteButton";
 import {
   Carousel,
   CarouselContent,
@@ -489,18 +489,9 @@ const Marketing = () => {
                 </div>
                 <div className="flex gap-4 max-w-xl">
                   <Link to="/contact#calendly" className="w-1/2">
-                    <Button
-                      size="lg"
-                      className="text-base px-4 py-6 h-auto w-full font-semibold hover:opacity-90 transition-opacity inline-flex"
-                      style={{
-                        background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                        color: "#FAFAFA",
-                        border: "none",
-                      }}
-                    >
+                    <SiteButton variant="primary" arrow="up-right" className="w-full">
                       Talk to us
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </Button>
+                    </SiteButton>
                   </Link>
                 </div>
               </div>
@@ -1495,18 +1486,9 @@ const Marketing = () => {
               direction. Agents handle repetitive execution.
             </p>
             <Link to="/contact#calendly">
-              <Button
-                size="lg"
-                className="text-base px-8 py-6 h-auto font-semibold hover:opacity-90 transition-opacity"
-                style={{
-                  background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                  color: "#FAFAFA",
-                  border: "none",
-                }}
-              >
+              <SiteButton variant="primary" arrow="up-right">
                 Talk to us
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+              </SiteButton>
             </Link>
           </div>
         </section>

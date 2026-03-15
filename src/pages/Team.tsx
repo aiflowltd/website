@@ -1,351 +1,287 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { SiteButton } from "@/components/SiteButton";
+import { Section } from "@/components/Section";
+import { SectionHeader } from "@/components/SectionHeader";
 import { teamMembers } from "@/data/team";
 import { useEffect } from "react";
-import {
-  Users,
-  Code,
-  Brain,
-  Building2,
-  Globe,
-  Shield,
-  Rocket,
-  Target,
-  Award,
-  Clock,
-  Database,
-  Cloud,
-  Cpu,
-  CheckCircle2,
-} from "lucide-react";
+import { Target, Rocket, Shield, Cpu, Building2 } from "lucide-react";
+
+const stats = [
+  {
+    value: "10+",
+    label: "Years experience",
+    description: "Building and shipping AI, ML, and data systems end to end",
+  },
+  {
+    value: "50+",
+    label: "Projects delivered",
+    description: "Across startups, scale-ups, and enterprise",
+  },
+  {
+    value: "20+",
+    label: "Enterprise clients",
+    description: "Including Google, Bloomberg, and Fortune 500 environments",
+  },
+  {
+    value: "250+",
+    label: "AI agents delivered",
+    description: "Production systems supporting real users and workflows",
+  },
+];
+
+const values = [
+  {
+    icon: Target,
+    title: "Fundamentals first",
+    description:
+      "Solid engineering over flashy demos. Clean data, robust pipelines, scalable architecture.",
+  },
+  {
+    icon: Rocket,
+    title: "Production-ready",
+    description:
+      "No POCs that gather dust. We ship systems that run in production and scale from day one.",
+  },
+  {
+    icon: Shield,
+    title: "Transparent delivery",
+    description:
+      "Clear communication, thorough documentation, and a single point of accountability.",
+  },
+];
+
+const technologies = [
+  "Python",
+  "TypeScript",
+  "TensorFlow",
+  "PyTorch",
+  "AWS",
+  "Azure",
+  "GCP",
+  "Databricks",
+  "Spark",
+  "Kubernetes",
+];
+
+const industries = [
+  "Real estate",
+  "Legal",
+  "Oil & gas",
+  "E‑commerce",
+  "Healthcare",
+  "Manufacturing",
+  "Construction",
+  "PropTech",
+  "Marketing",
+];
 
 const Team = () => {
   useEffect(() => {
     document.title = "AI Flow | Team";
   }, []);
 
-  // Small spec cards
-  const smallSpecs = [
-    { value: "10+", label: "Years Experience", icon: Clock },
-    { value: "2", label: "Founders", icon: Users },
-    { value: "100%", label: "Production-Ready", icon: Rocket },
-    { value: "Fortune 500", label: "Enterprise Clients", icon: Building2 },
-    { value: "Google & BP", label: "Previous Companies", icon: Award },
-    { value: "24/7", label: "Remote Team", icon: Globe },
-  ];
-
-  // Medium feature cards
-  const mediumFeatures = [
-    {
-      title: "Machine Learning",
-      description: "Production ML pipelines, model training, and deployment",
-      icon: Brain,
-      metrics: ["TensorFlow", "PyTorch", "Scikit-learn"],
-    },
-    {
-      title: "Full-Stack Development",
-      description: "React, Next.js, TypeScript, and modern web technologies",
-      icon: Code,
-      metrics: ["React", "Next.js", "TypeScript"],
-    },
-    {
-      title: "Cloud Infrastructure",
-      description: "AWS, Azure, GCP, and scalable system architecture",
-      icon: Cloud,
-      metrics: ["AWS", "Azure", "GCP"],
-    },
-    {
-      title: "Data Engineering",
-      description: "ETL pipelines, data processing, and analytics",
-      icon: Database,
-      metrics: ["Databricks", "Spark", "Airflow"],
-    },
-  ];
-
-  // Large feature cards
-  const largeFeatures = [
-    {
-      title: "AI/ML Specialization",
-      description:
-        "Deep expertise in building production AI systems. From computer vision to NLP, from recommendation engines to fraud detection.",
-      icon: Brain,
-      highlights: [
-        "Production ML pipelines",
-        "Model training & deployment",
-        "Real-time inference",
-        "MLOps & monitoring",
-      ],
-    },
-    {
-      title: "Enterprise Experience",
-      description:
-        "Proven track record working with Fortune 500 companies and startups alike. We understand both enterprise scale and startup speed.",
-      icon: Building2,
-      highlights: [
-        "Fortune 500 clients",
-        "Startup to enterprise",
-        "Scalable architectures",
-        "Compliance & security",
-      ],
-    },
-  ];
-
-  const technologies = [
-    "Python",
-    "TypeScript",
-    "React",
-    "Next.js",
-    "TensorFlow",
-    "PyTorch",
-    "AWS",
-    "Azure",
-    "GCP",
-    "Databricks",
-    "Spark",
-    "Kubernetes",
-  ];
-
-  const industries = [
-    "Real Estate",
-    "Marketing",
-    "Legal",
-    "Oil & Gas",
-    "E-Commerce",
-    "Healthcare",
-    "EdTech",
-    "Entertainment",
-    "Manufacturing",
-  ];
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-background text-foreground">
       <Navigation />
 
-      <main className="container mx-auto px-6 pt-32 pb-20 max-w-7xl">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-7xl font-bold mb-4">
-            Team <span className="text-primary">Specs</span>
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            20+ years of combined experience building production AI systems
-          </p>
-        </div>
+      <main>
+        {/* Hero */}
+        <Section padding="hero" className="!pb-20">
+          <div className="text-center mb-16">
+            <div className="inline-block">
+              <p className="mb-1 text-5xl md:text-7xl  text-muted-foreground">
+                Senior expertise.
+              </p>
+              <h2 className="text-5xl md:text-7xl  font-bold font-alternates">
+                Real-world results.
+              </h2>
+            </div>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-6 text-center leading-relaxed">
+              The team behind AI Flow brings deep engineering and strategy
+              experience from Google, Bloomberg, and the NYU innovation
+              ecosystem. We build AI systems that scale - for enterprises and
+              high-growth teams alike.
+            </p>
+          </div>
+        </Section>
 
-        {/* Dense Grid Layout - Apple Style */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4 mb-12">
-          {/* Small Spec Cards */}
-          {smallSpecs.map((spec, index) => {
-            const Icon = spec.icon;
-            return (
-              <Card
-                key={index}
-                className="bg-card border-border p-4 md:p-5 text-center hover:border-primary/50 transition-all"
+        {/* Leadership */}
+        <Section padding="compact">
+          <SectionHeader
+            title="Leadership"
+            subtitle="Two founders. One standard: delivery that goes from discovery to production without shortcuts."
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+            subtitleClassName="text-grey max-w-2xl"
+          />
+          <div className="grid md:grid-cols-2 gap-8 mt-8">
+            {Object.values(teamMembers).map((member) => (
+              <div
+                key={member.id}
+                className="rounded-2xl border border-border bg-card p-8 md:p-10 hover:border-primary/40 transition-colors"
               >
-                <div className="text-primary mb-2 flex justify-center">
-                  <Icon className="w-5 h-5 md:w-6 md:h-6" />
-                </div>
-                <div className="text-3xl md:text-4xl font-bold mb-1">
-                  {spec.value}
-                </div>
-                <div className="text-xs md:text-sm text-muted-foreground">
-                  {spec.label}
-                </div>
-              </Card>
-            );
-          })}
-        </div>
-
-        {/* Large Feature Cards - Span 2 columns */}
-        <div className="grid md:grid-cols-2 gap-4 mb-12">
-          {largeFeatures.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <Card
-                key={index}
-                className="bg-card border-border p-6 md:p-8 hover:border-primary/50 transition-all"
-              >
-                <div className="text-primary mb-4">
-                  <Icon className="w-8 h-8" />
-                </div>
-                <h3 className="text-2xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                  {feature.description}
-                </p>
-                <div className="space-y-2">
-                  {feature.highlights.map((highlight, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm">
-                      <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                      <span className="text-muted-foreground">{highlight}</span>
-                    </div>
-                  ))}
-                </div>
-              </Card>
-            );
-          })}
-        </div>
-
-        {/* Medium Feature Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-12">
-          {mediumFeatures.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <Card
-                key={index}
-                className="bg-card border-border p-4 md:p-5 hover:border-primary/50 transition-all"
-              >
-                <div className="text-primary mb-3">
-                  <Icon className="w-6 h-6" />
-                </div>
-                <h3 className="text-base md:text-lg font-bold mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-xs md:text-sm text-muted-foreground mb-3">
-                  {feature.description}
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {feature.metrics.map((metric, i) => (
-                    <span
-                      key={i}
-                      className="text-xs px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20"
+                <div className="flex flex-col sm:flex-row gap-6">
+                  <img
+                    src={member.photo}
+                    alt={member.name}
+                    className="w-24 h-24 rounded-full object-cover flex-shrink-0 border border-border"
+                  />
+                  <div className="min-w-0">
+                    <h3 className="text-xl font-bold font-alternates text-foreground mb-1">
+                      {member.name}
+                    </h3>
+                    <p className="text-grey font-medium text-sm mb-4">
+                      {member.role}
+                    </p>
+                    <p className="text-grey leading-relaxed text-sm mb-6">
+                      {member.bio}
+                    </p>
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block"
                     >
-                      {metric}
+                      <SiteButton variant="secondary" arrow="up-right">
+                        LinkedIn
+                      </SiteButton>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        {/* By the numbers */}
+        <Section padding="compact">
+          <SectionHeader
+            title="Track record"
+            subtitle="Numbers that matter to enterprises: experience, delivery, and production systems."
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+            subtitleClassName="text-grey max-w-2xl"
+          />
+          <div className="rounded-2xl border border-border bg-card p-8 md:p-12 mt-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <div className="text-3xl md:text-4xl font-bold font-alternates text-foreground mb-1">
+                    {stat.value}
+                  </div>
+                  <p className="text-sm font-semibold text-foreground">
+                    {stat.label}
+                  </p>
+                  <p className="text-sm text-grey mt-1 leading-relaxed">
+                    {stat.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Section>
+
+        {/* How we work */}
+        <Section padding="compact">
+          <SectionHeader
+            title="How we work"
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+          />
+          <div className="grid md:grid-cols-3 gap-6 mt-8">
+            {values.map((v) => {
+              const Icon = v.icon;
+              return (
+                <div
+                  key={v.title}
+                  className="rounded-2xl border border-border bg-card p-6 md:p-8 hover:border-primary/40 transition-colors"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-muted border border-border flex items-center justify-center mb-4">
+                    <Icon className="w-5 h-5 text-grey" />
+                  </div>
+                  <h3 className="text-lg font-bold font-alternates text-foreground mb-2">
+                    {v.title}
+                  </h3>
+                  <p className="text-grey text-sm leading-relaxed">
+                    {v.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </Section>
+
+        {/* Capabilities */}
+        <Section padding="compact">
+          <SectionHeader
+            title="Technologies & industries"
+            subtitle="We work with the stack that fits your environment and the sectors where we have proven delivery."
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+            subtitleClassName="text-grey max-w-2xl"
+          />
+          <div className="rounded-2xl border border-border bg-card p-8 md:p-10 mt-8">
+            <div className="grid md:grid-cols-2 gap-10 md:gap-16">
+              <div>
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-4 flex items-center gap-2">
+                  <Cpu className="w-4 h-4 text-grey" />
+                  Technologies
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="text-xs px-3 py-1.5 rounded-lg border border-border bg-muted/50 text-foreground font-medium"
+                    >
+                      {tech}
                     </span>
                   ))}
                 </div>
-              </Card>
-            );
-          })}
-        </div>
-
-        {/* Team Members - Span 2 columns each */}
-        <div className="grid md:grid-cols-2 gap-4 mb-12">
-          {Object.values(teamMembers).map((member) => (
-            <Card
-              key={member.id}
-              className="bg-card border-border p-6 hover:border-primary/50 transition-all"
-            >
-              <div className="flex items-start gap-4">
-                <img
-                  src={member.photo}
-                  alt={member.name}
-                  className="w-16 h-16 rounded-full object-cover flex-shrink-0"
-                />
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                  <p className="text-primary text-sm mb-2">{member.role}</p>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {member.bio}
-                  </p>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-4 flex items-center gap-2">
+                  <Building2 className="w-4 h-4 text-grey" />
+                  Industries
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {industries.map((ind) => (
+                    <span
+                      key={ind}
+                      className="text-xs px-3 py-1.5 rounded-lg border border-border bg-muted/50 text-foreground font-medium"
+                    >
+                      {ind}
+                    </span>
+                  ))}
                 </div>
               </div>
-            </Card>
-          ))}
-        </div>
-
-        {/* Technologies & Industries - Side by side */}
-        <div className="grid md:grid-cols-2 gap-4 mb-12">
-          <Card className="bg-card border-border p-6 hover:border-primary/50 transition-all">
-            <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-              <Cpu className="w-5 h-5 text-primary" />
-              Technologies
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {technologies.map((tech, index) => (
-                <span
-                  key={index}
-                  className="text-xs md:text-sm px-3 py-1.5 bg-primary/10 text-primary rounded-lg border border-primary/20 font-medium"
-                >
-                  {tech}
-                </span>
-              ))}
             </div>
-          </Card>
-
-          <Card className="bg-card border-border p-6 hover:border-primary/50 transition-all">
-            <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-              <Building2 className="w-5 h-5 text-primary" />
-              Industries
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {industries.map((industry, index) => (
-                <span
-                  key={index}
-                  className="text-xs md:text-sm px-3 py-1.5 bg-primary/10 text-primary rounded-lg border border-primary/20 font-medium"
-                >
-                  {industry}
-                </span>
-              ))}
-            </div>
-          </Card>
-        </div>
-
-        {/* Values - 3 columns */}
-        <div className="grid md:grid-cols-3 gap-4 mb-12">
-          <Card className="bg-card border-border p-5 hover:border-primary/50 transition-all">
-            <div className="text-primary mb-3">
-              <Target className="w-6 h-6" />
-            </div>
-            <h3 className="text-lg font-bold mb-2">Fundamentals First</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Solid engineering fundamentals over flashy demos. Clean data,
-              robust pipelines, scalable architecture.
-            </p>
-          </Card>
-          <Card className="bg-card border-border p-5 hover:border-primary/50 transition-all">
-            <div className="text-primary mb-3">
-              <Rocket className="w-6 h-6" />
-            </div>
-            <h3 className="text-lg font-bold mb-2">Production-Ready</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              No POCs that gather dust. Everything runs in production, handles
-              real users, scales from day one.
-            </p>
-          </Card>
-          <Card className="bg-card border-border p-5 hover:border-primary/50 transition-all">
-            <div className="text-primary mb-3">
-              <Shield className="w-6 h-6" />
-            </div>
-            <h3 className="text-lg font-bold mb-2">Transparent</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Open communication, thorough documentation. Your success is our
-              success.
-            </p>
-          </Card>
-        </div>
+          </div>
+        </Section>
 
         {/* CTA */}
-        <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20 p-12 text-center max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Let's Build Something Amazing
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Ready to transform your business with AI? Get in touch and let's
-            discuss how we can help.
-          </p>
-          <div className="flex gap-4 justify-center">
-            <Link to="/contact">
-              <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-background font-semibold px-8"
-              >
-                Book a Call
-              </Button>
-            </Link>
-            <Link to="/case-studies">
-              <Button
-                size="lg"
-                variant="outline"
-                className="font-semibold px-8"
-              >
-                View Our Work
-              </Button>
-            </Link>
+        <Section padding="compact">
+          <div className="rounded-2xl border border-border bg-gradient-to-br from-card via-card to-primary/5 p-12 md:p-16 text-center">
+            <SectionHeader
+              title="Let's build something that scales"
+              subtitle="Ready to work with a team that ships production AI? Get in touch for a scoping call."
+              variant="centered"
+              titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+              subtitleClassName="text-grey max-w-xl mx-auto mb-8"
+              action={
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link to="/contact#calendly">
+                    <SiteButton variant="primary" arrow="up-right">
+                      Book a scoping call
+                    </SiteButton>
+                  </Link>
+                  <Link to="/case-studies">
+                    <SiteButton variant="secondary">View our work</SiteButton>
+                  </Link>
+                </div>
+              }
+            />
           </div>
-        </Card>
+        </Section>
       </main>
+
       <Footer />
     </div>
   );

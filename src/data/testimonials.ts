@@ -13,7 +13,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "exomatter",
     quote:
-      "I had the feeling that you could get things done quickly. [...] I trusted you to give a good result, and that's what happened. [...] I could not have wished for anything better",
+      "I trusted you to give a good result, and that's what happened. I could not have wished for anything better.",
     author: "Josua Vieten",
     role: "CEO",
     company: "ExoMatter",
@@ -23,10 +23,10 @@ export const testimonials: Testimonial[] = [
   {
     id: "bank-clutch",
     quote:
-      "Irina provided immediate support with one of the most difficult technical issues we had. Literally don't know how she understood the issue, but we got to the root of the problem and were able to get an efficient solution. Massive thank you!",
+      "Simply exceptional problem-solving under pressure. She found a critical issue and resolved it with laser-sharp focus.",
     author: "",
-    role: "Team at",
-    company: "bank",
+    role: "Senior team",
+    company: "European bank (under NDA)",
   },
   {
     id: "marcus-drewes",
@@ -49,7 +49,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "mihai-ambitious",
     quote:
-      "Mihai is ambitious and a quick learner. A strong team leader who can make product recommendations and put them into practice.",
+      "The AI Flow team is ambitions and a quick learner. A strong team who can make product recommendations and put them into practice.",
     author: "",
     role: "",
     company: "",

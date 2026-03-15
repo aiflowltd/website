@@ -6,9 +6,9 @@ export const Hero = () => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20">
       <div className="container mx-auto max-w-6xl">
-        <LabelBadge className="mb-8">AI Native, Outcome Driven</LabelBadge>
+        <LabelBadge className="mb-8">AI Native. Outcome Driven.</LabelBadge>
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-semibold  font-alternates mb-12 leading-[1.1]">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-semibold font-alternates mb-12 leading-[1.1]">
           We design and build
           <br />
           AI systems that scale
@@ -35,7 +35,8 @@ export const Hero = () => {
         </div>
 
         {/* Data Cards Embed */}
-        <div className="mb-16 mt-24 w-full flex justify-center">
+
+        <div className="relative mb-0 mt-20 rounded-2xl border border-border bg-gradient-to-br from-medium-grey/50 to-dark-grey/50 p-6 md:p-8 overflow-hidden">
           <iframe
             title="Datacards"
             style={{

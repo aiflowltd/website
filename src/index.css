@@ -9,7 +9,7 @@ UI colors (background, foreground, etc.) are defined here as HSL for theming sup
 
 @layer base {
   :root {
-    /* Primary Colors — use only these theme colors */
+    /* Primary Colors - use only these theme colors */
     --primary: 199 100% 55%; /* #1AB8FF Azure Blue */
     --primary-foreground: 0 0% 98%;
     --secondary: 229 96% 72%; /* #748DFC Space Violet */

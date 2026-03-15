@@ -18,17 +18,17 @@ import {
 } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { colors } from "@/constants/colors";
+import { SiteButton } from "@/components/SiteButton";
+import { Section } from "@/components/Section";
+import { SectionHeader } from "@/components/SectionHeader";
 import { teamArray } from "@/data/team";
-
 
 type ActivityType = "aiflow" | "client" | "joint";
 
-const activityTypeColor: Record<ActivityType, string> = {
-  aiflow: colors.primary,
-  client: colors.secondary,
-  joint: colors.success,
+const activityTypeClass: Record<ActivityType, string> = {
+  aiflow: "bg-muted",
+  client: "bg-muted/80",
+  joint: "bg-card border border-border",
 };
 
 // ── Track 1 timeline: 2-day workshop ──
@@ -50,54 +50,109 @@ const track1Activities: {
     activity: "Pre-session questionnaire",
     time: "~1h written",
     type: "client",
-    periods: { day1am: true, day1pm: false, day2am: false, day2pm: false, post: false },
+    periods: {
+      day1am: true,
+      day1pm: false,
+      day2am: false,
+      day2pm: false,
+      post: false,
+    },
   },
   {
     activity: "Introduction & AI landscape overview",
     time: "~2h",
     type: "joint",
-    periods: { day1am: true, day1pm: false, day2am: false, day2pm: false, post: false },
+    periods: {
+      day1am: true,
+      day1pm: false,
+      day2am: false,
+      day2pm: false,
+      post: false,
+    },
   },
   {
     activity: "Process walkthrough & opportunity mapping",
     time: "~3h",
     type: "joint",
-    periods: { day1am: false, day1pm: true, day2am: false, day2pm: false, post: false },
+    periods: {
+      day1am: false,
+      day1pm: true,
+      day2am: false,
+      day2pm: false,
+      post: false,
+    },
   },
   {
     activity: "Use case deep-dives",
     time: "~3h",
     type: "joint",
-    periods: { day1am: false, day1pm: false, day2am: true, day2pm: false, post: false },
+    periods: {
+      day1am: false,
+      day1pm: false,
+      day2am: true,
+      day2pm: false,
+      post: false,
+    },
   },
   {
     activity: "Prioritisation & roadmap session",
     time: "~2h",
     type: "joint",
-    periods: { day1am: false, day1pm: false, day2am: false, day2pm: true, post: false },
+    periods: {
+      day1am: false,
+      day1pm: false,
+      day2am: false,
+      day2pm: true,
+      post: false,
+    },
   },
   {
     activity: "Feedback & wrap-up",
     time: "30 min",
     type: "client",
-    periods: { day1am: false, day1pm: false, day2am: false, day2pm: true, post: false },
+    periods: {
+      day1am: false,
+      day1pm: false,
+      day2am: false,
+      day2pm: true,
+      post: false,
+    },
   },
   {
     activity: "Deliverable write-up",
-    time: "—",
+    time: "-",
     type: "aiflow",
-    periods: { day1am: false, day1pm: false, day2am: false, day2pm: false, post: true },
+    periods: {
+      day1am: false,
+      day1pm: false,
+      day2am: false,
+      day2pm: false,
+      post: true,
+    },
   },
   {
     activity: "Follow-up call",
     time: "30 min",
     type: "joint",
-    periods: { day1am: false, day1pm: false, day2am: false, day2pm: false, post: true },
+    periods: {
+      day1am: false,
+      day1pm: false,
+      day2am: false,
+      day2pm: false,
+      post: true,
+    },
   },
 ];
 
 // ── Track 2 timeline: 2-week workshop ──
-type Track2Period = "wk1mon" | "wk1wed" | "wk1fri" | "wk2mon" | "wk2wed" | "wk2fri" | "post";
+type Track2Period =
+  | "wk1mon"
+  | "wk1wed"
+  | "wk1fri"
+  | "wk2mon"
+  | "wk2wed"
+  | "wk2fri"
+  | "post";
 const track2Periods: { key: Track2Period; label: string }[] = [
   { key: "wk1mon", label: "Week 1 – Mon" },
   { key: "wk1wed", label: "Week 1 – Wed" },
@@ -117,73 +172,169 @@ const track2Activities: {
     activity: "Pre-session questionnaire & data access",
     time: "~2h written",
     type: "client",
-    periods: { wk1mon: true, wk1wed: false, wk1fri: false, wk2mon: false, wk2wed: false, wk2fri: false, post: false },
+    periods: {
+      wk1mon: true,
+      wk1wed: false,
+      wk1fri: false,
+      wk2mon: false,
+      wk2wed: false,
+      wk2fri: false,
+      post: false,
+    },
   },
   {
     activity: "Kick-off & current state review",
     time: "~3h",
     type: "joint",
-    periods: { wk1mon: true, wk1wed: false, wk1fri: false, wk2mon: false, wk2wed: false, wk2fri: false, post: false },
+    periods: {
+      wk1mon: true,
+      wk1wed: false,
+      wk1fri: false,
+      wk2mon: false,
+      wk2wed: false,
+      wk2fri: false,
+      post: false,
+    },
   },
   {
     activity: "Process mapping sessions",
     time: "~3h",
     type: "joint",
-    periods: { wk1mon: false, wk1wed: true, wk1fri: false, wk2mon: false, wk2wed: false, wk2fri: false, post: false },
+    periods: {
+      wk1mon: false,
+      wk1wed: true,
+      wk1fri: false,
+      wk2mon: false,
+      wk2wed: false,
+      wk2fri: false,
+      post: false,
+    },
   },
   {
     activity: "Data & tooling assessment",
-    time: "—",
+    time: "-",
     type: "aiflow",
-    periods: { wk1mon: false, wk1wed: true, wk1fri: false, wk2mon: false, wk2wed: false, wk2fri: false, post: false },
+    periods: {
+      wk1mon: false,
+      wk1wed: true,
+      wk1fri: false,
+      wk2mon: false,
+      wk2wed: false,
+      wk2fri: false,
+      post: false,
+    },
   },
   {
     activity: "Use case identification & scoring",
     time: "~3h",
     type: "joint",
-    periods: { wk1mon: false, wk1wed: false, wk1fri: true, wk2mon: false, wk2wed: false, wk2fri: false, post: false },
+    periods: {
+      wk1mon: false,
+      wk1wed: false,
+      wk1fri: true,
+      wk2mon: false,
+      wk2wed: false,
+      wk2fri: false,
+      post: false,
+    },
   },
   {
     activity: "Mid-point input & validation",
     time: "~1h",
     type: "client",
-    periods: { wk1mon: false, wk1wed: false, wk1fri: true, wk2mon: false, wk2wed: false, wk2fri: false, post: false },
+    periods: {
+      wk1mon: false,
+      wk1wed: false,
+      wk1fri: true,
+      wk2mon: false,
+      wk2wed: false,
+      wk2fri: false,
+      post: false,
+    },
   },
   {
     activity: "Architecture & deployment planning",
     time: "~3h",
     type: "joint",
-    periods: { wk1mon: false, wk1wed: false, wk1fri: false, wk2mon: true, wk2wed: false, wk2fri: false, post: false },
+    periods: {
+      wk1mon: false,
+      wk1wed: false,
+      wk1fri: false,
+      wk2mon: true,
+      wk2wed: false,
+      wk2fri: false,
+      post: false,
+    },
   },
   {
     activity: "Governance & integration review",
     time: "~3h",
     type: "joint",
-    periods: { wk1mon: false, wk1wed: false, wk1fri: false, wk2mon: false, wk2wed: true, wk2fri: false, post: false },
+    periods: {
+      wk1mon: false,
+      wk1wed: false,
+      wk1fri: false,
+      wk2mon: false,
+      wk2wed: true,
+      wk2fri: false,
+      post: false,
+    },
   },
   {
     activity: "Roadmap finalisation & sign-off",
     time: "~2h",
     type: "joint",
-    periods: { wk1mon: false, wk1wed: false, wk1fri: false, wk2mon: false, wk2wed: false, wk2fri: true, post: false },
+    periods: {
+      wk1mon: false,
+      wk1wed: false,
+      wk1fri: false,
+      wk2mon: false,
+      wk2wed: false,
+      wk2fri: true,
+      post: false,
+    },
   },
   {
     activity: "Final review & feedback",
     time: "~1h",
     type: "client",
-    periods: { wk1mon: false, wk1wed: false, wk1fri: false, wk2mon: false, wk2wed: false, wk2fri: true, post: false },
+    periods: {
+      wk1mon: false,
+      wk1wed: false,
+      wk1fri: false,
+      wk2mon: false,
+      wk2wed: false,
+      wk2fri: true,
+      post: false,
+    },
   },
   {
     activity: "Deliverable compilation",
-    time: "—",
+    time: "-",
     type: "aiflow",
-    periods: { wk1mon: false, wk1wed: false, wk1fri: false, wk2mon: false, wk2wed: false, wk2fri: false, post: true },
+    periods: {
+      wk1mon: false,
+      wk1wed: false,
+      wk1fri: false,
+      wk2mon: false,
+      wk2wed: false,
+      wk2fri: false,
+      post: true,
+    },
   },
   {
     activity: "Follow-up call",
     time: "30 min",
     type: "joint",
-    periods: { wk1mon: false, wk1wed: false, wk1fri: false, wk2mon: false, wk2wed: false, wk2fri: false, post: true },
+    periods: {
+      wk1mon: false,
+      wk1wed: false,
+      wk1fri: false,
+      wk2mon: false,
+      wk2wed: false,
+      wk2fri: false,
+      post: true,
+    },
   },
 ];
 
@@ -210,36 +361,24 @@ const Workshops = () => {
       title: "AI Opportunity Map",
       description:
         "A documented view of your processes with AI integration points identified, described, and ranked by relevance.",
-      iconColor: colors.primary,
-      iconBg: colors.primary + "20",
-      iconBorder: colors.primary + "40",
     },
     {
       icon: ClipboardList,
       title: "Prioritised Roadmap",
       description:
         "A shortlist of AI initiatives scored against business impact, implementation complexity, and available resources.",
-      iconColor: colors.success,
-      iconBg: colors.success + "20",
-      iconBorder: colors.success + "40",
     },
     {
       icon: Users,
       title: "Shared Reference",
       description:
-        "A working document that gives all participants — technical and non-technical — a common basis for decisions going forward.",
-      iconColor: colors.secondary,
-      iconBg: colors.secondary + "20",
-      iconBorder: colors.secondary + "40",
+        "A working document that gives all participants - technical and non-technical - a common basis for decisions going forward.",
     },
     {
       icon: TrendingUp,
       title: "Business Case Draft",
       description:
         "Initial estimates of effort, resource requirements, and expected impact for the top-ranked initiatives.",
-      iconColor: colors.secondary,
-      iconBg: colors.secondary + "20",
-      iconBorder: colors.secondary + "40",
     },
   ];
 
@@ -247,7 +386,7 @@ const Workshops = () => {
     {
       title: "Preparation",
       description:
-        "We spend time with your context before the session — processes, tools, organisational structure. Participants receive a brief in advance.",
+        "We spend time with your context before the session - processes, tools, organisational structure. Participants receive a brief in advance.",
       bullets: [
         "Scoping call with key stakeholders",
         "Review of current workflows and tooling",
@@ -292,741 +431,480 @@ const Workshops = () => {
       title: "Built around your operations",
       description:
         "The agenda, examples, and exercises are prepared around your specific processes and industry context.",
-      iconColor: colors.primary,
-      iconBg: colors.primary + "20",
-      iconBorder: colors.primary + "40",
     },
     {
       icon: Sparkles,
       title: "Run by practitioners",
       description:
         "Our facilitators build and deploy AI systems professionally. They can engage with technical and operational questions in equal depth.",
-      iconColor: colors.secondary,
-      iconBg: colors.secondary + "20",
-      iconBorder: colors.secondary + "40",
     },
     {
       icon: Target,
       title: "Documented output",
       description:
-        "The session produces a written record — opportunity map, prioritised roadmap, business case draft — that participants can use after the day.",
-      iconColor: colors.secondary,
-      iconBg: colors.secondary + "20",
-      iconBorder: colors.secondary + "40",
+        "The session produces a written record - opportunity map, prioritised roadmap, business case draft - that participants can use after the day.",
     },
     {
       icon: Globe,
       title: "English & German",
       description:
         "Workshops delivered in English or German, in-person or remotely, across Europe, the Gulf, and North Africa.",
-      iconColor: colors.success,
-      iconBg: colors.success + "20",
-      iconBorder: colors.success + "40",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-background text-foreground">
       <Navigation />
 
       <main className="relative">
-        {/* ── Hero ── */}
-        <section className="relative pt-40 pb-32 px-6 overflow-hidden">
-          <div className="container mx-auto max-w-7xl">
-            <div className="grid gap-16 items-center">
-              <div className="space-y-8">
-                <div
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-sm font-medium"
-                  style={{
-                    borderColor: colors.secondary + "40",
-                    backgroundColor: colors.secondary + "15",
-                    color: colors.secondary,
-                  }}
-                >
-                  <Calendar className="w-3.5 h-3.5" />
-                  Available in English &amp; German · In-person or remote
-                </div>
-                <div className="space-y-6">
-                  <h1
-                    className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
-                    style={{
-                      letterSpacing: "-0.02em",
-                      color: colors.lightGrey,
-                    }}
-                  >
-                    AI workshops grounded
-                    <br />
-                    <span
-                      style={{
-                        backgroundImage: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                        backgroundClip: "text",
-                      }}
-                    >
-                      in your operations.
-                    </span>
-                  </h1>
-                  <p
-                    className="text-lg md:text-xl max-w-3xl"
-                    style={{ color: colors.lightGrey, lineHeight: "1.6" }}
-                  >
-                    We work through your actual processes with your team,
-                    identify where AI has a realistic role, and document what
-                    should be built — and in what order.
-                  </p>
-                  <p
-                    className="text-lg md:text-xl max-w-3xl"
-                    style={{ color: colors.lightGrey, lineHeight: "1.6" }}
-                  >
-                    Whether your organisation is evaluating AI for the first
-                    time or looking to scale existing initiatives, the format
-                    adapts to where you are.
-                  </p>
-                </div>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link to="/contact#calendly" className="w-full sm:w-auto">
-                    <Button
-                      size="lg"
-                      className="text-base px-6 py-6 h-auto w-full sm:w-auto font-semibold hover:opacity-90 transition-opacity inline-flex"
-                      style={{
-                        background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                        color: "#FAFAFA",
-                        border: "none",
-                      }}
-                    >
-                      Book a Scoping Call
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </Button>
-                  </Link>
-                  <a href="#formats" className="w-full sm:w-auto">
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      className="text-base px-6 py-6 h-auto w-full sm:w-auto font-semibold transition-all"
-                      style={{
-                        borderColor: colors.grey + "50",
-                        color: colors.lightGrey,
-                      }}
-                    >
-                      See Workshop Formats
-                    </Button>
-                  </a>
-                </div>
-              </div>
-            </div>
+        <Section padding="hero">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-muted/50 text-sm font-medium text-grey mb-8">
+            <Calendar className="w-3.5 h-3.5" />
+            Available in English &amp; German · In-person or remote
           </div>
-        </section>
-
-        {/* ── Recognition ── */}
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-4xl">
-            <div className="text-center space-y-6">
-              <h2
-                className="text-3xl md:text-4xl font-bold"
-                style={{ letterSpacing: "-0.02em", color: colors.lightGrey }}
-              >
-                Who this is for
-              </h2>
-              <p
-                className="text-lg max-w-2xl mx-auto"
-                style={{ color: colors.lightGrey }}
-              >
-                These workshops are designed for teams in situations like:
-              </p>
-              <div className="grid md:grid-cols-2 gap-4 mt-8 text-left">
-                {recognitionStatements.map((point) => (
-                  <div
-                    key={point}
-                    className="group relative p-4 rounded-lg border overflow-hidden transition-all duration-300 hover:scale-[1.02]"
-                    style={{
-                      backgroundColor: colors.darkGrey + "60",
-                      borderColor: colors.grey + "30",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = colors.secondary + "60";
-                      e.currentTarget.style.boxShadow = `0 8px 24px ${colors.secondary}20`;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = colors.grey + "30";
-                      e.currentTarget.style.boxShadow = "none";
-                    }}
-                  >
-                    <div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      style={{
-                        background: `linear-gradient(135deg, ${colors.secondary}10, transparent)`,
-                      }}
-                    />
-                    <p className="text-m relative" style={{ color: colors.lightGrey }}>
-                      "{point}"
-                    </p>
-                  </div>
-                ))}
-              </div>
-              <p
-                className="text-lg font-semibold mt-6"
-                style={{ color: colors.lightGrey }}
-              >
-                If several of these apply, a workshop is likely a useful first step.
-              </p>
-            </div>
+          <div className="space-y-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-alternates leading-tight text-foreground">
+              AI workshops grounded in your operations
+            </h1>
+            <p className="text-lg md:text-xl max-w-3xl text-grey leading-relaxed">
+              We work through your actual processes with your team, identify
+              where AI has a realistic role, and document what should be built -
+              and in what order.
+            </p>
+            <p className="text-lg md:text-xl max-w-3xl text-grey leading-relaxed">
+              Whether your organisation is evaluating AI for the first time or
+              looking to scale existing initiatives, the format adapts to where
+              you are.
+            </p>
           </div>
-        </section>
-
-        {/* ── Two Workshop Tracks ── */}
-        <section id="formats" className="py-20 px-6">
-          <div className="container mx-auto max-w-7xl">
-            <div className="mb-16 text-center">
-              <h2
-                className="text-3xl md:text-4xl font-bold mb-4"
-                style={{ letterSpacing: "-0.02em", color: colors.lightGrey }}
+          <div className="flex flex-col sm:flex-row gap-4 mt-8">
+            <Link to="/contact#calendly" className="w-full sm:w-auto">
+              <SiteButton
+                variant="primary"
+                arrow="up-right"
+                className="w-full sm:w-auto"
               >
-                Two workshop{" "}
-                <span style={{ color: colors.primary }}>formats.</span>
-              </h2>
-              <p className="text-lg max-w-2xl mx-auto" style={{ color: colors.lightGrey }}>
-                The right format depends on where your organisation is with AI
-                today. Both can be run in English or German.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Track 1 */}
-              <div
-                className="relative rounded-2xl p-8 border flex flex-col"
-                style={{
-                  backgroundColor: colors.mediumGrey + "30",
-                  borderColor: colors.secondary + "40",
-                  boxShadow: `0 4px 32px ${colors.secondary}15`,
-                }}
-              >
-                <div className="flex items-start gap-4 mb-6">
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 border"
-                    style={{
-                      backgroundColor: colors.secondary + "20",
-                      borderColor: colors.secondary + "40",
-                    }}
-                  >
-                    <BookOpen className="w-6 h-6" style={{ color: colors.secondary }} />
-                  </div>
-                  <div>
-                    <div
-                      className="text-xs font-semibold uppercase tracking-widest mb-1"
-                      style={{ color: colors.secondary }}
-                    >
-                      Track 1
-                    </div>
-                    <h3
-                      className="text-xl font-bold"
-                      style={{ color: colors.lightGrey }}
-                    >
-                      AI Awareness &amp; Quick Wins
-                    </h3>
-                  </div>
-                </div>
-
-                <p className="text-m mb-6" style={{ color: colors.lightGrey, lineHeight: "1.6" }}>
-                  For teams that are informed about AI in general terms but
-                  haven't yet connected it to their own work. We go through your
-                  operations together, identify where AI applies, and document
-                  the opportunities worth pursuing — in order of priority.
-                </p>
-
-                <div
-                  className="grid grid-cols-2 gap-3 mb-6 p-4 rounded-xl"
-                  style={{ backgroundColor: colors.darkGrey + "80" }}
-                >
-                  <div>
-                    <div className="text-xs font-medium mb-1" style={{ color: colors.grey }}>
-                      Duration
-                    </div>
-                    <div className="text-sm font-semibold" style={{ color: colors.lightGrey }}>
-                      2 days
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs font-medium mb-1" style={{ color: colors.grey }}>
-                      Group size
-                    </div>
-                    <div className="text-sm font-semibold" style={{ color: colors.lightGrey }}>
-                      5–25 participants
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs font-medium mb-1" style={{ color: colors.grey }}>
-                      Format
-                    </div>
-                    <div className="text-sm font-semibold" style={{ color: colors.lightGrey }}>
-                      In-person or remote
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs font-medium mb-1" style={{ color: colors.grey }}>
-                      Technical level
-                    </div>
-                    <div className="text-sm font-semibold" style={{ color: colors.lightGrey }}>
-                      No coding required
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mb-6">
-                  <div
-                    className="text-xs font-semibold uppercase tracking-widest mb-3"
-                    style={{ color: colors.grey }}
-                  >
-                    Who it is for
-                  </div>
-                  <ul className="space-y-2">
-                    {[
-                      "C-suite and department heads exploring AI strategy",
-                      "Operational teams encountering AI tools for the first time",
-                      "Companies building internal AI literacy before investing",
-                    ].map((item) => (
-                      <li key={item} className="flex items-start gap-2">
-                        <div
-                          className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
-                          style={{ backgroundColor: colors.secondary, boxShadow: `0 0 6px ${colors.secondary}60` }}
-                        />
-                        <span className="text-m" style={{ color: colors.lightGrey }}>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mb-8">
-                  <div
-                    className="text-xs font-semibold uppercase tracking-widest mb-3"
-                    style={{ color: colors.grey }}
-                  >
-                    You walk away with
-                  </div>
-                  <ul className="space-y-2">
-                    {[
-                      "A prioritised shortlist of 5–10 AI use cases specific to your operations",
-                      "A quick-win roadmap: what to automate first, and what to leave for later",
-                      "A shared AI vocabulary so your team can evaluate vendors with confidence",
-                    ].map((item) => (
-                      <li key={item} className="flex items-start gap-2">
-                        <CheckCircle
-                          className="w-4 h-4 mt-0.5 flex-shrink-0"
-                          style={{ color: colors.success }}
-                        />
-                        <span className="text-m" style={{ color: colors.lightGrey }}>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mt-auto">
-                  <Link to="/contact#calendly">
-                    <Button
-                      size="lg"
-                      className="w-full text-base py-5 h-auto font-semibold hover:opacity-90 transition-opacity"
-                      style={{
-                        background: `linear-gradient(135deg, ${colors.secondary}, ${colors.secondary}CC)`,
-                        color: "#FAFAFA",
-                        border: "none",
-                      }}
-                    >
-                      Book Track 1
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Track 2 */}
-              <div
-                className="relative rounded-2xl p-8 border flex flex-col"
-                style={{
-                  backgroundColor: colors.mediumGrey + "30",
-                  borderColor: colors.primary + "40",
-                  boxShadow: `0 4px 32px ${colors.primary}15`,
-                }}
-              >
-                <div className="flex items-start gap-4 mb-6">
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 border"
-                    style={{
-                      backgroundColor: colors.primary + "20",
-                      borderColor: colors.primary + "40",
-                    }}
-                  >
-                    <Rocket className="w-6 h-6" style={{ color: colors.primary }} />
-                  </div>
-                  <div>
-                    <div
-                      className="text-xs font-semibold uppercase tracking-widest mb-1"
-                      style={{ color: colors.primary }}
-                    >
-                      Track 2
-                    </div>
-                    <h3
-                      className="text-xl font-bold"
-                      style={{ color: colors.lightGrey }}
-                    >
-                      AI Transformation &amp; Scale
-                    </h3>
-                  </div>
-                </div>
-
-                <p className="text-m mb-6" style={{ color: colors.lightGrey, lineHeight: "1.6" }}>
-                  For teams that have validated AI use cases and are working out
-                  how to move them into production. We focus on architecture,
-                  data pipelines, deployment approach, and governance — working
-                  from your existing stack to produce a plan your engineering
-                  team can implement.
-                </p>
-
-                <div
-                  className="grid grid-cols-2 gap-3 mb-6 p-4 rounded-xl"
-                  style={{ backgroundColor: colors.darkGrey + "80" }}
-                >
-                  <div>
-                    <div className="text-xs font-medium mb-1" style={{ color: colors.grey }}>
-                      Duration
-                    </div>
-                    <div className="text-sm font-semibold" style={{ color: colors.lightGrey }}>
-                      2 weeks
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs font-medium mb-1" style={{ color: colors.grey }}>
-                      Group size
-                    </div>
-                    <div className="text-sm font-semibold" style={{ color: colors.lightGrey }}>
-                      5–15 participants
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs font-medium mb-1" style={{ color: colors.grey }}>
-                      Format
-                    </div>
-                    <div className="text-sm font-semibold" style={{ color: colors.lightGrey }}>
-                      In-person preferred
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs font-medium mb-1" style={{ color: colors.grey }}>
-                      Technical level
-                    </div>
-                    <div className="text-sm font-semibold" style={{ color: colors.lightGrey }}>
-                      Engineering + ops
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mb-6">
-                  <div
-                    className="text-xs font-semibold uppercase tracking-widest mb-3"
-                    style={{ color: colors.grey }}
-                  >
-                    Who it is for
-                  </div>
-                  <ul className="space-y-2">
-                    {[
-                      "CTOs and engineering leads with existing AI proofs-of-concept",
-                      "Companies that ran pilots but struggle to reach production",
-                      "Teams building internal AI infrastructure for the first time",
-                    ].map((item) => (
-                      <li key={item} className="flex items-start gap-2">
-                        <div
-                          className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
-                          style={{ backgroundColor: colors.primary, boxShadow: `0 0 6px ${colors.primary}60` }}
-                        />
-                        <span className="text-m" style={{ color: colors.lightGrey }}>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mb-8">
-                  <div
-                    className="text-xs font-semibold uppercase tracking-widest mb-3"
-                    style={{ color: colors.grey }}
-                  >
-                    You walk away with
-                  </div>
-                  <ul className="space-y-2">
-                    {[
-                      "An AI deployment architecture blueprint tailored to your tech stack",
-                      "A data readiness and pipeline assessment",
-                      "A governance and monitoring framework for production AI systems",
-                      "A phased scaling plan with clear milestones and cost estimates",
-                    ].map((item) => (
-                      <li key={item} className="flex items-start gap-2">
-                        <CheckCircle
-                          className="w-4 h-4 mt-0.5 flex-shrink-0"
-                          style={{ color: colors.success }}
-                        />
-                        <span className="text-m" style={{ color: colors.lightGrey }}>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mt-auto">
-                  <Link to="/contact#calendly">
-                    <Button
-                      size="lg"
-                      className="w-full text-base py-5 h-auto font-semibold hover:opacity-90 transition-opacity"
-                      style={{
-                        background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                        color: "#FAFAFA",
-                        border: "none",
-                      }}
-                    >
-                      Book Track 2
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Not sure which track */}
-            <div
-              className="mt-6 p-5 rounded-xl border text-center"
-              style={{
-                backgroundColor: colors.darkGrey + "60",
-                borderColor: colors.grey + "30",
-              }}
+                Book a scoping call
+              </SiteButton>
+            </Link>
+            <SiteButton
+              type="button"
+              variant="secondary"
+              arrow={false}
+              className="w-full sm:w-auto"
+              onClick={() =>
+                document
+                  .getElementById("formats")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
             >
-              <p className="text-m" style={{ color: colors.lightGrey }}>
-                <span style={{ color: colors.lightGrey, fontWeight: 600 }}>
-                  Unsure which format applies to your situation?
-                </span>{" "}
-                Book a scoping call. We'll ask a few questions and give you a
-                clear recommendation.{" "}
-                <Link
-                  to="/contact#calendly"
-                  className="font-semibold underline underline-offset-2 hover:opacity-80 transition-opacity"
-                  style={{ color: colors.primary }}
-                >
-                  Help me choose →
-                </Link>
+              See workshop formats
+            </SiteButton>
+          </div>
+        </Section>
+
+        <Section maxWidth="narrow">
+          <SectionHeader
+            title="Who this is for"
+            subtitle="If several of these apply, a workshop is likely a useful first step."
+            variant="centered"
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+            subtitleClassName="text-grey max-w-2xl mx-auto mt-6"
+          />
+          <p className="text-lg max-w-2xl mx-auto text-center text-grey mb-8">
+            These workshops are designed for teams in situations like:
+          </p>
+          <div className="grid md:grid-cols-2 gap-4 text-left">
+            {recognitionStatements.map((point) => (
+              <div
+                key={point}
+                className="group relative p-4 rounded-lg border border-border bg-card overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:border-primary/40 hover:shadow-lg"
+              >
+                <p className="text-m relative text-grey">"{point}"</p>
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        <Section id="formats">
+          <SectionHeader
+            title="Two workshop formats"
+            subtitle="The right format depends on where your organisation is with AI today. Both can be run in English or German."
+            variant="centered"
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+            subtitleClassName="text-grey max-w-2xl mx-auto mb-12"
+          />
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Track 1 */}
+            <div className="group relative rounded-2xl p-8 border border-border bg-card flex flex-col hover:border-primary/40 hover:shadow-lg transition-all duration-300">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-muted border border-border group-hover:border-primary/30 group-hover:bg-primary/10 transition-colors">
+                  <BookOpen className="w-6 h-6 text-grey group-hover:text-primary transition-colors" />
+                </div>
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-widest mb-1 text-grey">
+                    Track 1
+                  </div>
+                  <h3 className="text-xl font-bold font-alternates text-foreground">
+                    AI Awareness &amp; Quick Wins
+                  </h3>
+                </div>
+              </div>
+
+              <p className="text-m mb-6 text-grey leading-relaxed">
+                For teams that are informed about AI in general terms but
+                haven't yet connected it to their own work. We go through your
+                operations together, identify where AI applies, and document the
+                opportunities worth pursuing - in order of priority.
               </p>
+
+              <div className="grid grid-cols-2 gap-3 mb-6 p-4 rounded-xl bg-muted/50">
+                <div>
+                  <div className="text-xs font-medium mb-1 text-grey">
+                    Duration
+                  </div>
+                  <div className="text-sm font-semibold text-foreground">
+                    2 days
+                  </div>
+                </div>
+                <div>
+                  <div className="text-xs font-medium mb-1 text-grey">
+                    Group size
+                  </div>
+                  <div className="text-sm font-semibold text-foreground">
+                    5–25 participants
+                  </div>
+                </div>
+                <div>
+                  <div className="text-xs font-medium mb-1 text-grey">
+                    Format
+                  </div>
+                  <div className="text-sm font-semibold text-foreground">
+                    In-person or remote
+                  </div>
+                </div>
+                <div>
+                  <div className="text-xs font-medium mb-1 text-grey">
+                    Technical level
+                  </div>
+                  <div className="text-sm font-semibold text-foreground">
+                    No coding required
+                  </div>
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <div className="text-xs font-semibold uppercase tracking-widest mb-3 text-grey">
+                  Who it is for
+                </div>
+                <ul className="space-y-2">
+                  {[
+                    "C-suite and department heads exploring AI strategy",
+                    "Operational teams encountering AI tools for the first time",
+                    "Companies building internal AI literacy before investing",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-grey" />
+                      <span className="text-m text-grey">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mb-8">
+                <div className="text-xs font-semibold uppercase tracking-widest mb-3 text-grey">
+                  You walk away with
+                </div>
+                <ul className="space-y-2">
+                  {[
+                    "A prioritised shortlist of 5–10 AI use cases specific to your operations",
+                    "A quick-win roadmap: what to automate first, and what to leave for later",
+                    "A shared AI vocabulary so your team can evaluate vendors with confidence",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0 text-grey" />
+                      <span className="text-m text-grey">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mt-auto">
+                <Link to="/contact#calendly">
+                  <SiteButton
+                    variant="primary"
+                    arrow="right"
+                    className="w-full"
+                  >
+                    Book Track 1
+                  </SiteButton>
+                </Link>
+              </div>
+            </div>
+
+            {/* Track 2 */}
+            <div className="group relative rounded-2xl p-8 border border-border bg-card flex flex-col hover:border-primary/40 hover:shadow-lg transition-all duration-300">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-muted border border-border group-hover:border-primary/30 group-hover:bg-primary/10 transition-colors">
+                  <Rocket className="w-6 h-6 text-grey group-hover:text-primary transition-colors" />
+                </div>
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-widest mb-1 text-grey">
+                    Track 2
+                  </div>
+                  <h3 className="text-xl font-bold font-alternates text-foreground">
+                    AI Transformation &amp; Scale
+                  </h3>
+                </div>
+              </div>
+
+              <p className="text-m mb-6 text-grey leading-relaxed">
+                For teams that have validated AI use cases and are working out
+                how to move them into production. We focus on architecture, data
+                pipelines, deployment approach, and governance - working from
+                your existing stack to produce a plan your engineering team can
+                implement.
+              </p>
+
+              <div className="grid grid-cols-2 gap-3 mb-6 p-4 rounded-xl bg-muted/50 border border-border">
+                <div>
+                  <div className="text-xs font-medium mb-1 text-grey">
+                    Duration
+                  </div>
+                  <div className="text-sm font-semibold text-foreground">
+                    2 weeks
+                  </div>
+                </div>
+                <div>
+                  <div className="text-xs font-medium mb-1 text-grey">
+                    Group size
+                  </div>
+                  <div className="text-sm font-semibold text-foreground">
+                    5–15 participants
+                  </div>
+                </div>
+                <div>
+                  <div className="text-xs font-medium mb-1 text-grey">
+                    Format
+                  </div>
+                  <div className="text-sm font-semibold text-foreground">
+                    In-person preferred
+                  </div>
+                </div>
+                <div>
+                  <div className="text-xs font-medium mb-1 text-grey">
+                    Technical level
+                  </div>
+                  <div className="text-sm font-semibold text-foreground">
+                    Engineering + ops
+                  </div>
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <div className="text-xs font-semibold uppercase tracking-widest mb-3 text-grey">
+                  Who it is for
+                </div>
+                <ul className="space-y-2">
+                  {[
+                    "CTOs and engineering leads with existing AI proofs-of-concept",
+                    "Companies that ran pilots but struggle to reach production",
+                    "Teams building internal AI infrastructure for the first time",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-grey" />
+                      <span className="text-m text-grey">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mb-8">
+                <div className="text-xs font-semibold uppercase tracking-widest mb-3 text-grey">
+                  You walk away with
+                </div>
+                <ul className="space-y-2">
+                  {[
+                    "An AI deployment architecture blueprint tailored to your tech stack",
+                    "A data readiness and pipeline assessment",
+                    "A governance and monitoring framework for production AI systems",
+                    "A phased scaling plan with clear milestones and cost estimates",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0 text-grey" />
+                      <span className="text-m text-grey">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mt-auto">
+                <Link to="/contact#calendly">
+                  <SiteButton
+                    variant="primary"
+                    arrow="right"
+                    className="w-full"
+                  >
+                    Book Track 2
+                  </SiteButton>
+                </Link>
+              </div>
             </div>
           </div>
-        </section>
+
+          {/* Not sure which track */}
+          <div className="mt-6 p-5 rounded-xl border border-border bg-card text-center">
+            <p className="text-m text-grey">
+              <span className="font-semibold text-foreground">
+                Unsure which format applies to your situation?
+              </span>{" "}
+              Book a scoping call. We'll ask a few questions and give you a
+              clear recommendation.{" "}
+              <Link
+                to="/contact#calendly"
+                className="font-semibold underline underline-offset-2 text-grey hover:text-foreground transition-colors"
+              >
+                Help me choose →
+              </Link>
+            </p>
+          </div>
+        </Section>
 
         {/* ── Deliverables ── */}
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-7xl">
-            <div className="mb-12">
-              <h2
-                className="text-3xl md:text-4xl font-bold mb-4"
-                style={{ letterSpacing: "-0.02em", color: colors.lightGrey }}
-              >
-                What you{" "}
-                <span style={{ color: colors.primary }}>walk away with</span>
-              </h2>
-              <p className="text-lg" style={{ color: colors.lightGrey }}>
-                Each session produces a written record your team can reference,
-                share internally, and use as the basis for decisions.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {deliverables.map((item) => {
-                const IconComponent = item.icon;
-                return (
-                  <div
-                    key={item.title}
-                    className="rounded-xl p-6 border"
-                    style={{
-                      backgroundColor: colors.mediumGrey + "30",
-                      borderColor: colors.grey + "20",
-                    }}
-                  >
-                    <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 border"
-                      style={{
-                        backgroundColor: item.iconBg,
-                        borderColor: item.iconBorder,
-                      }}
-                    >
-                      <IconComponent className="w-5 h-5" style={{ color: item.iconColor }} />
-                    </div>
-                    <h3 className="text-lg font-semibold mb-3" style={{ color: colors.lightGrey }}>
-                      {item.title}
-                    </h3>
-                    <p className="text-m leading-relaxed" style={{ color: colors.lightGrey }}>
-                      {item.description}
-                    </p>
+        <Section>
+          <SectionHeader
+            title={
+              <>
+                What you <span className="text-primary">walk away with</span>
+              </>
+            }
+            subtitle="Each session produces a written record your team can reference, share internally, and use as the basis for decisions."
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+            subtitleClassName="text-grey max-w-2xl"
+          />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+            {deliverables.map((item) => {
+              const IconComponent = item.icon;
+              return (
+                <div
+                  key={item.title}
+                  className="group rounded-xl p-6 border border-border bg-card hover:border-primary/40 hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 bg-muted border border-border group-hover:border-primary/30 group-hover:bg-primary/10 transition-colors">
+                    <IconComponent className="w-5 h-5 text-grey group-hover:text-primary transition-colors" />
                   </div>
-                );
-              })}
-            </div>
+                  <h3 className="text-lg font-semibold font-alternates mb-3 text-foreground">
+                    {item.title}
+                  </h3>
+                  <p className="text-m leading-relaxed text-grey">
+                    {item.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
-        </section>
+        </Section>
 
         {/* ── How We Run It ── */}
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-7xl">
-            <div className="mb-16">
-              <h2
-                className="text-3xl md:text-4xl font-bold mb-4"
-                style={{ letterSpacing: "-0.02em", color: colors.lightGrey }}
+        <Section>
+          <SectionHeader
+            title={
+              <>
+                How we <span className="text-primary">work</span>
+              </>
+            }
+            subtitle="The session is structured around your operations, not a standard agenda. Preparation matters as much as the day itself."
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+            subtitleClassName="text-grey max-w-2xl"
+          />
+          <div className="grid md:grid-cols-2 gap-6 mt-12">
+            {processSteps.map((step, index) => (
+              <div
+                key={step.title}
+                className="group rounded-2xl p-8 border border-border bg-card transition-all duration-300 hover:border-primary/40 hover:shadow-lg"
               >
-                How we{" "}
-                <span style={{ color: colors.primary }}>work</span>
-              </h2>
-              <p className="text-lg" style={{ color: colors.lightGrey }}>
-                The session is structured around your operations, not a
-                standard agenda. Preparation matters as much as the day itself.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {processSteps.map((step, index) => (
-                <div
-                  key={step.title}
-                  className="group relative rounded-2xl p-8 border transition-all duration-300 hover:scale-[1.02]"
-                  style={{
-                    backgroundColor: colors.mediumGrey + "50",
-                    borderColor: colors.grey + "30",
-                    boxShadow: `0 4px 20px rgba(0,0,0,0.3), 0 0 0 1px ${colors.grey}20`,
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = colors.primary + "60";
-                    e.currentTarget.style.boxShadow = `0 12px 40px rgba(26,136,255,0.25), 0 0 0 1px ${colors.primary}40`;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = colors.grey + "30";
-                    e.currentTarget.style.boxShadow = `0 4px 20px rgba(0,0,0,0.3), 0 0 0 1px ${colors.grey}20`;
-                  }}
-                >
-                  <div
-                    className="text-xs font-bold uppercase tracking-widest mb-3"
-                    style={{ color: colors.primary }}
-                  >
-                    Step {index + 1}
-                  </div>
-                  <h3 className="text-xl font-bold mb-2" style={{ color: colors.lightGrey }}>
-                    {step.title}
-                  </h3>
-                  <p className="text-m mb-4" style={{ color: colors.lightGrey }}>
-                    {step.description}
-                  </p>
-                  <div
-                    className="space-y-3 pt-4 border-t"
-                    style={{ borderColor: colors.grey + "20" }}
-                  >
-                    {step.bullets.map((bullet) => (
-                      <div key={bullet} className="flex items-start gap-3">
-                        <div
-                          className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0"
-                          style={{
-                            backgroundColor: colors.success,
-                            boxShadow: `0 0 6px ${colors.success}60`,
-                          }}
-                        />
-                        <span className="text-m leading-relaxed" style={{ color: colors.lightGrey }}>
-                          {bullet}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
+                <div className="text-xs font-bold uppercase tracking-widest mb-3 text-primary/80">
+                  Step {index + 1}
                 </div>
-              ))}
-            </div>
+                <h3 className="text-xl font-bold font-alternates mb-2 text-foreground">
+                  {step.title}
+                </h3>
+                <p className="text-m mb-4 text-grey">{step.description}</p>
+                <div className="space-y-3 pt-4 border-t border-border">
+                  {step.bullets.map((bullet) => (
+                    <div key={bullet} className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 bg-grey" />
+                      <span className="text-m leading-relaxed text-grey">
+                        {bullet}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
-        </section>
+        </Section>
 
         {/* ── Timeline ── */}
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-7xl">
-            <div className="mb-10">
-              <h2
-                className="text-3xl md:text-4xl font-bold mb-4"
-                style={{ letterSpacing: "-0.02em", color: colors.lightGrey }}
-              >
-                Activities &{" "}
-                <span style={{ color: colors.primary }}>time commitment</span>
-              </h2>
-              <p className="text-lg" style={{ color: colors.lightGrey }}>
-                What each track looks like in practice — and how much time it
-                requires from your side.
-              </p>
-            </div>
+        <Section>
+          <SectionHeader
+            title="Activities & time commitment"
+            subtitle="What each track looks like in practice - and how much time it requires from your side."
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+            subtitleClassName="text-grey max-w-2xl"
+          />
 
-            {/* Shared legend */}
-            <div className="flex flex-wrap gap-6 mb-8">
-              {[
-                { color: colors.primary, label: "AI Flow preparation & analysis" },
-                { color: colors.secondary, label: "Your contribution" },
-                { color: colors.success, label: "Joint sessions" },
-              ].map(({ color, label }) => (
-                <div key={label} className="flex items-center gap-2">
-                  <div
-                    className="w-4 h-4 rounded"
-                    style={{
-                      backgroundColor: color + "CC",
-                      boxShadow: `0 0 6px ${color}40`,
-                    }}
-                  />
-                  <span className="text-sm" style={{ color: colors.lightGrey }}>
-                    {label}
-                  </span>
-                </div>
-              ))}
-            </div>
+          {/* Shared legend */}
+          <div className="flex flex-wrap gap-6 mb-8 mt-12">
+            {[
+              {
+                className: "bg-muted",
+                label: "AI Flow preparation & analysis",
+              },
+              { className: "bg-muted/80", label: "Your contribution" },
+              {
+                className: "bg-card border border-border",
+                label: "Joint sessions",
+              },
+            ].map(({ className, label }) => (
+              <div key={label} className="flex items-center gap-2">
+                <div className={`w-4 h-4 rounded ${className}`} />
+                <span className="text-sm text-grey">{label}</span>
+              </div>
+            ))}
+          </div>
 
-            {/* Track 1 table */}
-            <div className="mb-4">
-              <button
-                onClick={() => setTrack1Open((o) => !o)}
-                className="w-full flex items-center justify-between gap-3 mb-3 group"
-              >
-                <div className="flex items-center gap-3">
-                  <div
-                    className="w-2 h-2 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: colors.secondary }}
-                  />
-                  <span
-                    className="text-sm font-semibold uppercase tracking-widest"
-                    style={{ color: colors.secondary }}
-                  >
-                    Track 1 — AI Awareness & Quick Wins · 2-day workshop
-                  </span>
-                </div>
-                <ChevronDown
-                  className="w-4 h-4 transition-transform duration-300 flex-shrink-0"
-                  style={{
-                    color: colors.secondary,
-                    transform: track1Open ? "rotate(0deg)" : "rotate(-90deg)",
-                  }}
-                />
-              </button>
-              {track1Open && (
-              <div
-                className="overflow-x-auto rounded-xl border"
-                style={{ borderColor: colors.grey + "20" }}
-              >
-                <table style={{ borderCollapse: "collapse", width: "100%", minWidth: "680px" }}>
+          {/* Track 1 table */}
+          <div className="mb-4">
+            <button
+              onClick={() => setTrack1Open((o) => !o)}
+              className="w-full flex items-center justify-between gap-3 mb-3 group text-grey hover:text-foreground transition-colors"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full flex-shrink-0 bg-grey" />
+                <span className="text-sm font-semibold uppercase tracking-widest">
+                  Track 1 - AI Awareness & Quick Wins · 2-day workshop
+                </span>
+              </div>
+              <ChevronDown
+                className={`w-4 h-4 transition-transform duration-300 flex-shrink-0 ${track1Open ? "" : "-rotate-90"}`}
+              />
+            </button>
+            {track1Open && (
+              <div className="overflow-x-auto rounded-xl border border-border">
+                <table className="w-full min-w-[680px] border-collapse">
                   <thead>
-                    <tr style={{ backgroundColor: colors.mediumGrey + "40" }}>
-                      <th
-                        className="text-left px-5 py-3 text-sm font-semibold"
-                        style={{ color: colors.lightGrey, width: "34%", borderBottom: `1px solid ${colors.grey}30`, borderRight: `1px solid ${colors.grey}25` }}
-                      >
+                    <tr className="bg-muted/50">
+                      <th className="text-left px-5 py-3 text-sm font-semibold text-foreground w-[34%] border-b border-r border-border">
                         Activity
                       </th>
-                      <th
-                        className="text-left px-4 py-3 text-sm font-medium"
-                        style={{ color: colors.grey, width: "16%", borderBottom: `1px solid ${colors.grey}30`, borderRight: `1px solid ${colors.grey}25` }}
-                      >
+                      <th className="text-left px-4 py-3 text-sm font-medium text-grey w-[16%] border-b border-r border-border">
                         Your time
                       </th>
                       {track1Periods.map((p, i) => (
                         <th
                           key={p.key}
-                          className="text-center px-3 py-3 text-xs font-semibold uppercase tracking-wider"
-                          style={{ color: colors.grey, width: "10%", borderBottom: `1px solid ${colors.grey}30`, borderRight: i < track1Periods.length - 1 ? `1px solid ${colors.grey}25` : "none" }}
+                          className="text-center px-3 py-3 text-xs font-semibold uppercase tracking-wider text-grey w-[10%] border-b border-border border-r last:border-r-0"
                         >
                           {p.label}
                         </th>
@@ -1035,19 +913,24 @@ const Workshops = () => {
                   </thead>
                   <tbody>
                     {track1Activities.map((row, rowIdx) => (
-                      <tr key={row.activity} style={{ backgroundColor: rowIdx % 2 === 0 ? colors.darkGrey + "50" : "transparent" }}>
-                        <td className="px-5 py-3 text-sm" style={{ color: colors.lightGrey, borderBottom: `1px solid ${colors.grey}15`, borderRight: `1px solid ${colors.grey}20` }}>
+                      <tr
+                        key={row.activity}
+                        className={rowIdx % 2 === 0 ? "bg-muted/20" : ""}
+                      >
+                        <td className="px-5 py-3 text-sm text-foreground border-b border-r border-border">
                           {row.activity}
                         </td>
-                        <td className="px-4 py-3 text-sm" style={{ color: colors.grey, borderBottom: `1px solid ${colors.grey}15`, borderRight: `1px solid ${colors.grey}20` }}>
+                        <td className="px-4 py-3 text-sm text-grey border-b border-r border-border">
                           {row.time}
                         </td>
                         {track1Periods.map((p, i) => (
-                          <td key={p.key} className="px-2 py-3 text-center" style={{ borderBottom: `1px solid ${colors.grey}15`, borderRight: i < track1Periods.length - 1 ? `1px solid ${colors.grey}15` : "none" }}>
+                          <td
+                            key={p.key}
+                            className="px-2 py-3 text-center border-b border-r border-border last:border-r-0"
+                          >
                             {row.periods[p.key] && (
                               <div
-                                className="h-5 rounded mx-auto"
-                                style={{ backgroundColor: activityTypeColor[row.type] + "CC", boxShadow: `0 0 8px ${activityTypeColor[row.type]}40`, maxWidth: "80px" }}
+                                className={`h-5 rounded mx-auto max-w-[80px] ${activityTypeClass[row.type]}`}
                               />
                             )}
                           </td>
@@ -1057,60 +940,40 @@ const Workshops = () => {
                   </tbody>
                 </table>
               </div>
-              )}
-            </div>
+            )}
+          </div>
 
-            {/* Track 2 table */}
-            <div>
-              <button
-                onClick={() => setTrack2Open((o) => !o)}
-                className="w-full flex items-center justify-between gap-3 mb-3 group"
-              >
-                <div className="flex items-center gap-3">
-                  <div
-                    className="w-2 h-2 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: colors.primary }}
-                  />
-                  <span
-                    className="text-sm font-semibold uppercase tracking-widest"
-                    style={{ color: colors.primary }}
-                  >
-                    Track 2 — AI Transformation & Scale · 2-week workshop
-                  </span>
-                </div>
-                <ChevronDown
-                  className="w-4 h-4 transition-transform duration-300 flex-shrink-0"
-                  style={{
-                    color: colors.primary,
-                    transform: track2Open ? "rotate(0deg)" : "rotate(-90deg)",
-                  }}
-                />
-              </button>
-              {track2Open && (
-              <div
-                className="overflow-x-auto rounded-xl border"
-                style={{ borderColor: colors.grey + "20" }}
-              >
-                <table style={{ borderCollapse: "collapse", width: "100%", minWidth: "680px" }}>
+          {/* Track 2 table */}
+          <div>
+            <button
+              onClick={() => setTrack2Open((o) => !o)}
+              className="w-full flex items-center justify-between gap-3 mb-3 group text-grey hover:text-foreground transition-colors"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full flex-shrink-0 bg-grey" />
+                <span className="text-sm font-semibold uppercase tracking-widest">
+                  Track 2 - AI Transformation & Scale · 2-week workshop
+                </span>
+              </div>
+              <ChevronDown
+                className={`w-4 h-4 transition-transform duration-300 flex-shrink-0 ${track2Open ? "" : "-rotate-90"}`}
+              />
+            </button>
+            {track2Open && (
+              <div className="overflow-x-auto rounded-xl border border-border">
+                <table className="w-full min-w-[680px] border-collapse">
                   <thead>
-                    <tr style={{ backgroundColor: colors.mediumGrey + "40" }}>
-                      <th
-                        className="text-left px-5 py-3 text-sm font-semibold"
-                        style={{ color: colors.lightGrey, width: "34%", borderBottom: `1px solid ${colors.grey}30`, borderRight: `1px solid ${colors.grey}25` }}
-                      >
+                    <tr className="bg-muted/50">
+                      <th className="text-left px-5 py-3 text-sm font-semibold text-foreground w-[34%] border-b border-r border-border">
                         Activity
                       </th>
-                      <th
-                        className="text-left px-4 py-3 text-sm font-medium"
-                        style={{ color: colors.grey, width: "16%", borderBottom: `1px solid ${colors.grey}30`, borderRight: `1px solid ${colors.grey}25` }}
-                      >
+                      <th className="text-left px-4 py-3 text-sm font-medium text-grey w-[16%] border-b border-r border-border">
                         Your time
                       </th>
                       {track2Periods.map((p, i) => (
                         <th
                           key={p.key}
-                          className="text-center px-3 py-3 text-xs font-semibold uppercase tracking-wider"
-                          style={{ color: colors.grey, width: "10%", borderBottom: `1px solid ${colors.grey}30`, borderRight: i < track2Periods.length - 1 ? `1px solid ${colors.grey}25` : "none" }}
+                          className="text-center px-3 py-3 text-xs font-semibold uppercase tracking-wider text-grey w-[10%] border-b border-border border-r last:border-r-0"
                         >
                           {p.label}
                         </th>
@@ -1119,19 +982,24 @@ const Workshops = () => {
                   </thead>
                   <tbody>
                     {track2Activities.map((row, rowIdx) => (
-                      <tr key={row.activity} style={{ backgroundColor: rowIdx % 2 === 0 ? colors.darkGrey + "50" : "transparent" }}>
-                        <td className="px-5 py-3 text-sm" style={{ color: colors.lightGrey, borderBottom: `1px solid ${colors.grey}15`, borderRight: `1px solid ${colors.grey}20` }}>
+                      <tr
+                        key={row.activity}
+                        className={rowIdx % 2 === 0 ? "bg-muted/20" : ""}
+                      >
+                        <td className="px-5 py-3 text-sm text-foreground border-b border-r border-border">
                           {row.activity}
                         </td>
-                        <td className="px-4 py-3 text-sm" style={{ color: colors.grey, borderBottom: `1px solid ${colors.grey}15`, borderRight: `1px solid ${colors.grey}20` }}>
+                        <td className="px-4 py-3 text-sm text-grey border-b border-r border-border">
                           {row.time}
                         </td>
                         {track2Periods.map((p, i) => (
-                          <td key={p.key} className="px-2 py-3 text-center" style={{ borderBottom: `1px solid ${colors.grey}15`, borderRight: i < track2Periods.length - 1 ? `1px solid ${colors.grey}15` : "none" }}>
+                          <td
+                            key={p.key}
+                            className="px-2 py-3 text-center border-b border-r border-border last:border-r-0"
+                          >
                             {row.periods[p.key] && (
                               <div
-                                className="h-5 rounded mx-auto"
-                                style={{ backgroundColor: activityTypeColor[row.type] + "CC", boxShadow: `0 0 8px ${activityTypeColor[row.type]}40`, maxWidth: "80px" }}
+                                className={`h-5 rounded mx-auto max-w-[80px] ${activityTypeClass[row.type]}`}
                               />
                             )}
                           </td>
@@ -1141,181 +1009,105 @@ const Workshops = () => {
                   </tbody>
                 </table>
               </div>
-              )}
-            </div>
+            )}
           </div>
-        </section>
+        </Section>
 
         {/* ── Facilitators ── */}
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-7xl">
-            <div className="mb-12">
-              <h2
-                className="text-3xl md:text-4xl font-bold mb-4"
-                style={{ letterSpacing: "-0.02em", color: colors.lightGrey }}
+        <Section>
+          <SectionHeader
+            title="Who facilitates"
+            subtitle="Both of us have built and deployed AI systems professionally. We can engage with your operational questions and technical questions in equal depth."
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+            subtitleClassName="text-grey max-w-2xl"
+          />
+          <div className="grid md:grid-cols-2 gap-6 mt-12">
+            {teamArray.map((member) => (
+              <div
+                key={member.id}
+                className="rounded-2xl p-8 border border-border bg-card flex flex-col sm:flex-row gap-6 hover:border-primary/40 hover:shadow-lg transition-all duration-300"
               >
-                Who{" "}
-                <span style={{ color: colors.primary }}>facilitates</span>
-              </h2>
-              <p className="text-lg max-w-2xl" style={{ color: colors.lightGrey }}>
-                Both of us have built and deployed AI systems professionally.
-                We can engage with your operational questions and technical
-                questions in equal depth.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {teamArray.map((member) => (
-                <div
-                  key={member.id}
-                  className="rounded-2xl p-8 border flex flex-col sm:flex-row gap-6"
-                  style={{
-                    backgroundColor: colors.mediumGrey + "30",
-                    borderColor: colors.grey + "20",
-                    boxShadow: `0 4px 20px rgba(0,0,0,0.2)`,
-                  }}
-                >
-                  <img
-                    src={member.photo}
-                    alt={member.name}
-                    className="w-20 h-20 rounded-full object-cover flex-shrink-0 border-2"
-                    style={{ borderColor: colors.primary + "40" }}
-                  />
-                  <div>
-                    <h3 className="text-lg font-bold mb-1" style={{ color: colors.lightGrey }}>
-                      {member.name}
-                    </h3>
-                    <p
-                      className="text-sm font-medium mb-3"
-                      style={{ color: colors.primary }}
-                    >
-                      {member.role}
-                    </p>
-                    <p className="text-m leading-relaxed" style={{ color: colors.lightGrey }}>
-                      {member.bio}
-                    </p>
-                    <a
-                      href={member.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 mt-4 text-sm font-medium hover:opacity-80 transition-opacity"
-                      style={{ color: colors.primary }}
-                    >
-                      LinkedIn profile →
-                    </a>
-                  </div>
+                <img
+                  src={member.photo}
+                  alt={member.name}
+                  className="w-20 h-20 rounded-full object-cover flex-shrink-0 border-2 border-border"
+                />
+                <div>
+                  <h3 className="text-lg font-bold font-alternates mb-1 text-foreground">
+                    {member.name}
+                  </h3>
+                  <p className="text-sm font-medium mb-3 text-grey">
+                    {member.role}
+                  </p>
+                  <p className="text-m leading-relaxed text-grey">
+                    {member.bio}
+                  </p>
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 mt-4 text-sm font-medium text-grey hover:text-foreground transition-colors"
+                  >
+                    LinkedIn profile →
+                  </a>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        </section>
+        </Section>
 
         {/* ── Differentiators ── */}
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-7xl">
-            <div className="mb-12">
-              <h2
-                className="text-3xl md:text-4xl font-bold mb-4"
-                style={{ letterSpacing: "-0.02em", color: colors.lightGrey }}
-              >
-                What to{" "}
-                <span style={{ color: colors.primary }}>expect</span>
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {differentiators.map((item) => {
-                const IconComponent = item.icon;
-                return (
-                  <div
-                    key={item.title}
-                    className="rounded-xl p-6 border"
-                    style={{
-                      backgroundColor: colors.mediumGrey + "30",
-                      borderColor: colors.grey + "20",
-                    }}
-                  >
-                    <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 border"
-                      style={{
-                        backgroundColor: item.iconBg,
-                        borderColor: item.iconBorder,
-                      }}
-                    >
-                      <IconComponent className="w-5 h-5" style={{ color: item.iconColor }} />
-                    </div>
-                    <h3 className="text-lg font-semibold mb-3" style={{ color: colors.lightGrey }}>
-                      {item.title}
-                    </h3>
-                    <p className="text-m leading-relaxed" style={{ color: colors.lightGrey }}>
-                      {item.description}
-                    </p>
+        <Section>
+          <SectionHeader
+            title="What to expect"
+            titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+          />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+            {differentiators.map((item) => {
+              const IconComponent = item.icon;
+              return (
+                <div
+                  key={item.title}
+                  className="group rounded-xl p-6 border border-border bg-card hover:border-primary/40 hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 bg-muted border border-border group-hover:border-primary/30 group-hover:bg-primary/10 transition-colors">
+                    <IconComponent className="w-5 h-5 text-grey group-hover:text-primary transition-colors" />
                   </div>
-                );
-              })}
-            </div>
+                  <h3 className="text-lg font-semibold font-alternates mb-3 text-foreground">
+                    {item.title}
+                  </h3>
+                  <p className="text-m leading-relaxed text-grey">
+                    {item.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
-        </section>
+        </Section>
 
-
-        {/* ── Final CTA ── */}
-        <section className="py-32 px-6">
-          <div className="container mx-auto max-w-7xl text-center">
-            <h2
-              className="text-4xl md:text-5xl font-bold mb-6"
-              style={{ letterSpacing: "-0.02em", color: colors.lightGrey }}
-            >
-              Start with a{" "}
-              <span
-                style={{
-                  backgroundImage: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                conversation.
-              </span>
-            </h2>
-            <p
-              className="text-lg mb-10 max-w-xl mx-auto"
-              style={{ color: colors.lightGrey }}
-            >
-              We'll spend 30 minutes understanding your situation and let you
-              know whether a workshop is the right next step — and which format
-              fits. Delivered in English or German, in-person or remotely.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact#calendly">
-                <Button
-                  size="lg"
-                  className="text-base px-8 py-6 h-auto font-semibold hover:opacity-90 transition-opacity"
-                  style={{
-                    background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                    color: "#FAFAFA",
-                    border: "none",
-                  }}
-                >
-                  Book a Scoping Call
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-              <Link to="/contact">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-base px-8 py-6 h-auto font-semibold transition-all"
-                  style={{
-                    borderColor: colors.grey + "50",
-                    color: colors.lightGrey,
-                  }}
-                >
-                  Get in touch
-                </Button>
-              </Link>
-            </div>
+        <Section>
+          <div className="rounded-2xl border border-border bg-gradient-to-br from-card via-card to-primary/5 p-12 md:p-16 text-center">
+            <SectionHeader
+              title="Start with a conversation"
+              subtitle="We'll spend 30 minutes understanding your situation and let you know whether a workshop is the right next step - and which format fits. Delivered in English or German, in-person or remotely."
+              variant="centered"
+              titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+              subtitleClassName="text-grey max-w-xl mx-auto mb-8"
+              action={
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link to="/contact#calendly">
+                    <SiteButton variant="primary" arrow="up-right">
+                      Book a scoping call
+                    </SiteButton>
+                  </Link>
+                  <Link to="/contact">
+                    <SiteButton variant="secondary">Get in touch</SiteButton>
+                  </Link>
+                </div>
+              }
+            />
           </div>
-        </section>
+        </Section>
       </main>
 
       <Footer />

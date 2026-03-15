@@ -5,8 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { SiteButton } from "@/components/SiteButton";
 import { SiteLink } from "@/components/SiteLink";
 import { featuredCaseStudies } from "@/data/caseStudies";
 import { Tag } from "@/components/Tag";
@@ -141,13 +140,9 @@ export const WorkSection = () => {
 
           <div className="text-center mt-10">
             <Link to="/case-studies">
-              <Button
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary/10 font-semibold rounded-full"
-              >
-                Read More Case Studies
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
+              <SiteButton variant="secondary" arrow="right">
+                Read more case studies
+              </SiteButton>
             </Link>
           </div>
         </div>

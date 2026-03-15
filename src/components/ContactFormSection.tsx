@@ -111,16 +111,15 @@ export const ContactFormSection = () => {
         {/* Left: same header alignment as other sections */}
         <div>
           <p className="text-4xl md:text-5xl text-muted-foreground mb-1">
-            Let's turn your
+            If information is a competitive advantage in your business,
           </p>
           <h2 className="text-4xl md:text-5xl font-bold font-alternates">
-            AI ambitions into reality.
+            it is worth a conversation.
           </h2>
-          <p className="text-lg text-muted-foreground max-w-md">
-              Whether you're looking to start small or launch a transformative
-              project, AI Flow is here to help you succeed. Get in touch for a
-              friendly, no-pressure chat about your ideas and goals.
-            </p>
+          <p className="text-lg text-muted-foreground max-w-md mt-4">
+            30 minutes. A direct conversation about your situation and
+            whether we can help. We respond within one business day.
+          </p>
           </div>
 
           {/* Right: minimal form */}
@@ -207,7 +206,7 @@ export const ContactFormSection = () => {
               defaultValue=""
             >
               <option value="" disabled className="text-muted-foreground">
-                What best describes your situation?
+                What best describes your situation? 
               </option>
               {situations.map((s) => (
                 <option key={s} value={s}>
