@@ -238,7 +238,6 @@ const ClientPageTemplate = ({
             className="border-0 rounded-2xl shadow-2xl"
             style={{
               boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
-              transform: "scale(80%)",
             }}
           />
         </div>
