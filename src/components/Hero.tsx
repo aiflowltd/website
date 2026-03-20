@@ -36,7 +36,7 @@ export const Hero = () => {
 
         {/* Data Cards Embed */}
 
-        <div className="relative mb-0 mt-20 rounded-2xl border border-border bg-gradient-to-br from-medium-grey/50 to-dark-grey/50 p-6 md:p-8 overflow-hidden">
+        <div className="relative mb-0 mt-10 md:mt-20 rounded-2xl border border-border bg-gradient-to-br from-medium-grey/50 to-dark-grey/50 p-0 md:p-4 overflow-hidden -mx-6 md:mx-0 h-[260px] md:h-[260px]">
           <iframe
             title="Datacards"
             style={{
@@ -44,10 +44,10 @@ export const Hero = () => {
               boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
               border: "none",
               display: "block",
-              width: "min(100%, 900px)",
+              width: "100%",
+              height: "100%",
             }}
             src="https://app.datacards.ai/a/aiflow/company-questions?theme=dark&scale=0"
-            height="200px"
           />
         </div>
       </div>
