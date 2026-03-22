@@ -25,38 +25,48 @@ const clients = [
   { name: "UPC", logo: upcLogo },
 ];
 
-export const ClientsCarousel = () => {
+type ClientsCarouselProps = {
+  /** When true, align copy and grid with Hero’s `max-w-6xl` column (no extra horizontal section padding). */
+  embedInHero?: boolean;
+};
+
+export const ClientsCarousel = ({ embedInHero = false }: ClientsCarouselProps) => {
   const duplicated = [...clients, ...clients, ...clients, ...clients];
 
   return (
-    <Section padding="compact" maxWidth="wide" className="w-full" overflowHidden>
-      <div className="mb-8 text-center">
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Reliable AI, used and trusted by large organizations worldwide
-          </p>
-        </div>
+    <Section
+      padding={embedInHero ? "compact-y" : "compact"}
+      maxWidth={embedInHero ? "default" : "wide"}
+      className="w-full"
+      overflowHidden
+    >
+      <div className="mb-8 text-left">
+        <p className="text-lg md:text-xl text-muted-foreground max-w-3xl">
+          Reliable AI, used and trusted by large organizations worldwide
+        </p>
+      </div>
 
-        {/* Marquee container with 10% margin */}
-        <div className="relative overflow-hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+      {/* Marquee container with 10% margin */}
+      <div className="relative overflow-hidden">
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-          <div className="flex animate-marquee">
-            {duplicated.map((client, index) => (
-              <div
-                key={`${client.name}-${index}`}
-                className="flex-shrink-0 flex items-center justify-center px-8"
-                style={{ minWidth: "160px" }}
-              >
-                <img
-                  src={client.logo}
-                  alt={`${client.name} logo`}
-                  className="h-8 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
-                />
-              </div>
-            ))}
-          </div>
+        <div className="flex animate-marquee">
+          {duplicated.map((client, index) => (
+            <div
+              key={`${client.name}-${index}`}
+              className="flex-shrink-0 flex items-center justify-center px-8"
+              style={{ minWidth: "160px" }}
+            >
+              <img
+                src={client.logo}
+                alt={`${client.name} logo`}
+                className="h-8 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+              />
+            </div>
+          ))}
         </div>
+      </div>
     </Section>
   );
 };

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { SiteButton } from "@/components/SiteButton";
 import { LabelBadge } from "@/components/LabelBadge";
+import { ClientsCarousel } from "@/components/ClientsCarousel";
+import { DatacardsEmbedPanel } from "@/components/DatacardsEmbedPanel";
 
 export const Hero = () => {
   return (
@@ -14,7 +16,7 @@ export const Hero = () => {
           AI systems that scale
         </h1>
 
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-4 mb-16">
           <Link to="/contact#calendly">
             <SiteButton variant="primary" arrow="up-right">
               Book a discovery call
@@ -34,7 +36,7 @@ export const Hero = () => {
           </a>
         </div>
 
-        {/* Data Cards Embed */}
+        {/* Data Cards Embed
 
         <div className="relative mb-0 mt-10 md:mt-20 rounded-2xl border border-border bg-gradient-to-br from-medium-grey/50 to-dark-grey/50 p-0 md:p-4 overflow-hidden -mx-6 md:mx-0 h-[260px] md:h-[260px]">
           <iframe
@@ -49,8 +51,10 @@ export const Hero = () => {
             }}
             src="https://app.datacards.ai/a/aiflow/company-questions?theme=dark&scale=0"
           />
-        </div>
+        </div> */}
       </div>
+
+      <ClientsCarousel embedInHero />
     </section>
   );
 };

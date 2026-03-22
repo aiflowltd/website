@@ -6,6 +6,7 @@ import { Section } from "@/components/Section";
 import { SectionHeader } from "@/components/SectionHeader";
 import { ServiceBlock } from "@/components/ServiceBlock";
 import { services } from "@/data/services";
+import { DatacardsEmbedPanel } from "@/components/DatacardsEmbedPanel";
 import { useEffect } from "react";
 
 const Services = () => {
@@ -29,27 +30,33 @@ const Services = () => {
         </Section>
 
         <Section padding="compact" className="pt-2">
-          <div className="relative rounded-2xl border border-border bg-gradient-to-br from-medium-grey/50 to-dark-grey/50 p-6 md:p-8 overflow-hidden">
-            <h2 className="text-xl md:text-2xl font-bold font-alternates text-foreground text-center mb-2">
+          <DatacardsEmbedPanel
+            fitContent
+            radiusPx={16}
+            className="rounded-2xl p-6 md:p-8 shadow-[0_20px_24px_rgba(0,0,0,0.24)]"
+          >
+            <h2 className="mb-2 text-center font-alternates text-xl font-bold text-foreground md:text-2xl">
               Ask our AI about our services
             </h2>
-            <p className="text-grey text-center max-w-2xl mx-auto mb-6">
+            <p className="mx-auto mb-6 max-w-2xl text-center text-grey">
               Not sure which service fits your situation? Ask about what we
               offer, typical timelines, industries we work with, or how we'd
               approach your use case.
             </p>
-            <div className="w-full flex justify-center">
-              <iframe
-                title="Ask about AI Flow services"
-                className="rounded-xl border-0 w-full max-w-[900px] block"
-                style={{
-                  boxShadow: "0 20px 24px rgba(0, 0, 0, 0.24)",
-                }}
-                src="https://app.datacards.ai/a/aiflow/services?theme=dark&scale=0"
-                height="300px"
-              />
+            <div className="flex w-full justify-center">
+              <div className="h-[300px] w-full max-w-[900px]">
+                <iframe
+                  title="Ask about AI Flow services"
+                  className="block h-full w-full rounded-xl border-none bg-transparent"
+                  style={{
+                    borderRadius: 12,
+                    boxShadow: "0 20px 24px rgba(0, 0, 0, 0.24)",
+                  }}
+                  src="https://app.datacards.ai/a/aiflow/services?theme=dark&scale=0"
+                />
+              </div>
             </div>
-          </div>
+          </DatacardsEmbedPanel>
         </Section>
 
         <Section>
@@ -76,7 +83,9 @@ const Services = () => {
                     </SiteButton>
                   </Link>
                   <Link to="/case-studies">
-                    <SiteButton variant="secondary">View case studies</SiteButton>
+                    <SiteButton variant="secondary">
+                      View case studies
+                    </SiteButton>
                   </Link>
                 </div>
               }
