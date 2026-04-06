@@ -1,6 +1,5 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Card } from "@/components/ui/card";
 import { SiteButton } from "@/components/SiteButton";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -14,13 +13,15 @@ import {
   ArrowLeft,
   Upload,
 } from "lucide-react";
-import { Link, useParams, Navigate, useNavigate } from "react-router-dom";
+import { useParams, Navigate, useNavigate } from "react-router-dom";
 import { getJob } from "@/data/jobs";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { toast } from "sonner";
 import { useState, useRef, useEffect } from "react";
+import { Section } from "@/components/Section";
+import { cn } from "@/lib/utils";
 
 const applicationSchema = z.object({
   fullName: z.string().min(2, "Name must be at least 2 characters"),
@@ -40,6 +41,9 @@ const applicationSchema = z.object({
 });
 
 type ApplicationForm = z.infer<typeof applicationSchema>;
+
+const panelClass =
+  "rounded-lg border border-border bg-background/80 p-6 md:p-8 text-muted-foreground";
 
 const JobDetail = () => {
   const { id } = useParams();
@@ -93,13 +97,9 @@ const JobDetail = () => {
 
       const apiUrl = import.meta.env.VITE_API_URL;
 
-      console.log("🔧 API URL:", apiUrl);
-      console.log("🔧 All env vars:", import.meta.env);
-      console.log("🚀 Submitting to:", `${apiUrl}/api/applications/submit`);
-
       if (!apiUrl) {
         throw new Error(
-          "Backend URL not configured. Please set VITE_API_URL=http://localhost:3001 in .env.local and restart dev server"
+          "Backend URL not configured. Please set VITE_API_URL=http://localhost:3001 in .env.local and restart dev server",
         );
       }
 
@@ -108,61 +108,45 @@ const JobDetail = () => {
         body: formData,
       });
 
-      console.log("📡 Response status:", response.status);
-      console.log(
-        "📡 Response headers:",
-        Object.fromEntries(response.headers.entries())
-      );
-
       const contentType = response.headers.get("content-type");
-      console.log("📡 Content-Type:", contentType);
 
       if (!response.ok) {
         let errorMessage = "Submission failed";
         try {
           if (contentType?.includes("application/json")) {
             const error = await response.json();
-            console.error("❌ Error response:", error);
             errorMessage = error.error || error.message || errorMessage;
           } else {
             const text = await response.text();
-            console.error("❌ Non-JSON error:", text);
             errorMessage = text || errorMessage;
           }
-        } catch (e) {
-          console.error("❌ Could not parse error response:", e);
+        } catch {
+          /* keep default */
         }
         throw new Error(errorMessage);
       }
 
-      let result;
       try {
         if (contentType?.includes("application/json")) {
-          result = await response.json();
-          console.log("✅ Application submitted successfully:", result);
+          await response.json();
         } else {
-          const text = await response.text();
-          console.log("✅ Response text:", text);
-          result = { success: true };
+          await response.text();
         }
-      } catch (e) {
-        console.error(
-          "⚠️ Could not parse response, but request was successful"
-        );
-        result = { success: true };
+      } catch {
+        /* success without parseable body */
       }
 
       toast.success(
-        "Application submitted successfully! We'll be in touch soon."
+        "Application submitted successfully! We'll be in touch soon.",
       );
       reset();
       setSelectedFile(null);
     } catch (error) {
-      console.error("❌ Error submitting application:", error);
-      toast.error(
-        error.message ||
-          "Failed to submit application. Please try again or email us directly."
-      );
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Failed to submit application. Please try again or email us directly.";
+      toast.error(message);
     } finally {
       setIsSubmitting(false);
     }
@@ -201,7 +185,6 @@ const JobDetail = () => {
     const files = e.dataTransfer.files;
     if (files && files.length > 0) {
       const file = files[0];
-      // Check file type
       const validTypes = [".pdf", ".doc", ".docx"];
       const fileExtension = "." + file.name.split(".").pop()?.toLowerCase();
 
@@ -219,336 +202,354 @@ const JobDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-background text-foreground page-shell">
       <Navigation />
 
-      <main className="container mx-auto px-6 pt-32 pb-20">
-        <div className="max-w-6xl mx-auto">
-          {/* Back Button */}
+      <main>
+        <Section padding="hero" maxWidth="default" className="!pb-10">
           <button
             type="button"
             onClick={() => navigate("/careers")}
-            className="inline-flex items-center gap-2 mb-8 text-grey hover:text-foreground transition-colors group cursor-pointer"
+            className="group mb-8 inline-flex cursor-pointer items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
           >
-            <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1" />
+            <ArrowLeft className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-1" />
             <span>Back to careers</span>
           </button>
 
-          {/* Job Header */}
-          <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold font-alternates mb-4 text-foreground">{job.title}</h1>
-          <div className="flex flex-wrap gap-4 text-grey mb-6">
+          <div className="mb-4">
+            <Tag>{job.department}</Tag>
+          </div>
+
+          <h1 className="mb-6 font-alternates text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+            {job.title}
+          </h1>
+
+          <div className="flex flex-wrap gap-6 text-muted-foreground">
             <div className="flex items-center gap-2">
-              <MapPin className="w-5 h-5 text-grey" />
+              <MapPin className="h-5 w-5 shrink-0" />
               <span>{job.location}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Briefcase className="w-5 h-5 text-grey" />
+              <Briefcase className="h-5 w-5 shrink-0" />
               <span>{job.type}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Clock className="w-5 h-5 text-grey" />
+              <Clock className="h-5 w-5 shrink-0" />
               <span>{job.experience}</span>
             </div>
             {job.salary && (
               <div className="flex items-center gap-2">
-                <DollarSign className="w-5 h-5 text-grey" />
+                <DollarSign className="h-5 w-5 shrink-0" />
                 <span>{job.salary}</span>
               </div>
             )}
           </div>
-          <Tag>{job.department}</Tag>
-        </div>
+        </Section>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Left Column - Job Details */}
-          <div className="lg:col-span-2 space-y-8">
-            {/* Important Note */}
-            <Card className="bg-muted/50 border border-border p-6">
-              <h3 className="text-lg font-bold font-alternates mb-3 text-foreground">
-                Important note
-              </h3>
-              <p className="text-grey leading-relaxed">
-                This is part of our ongoing effort to grow a pool of experts we
-                can staff on projects as they arise. If your profile fits and
-                you pass the interview, we'll connect you to paid opportunities
-                as they land. We hire both freelancers (B2B/C2C) and employees.
-                Individuals only, no agencies.
-              </p>
-            </Card>
+        <Section padding="default" maxWidth="default" className="!pt-0">
+          <div className="grid gap-12 lg:grid-cols-3 lg:gap-14">
+            <div className="space-y-8 lg:col-span-2">
+              <div
+                className={cn(
+                  panelClass,
+                  "border-primary/15 bg-muted/25 text-foreground",
+                )}
+              >
+                <h2 className="mb-3 font-alternates text-lg font-semibold text-foreground">
+                  Important note
+                </h2>
+                <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
+                  This is part of our ongoing effort to grow a pool of experts
+                  we can staff on projects as they arise. If your profile fits
+                  and you pass the interview, we&apos;ll connect you to paid
+                  opportunities as they land. We hire both freelancers
+                  (B2B/C2C) and employees. Individuals only, no agencies.
+                </p>
+              </div>
 
-            {/* About the Role */}
-            <Card className="bg-card border-border p-8">
-              <h2 className="text-2xl font-bold font-alternates mb-4 text-foreground">About the role</h2>
-              <p className="text-grey leading-relaxed">
-                {job.description}
-              </p>
-            </Card>
+              <div className={panelClass}>
+                <h2 className="mb-4 font-alternates text-2xl font-bold text-foreground">
+                  About the role
+                </h2>
+                <p className="leading-relaxed">{job.description}</p>
+              </div>
 
-            {/* Responsibilities */}
-            <Card className="bg-card border-border p-8">
-              <h2 className="text-2xl font-bold font-alternates mb-6 text-foreground">Responsibilities</h2>
-              <ul className="space-y-3">
-                {job.responsibilities.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-grey flex-shrink-0 mt-0.5" />
-                    <span className="text-grey">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
-
-            {/* Requirements */}
-            <Card className="bg-card border-border p-8">
-              <h2 className="text-2xl font-bold font-alternates mb-6 text-foreground">Requirements</h2>
-              <ul className="space-y-3">
-                {job.requirements.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-grey flex-shrink-0 mt-0.5" />
-                    <span className="text-grey">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
-
-            {/* Nice to Have */}
-            {job.niceToHave.length > 0 && (
-              <Card className="bg-card border-border p-8">
-                <h2 className="text-2xl font-bold font-alternates mb-6 text-foreground">Nice to have</h2>
+              <div className={panelClass}>
+                <h2 className="mb-6 font-alternates text-2xl font-bold text-foreground">
+                  Responsibilities
+                </h2>
                 <ul className="space-y-3">
-                  {job.niceToHave.map((item, index) => (
+                  {job.responsibilities.map((item, index) => (
                     <li key={index} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-grey flex-shrink-0 mt-0.5" />
-                      <span className="text-grey">{item}</span>
+                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground" />
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
-              </Card>
-            )}
+              </div>
 
-            {/* Benefits */}
-            <Card className="bg-card border-border p-8">
-              <h2 className="text-2xl font-bold font-alternates mb-6 text-foreground">Benefits</h2>
-              <ul className="space-y-3">
-                {job.benefits.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-grey flex-shrink-0 mt-0.5" />
-                    <span className="text-grey">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
-          </div>
+              <div className={panelClass}>
+                <h2 className="mb-6 font-alternates text-2xl font-bold text-foreground">
+                  Requirements
+                </h2>
+                <ul className="space-y-3">
+                  {job.requirements.map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-          {/* Right Column - Application Form */}
-          <div className="lg:col-span-1">
-            <Card className="bg-card border-border p-6 sticky top-24">
-              <h2 className="text-2xl font-bold font-alternates mb-6 text-foreground">Apply now</h2>
-
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                <div>
-                  <label
-                    htmlFor="fullName"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Full Name *
-                  </label>
-                  <Input
-                    id="fullName"
-                    {...register("fullName")}
-                    placeholder="John Doe"
-                    className="bg-background border-border"
-                  />
-                  {errors.fullName && (
-                    <p className="text-destructive text-sm mt-1">
-                      {errors.fullName.message}
-                    </p>
-                  )}
+              {job.niceToHave.length > 0 && (
+                <div className={panelClass}>
+                  <h2 className="mb-6 font-alternates text-2xl font-bold text-foreground">
+                    Nice to have
+                  </h2>
+                  <ul className="space-y-3">
+                    {job.niceToHave.map((item, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
+              )}
 
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Email *
-                  </label>
-                  <Input
-                    id="email"
-                    type="email"
-                    {...register("email")}
-                    placeholder="john@example.com"
-                    className="bg-background border-border"
-                  />
-                  {errors.email && (
-                    <p className="text-destructive text-sm mt-1">
-                      {errors.email.message}
-                    </p>
-                  )}
-                </div>
+              <div className={panelClass}>
+                <h2 className="mb-6 font-alternates text-2xl font-bold text-foreground">
+                  Benefits
+                </h2>
+                <ul className="space-y-3">
+                  {job.benefits.map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
 
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Phone *
-                  </label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    {...register("phone")}
-                    placeholder="+1 (555) 123-4567"
-                    className="bg-background border-border"
-                  />
-                  {errors.phone && (
-                    <p className="text-destructive text-sm mt-1">
-                      {errors.phone.message}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="linkedIn"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    LinkedIn Profile *
-                  </label>
-                  <Input
-                    id="linkedIn"
-                    type="url"
-                    {...register("linkedIn")}
-                    placeholder="https://linkedin.com/in/johndoe"
-                    className="bg-background border-border"
-                  />
-                  {errors.linkedIn && (
-                    <p className="text-destructive text-sm mt-1">
-                      {errors.linkedIn.message}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="portfolio"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Portfolio / Website{" "}
-                    <span className="text-grey font-normal">
-                      (Optional)
-                    </span>
-                  </label>
-                  <Input
-                    id="portfolio"
-                    type="url"
-                    {...register("portfolio")}
-                    placeholder="https://johndoe.com"
-                    className="bg-background border-border"
-                  />
-                  {errors.portfolio && (
-                    <p className="text-destructive text-sm mt-1">
-                      {errors.portfolio.message}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="coverLetter"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Cover Letter{" "}
-                    <span className="text-grey font-normal">
-                      (Optional)
-                    </span>
-                  </label>
-                  <Textarea
-                    id="coverLetter"
-                    {...register("coverLetter")}
-                    placeholder="Tell us why you're interested in this role and what makes you a great fit..."
-                    rows={6}
-                    className="bg-background border-border resize-none"
-                  />
-                  {errors.coverLetter && (
-                    <p className="text-destructive text-sm mt-1">
-                      {errors.coverLetter.message}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="resume"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Resume / CV *
-                  </label>
-                  <div
-                    className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors cursor-pointer 
-                      ${
-                        isDragging
-                          ? "border-white/20 bg-muted"
-                          : "border-border hover:border-white/20"
-                      }`}
-                    onDragEnter={handleDragEnter}
-                    onDragLeave={handleDragLeave}
-                    onDragOver={handleDragOver}
-                    onDrop={handleDrop}
-                    onClick={handleClick}
-                  >
-                    {selectedFile ? (
-                      <div className="flex items-center justify-center gap-2 text-foreground">
-                        <CheckCircle2 className="w-6 h-6 text-grey" />
-                        <span className="text-sm font-medium">
-                          {selectedFile.name}
-                        </span>
-                      </div>
-                    ) : (
-                      <>
-                        <Upload className="w-8 h-8 text-grey mx-auto mb-2" />
-                        <p className="text-sm text-grey mb-1">
-                          Click to upload or drag and drop
-                        </p>
-                        <p className="text-xs text-grey">
-                          PDF, DOC, or DOCX (max 5MB)
-                        </p>
-                      </>
-                    )}
-                    <input
-                      type="file"
-                      accept=".pdf,.doc,.docx"
-                      className="hidden"
-                      ref={fileInputRef}
-                      onChange={handleFileChange}
-                    />
-                  </div>
-                  {errors.resume && (
-                    <p className="text-destructive text-sm mt-1">
-                      {errors.resume.message}
-                    </p>
-                  )}
-                </div>
-
-                <SiteButton
-                  type="submit"
-                  variant="primary"
-                  className="w-full"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Submitting..." : "Submit application"}
-                </SiteButton>
-
-                <p className="text-xs text-grey text-center">
-                  By submitting, you agree to our Privacy Policy and Terms of
-                  Service
+            <div className="lg:col-span-1">
+              <div className={cn(panelClass, "sticky top-28")}>
+                <h2 className="mb-2 font-alternates text-2xl font-bold text-foreground">
+                  Apply now
+                </h2>
+                <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
+                  Send your details and CV. We review every application and
+                  respond when there is a fit.
                 </p>
-              </form>
-            </Card>
+
+                <div className="rounded-lg border border-border/80 bg-muted/20 p-5 md:p-6">
+                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                  <div>
+                    <label
+                      htmlFor="fullName"
+                      className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground"
+                    >
+                      Full name *
+                    </label>
+                    <Input
+                      id="fullName"
+                      {...register("fullName")}
+                      placeholder="John Doe"
+                      className="rounded-md border-border bg-background"
+                    />
+                    {errors.fullName && (
+                      <p className="mt-1 text-sm text-destructive">
+                        {errors.fullName.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground"
+                    >
+                      Email *
+                    </label>
+                    <Input
+                      id="email"
+                      type="email"
+                      {...register("email")}
+                      placeholder="john@example.com"
+                      className="rounded-md border-border bg-background"
+                    />
+                    {errors.email && (
+                      <p className="mt-1 text-sm text-destructive">
+                        {errors.email.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground"
+                    >
+                      Phone *
+                    </label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      {...register("phone")}
+                      placeholder="+1 (555) 123-4567"
+                      className="rounded-md border-border bg-background"
+                    />
+                    {errors.phone && (
+                      <p className="mt-1 text-sm text-destructive">
+                        {errors.phone.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="linkedIn"
+                      className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground"
+                    >
+                      LinkedIn profile *
+                    </label>
+                    <Input
+                      id="linkedIn"
+                      type="url"
+                      {...register("linkedIn")}
+                      placeholder="https://linkedin.com/in/johndoe"
+                      className="rounded-md border-border bg-background"
+                    />
+                    {errors.linkedIn && (
+                      <p className="mt-1 text-sm text-destructive">
+                        {errors.linkedIn.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="portfolio"
+                      className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground"
+                    >
+                      Portfolio / website{" "}
+                      <span className="font-normal normal-case tracking-normal text-muted-foreground">
+                        (optional)
+                      </span>
+                    </label>
+                    <Input
+                      id="portfolio"
+                      type="url"
+                      {...register("portfolio")}
+                      placeholder="https://johndoe.com"
+                      className="rounded-md border-border bg-background"
+                    />
+                    {errors.portfolio && (
+                      <p className="mt-1 text-sm text-destructive">
+                        {errors.portfolio.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="coverLetter"
+                      className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground"
+                    >
+                      Cover letter{" "}
+                      <span className="font-normal normal-case tracking-normal text-muted-foreground">
+                        (optional)
+                      </span>
+                    </label>
+                    <Textarea
+                      id="coverLetter"
+                      {...register("coverLetter")}
+                      placeholder="Tell us why you're interested in this role and what makes you a great fit..."
+                      rows={6}
+                      className="resize-none rounded-md border-border bg-background"
+                    />
+                    {errors.coverLetter && (
+                      <p className="mt-1 text-sm text-destructive">
+                        {errors.coverLetter.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="resume"
+                      className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground"
+                    >
+                      Resume / CV *
+                    </label>
+                    <div
+                      className={cn(
+                        "cursor-pointer rounded-md border border-dashed border-border bg-background/80 p-6 text-center transition-colors",
+                        isDragging
+                          ? "border-primary/40 bg-muted"
+                          : "hover:border-primary/30",
+                      )}
+                      onDragEnter={handleDragEnter}
+                      onDragLeave={handleDragLeave}
+                      onDragOver={handleDragOver}
+                      onDrop={handleDrop}
+                      onClick={handleClick}
+                    >
+                      {selectedFile ? (
+                        <div className="flex items-center justify-center gap-2 text-foreground">
+                          <CheckCircle2 className="h-6 w-6 text-muted-foreground" />
+                          <span className="text-sm font-medium">
+                            {selectedFile.name}
+                          </span>
+                        </div>
+                      ) : (
+                        <>
+                          <Upload className="mx-auto mb-2 h-8 w-8 text-muted-foreground" />
+                          <p className="mb-1 text-sm text-muted-foreground">
+                            Click to upload or drag and drop
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            PDF, DOC, or DOCX (max 5MB)
+                          </p>
+                        </>
+                      )}
+                      <input
+                        type="file"
+                        accept=".pdf,.doc,.docx"
+                        className="hidden"
+                        ref={fileInputRef}
+                        onChange={handleFileChange}
+                      />
+                    </div>
+                    {errors.resume && (
+                      <p className="mt-1 text-sm text-destructive">
+                        {errors.resume.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <SiteButton
+                    type="submit"
+                    variant="primary"
+                    className="w-full"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Submitting..." : "Submit application"}
+                  </SiteButton>
+
+                  <p className="text-center text-xs leading-relaxed text-muted-foreground">
+                    By submitting, you agree to our Privacy Policy and Terms of
+                    Service
+                  </p>
+                </form>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        </div>
+        </Section>
       </main>
+
       <Footer />
     </div>
   );
