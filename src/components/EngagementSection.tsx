@@ -2,205 +2,54 @@ import { Link } from "react-router-dom";
 import { SiteButton } from "@/components/SiteButton";
 import { Section } from "@/components/Section";
 import { SectionHeader } from "@/components/SectionHeader";
-import {
-  ArrowUpRight,
-  Search,
-  CheckCircle,
-  User,
-  Box,
-  Briefcase,
-} from "lucide-react";
-import { AI_FLOW_LOGO_SYMBOL } from "@/constants/images";
-
-const AdvisoryIllustration = () => (
-  <div className="relative h-48 overflow-hidden">
-    {/* Abstract horizontal lines */}
-    <svg
-      className="absolute inset-0 w-full h-full"
-      viewBox="0 0 500 200"
-      fill="none"
-    >
-      <path
-        d="M80 80 Q160 80 200 60 Q240 40 320 50 Q380 56 440 50"
-        stroke="white"
-        strokeOpacity="0.06"
-        strokeWidth="1.5"
-      />
-      <path
-        d="M80 100 Q160 100 220 85 Q280 70 340 78 Q400 84 460 78"
-        stroke="white"
-        strokeOpacity="0.06"
-        strokeWidth="1.5"
-      />
-      <path
-        d="M80 120 Q160 120 230 108 Q300 96 360 104 Q420 112 480 106"
-        stroke="white"
-        strokeOpacity="0.06"
-        strokeWidth="1.5"
-      />
-    </svg>
-    {/* Glow */}
-    <div
-      className="absolute w-40 h-20 rounded-full blur-3xl opacity-30 "
-      style={{ top: "30%", left: "20%" }}
-    />
-    {/* Magnifying glass icon */}
-    <div className="absolute left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center">
-      <Search className="w-5 h-5 text-white/40" />
-    </div>
-    {/* Checkmark circle */}
-    <div className="absolute right-16 top-8 w-11 h-11 rounded-full bg-success/20 border border-success/30 flex items-center justify-center">
-      <CheckCircle className="w-5 h-5 text-success" />
-    </div>
-  </div>
-);
-
-const TeamAugIllustration = () => (
-  <div className="relative h-48 overflow-hidden">
-    <svg
-      className="absolute inset-0 w-full h-full"
-      viewBox="0 0 500 200"
-      fill="none"
-    >
-      <path
-        d="M60 90 Q150 90 200 75 Q250 60 320 70 Q380 78 450 72"
-        stroke="white"
-        strokeOpacity="0.06"
-        strokeWidth="1.5"
-      />
-      <path
-        d="M60 110 Q150 110 220 98 Q290 86 360 94 Q430 102 480 96"
-        stroke="white"
-        strokeOpacity="0.06"
-        strokeWidth="1.5"
-      />
-      <path
-        d="M60 130 Q150 130 240 118 Q330 106 400 114 Q460 120 500 116"
-        stroke="white"
-        strokeOpacity="0.06"
-        strokeWidth="1.5"
-      />
-    </svg>
-    <div
-      className="absolute w-32 h-16 rounded-full blur-3xl opacity-20"
-      style={{ top: "30%", right: "20%" }}
-    />
-    {/* Person icon */}
-    <div className="absolute right-28 top-1/2 -translate-y-1/2 w-11 h-11 rounded-lgborder border-primary/20 flex items-center justify-center">
-      <User className="w-5 h-5 text-primary/70" />
-    </div>
-    {/* Cube/box icon */}
-    <div className="absolute right-12 top-1/2 -translate-y-1/2 w-11 h-11 rounded-lg border border-secondary/20 flex items-center justify-center">
-      <Box className="w-5 h-5 text-secondary/70" />
-    </div>
-  </div>
-);
-
-const SmallTeamIllustration = () => {
-  const rows = [
-    [0, 1, 2, 3, 4, 5, 6, 7],
-    [0, 1, 2, 3, 4, 5, 6],
-  ];
-
-  return (
-    <div className="relative h-48 overflow-hidden flex items-center justify-center">
-      <div className="absolute w-24 h-24 rounded-full blur-3xl opacity-40 " />
-      <div className="flex flex-col gap-2 items-center">
-        {rows.map((row, ri) => (
-          <div key={ri} className="flex gap-2">
-            {row.map((_, ci) => {
-              const isCenter = ri === 0 && (ci === 3 || ci === 4);
-              return (
-                <div
-                  key={ci}
-                  className={`w-7 h-7 rounded-full flex items-center justify-center ${
-                    isCenter
-                      ? "bg-primary/20 border border-primary/30"
-                      : "bg-white/5 border border-white/10"
-                  }`}
-                >
-                  <User
-                    className={`w-3.5 h-3.5 ${isCenter ? "text-primary/60" : "text-white/25"}`}
-                  />
-                </div>
-              );
-            })}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const PartnerTeamIllustration = () => (
-  <div className="relative h-48 overflow-hidden flex items-center justify-center">
-    {/* Dashed circle - using a div to guarantee roundness */}
-    <div className="absolute w-[120px] h-[120px] rounded-full border border-dashed border-white/10" />
-    {/* Abstract rays */}
-    <div className="absolute w-48 h-1 bg-gradient-to-r from-transparent via-white/[0.04] to-transparent rotate-12" />
-    <div className="absolute w-48 h-1 bg-gradient-to-r from-transparent via-white/[0.04] to-transparent -rotate-12" />
-    <div className="absolute w-36 h-16 rounded-full blur-3xl opacity-20 " />
-    {/* Icons */}
-    <div className="relative flex items-center gap-3">
-      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg shadow-primary/20">
-        <img
-          src={AI_FLOW_LOGO_SYMBOL}
-          alt="AI Flow"
-          className="w-7 h-auto object-contain brightness-200"
-        />
-      </div>
-      <div className="w-11 h-11 rounded-full bg-white/10 border border-white/15 flex items-center justify-center">
-        <Briefcase className="w-5 h-5 text-white/50" />
-      </div>
-    </div>
-  </div>
-);
-
-const illustrations = [
-  AdvisoryIllustration,
-  TeamAugIllustration,
-  SmallTeamIllustration,
-  PartnerTeamIllustration,
-];
+import { cn } from "@/lib/utils";
+import { ArrowUpRight } from "lucide-react";
 
 const engagementModels = [
   {
-    situation: "We know AI matters. We don't know where to start.",
-    solution: "One session. A concrete answer.",
-    body:
-      "Your team is spending time on decisions that should be informed by data — but the right system isn't in place yet. We run a focused session and give you a concrete answer.",
-    highlight: "success" as const,
+    situation: "We have an audit coming up and we are not ready.",
+    solution: "Audit-ready in hours, not weeks.",
+    body: "We map your existing data sources to your regulatory obligations and build an automated audit package pipeline. The next time an examiner asks for documentation, it is ready — not assembled under pressure.",
   },
   {
-    situation: "Our analysts are doing work that shouldn't require analysts.",
-    solution: "Automate the analysis. Keep the judgment.",
-    body:
-      "Research, benchmarking, document review, and reporting that should take minutes is taking hours. We build systems that remove the manual layer without removing the human oversight that matters.",
-    highlight: "primary" as const,
+    situation: "Our compliance team rebuilds the same reports every quarter.",
+    solution: "Run it once. Run it automatically.",
+    body: "We build the pipeline between your operational data and your regulatory output. Reports run on schedule, validated, submission-ready. Your team reviews — it does not assemble.",
   },
   {
     situation:
-      "Compliance and operational risk is growing. We're managing it with spreadsheets.",
-    solution: "Replace the spreadsheet. Reduce the risk.",
-    body:
-      "Regulatory monitoring, document processing, supplier risk, maintenance records — the volume is increasing and the cost of a missed signal is significant. We remove the manual layer.",
-    highlight: "primary" as const,
+      "We are expanding into new markets and compliance is the bottleneck.",
+    solution: "Each new jurisdiction adds a module, not a manual process.",
+    body: "We build your compliance infrastructure so that each new state or regulatory framework adds an automated output on top of the existing pipeline. Expansion does not restart the manual cycle.",
   },
   {
-    situation: "We're making decisions on information that's already outdated.",
-    solution: "Real-time signals. Always current data.",
-    body:
-      "By the time market intelligence is manually compiled, the window has closed. We build systems that surface pricing signals, counterparty risk, and sector shifts as they happen.",
-    highlight: "primary" as const,
+    situation: "We know we need to fix this. We do not know where to start.",
+    solution: "Start with the Diagnostic.",
+    body: "A fixed-price, fixed-scope 1–2 week engagement. We map your workflows, data sources, and obligations. You leave with a prioritised roadmap — whether you proceed with us or not.",
   },
 ];
+
+const engagementColPad = ["md:pr-10", "md:pl-10", "md:pr-10", "md:pl-10"];
+const engagementCellBorder = [
+  "border-b border-[#E2E6F0] md:border-b md:border-[#E2E6F0]",
+  "border-b border-[#E2E6F0] md:border-b md:border-[#E2E6F0] md:border-l md:border-[#E2E6F0]",
+  "border-b border-[#E2E6F0] md:border-b-0",
+  "md:border-b-0 md:border-l md:border-[#E2E6F0]",
+];
+
+const mdGridPlacement = [
+  "md:col-start-1 md:row-start-1 md:row-span-3",
+  "md:col-start-2 md:row-start-1 md:row-span-3",
+  "md:col-start-1 md:row-start-4 md:row-span-3",
+  "md:col-start-2 md:row-start-4 md:row-span-3",
+] as const;
 
 export const EngagementSection = () => {
   return (
     <Section>
       <SectionHeader
-        title="Where are you in your AI journey?"
-        subtitle="The data exists. The question is whether you can use it faster than your competition."
+        title="Where does this apply to you?"
+        subtitle="The compliance gap shows up differently depending on where your team is. The fix is the same."
         action={
           <Link to="/contact">
             <SiteButton
@@ -208,77 +57,67 @@ export const EngagementSection = () => {
               arrow="up-right"
               className="whitespace-nowrap"
             >
-              Book a discovery call
+              Contact us
             </SiteButton>
           </Link>
         }
         titleClassName="text-3xl md:text-4xl"
         subtitleClassName="max-w-xl"
-        className="mb-16"
+        className="mb-12"
       />
 
-      <div className="grid md:grid-cols-2 gap-6">
-        {engagementModels.map((model, index) => {
-          const Illustration = illustrations[index];
-          const highlightHoverClass =
-            model.highlight === "primary"
-              ? "group-hover:bg-primary group-hover:blur-[218px]"
-              : "group-hover:bg-success group-hover:blur-[270px]";
-          return (
-            <Link
-              key={model.solution}
-              to="/contact"
-              className="group relative flex flex-col p-6 rounded-xl bg-card border border-border isolate overflow-hidden transition-all duration-300 hover:bg-dark-grey hover:border-primary/50 hover:shadow-[inset_0_2px_0_rgba(255,255,255,0.1)]"
-            >
-              {/* Highlight glow – only on hover */}
-              <div
-                className={`absolute w-[498px] h-[129px] -left-6 -top-16 blur-[270px] z-0 pointer-events-none opacity-0 transition-opacity duration-200 group-hover:opacity-80 ${highlightHoverClass}`}
-                aria-hidden
-              />
+      <hr className="border-t border-[#E2E6F0]" />
 
-              {/* Card-specific illustration */}
-              <div className="relative z-10 w-full h-[129px] shrink-0">
-                <Illustration />
-              </div>
+      <div
+        className={cn(
+          "grid grid-cols-1 gap-0",
+          "md:grid-cols-2 md:[grid-template-rows:repeat(2,auto_auto_minmax(0,1fr))]",
+        )}
+      >
+        {engagementModels.map((model, index) => (
+          <Link
+            key={model.solution}
+            to="/contact"
+            className={cn(
+              "relative border-[#E2E6F0]",
+              engagementCellBorder[index],
+              engagementColPad[index],
+              "flex flex-col gap-3 py-8",
+              "md:grid md:min-h-0 md:gap-0 md:py-8 md:[grid-template-rows:subgrid]",
+              mdGridPlacement[index],
+            )}
+          >
+            <div className="absolute w-7 h-7 right-4 top-4 z-10 flex items-center justify-center rounded-full border border-[#E2E6F0]">
+              <ArrowUpRight className="w-5 h-5 text-muted-foreground" />
+            </div>
 
-              {/* Content: Situation (first) → Solution → Body */}
-              <div className="relative z-10 flex flex-col gap-5 pt-2">
-                {/* 1. Situation — most visible, first thing they see */}
-                <div>
-                  <p className="font-sans text-[10px] font-medium uppercase tracking-[0.15em] text-muted-foreground mb-2">
-                    Situation
-                  </p>
-                  <p className="font-sans text-base font-medium leading-snug text-foreground">
-                    &ldquo;{model.situation}&rdquo;
-                  </p>
-                </div>
+            <div className="relative z-10 pr-10 md:self-start md:w-full">
+              <p className="font-sans text-[10px] font-medium uppercase tracking-[0.15em] text-muted-foreground mb-1.5">
+                Situation
+              </p>
+              <p className="font-sans text-base font-medium leading-snug text-foreground">
+                &ldquo;{model.situation}&rdquo;
+              </p>
+            </div>
 
-                {/* 2. Solution — 5-word punchline */}
-                <div>
-                  <p className="font-sans text-[10px] font-medium uppercase tracking-[0.15em] text-muted-foreground mb-2">
-                    Solution
-                  </p>
-                  <h3 className="font-sans font-medium text-xl leading-tight text-white">
-                    {model.solution}
-                  </h3>
-                </div>
+            <div className="relative z-10 md:self-stretch md:w-full md:min-h-0">
+              <p className="font-sans text-[10px] font-medium uppercase tracking-[0.15em] text-muted-foreground mb-1.5">
+                Solution
+              </p>
+              <h3 className="font-sans font-medium text-lg leading-tight text-foreground">
+                {model.solution}
+              </h3>
+              <hr className="border-0 border-t border-[#E2E6F0] mt-3 mb-0" />
+            </div>
 
-                <hr className="border-0 border-t border-dark-grey m-0" />
-
-                {/* 3. Body — description */}
-                <p className="font-sans font-light text-sm leading-[1.5] text-grey">
-                  {model.body}
-                </p>
-              </div>
-
-              {/* Arrow icon */}
-              <div className="absolute w-7 h-7 right-4 top-4 z-20 flex items-center justify-center rounded-full border border-dark-grey transition-colors group-hover:border-white">
-                <ArrowUpRight className="w-5 h-5 text-dark-grey transition-colors group-hover:text-white" />
-              </div>
-            </Link>
-          );
-        })}
+            <p className="relative z-10 font-sans font-light text-sm leading-[1.5] text-muted-foreground md:min-h-0">
+              {model.body}
+            </p>
+          </Link>
+        ))}
       </div>
+
+      <hr className="border-t border-[#E2E6F0]" />
     </Section>
   );
 };

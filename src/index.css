@@ -10,7 +10,7 @@ UI colors (background, foreground, etc.) are defined here as HSL for theming sup
 @layer base {
   :root {
     /* Primary Colors - use only these theme colors */
-    --primary: 199 100% 55%; /* #1AB8FF Azure Blue */
+    --primary: 219 83% 39%; /* #1AB8FF Azure Blue */
     --primary-foreground: 0 0% 98%;
     --secondary: 229 96% 72%; /* #748DFC Space Violet */
     --secondary-foreground: 0 0% 98%;
@@ -25,38 +25,111 @@ UI colors (background, foreground, etc.) are defined here as HSL for theming sup
 
     /* Base / Neutral Colors */
     --dark-grey: 222 11% 18%; /* #292C33 Dark Grey */
-    --medium-grey: 222 9% 37%; /* #555A66 Medium Grey */
+    --medium-grey: 220 9% 37%; /* #555A66 Medium Grey */
     --grey: 222 12% 59%; /* #8B92A3 Grey */
-    --light-grey: 226 33% 83%; /* #C5CCE2 Light Grey */
+    --light-grey: 220 33% 91%; /* #E2E6F0 Light Grey */
 
-    /* UI Colors */
-    --background: 0 0% 3%;
-    --foreground: 0 0% 98%;
+    /* UI Colors — Light Theme */
+    --background: 0 0% 100%;         /* #FFFFFF */
+    --foreground: 222 17% 7%;        /* #0E1015 ink */
 
-    --card: 0 0% 5%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%;               /* #FFFFFF */
+    --card-foreground: 222 17% 7%;   /* ink */
 
-    --popover: 0 0% 5%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 17% 7%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 213 60% 98%;            /* #F7F9FC surface */
+    --muted-foreground: 220 9% 37%;  /* #555A66 meta */
 
     --accent: 199 100% 55%;
-    --accent-foreground: 0 0% 98%;
+    --accent-foreground: 222 17% 7%;
 
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
+    --border: 220 33% 91%;           /* #E2E6F0 */
+    --input: 220 33% 91%;
     --ring: 199 100% 55%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;               /* 4px — institutional, not rounded-pill */
 
     /* Custom design tokens */
     --cyan-glow: 199 100% 55%;
-    --dark-surface: 0 0% 8%;
+    --dark-surface: 213 60% 98%;
+    /* Brand blue #112e63 (hsl 219 83% 39%) — text selection highlight */
+    --text-selection: rgba(17, 46, 99, 0.3);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer components {
+  /** Default page wrapper — matches Index (relative, theme bg, ink text). */
+  .page-shell {
+    @apply relative min-h-screen bg-background text-foreground;
+  }
+
+  /**
+   * Nav link marker fill (azure #112e63): soft radial blooms, no stripes. Used on the skewed,
+   * rounded nav highlight layer (scale-x reveal).
+   */
+  .nav-marker-texture {
+    background-color: rgba(17, 46, 99, 0.38);
+    background-image:
+      radial-gradient(
+        ellipse 130% 100% at 10% 35%,
+        rgba(255, 255, 255, 0.16) 0%,
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 110% 130% at 92% 60%,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 52%
+      ),
+      radial-gradient(
+        ellipse 90% 80% at 72% 15%,
+        rgba(255, 255, 255, 0.07) 0%,
+        transparent 48%
+      ),
+      radial-gradient(
+        ellipse 120% 90% at 35% 95%,
+        rgba(0, 0, 0, 0.09) 0%,
+        transparent 50%
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.05) 0%,
+        transparent 22%,
+        transparent 78%,
+        rgba(0, 0, 0, 0.06) 100%
+      );
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  /**
+   * TextMarkerHighlight fill: keep transform here (not Tailwind scale/skew utilities).
+   * Utilities layer overrides @layer components and broke the reveal.
+   * Hover: `.text-marker` matches :hover when pointer is over the label (descendant hit).
+   * Focus: `a:focus-visible` because focus is on the link, not inside the inner spans.
+   */
+  .text-marker__fill {
+    transform: skewX(var(--text-marker-skew, -6.5deg)) scaleX(0);
+    transform-origin: left center;
+    transition: none;
+  }
+
+  .text-marker:hover .text-marker__fill,
+  a:focus-visible .text-marker__fill {
+    transform: skewX(var(--text-marker-skew, -6.5deg)) scaleX(1);
+    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .text-marker:hover .text-marker__fill,
+    a:focus-visible .text-marker__fill {
+      transition: none;
+    }
   }
 }
 
@@ -66,22 +139,25 @@ UI colors (background, foreground, etc.) are defined here as HSL for theming sup
   }
 
   html {
-    font-size: 85%;
+    font-size: 100%;
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
-    font-weight: 300;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-weight: 400;
   }
 
-  h3, h4, h5, h6 {
-    @apply font-primary;
-    font-weight: 700;
+  ::selection {
+    background-color: var(--text-selection);
   }
 
-  h1, h2 {
-    @apply font-alternates;
-    font-weight: 700;
+  ::-moz-selection {
+    background-color: var(--text-selection);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans;
+    color: #0E1015;
   }
 
   .font-secondary {

@@ -21,6 +21,7 @@ import { Footer } from "@/components/Footer";
 import { SiteButton } from "@/components/SiteButton";
 import { Section } from "@/components/Section";
 import { SectionHeader } from "@/components/SectionHeader";
+import { LineGridCta } from "@/components/LineGridCta";
 import { teamArray } from "@/data/team";
 
 type ActivityType = "aiflow" | "client" | "joint";
@@ -453,7 +454,7 @@ const Workshops = () => {
   ];
 
   return (
-    <div className="relative min-h-screen bg-background text-foreground">
+    <div className="page-shell">
       <Navigation />
 
       <main className="relative">
@@ -1086,7 +1087,7 @@ const Workshops = () => {
         </Section>
 
         <Section>
-          <div className="rounded-2xl border border-border bg-gradient-to-br from-card via-card to-primary/5 p-12 md:p-16 text-center">
+          <LineGridCta>
             <SectionHeader
               title="Start with a conversation"
               subtitle="We'll spend 30 minutes understanding your situation and let you know whether a workshop is the right next step - and which format fits. Delivered in English or German, in-person or remotely."
@@ -1106,7 +1107,7 @@ const Workshops = () => {
                 </div>
               }
             />
-          </div>
+          </LineGridCta>
         </Section>
       </main>
 

@@ -6,33 +6,33 @@ import { SectionHeader } from "@/components/SectionHeader";
 const steps = [
   {
     number: "01",
-    title: "Discover",
+    title: "Diagnostic",
     description:
-      "Define the outcome, the constraints, and what success looks like in measurable terms. Review data, systems, and decision-making processes.",
+      "Map your compliance workflows, data sources, and regulatory obligations. Define the highest-value automation opportunity and scope the pipeline build.",
   },
   {
     number: "02",
-    title: "Design",
+    title: "Architecture",
     description:
-      "Scope the architecture, data flows, and evaluation criteria. Align on security requirements, integrations, and ownership before a line of code is written.",
+      "Scope the data integrations, regulatory mappings, and output formats. Align on audit trail requirements and acceptance criteria before a line of code is written.",
   },
   {
     number: "03",
     title: "Build",
     description:
-      "Implement the full system: data pipelines, models, agents, interfaces, and integrations. Senior engineers from start to finish.",
+      "Implement the full pipeline: data connections, regulatory mapping engine, scheduled execution, and output generation. Senior engineers from start to finish.",
   },
   {
     number: "04",
     title: "Deploy",
     description:
-      "Ship to production with monitoring, guardrails, and audit trails in place. Performance is measurable from day one.",
+      "Ship to production with monitoring, validation checks, and full audit trail active from day one. The first automated filing cycle runs before handover.",
   },
   {
     number: "05",
-    title: "Improve",
+    title: "Expand",
     description:
-      "Iterate on accuracy, latency, and cost based on real usage. The system gets more valuable over time, not less.",
+      "Add obligations, jurisdictions, and reporting workflows on top of the existing infrastructure. Each expansion is a new automated output — not a new build from scratch.",
   },
 ];
 
@@ -156,11 +156,14 @@ export const HowWeWorkSection = () => {
   }, [bubbleIndex]);
 
   return (
-    <section className="relative py-24 px-6">
+    <section
+      id="how-we-work"
+      className="relative scroll-mt-24 py-24 px-6 bg-background"
+    >
       <div ref={containerRef} className="container mx-auto max-w-6xl">
         <SectionHeader
           title="How we work"
-          subtitle="A structured delivery flow, flexible in how we engage"
+          subtitle="A structured delivery flow. Fixed scope at every stage."
           action={
             <Link to="/services">
               <SiteButton
@@ -176,7 +179,7 @@ export const HowWeWorkSection = () => {
         />
 
         {/* Divider line */}
-        <div className="h-px bg-white/[0.08] mb-0" />
+        <div className="h-px bg-border mb-0" />
       </div>
 
       {/* Sliding window: full viewport width, cards centered within the container bounds */}
@@ -255,16 +258,16 @@ export const HowWeWorkSection = () => {
                   {/* Title row: flex row, items center, gap 12px */}
                   <div className="flex flex-row items-center gap-3 w-full">
                     {/* Subheading number: Montserrat 250, 32px, line-height 136% */}
-                    <span className="font-sans font-extralight text-[32px] leading-[1.36] text-grey flex items-center shrink-0">
+                    <span className="font-sans font-extralight text-[32px] leading-[1.36] text-foreground/30 flex items-center shrink-0">
                       {step.number}
                     </span>
                     {/* Title: Montserrat Alternates 500, 28px, line-height 136% */}
-                    <h3 className="font-alternates font-medium text-[28px] leading-[1.36] text-white flex items-center">
+                    <h3 className="font-alternates font-medium text-[28px] leading-[1.36] text-foreground flex items-center">
                       {step.title}
                     </h3>
                   </div>
                   {/* Body: Montserrat 300, 16px, line-height 150% */}
-                  <p className="font-sans font-light text-base leading-[1.5] text-grey w-full">
+                  <p className="font-sans font-light text-base leading-[1.5] text-muted-foreground w-full">
                     {step.description}
                   </p>
                 </div>

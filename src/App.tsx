@@ -33,6 +33,7 @@ import Construction from "./pages/industry/Construction";
 import PropTech from "./pages/industry/PropTech";
 import Agnostic from "./pages/industry/Agnostic";
 import Workshops from "./pages/Workshops";
+import { DatacardsWidget } from "@/components/DatacardsWidget";
 
 const queryClient = new QueryClient();
 
@@ -75,6 +76,7 @@ const App = () => {
               <Route path="*" element={<NotFound />} />
             </Routes>
             <CookieBanner />
+            <DatacardsWidget />
           </BrowserRouter>
           <ConsentGatedAnalytics />
         </TooltipProvider>
