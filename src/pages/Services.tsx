@@ -7,7 +7,38 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { ServiceBlock } from "@/components/ServiceBlock";
 import { services } from "@/data/services";
 import { DatacardsEmbedPanel } from "@/components/DatacardsEmbedPanel";
+import { LineGridCta } from "@/components/LineGridCta";
 import { useEffect } from "react";
+import { cn } from "@/lib/utils";
+
+const editorialLine = "border-[#E2E6F0]";
+
+const trustPillars = [
+  {
+    kicker: "Commercial clarity",
+    title: "Fixed scope and price",
+    body: "Deliverables and timeline are agreed before work begins—no open-ended time and materials.",
+  },
+  {
+    kicker: "Delivery",
+    title: "Senior-led teams",
+    body: "Experienced practitioners stay on the engagement; outputs are documented for audit and handoff.",
+  },
+  {
+    kicker: "Control",
+    title: "Your stack, your data",
+    body: "We integrate with systems you already run. You retain ownership; we provide the build and runbook.",
+  },
+] as const;
+
+function trustCellClass(index: number) {
+  return cn(
+    "flex flex-col gap-2 px-4 py-8 md:px-8 md:py-10",
+    index < trustPillars.length - 1 &&
+      cn("border-b md:border-b-0", editorialLine),
+    index > 0 && cn("md:border-l", editorialLine),
+  );
+}
 
 const Services = () => {
   useEffect(() => {
@@ -15,43 +46,60 @@ const Services = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-background text-foreground">
+    <div className="relative min-h-screen bg-background text-foreground page-shell">
       <Navigation />
 
       <main>
-        <Section padding="hero" className="!pb-8">
+        <Section padding="hero">
           <SectionHeader
-            title="Our services"
-            subtitle="Three entry points. One delivery standard. Each engagement is scoped for clarity, with defined deliverables and timelines. Below: what each service includes, who it’s for, and how to see proof."
-            variant="centered"
-            titleClassName="text-4xl md:text-6xl font-alternates text-foreground"
-            subtitleClassName="text-lg text-grey max-w-3xl mx-auto leading-relaxed"
+            title={
+              <>
+                Services for{" "}
+                <span className="font-extralight">
+                  governance and delivery.
+                </span>
+              </>
+            }
+            subtitle="Three engagements—each with a defined outcome, timeline, and handoff. The same delivery standard you see on our homepage: priced on deliverables, not hours."
+            titleClassName="text-3xl md:text-5xl"
+            subtitleClassName="max-w-2xl text-base md:text-lg leading-relaxed"
           />
         </Section>
 
-        <Section padding="compact" className="pt-2">
-          <DatacardsEmbedPanel
-            fitContent
-            radiusPx={16}
-            className="rounded-2xl p-6 md:p-8 shadow-[0_20px_24px_rgba(0,0,0,0.24)]"
-          >
-            <h2 className="mb-2 text-center font-alternates text-xl font-bold text-foreground md:text-2xl">
-              Ask our AI about our services
-            </h2>
-            <p className="mx-auto mb-6 max-w-2xl text-center text-grey">
-              Not sure which service fits your situation? Ask about what we
-              offer, typical timelines, industries we work with, or how we'd
-              approach your use case.
-            </p>
+        <Section padding="compact" className="!pt-0">
+          <hr className={cn("border-t", editorialLine)} />
+          <div className="grid grid-cols-1 md:grid-cols-3">
+            {trustPillars.map((pillar, index) => (
+              <div key={pillar.kicker} className={trustCellClass(index)}>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                  {pillar.kicker}
+                </p>
+                <p className="font-alternates text-lg font-semibold text-foreground md:text-xl">
+                  {pillar.title}
+                </p>
+                <p className="text-sm font-light leading-relaxed text-muted-foreground">
+                  {pillar.body}
+                </p>
+              </div>
+            ))}
+          </div>
+          <hr className={cn("border-t", editorialLine)} />
+        </Section>
+
+        <Section padding="default">
+          <SectionHeader
+            title="Questions before you brief us?"
+            subtitle="Ask about fit, typical timelines, or how we’d approach your sector. When you’re ready, book a short scoping call."
+            titleClassName="text-2xl font-bold font-alternates text-foreground md:text-3xl"
+            subtitleClassName="max-w-2xl text-muted-foreground"
+            className="mb-8"
+          />
+          <DatacardsEmbedPanel fitContent className="rounded-xl p-6 md:p-8">
             <div className="flex w-full justify-center">
-              <div className="h-[300px] w-full max-w-[900px]">
+              <div className="h-[min(420px,70vh)] w-full max-w-[900px] min-h-[280px]">
                 <iframe
                   title="Ask about AI Flow services"
-                  className="block h-full w-full rounded-xl border-none bg-transparent"
-                  style={{
-                    borderRadius: 12,
-                    boxShadow: "0 20px 24px rgba(0, 0, 0, 0.24)",
-                  }}
+                  className="block h-full w-full rounded-lg border-0 bg-transparent"
                   src="https://app.datacards.ai/a/aiflow/services?theme=dark&scale=0"
                 />
               </div>
@@ -59,24 +107,37 @@ const Services = () => {
           </DatacardsEmbedPanel>
         </Section>
 
-        <Section>
-          <div className="space-y-12 md:space-y-16">
-            {services.map((service) => (
-              <ServiceBlock key={service.slug} service={service} />
+        <Section padding="default">
+          <SectionHeader
+            title="Three ways to work together"
+            subtitle="Foundation through build. Most organisations start with clarity or an audit before a full delivery—so scope, risk, and ROI are explicit for leadership and compliance."
+            titleClassName="text-3xl md:text-4xl"
+            subtitleClassName="max-w-2xl"
+            className="mb-12"
+          />
+
+          <div className="flex flex-col">
+            {services.map((service, index) => (
+              <div
+                key={service.slug}
+                className={index > 0 ? "mt-12 md:mt-16" : undefined}
+              >
+                <ServiceBlock service={service} index={index} />
+              </div>
             ))}
           </div>
         </Section>
 
-        <Section>
-          <div className="rounded-2xl border border-border bg-gradient-to-br from-card via-card to-primary/5 p-10 md:p-14 text-center">
+        <Section padding="compact">
+          <LineGridCta>
             <SectionHeader
-              title="Ready to get started?"
-              subtitle="Book a scoping call or explore our case studies to see how we deliver."
+              title="Ready to scope the next step?"
+              subtitle="Book a call with no obligation—or review case studies from teams with similar constraints."
               variant="centered"
-              titleClassName="text-2xl md:text-3xl font-alternates text-foreground"
-              subtitleClassName="text-grey max-w-xl mx-auto mb-8"
+              titleClassName="font-alternates text-2xl text-foreground md:text-3xl"
+              subtitleClassName="mx-auto mb-8 max-w-xl text-muted-foreground"
               action={
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex flex-col justify-center gap-4 sm:flex-row">
                   <Link to="/contact#calendly">
                     <SiteButton variant="primary" arrow="up-right">
                       Book a scoping call
@@ -90,9 +151,10 @@ const Services = () => {
                 </div>
               }
             />
-          </div>
+          </LineGridCta>
         </Section>
       </main>
+
       <Footer />
     </div>
   );

@@ -3,6 +3,13 @@ import { cn } from "@/lib/utils";
 /** Horizontal rules that match section line grids (full-width top border only). */
 export const lineHrClass = "w-full border-0 border-t border-border";
 
+/** Hairline border class + `<hr>` matching ServicesSection / BlogSection. */
+export const editorialLine = "border-[#E2E6F0]";
+export const editorialHrClass = "w-full border-0 border-t border-[#E2E6F0]";
+
+/** Horizontal padding for 3-up editorial rows on `md+` (desktop blog carousel / listing). */
+export const colPad3 = ["md:pr-10", "md:px-10", "md:pl-10"] as const;
+
 /**
  * Base grid: stacked rows on small screens with horizontal dividers; on `md+`,
  * horizontal dividers off and vertical dividers between columns (`divide-x`).
