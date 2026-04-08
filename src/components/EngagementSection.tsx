@@ -72,40 +72,27 @@ export const EngagementSection = () => {
             key={model.solution}
             to="/contact"
             className={cn(
-              "relative border-[#E2E6F0]",
+              "group relative border-[#E2E6F0]",
               engagementCellBorder[index],
               engagementColPad[index],
-              "flex flex-col gap-5 py-10",
-              // Fixed desktop tracks keep the solution divider aligned across all cards.
-              "md:grid md:min-h-0 md:gap-0 md:py-10 md:[grid-template-rows:120px_88px_minmax(0,1fr)]",
+              "flex flex-col gap-6 py-12",
             )}
           >
-            <div className="absolute w-7 h-7 right-4 top-4 z-10 flex items-center justify-center rounded-full border border-[#E2E6F0]">
-              <ArrowUpRight className="w-5 h-5 text-muted-foreground" />
-            </div>
+            {/* Step number */}
+            <span className="font-sans text-[11px] font-semibold tabular-nums tracking-[0.14em] text-foreground/25">
+              {String(index + 1).padStart(2, "0")}
+            </span>
 
-            <div className="relative z-10 pr-10 md:w-full">
-              <p className="font-sans text-[10px] font-medium uppercase tracking-[0.15em] text-muted-foreground mb-1.5">
-                Situation
-              </p>
-              <p className="font-sans text-base font-medium leading-snug text-foreground">
-                &ldquo;{model.situation}&rdquo;
-              </p>
-            </div>
-
-            <div className="relative z-10 md:w-full md:min-h-0">
-              <p className="font-sans text-[10px] font-medium uppercase tracking-[0.15em] text-muted-foreground mb-1.5">
-                Solution
-              </p>
-              <h3 className="font-sans font-medium text-lg leading-tight text-foreground">
-                {model.solution}
-              </h3>
-              <hr className="mt-4 mb-0 border-0 border-t border-[#E2E6F0]" />
-            </div>
-
-            <p className="relative z-10 font-sans font-light text-sm leading-[1.5] text-muted-foreground md:min-h-0">
-              {model.body}
+            {/* Quote — visual hero */}
+            <p className="font-sans text-2xl md:text-[1.65rem] font-light leading-snug text-foreground flex-1">
+              &ldquo;{model.situation}&rdquo;
             </p>
+
+            {/* Solution line */}
+            <div className="flex items-center gap-2 text-sm font-medium text-foreground/50 group-hover:text-foreground transition-colors duration-200">
+              {model.solution}
+              <ArrowUpRight className="w-4 h-4 shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+            </div>
           </Link>
         ))}
       </div>
