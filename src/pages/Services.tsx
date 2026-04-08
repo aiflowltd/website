@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 import { SiteButton } from "@/components/SiteButton";
 import { Section } from "@/components/Section";
 import { SectionHeader } from "@/components/SectionHeader";
-import { ServiceBlock } from "@/components/ServiceBlock";
 import { services } from "@/data/services";
 import { DatacardsEmbedPanel } from "@/components/DatacardsEmbedPanel";
 import { LineGridCta } from "@/components/LineGridCta";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const editorialLine = "border-[#E2E6F0]";
@@ -41,9 +40,13 @@ function trustCellClass(index: number) {
 }
 
 const Services = () => {
+  const [activeServiceIndex, setActiveServiceIndex] = useState(0);
+
   useEffect(() => {
     document.title = "AI Flow | Services";
   }, []);
+
+  const activeService = services[activeServiceIndex];
 
   return (
     <div className="relative min-h-screen bg-background text-foreground page-shell">
@@ -60,7 +63,7 @@ const Services = () => {
                 </span>
               </>
             }
-            subtitle="We map where your compliance hours are going. We build the pipeline that automates the reports. We stay on as the obligation stack grows."
+            subtitle="We start with a diagnostic, build the compliance pipeline once scope is agreed, and stay on as the obligation stack grows."
             titleClassName="text-3xl md:text-5xl"
             subtitleClassName="max-w-2xl text-base md:text-lg leading-relaxed"
           />
@@ -89,7 +92,7 @@ const Services = () => {
         <Section padding="default">
           <SectionHeader
             title="Have questions before we start?"
-            subtitle="Ask about fit, typical timelines, or how we’d approach your obligation stack. When you’re ready, book a scoping call."
+            subtitle="Ask about fit, typical timelines, or how we'd approach your obligation stack. When you're ready, book a scoping call."
             titleClassName="text-2xl font-bold font-alternates text-foreground md:text-3xl"
             subtitleClassName="max-w-2xl text-muted-foreground"
             className="mb-8"
@@ -113,18 +116,128 @@ const Services = () => {
             subtitle="Most organisations start with the Diagnostic — so scope, risk, and ROI are explicit for leadership before a line of code is written."
             titleClassName="text-3xl md:text-4xl"
             subtitleClassName="max-w-2xl"
-            className="mb-12"
+            className="mb-10"
           />
 
-          <div className="flex flex-col">
-            {services.map((service, index) => (
-              <div
-                key={service.slug}
-                className={index > 0 ? "mt-24 md:mt-32" : undefined}
-              >
-                <ServiceBlock service={service} index={index} />
+          {/* Tab bar */}
+          <div className={cn("border-b", editorialLine)}>
+            <div className="flex overflow-x-auto">
+              {services.map((service, index) => (
+                <button
+                  key={service.slug}
+                  type="button"
+                  onClick={() => setActiveServiceIndex(index)}
+                  className={cn(
+                    "flex items-center gap-2.5 px-5 py-4 text-sm border-b-2 transition-colors whitespace-nowrap",
+                    activeServiceIndex === index
+                      ? "border-foreground text-foreground"
+                      : "border-transparent text-muted-foreground hover:text-foreground",
+                  )}
+                >
+                  <span className="text-[10px] font-bold tabular-nums tracking-[0.2em] text-muted-foreground/50">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="font-medium">{service.title}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Active service panel */}
+          <div className="grid md:grid-cols-2 gap-0">
+            {/* Left column */}
+            <div
+              className={cn(
+                "py-10 md:py-12 md:pr-12 lg:pr-16",
+                "border-b md:border-b-0 md:border-r",
+                editorialLine,
+              )}
+            >
+              {activeService.tagline && (
+                <p className="text-base font-semibold text-foreground/80 mb-4">
+                  {activeService.tagline}
+                </p>
+              )}
+              <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.65] mb-8">
+                {activeService.description}
+              </p>
+              {activeService.features && activeService.features.length > 0 && (
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-foreground/40 mb-4">
+                    What&apos;s included
+                  </p>
+                  <ul className="space-y-3">
+                    {activeService.features.map((feature, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-success mt-[0.4em] shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+
+            {/* Right column */}
+            <div className="py-10 md:py-12 md:pl-12 lg:pl-16 flex flex-col gap-8">
+              {activeService.outcomes && activeService.outcomes.length > 0 && (
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-foreground/40 mb-4">
+                    Outcomes
+                  </p>
+                  <ul className="space-y-3">
+                    {activeService.outcomes.map((outcome, i) => (
+                      <li
+                        key={i}
+                        className="text-sm leading-relaxed text-muted-foreground"
+                      >
+                        {outcome}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {activeService.typicalTimeline && (
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-foreground/40 mb-2">
+                    Typical timeline
+                  </p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {activeService.typicalTimeline}
+                  </p>
+                </div>
+              )}
+
+              {activeService.idealFor && activeService.idealFor.length > 0 && (
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-foreground/40 mb-4">
+                    Best for
+                  </p>
+                  <ul className="space-y-2.5">
+                    {activeService.idealFor.map((item, i) => (
+                      <li
+                        key={i}
+                        className="text-sm leading-relaxed text-muted-foreground"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <div className="mt-auto pt-2">
+                <Link to="/contact#calendly">
+                  <SiteButton variant="primary" arrow="up-right">
+                    Discuss this engagement
+                  </SiteButton>
+                </Link>
               </div>
-            ))}
+            </div>
           </div>
         </Section>
 
