@@ -40,10 +40,10 @@ export const Footer = () => {
               fintechs.
             </p>
             <a
-              href="mailto:hello@aiflow.software"
+              href="mailto:contact@aiflow.ltd"
               className="text-sm text-primary hover:underline"
             >
-              hello@aiflow.software
+              contact@aiflow.ltd
             </a>
           </div>
 
