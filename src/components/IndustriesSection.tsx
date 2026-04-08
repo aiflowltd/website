@@ -1,65 +1,112 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronRight, MoreHorizontal } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { SiteButton } from "@/components/SiteButton";
 import { Section } from "@/components/Section";
 import { SectionHeader } from "@/components/SectionHeader";
-import { getCaseStudy } from "@/data/caseStudies";
 
-const industries = [
+const frameworks = [
   {
-    title: "Private Equity",
-    description:
-      "Deal sourcing, portfolio benchmarking, and due diligence intelligence.",
-    href: "/industry/agnostic",
-    caseStudyId: "construction-materials-retailer",
+    id: "psd2",
+    title: "PSD2",
+    fullName: "Payment Services Directive 2",
+    jurisdiction: "EU · UK",
+    appliesTo: "Payment institutions, banks",
+    automated: [
+      "Incident reporting to competent authorities",
+      "SCA exemption monitoring and documentation",
+      "Fraud reporting (Article 96)",
+      "Operational and security risk reporting",
+    ],
+    detail:
+      "Each incident report requires data from operations, risk, and technology assembled within 24 hours of detection. We build the pipeline so the report is ready before the deadline — not assembled under it.",
   },
   {
-    title: "Finance & Fintech",
-    description: "Decisioning platforms and production financial systems.",
-    href: "/industry/agnostic",
-    caseStudyId: "student-financing-platform",
+    id: "mifid2",
+    title: "MiFID II",
+    fullName: "Markets in Financial Instruments Directive II",
+    jurisdiction: "EU · UK",
+    appliesTo: "Investment firms, banks with trading operations",
+    automated: [
+      "Transaction reporting to NCAs and ESMA",
+      "Best execution reporting (RTS 27 / 28)",
+      "Trade and order records",
+      "Investor suitability documentation",
+    ],
+    detail:
+      "Transaction reporting runs on tight deadlines with data from multiple trading systems. We map your trade data to the required fields and automate submission — no manual reconciliation, full audit trail.",
   },
   {
-    title: "Oil, Gas & Energy",
-    description:
-      "Trading intelligence, regulatory compliance, and operational automation at scale.",
-    href: "/industry/agnostic",
-    caseStudyId: "oil-gas-invoice-automation",
+    id: "dora",
+    title: "DORA",
+    fullName: "Digital Operational Resilience Act",
+    jurisdiction: "EU",
+    appliesTo: "Banks, payment institutions, investment firms",
+    automated: [
+      "Major ICT incident classification and reporting",
+      "Third-party ICT provider risk register",
+      "Operational resilience testing documentation",
+      "TLPT coordination reporting",
+    ],
+    detail:
+      "DORA penalties for inadequate incident reporting start at €1M. The classification timeline is 4 hours for initial notification, 72 hours for intermediate report. We automate the data collection so classification happens on facts, not memory.",
   },
   {
-    title: "Enterprise SaaS",
-    description: "Embedded AI features and internal tooling.",
-    href: "/industry/agnostic",
-    caseStudyId: "sales-intelligence-platform",
+    id: "aml",
+    title: "AML",
+    fullName: "Anti-Money Laundering",
+    jurisdiction: "EU · UK · US",
+    appliesTo: "Banks, payment institutions, fintechs",
+    automated: [
+      "Suspicious Activity Report (SAR) filing",
+      "Transaction monitoring report generation",
+      "Customer due diligence documentation",
+      "Periodic AML compliance reporting",
+    ],
+    detail:
+      "AML reporting pulls data from transaction systems, customer records, and risk flags across departments. We unify those sources into a single automated pipeline — reports that are accurate, timely, and fully auditable.",
   },
   {
-    title: "Legal & Professional",
-    description:
-      "Document intelligence, compliance workflows, and risk-aware automation.",
-    href: "/industry/legal",
-    caseStudyId: "legal-intelligence-platform",
+    id: "fincen",
+    title: "FinCEN",
+    fullName: "Financial Crimes Enforcement Network",
+    jurisdiction: "US",
+    appliesTo: "Banks, money services businesses, fintechs",
+    automated: [
+      "Suspicious Activity Reports (SARs)",
+      "Currency Transaction Reports (CTRs)",
+      "Beneficial Ownership reporting",
+      "BSA compliance documentation",
+    ],
+    detail:
+      "Growth-stage fintechs operating across multiple states often have SAR and CTR obligations before they have the infrastructure to file consistently. We build the pipeline so every obligation is met — regardless of how fast the company is growing.",
   },
   {
-    title: "Construction",
-    description: "Intake, quotation, and risk systems for complex projects.",
-    href: "/industry/construction",
-    caseStudyId: "automated-customer-intake",
+    id: "cfpb",
+    title: "CFPB",
+    fullName: "Consumer Financial Protection Bureau",
+    jurisdiction: "US",
+    appliesTo: "Lenders, payment companies, fintechs",
+    automated: [
+      "HMDA loan application register",
+      "Fair lending data analysis and reporting",
+      "Complaint data reporting",
+      "Supervisory examination preparation",
+    ],
+    detail:
+      "CFPB examinations arrive on a schedule — but the data preparation should not. We automate the HMDA register and fair lending analysis so the team walks into an examination with documentation ready, not assembled under pressure.",
   },
 ];
 
 export const IndustriesSection = () => {
-  const [activeIndex, setActiveIndex] = useState(3);
-  const industryRefs = useRef<(HTMLElement | null)[]>([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const frameworkRefs = useRef<(HTMLElement | null)[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const container = sectionRef.current;
-    if (!container) return;
-
     const check = () => {
       const triggerY = window.innerHeight * 0.35;
-      const refs = industryRefs.current.filter(
+      const refs = frameworkRefs.current.filter(
         (el): el is HTMLElement => el != null,
       );
       for (let i = refs.length - 1; i >= 0; i--) {
@@ -77,29 +124,26 @@ export const IndustriesSection = () => {
     return () => window.removeEventListener("scroll", check);
   }, []);
 
-  const activeIndustry = industries[activeIndex];
-  const caseStudy = activeIndustry
-    ? getCaseStudy(activeIndustry.caseStudyId)
-    : null;
+  const active = frameworks[activeIndex];
 
   return (
     <Section ref={sectionRef} className="w-full">
       <SectionHeader
-        title="Proven across industries"
-        subtitle="AI systems built around real constraints, not generic templates."
+        title="Built for the frameworks your team reports to."
+        subtitle="PSD2, MiFID II, DORA, AML, FinCEN, CFPB — each with its own templates, deadlines, and data requirements. We automate the pipeline for each one."
         titleClassName="mb-3"
         className="mb-12 lg:mb-16"
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        {/* Left: industry list, indented */}
+        {/* Left: framework list */}
         <div className="lg:col-span-5">
           <div className="space-y-0">
-            {industries.map((industry, index) => (
+            {frameworks.map((framework, index) => (
               <div
-                key={index}
+                key={framework.id}
                 ref={(el) => {
-                  industryRefs.current[index] = el;
+                  frameworkRefs.current[index] = el;
                 }}
                 className="border-b border-border last:border-b-0"
               >
@@ -107,15 +151,15 @@ export const IndustriesSection = () => {
                   type="button"
                   onClick={() => setActiveIndex(index)}
                   className={`group flex w-full items-start justify-between gap-4 py-6 text-left transition-opacity hover:opacity-100 ${
-                    index === activeIndex ? "opacity-100" : "opacity-70"
+                    index === activeIndex ? "opacity-100" : "opacity-40"
                   }`}
                 >
                   <div className="min-w-0 flex-1">
                     <h3 className="text-xl md:text-2xl font-bold font-alternates mb-1">
-                      {industry.title}
+                      {framework.title}
                     </h3>
-                    <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-                      {industry.description}
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {framework.fullName}
                     </p>
                   </div>
                   <ChevronRight
@@ -127,72 +171,63 @@ export const IndustriesSection = () => {
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-4 mt-10">
+          <div className="mt-10">
             <Link to="/contact">
-              <SiteButton variant="primary">
-                Discuss a similar project
+              <SiteButton variant="primary" arrow="up-right">
+                Book a diagnostic call
               </SiteButton>
-            </Link>
-            <Link to="/case-studies">
-              <SiteButton variant="secondary">View all case studies</SiteButton>
             </Link>
           </div>
         </div>
 
-        {/* Right: floating case study window - scrolls with section, then sticks under navbar until section ends */}
+        {/* Right: framework detail panel */}
         <div className="lg:col-span-7 lg:self-start lg:sticky lg:top-24">
-          <div className="relative rounded-xl border border-border bg-card shadow-xl overflow-hidden">
-            {/* Browser-style chrome */}
-            <div className="flex items-center gap-2 px-4 py-2.5 border-b border-border bg-muted/50">
-              <div className="flex gap-1.5">
-                <span className="w-3 h-3 rounded-full bg-red-500/80" />
-                <span className="w-3 h-3 rounded-full bg-amber-500/80" />
-                <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
+          {active && (
+            <div className="rounded-xl border border-border bg-card overflow-hidden">
+              {/* Header */}
+              <div className="px-6 py-6 border-b border-border">
+                <div className="flex items-start justify-between gap-4 mb-1">
+                  <h3 className="font-alternates text-3xl font-bold text-foreground">
+                    {active.title}
+                  </h3>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground border border-border rounded px-2 py-1 shrink-0 mt-1.5">
+                    {active.jurisdiction}
+                  </span>
+                </div>
+                <p className="text-sm text-muted-foreground leading-snug">
+                  {active.fullName}
+                </p>
+                <p className="text-xs text-muted-foreground/60 mt-0.5">
+                  {active.appliesTo}
+                </p>
               </div>
-              <div className="flex-1 flex items-center gap-2 ml-4 px-3 py-1.5 rounded-md bg-background/80 border border-border text-xs text-muted-foreground font-mono max-w-full min-w-0">
-                <span className="truncate">
-                  aiflow.ltd/case-studies/{caseStudy?.id ?? "..."}
-                </span>
-              </div>
-              <MoreHorizontal className="w-4 h-4 text-muted-foreground shrink-0" />
-            </div>
 
-            <div className="min-h-[420px] flex flex-col">
-              {caseStudy && (
-                <>
-                  <div className="relative h-36 sm:h-44 shrink-0 overflow-hidden bg-muted">
-                    <img
-                      src={caseStudy.image}
-                      alt=""
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-4 sm:p-6 flex flex-col flex-1">
-                    <h3 className="text-lg sm:text-xl font-bold font-alternates mb-2 line-clamp-2">
-                      {caseStudy.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3 flex-1">
-                      {caseStudy.solution}
-                    </p>
-                    <div className="flex items-center justify-between gap-4 flex-wrap">
-                      <Link to={`/case-studies/${caseStudy.id}`}>
-                        <SiteButton variant="primary">
-                          Read full case study
-                        </SiteButton>
-                      </Link>
-                      {(caseStudy.duration || caseStudy.teamSize) && (
-                        <span className="text-xs text-muted-foreground">
-                          {[caseStudy.duration, caseStudy.teamSize]
-                            .filter(Boolean)
-                            .join(" • ")}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </>
-              )}
+              {/* What we automate */}
+              <div className="px-6 py-5 border-b border-border">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground mb-4">
+                  What we automate
+                </p>
+                <ul className="space-y-3">
+                  {active.automated.map((item, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-3 text-sm leading-relaxed text-foreground"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-success mt-[0.4rem] shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Detail paragraph */}
+              <div className="px-6 py-5">
+                <p className="text-sm font-light leading-relaxed text-muted-foreground">
+                  {active.detail}
+                </p>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </Section>
