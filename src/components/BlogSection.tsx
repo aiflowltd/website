@@ -114,8 +114,8 @@ export const BlogSection = () => {
   return (
     <Section overflowHidden onMouseLeave={handleSectionLeave}>
       <SectionHeader
-        title="Latest thinking..."
-        subtitle="Notes from the field, grounded in production work."
+        title="From the compliance desk."
+        subtitle="Regulatory technology, compliance infrastructure, and the problems we are solving."
         action={
           <Link to="/blog">
             <SiteButton variant="secondary">Explore our blog</SiteButton>

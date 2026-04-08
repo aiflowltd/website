@@ -20,7 +20,7 @@ export const TestimonialsSection = () => {
       <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-16 gap-6">
         <SectionHeader
           title="What clients say"
-          subtitle="Stories from teams we've worked with"
+          subtitle="From the compliance teams and regulated institutions we have worked with."
           subtitleClassName="max-w-2xl"
           className="mb-0 flex-1"
         />
