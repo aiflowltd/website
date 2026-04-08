@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
 const WIDGET_SRC =
-  "http://localhost:3000/a/mihai/personal/intercom?theme=light";
-// http://localhost:3000/mihai/personal
+  "https://app.datacards.ai/a/aiflow/company-questions/intercom?theme=light";
+
 /** Fixed Datacards embed + resize handshake; mounted once in App for all routes. */
 export function DatacardsWidget() {
   useEffect(() => {
