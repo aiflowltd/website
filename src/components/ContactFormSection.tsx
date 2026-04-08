@@ -39,28 +39,24 @@ const companySizes = [
 ];
 
 const industries = [
-  "Construction",
-  "Real Estate",
-  "Legal & Professional",
-  "Energy & Industrial",
-  "Finance & Fintech",
-  "Enterprise SaaS",
+  "Bank or payment institution (EU)",
+  "Growth-stage fintech (US)",
+  "Other regulated financial institution",
   "Other",
 ];
 
 const situations = [
-  "Exploring an AI opportunity",
-  "Need help with an existing AI project",
-  "Looking for an AI team/partner",
-  "Want a technical assessment",
+  "Preparing for an upcoming audit",
+  "Automating recurring regulatory reports",
+  "Expanding into new jurisdictions",
+  "Not sure where to start",
   "Other",
 ];
 
 const engagementTypes = [
-  "Advisory",
-  "Team augmentation",
-  "Small delivery team",
-  "Partner team",
+  "Compliance Diagnostic",
+  "Pipeline Build",
+  "Quarterly Retainer",
   "Not sure yet",
 ];
 
@@ -111,7 +107,7 @@ export const ContactFormSection = () => {
         {/* Left: same header alignment as other sections */}
         <div>
           <p className="text-4xl md:text-5xl text-muted-foreground mb-1">
-            If information is a competitive advantage in your business,
+            If the client meeting keeps getting cancelled for filing deadlines,
           </p>
           <h2 className="text-4xl md:text-5xl font-bold font-alternates">
             it is worth a conversation.
