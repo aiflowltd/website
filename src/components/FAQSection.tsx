@@ -9,20 +9,20 @@ const faqs = [
       "That is exactly what the Compliance Diagnostic is for. In 1–2 weeks we map your compliance workflows, data sources, and regulatory obligations across operations, finance, risk, and technology. You leave with a prioritised roadmap and a clear answer on where the data handoff problem is — whether you proceed with us or not.",
   },
   {
-    question: "How do you price? We need to present this internally.",
+    question: "Is AI Flow right for us?",
     answer:
-      "We price on scope and defined deliverables — not on days or headcount. The Compliance Diagnostic is fixed-price with a defined output. The Pipeline Build is scoped after the Diagnostic, with a clear budget before any commitment. We are comfortable helping you build the business case for internal sign-off.",
+      "AI Flow is built for two situations. First: a compliance team managing a regulatory obligation stack that is growing faster than the team can handle — spending most of their hours on data assembly rather than compliance work. Second: a regulated institution or growth-stage fintech that has had a data handoff failure that looked like a compliance failure, and knows it needs infrastructure, not more headcount. If your team rebuilds the same reports from scratch every cycle, if adding a new jurisdiction means adding a new manual process, or if an audit request triggers days of document preparation — this is the problem we solve.",
   },
   {
     question:
       "We have sensitive data and strict security requirements. How do you handle that?",
     answer:
-      "We work under NDA from the first conversation, as standard. Architecture, data access, and deployment environments are designed around your requirements — not a default template. We have experience with on-premise deployments and multi-jurisdiction data residency constraints.",
+      "We work under NDA from the first conversation, as standard. Our systems are built to OWASP standards and follow industry-recognised security practices throughout the development lifecycle. Architecture, data access, and deployment environments are designed around your requirements — not a default template. We have experience with on-premise deployments, air-gapped environments, and multi-jurisdiction data residency constraints.",
   },
   {
     question: "We have an internal data team. Where do you fit?",
     answer:
-      "We work alongside internal teams, not instead of them. We provide the compliance infrastructure engineering — data pipeline design, regulatory mapping, automated reporting, audit trail implementation — that most internal data teams do not have in-house. Your team retains ownership of what we build. We provide the runbook.",
+      "We work alongside internal teams, not instead of them. We provide the compliance infrastructure engineering — data pipeline design, regulatory mapping, automated reporting, audit trail implementation — that most internal data teams do not have in-house. Regulatory obligations do not respect department boundaries. A MiFID II transaction report pulls from trading, risk, and finance simultaneously. A DORA incident report requires data from IT operations, security, and senior management. We sit with the compliance team but work across operations, finance, risk, and technology — because that is where the data lives. Your team retains ownership of what we build. We provide the runbook.",
   },
 ];
 
