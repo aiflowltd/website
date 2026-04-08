@@ -264,7 +264,7 @@ const ClientPageTemplate = ({
             left: "50%",
             transform: "translate3d(-50%, 0, 0)",
             width: "min(580px, 95vw)",
-            height: 82,
+            height: 382,
             border: "none",
             background: "transparent",
             zIndex: 2147483647,
