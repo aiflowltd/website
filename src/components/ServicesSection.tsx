@@ -41,7 +41,7 @@ export const ServicesSection = () => {
   return (
     <Section id="services" scrollMargin>
       <SectionHeader
-        title="Three engagements. Each with a fixed outcome."
+        title="Three engagements. Each with a clear outcome."
         subtitle="Start with a diagnostic. Build together. Stay for the long run."
         className="mb-12"
       />
