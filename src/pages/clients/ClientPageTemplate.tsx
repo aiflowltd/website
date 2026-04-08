@@ -9,6 +9,7 @@ interface ClientPageTemplateProps {
   widgetWidth?: number;
   widgetHeight?: number;
   widgetColor?: string;
+  mobileWidgetUrl?: string;
 }
 
 const ClientPageTemplate = ({
@@ -18,6 +19,7 @@ const ClientPageTemplate = ({
   widgetWidth = 400,
   widgetHeight = 600,
   widgetColor,
+  mobileWidgetUrl,
 }: ClientPageTemplateProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [position, setPosition] = useState(() => {
@@ -32,12 +34,20 @@ const ClientPageTemplate = ({
   const [isHovered, setIsHovered] = useState(false);
   const [hasConsented, setHasConsented] = useState(false);
   const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const dragOffset = useRef({ x: 0, y: 0 });
   const positionRef = useRef(position);
 
   useEffect(() => {
     positionRef.current = position;
   }, [position]);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     document.title = clientName;
@@ -201,7 +211,7 @@ const ClientPageTemplate = ({
           display: hasConsented ? "block" : "none",
         }}
       />
-      {hasConsented && (
+      {hasConsented && !isMobile && (
         <div
           className="absolute pointer-events-auto"
           style={{
@@ -210,38 +220,56 @@ const ClientPageTemplate = ({
             top: position.y,
           }}
         >
-        <div
-          className="relative pt-14"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => !isDragging && setIsHovered(false)}
-        >
-          <button
-            onMouseDown={handleMouseDown}
-            className="absolute top-0 left-1/2 -translate-x-1/2 flex items-center justify-center gap-2 py-2 px-4 rounded-full select-none cursor-grab active:cursor-grabbing transition-all hover:scale-105"
-            style={{
-              background: "rgba(0,0,0,0.8)",
-              backdropFilter: "blur(8px)",
-              border: "1px solid rgba(255,255,255,0.2)",
-              opacity: isHovered || isDragging ? 1 : 0,
-              pointerEvents: isHovered || isDragging ? "auto" : "none",
-              transition: "opacity 0.2s, transform 0.2s",
-            }}
+          <div
+            className="relative pt-14"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => !isDragging && setIsHovered(false)}
           >
-            <Move className="w-4 h-4 text-white" />
-            <span className="text-sm text-white font-medium">Move widget</span>
-          </button>
-          <iframe
-            src={widgetUrl}
-            width={widgetWidth}
-            height={widgetHeight}
-            color={widgetColor}
-            className="border-0 rounded-2xl shadow-2xl"
-            style={{
-              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
-            }}
-          />
+            <button
+              onMouseDown={handleMouseDown}
+              className="absolute top-0 left-1/2 -translate-x-1/2 flex items-center justify-center gap-2 py-2 px-4 rounded-full select-none cursor-grab active:cursor-grabbing transition-all hover:scale-105"
+              style={{
+                background: "rgba(0,0,0,0.8)",
+                backdropFilter: "blur(8px)",
+                border: "1px solid rgba(255,255,255,0.2)",
+                opacity: isHovered || isDragging ? 1 : 0,
+                pointerEvents: isHovered || isDragging ? "auto" : "none",
+                transition: "opacity 0.2s, transform 0.2s",
+              }}
+            >
+              <Move className="w-4 h-4 text-white" />
+              <span className="text-sm text-white font-medium">Move widget</span>
+            </button>
+            <iframe
+              src={widgetUrl}
+              width={widgetWidth}
+              height={widgetHeight}
+              color={widgetColor}
+              className="border-0 rounded-2xl shadow-2xl"
+              style={{
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+              }}
+            />
+          </div>
         </div>
-      </div>
+      )}
+      {hasConsented && isMobile && mobileWidgetUrl && (
+        <iframe
+          className="pointer-events-auto"
+          src={mobileWidgetUrl}
+          title="Mobile Widget"
+          style={{
+            position: "fixed",
+            bottom: 24,
+            left: "50%",
+            transform: "translate3d(-50%, 0, 0)",
+            width: "min(580px, 95vw)",
+            height: 82,
+            border: "none",
+            background: "transparent",
+            zIndex: 2147483647,
+          }}
+        />
       )}
     </div>
   );

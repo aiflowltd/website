@@ -34,6 +34,13 @@ import PropTech from "./pages/industry/PropTech";
 import Agnostic from "./pages/industry/Agnostic";
 import Workshops from "./pages/Workshops";
 import { DatacardsWidget } from "@/components/DatacardsWidget";
+import { useLocation } from "react-router-dom";
+
+const DatacardsWidgetWrapper = () => {
+  const location = useLocation();
+  if (location.pathname.startsWith("/clients/")) return null;
+  return <DatacardsWidget />;
+};
 
 const queryClient = new QueryClient();
 
@@ -76,7 +83,7 @@ const App = () => {
               <Route path="*" element={<NotFound />} />
             </Routes>
             <CookieBanner />
-            <DatacardsWidget />
+            <DatacardsWidgetWrapper />
           </BrowserRouter>
           <ConsentGatedAnalytics />
         </TooltipProvider>
