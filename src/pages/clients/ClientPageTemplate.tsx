@@ -3,62 +3,41 @@ import { useSearchParams, Link } from "react-router-dom";
 import { Move } from "lucide-react";
 import { DatacardsWidget } from "@/components/DatacardsWidget";
 
-interface ClientPageTemplateProps {
-  websiteUrl: string;
+interface DesktopWidgetProps {
   widgetUrl: string;
-  clientName: string;
-  widgetWidth?: number;
-  widgetHeight?: number;
+  widgetWidth: number;
+  widgetHeight: number;
   widgetColor?: string;
-  mobileWidgetUrl?: string;
 }
 
-const ClientPageTemplate = ({
-  websiteUrl,
+const DesktopWidget = ({
   widgetUrl,
-  clientName,
-  widgetWidth = 400,
-  widgetHeight = 600,
+  widgetWidth,
+  widgetHeight,
   widgetColor,
-  mobileWidgetUrl,
-}: ClientPageTemplateProps) => {
+}: DesktopWidgetProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [position, setPosition] = useState(() => {
-    const x = searchParams.get("x");
-    const y = searchParams.get("y");
+  const getInitialPosition = () => {
+    const params = new URLSearchParams(window.location.search);
+    const urlX = params.get("x");
+    const urlY = params.get("y");
+    if (urlX && urlY) {
+      return { x: parseInt(urlX), y: parseInt(urlY) };
+    }
     return {
-      x: x ? parseInt(x) : -1,
-      y: y ? parseInt(y) : -1,
+      x: window.innerWidth - widgetWidth - 24,
+      y: Math.max(20, window.innerHeight - widgetHeight - 40),
     };
-  });
+  };
+  const [position, setPosition] = useState(getInitialPosition);
   const [isDragging, setIsDragging] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [hasConsented, setHasConsented] = useState(false);
-  const [iframeLoaded, setIframeLoaded] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const dragOffset = useRef({ x: 0, y: 0 });
   const positionRef = useRef(position);
 
   useEffect(() => {
     positionRef.current = position;
   }, [position]);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  useEffect(() => {
-    document.title = clientName;
-    if (position.x === -1 || position.y === -1) {
-      setPosition({
-        x: window.innerWidth - widgetWidth - 24,
-        y: Math.max(20, window.innerHeight - widgetHeight - 40),
-      });
-    }
-  }, [clientName, widgetWidth, widgetHeight]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -89,12 +68,88 @@ const ClientPageTemplate = ({
       window.addEventListener("mousemove", handleMouseMove);
       window.addEventListener("mouseup", handleMouseUp);
     }
-
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
     };
   }, [isDragging, handleMouseMove, handleMouseUp]);
+
+  return (
+    <div
+      className="absolute pointer-events-auto"
+      style={{
+        zIndex: 2,
+        left: position.x,
+        top: position.y,
+      }}
+    >
+      <div
+        className="relative pt-14"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => !isDragging && setIsHovered(false)}
+      >
+        <button
+          onMouseDown={handleMouseDown}
+          className="absolute top-0 left-1/2 -translate-x-1/2 flex items-center justify-center gap-2 py-2 px-4 rounded-full select-none cursor-grab active:cursor-grabbing transition-all hover:scale-105"
+          style={{
+            background: "rgba(0,0,0,0.8)",
+            backdropFilter: "blur(8px)",
+            border: "1px solid rgba(255,255,255,0.2)",
+            opacity: isHovered || isDragging ? 1 : 0,
+            pointerEvents: isHovered || isDragging ? "auto" : "none",
+            transition: "opacity 0.2s, transform 0.2s",
+          }}
+        >
+          <Move className="w-4 h-4 text-white" />
+          <span className="text-sm text-white font-medium">Move widget</span>
+        </button>
+        <iframe
+          src={widgetUrl}
+          width={widgetWidth}
+          height={widgetHeight}
+          color={widgetColor}
+          className="border-0 rounded-2xl shadow-2xl"
+          style={{
+            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+          }}
+        />
+      </div>
+    </div>
+  );
+};
+
+interface ClientPageTemplateProps {
+  websiteUrl: string;
+  widgetUrl: string;
+  clientName: string;
+  widgetWidth?: number;
+  widgetHeight?: number;
+  widgetColor?: string;
+  mobileWidgetUrl?: string;
+}
+
+const ClientPageTemplate = ({
+  websiteUrl,
+  widgetUrl,
+  clientName,
+  widgetWidth = 400,
+  widgetHeight = 600,
+  widgetColor,
+  mobileWidgetUrl,
+}: ClientPageTemplateProps) => {
+  const [hasConsented, setHasConsented] = useState(false);
+  const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    document.title = clientName;
+  }, [clientName]);
 
   return (
     <div className="relative w-full h-screen overflow-hidden" style={{ backgroundColor: "#000000" }}>
@@ -213,46 +268,12 @@ const ClientPageTemplate = ({
         }}
       />
       {hasConsented && !isMobile && (
-        <div
-          className="absolute pointer-events-auto"
-          style={{
-            zIndex: 2,
-            left: position.x,
-            top: position.y,
-          }}
-        >
-          <div
-            className="relative pt-14"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => !isDragging && setIsHovered(false)}
-          >
-            <button
-              onMouseDown={handleMouseDown}
-              className="absolute top-0 left-1/2 -translate-x-1/2 flex items-center justify-center gap-2 py-2 px-4 rounded-full select-none cursor-grab active:cursor-grabbing transition-all hover:scale-105"
-              style={{
-                background: "rgba(0,0,0,0.8)",
-                backdropFilter: "blur(8px)",
-                border: "1px solid rgba(255,255,255,0.2)",
-                opacity: isHovered || isDragging ? 1 : 0,
-                pointerEvents: isHovered || isDragging ? "auto" : "none",
-                transition: "opacity 0.2s, transform 0.2s",
-              }}
-            >
-              <Move className="w-4 h-4 text-white" />
-              <span className="text-sm text-white font-medium">Move widget</span>
-            </button>
-            <iframe
-              src={widgetUrl}
-              width={widgetWidth}
-              height={widgetHeight}
-              color={widgetColor}
-              className="border-0 rounded-2xl shadow-2xl"
-              style={{
-                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
-              }}
-            />
-          </div>
-        </div>
+        <DesktopWidget
+          widgetUrl={widgetUrl}
+          widgetWidth={widgetWidth}
+          widgetHeight={widgetHeight}
+          widgetColor={widgetColor}
+        />
       )}
       {hasConsented && isMobile && mobileWidgetUrl && (
         <DatacardsWidget src={mobileWidgetUrl} />
