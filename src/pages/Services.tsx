@@ -60,7 +60,7 @@ const Services = () => {
                 </span>
               </>
             }
-            subtitle="Start with a diagnostic. Build together. Stay for the long run."
+            subtitle="We map where your compliance hours are going. We build the pipeline that automates the reports. We stay on as the obligation stack grows."
             titleClassName="text-3xl md:text-5xl"
             subtitleClassName="max-w-2xl text-base md:text-lg leading-relaxed"
           />
