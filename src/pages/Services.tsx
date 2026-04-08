@@ -15,19 +15,19 @@ const editorialLine = "border-[#E2E6F0]";
 
 const trustPillars = [
   {
-    kicker: "Commercial clarity",
-    title: "Fixed scope and price",
-    body: "Deliverables and timeline are agreed before work begins—no open-ended time and materials.",
+    kicker: "No surprises",
+    title: "Scope and outcome agreed before we start",
+    body: "Deliverables, timeline, and acceptance criteria are defined before any work begins. You know exactly what you are getting before you commit.",
   },
   {
     kicker: "Delivery",
-    title: "Senior-led teams",
-    body: "Experienced practitioners stay on the engagement; outputs are documented for audit and handoff.",
+    title: "Senior engineers throughout",
+    body: "The people who scope the work build it. No handoff to a junior team. Outputs are documented for your audit trail and for any future team that maintains the system.",
   },
   {
-    kicker: "Control",
-    title: "Your stack, your data",
-    body: "We integrate with systems you already run. You retain ownership; we provide the build and runbook.",
+    kicker: "Independence",
+    title: "Your data stays yours",
+    body: "We build on the systems you already run. You retain full ownership of what we build. We hand over the runbook so your team can operate and extend the infrastructure without us.",
   },
 ] as const;
 
@@ -54,9 +54,9 @@ const Services = () => {
           <SectionHeader
             title={
               <>
-                Three fixed-scope{" "}
+                Diagnostic.{" "}
                 <span className="font-extralight">
-                  engagements.
+                  Build. Operate.
                 </span>
               </>
             }
