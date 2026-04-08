@@ -107,7 +107,7 @@ export const ContactFormSection = () => {
         {/* Left: same header alignment as other sections */}
         <div>
           <p className="text-4xl md:text-5xl text-muted-foreground mb-1">
-            If the client meeting keeps getting cancelled for filing deadlines,
+            If the client meeting keeps getting cancelled because of filing deadlines,
           </p>
           <h2 className="text-4xl md:text-5xl font-bold font-alternates">
             it is worth a conversation.
