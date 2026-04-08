@@ -153,10 +153,10 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "quarterly-retainer",
+    slug: "compliance-operations",
     iconPath: "/images/icons/services-custom-agents.svg",
     icon: <Code2 className="w-12 h-12" />,
-    title: "Quarterly Retainer",
+    title: "Compliance Operations",
     tagline: "Each new obligation adds a module. Not a manual process.",
     description:
       "Ongoing infrastructure management, scoped by obligation. When a new regulatory requirement lands, it becomes an automated output on top of the existing pipeline — not a new build from scratch and not a new manual process for the team.",

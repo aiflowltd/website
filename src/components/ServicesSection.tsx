@@ -22,7 +22,7 @@ const services = [
   },
   {
     index: "03",
-    title: "Quarterly Retainer",
+    title: "Compliance Operations",
     phase: "Operate",
     description:
       "Ongoing infrastructure management, scoped by obligation. Each new regulatory requirement adds an automated output on top of the existing pipeline — not a new manual process for the team. The client meeting stays on the calendar.",

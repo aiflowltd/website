@@ -56,7 +56,7 @@ const situations = [
 const engagementTypes = [
   "Compliance Diagnostic",
   "Pipeline Build",
-  "Quarterly Retainer",
+  "Compliance Operations",
   "Not sure yet",
 ];
 
