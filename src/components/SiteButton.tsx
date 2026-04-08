@@ -5,13 +5,13 @@ import { forwardRef } from "react";
 type Variant = "primary" | "secondary" | "tertiary" | "nav";
 type ArrowType = "right" | "up-right" | false;
 
-/** Shared button typography: Montserrat 400, 14px, 21px line-height, 0.25px letter-spacing */
 const buttonTypography =
   "font-sans font-normal text-sm leading-[21px] tracking-[0.25px]";
 
-/** Primary gradient for hover states (arrow circle, nav pill) */
 const primaryGradient =
-  "linear-gradient(105.61deg, #0DD9B7 9.01%, #13C9DA 27.5%, #18BDF5 44.3%, #1AB8FF 54.38%, #748DFC 92.18%)";
+  "linear-gradient(105.61deg, #0DD9B7 9.01%, #13C9DA 27.5%, #18BDF5 44.3%, #112e63 54.38%, #748DFC 92.18%)";
+const arrowHoverGradient =
+  "linear-gradient(120deg, #475564 0%, #556679 18%, #677C92 34%, #7A92AB 50%, #79A5C3 66%, #5DB5E2 82%, #1AB8FF 100%)";
 
 interface SiteButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
@@ -43,11 +43,12 @@ const SiteButton = forwardRef<HTMLButtonElement, SiteButtonProps>(
         <button
           ref={ref}
           className={cn(
-            "group flex flex-row items-center rounded-[72px] transition-all min-w-0",
+            "group flex flex-row items-center rounded-[72px] transition-opacity min-w-0",
             "h-12 py-1",
             arrow ? "pl-5 pr-1" : "px-6",
-            "bg-white text-black",
-            "hover:bg-grey/30 hover:text-white",
+            // Black background, white text
+            "bg-foreground text-background",
+            "hover:opacity-90",
             buttonTypography,
             className,
           )}
@@ -56,16 +57,22 @@ const SiteButton = forwardRef<HTMLButtonElement, SiteButtonProps>(
           <span className="flex-1 flex justify-center min-w-0">{children}</span>
           {arrow && (
             <span className="relative flex flex-none items-center justify-center w-10 h-10 rounded-[56px] shrink-0 overflow-hidden ml-2">
+              {/* White circle — default state */}
               <span
-                className="absolute inset-0 rounded-[56px] bg-black transition-opacity duration-200 group-hover:opacity-0"
+                className="absolute inset-0 rounded-[56px] bg-background transition-opacity duration-200 group-hover:opacity-0"
                 aria-hidden
               />
+              {/* Gradient circle — on hover */}
               <span
                 className="absolute inset-0 rounded-[56px] opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-                style={{ background: primaryGradient }}
+                style={{ background: arrowHoverGradient }}
                 aria-hidden
               />
-              <ArrowIcon type={arrow} className="relative z-[1] text-white" />
+              {/* Arrow: black on white circle, white on gradient */}
+              <ArrowIcon
+                type={arrow}
+                className="relative z-[1] text-foreground group-hover:text-white transition-colors duration-200"
+              />
             </span>
           )}
         </button>
@@ -77,10 +84,12 @@ const SiteButton = forwardRef<HTMLButtonElement, SiteButtonProps>(
         <button
           ref={ref}
           className={cn(
-            "inline-flex flex-row items-center justify-center gap-3 rounded-[72px] transition-colors",
+            "inline-flex flex-row items-center justify-center gap-3 rounded-[72px] transition-all duration-200",
             "h-12 py-1 px-6",
-            "bg-grey/30 text-white",
-            "hover:bg-white hover:text-black",
+            // Light gray inactive state
+            "bg-muted text-foreground",
+            // On hover: goes black with white text
+            "hover:bg-foreground hover:text-background",
             buttonTypography,
             className,
           )}
@@ -98,8 +107,7 @@ const SiteButton = forwardRef<HTMLButtonElement, SiteButtonProps>(
           className={cn(
             "group flex flex-row items-center gap-2 py-0.5 px-0 rounded-none transition-colors min-w-0",
             "h-7 min-h-7",
-            "text-primary",
-            "hover:opacity-90",
+            "text-primary hover:opacity-90",
             buttonTypography,
             className,
           )}
@@ -115,22 +123,23 @@ const SiteButton = forwardRef<HTMLButtonElement, SiteButtonProps>(
       );
     }
 
-    // nav variant (menu/nav: same as secondary, height 40px) – hover: primary gradient pill, white text
+    // nav variant: black default → gradient on hover
     return (
       <button
         ref={ref}
         className={cn(
           "group relative inline-flex flex-row items-center justify-center gap-3 overflow-hidden rounded-[72px] transition-colors duration-200",
           "h-10 py-1 px-6",
-          "bg-grey/30 text-white",
+          "bg-foreground text-background",
           buttonTypography,
           className,
         )}
         {...props}
       >
+        {/* Gradient overlay on hover */}
         <span
           className="absolute inset-0 rounded-[72px] opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-          style={{ background: primaryGradient }}
+          style={{ background: arrowHoverGradient }}
           aria-hidden
         />
         <span className="relative z-[1]">{children}</span>

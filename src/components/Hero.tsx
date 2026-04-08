@@ -1,57 +1,58 @@
 import { Link } from "react-router-dom";
 import { SiteButton } from "@/components/SiteButton";
-import { LabelBadge } from "@/components/LabelBadge";
 import { ClientsCarousel } from "@/components/ClientsCarousel";
-import { DatacardsEmbedPanel } from "@/components/DatacardsEmbedPanel";
+
+const DotGrid = () => (
+  <div
+    className="absolute inset-0 pointer-events-none overflow-hidden"
+    aria-hidden
+  >
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern
+          id="hero-dotgrid"
+          x="0"
+          y="0"
+          width="32"
+          height="32"
+          patternUnits="userSpaceOnUse"
+        >
+          <circle cx="1" cy="1" r="1" fill="#0E1015" fillOpacity="0.06" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#hero-dotgrid)" />
+    </svg>
+  </div>
+);
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20">
-      <div className="container mx-auto max-w-6xl">
-        <LabelBadge className="mb-8">AI Native. Outcome Driven.</LabelBadge>
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20 bg-background overflow-hidden">
+      <DotGrid />
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-semibold font-alternates mb-12 leading-[1.1]">
-          We design and build
+      <div className="container mx-auto max-w-6xl relative z-10 w-full">
+        <p className="text-sm font-light text-muted-foreground tracking-widest uppercase mb-6 font-sans">
+          Your compliance team should be doing compliance. Not building reports.
+        </p>
+
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold font-alternates my-10 leading-[1.1] text-foreground">
+          Compliance solutions for
           <br />
-          AI systems that scale
+          <span className="font-extralight">regulated financial services.</span>
         </h1>
 
-        <div className="flex flex-wrap gap-4 mb-16">
-          <Link to="/contact#calendly">
+        <div className="flex flex-wrap gap-4 mb-12">
+          <Link to="/contact">
             <SiteButton variant="primary" arrow="up-right">
               Book a discovery call
             </SiteButton>
           </Link>
-          <a
-            href="#services"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById("services")?.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              });
-            }}
-          >
-            <SiteButton variant="secondary">Explore our services</SiteButton>
-          </a>
+          <Link to="/#how-we-work">
+            <SiteButton variant="secondary" arrow={false}>
+              See how it works →
+            </SiteButton>
+          </Link>
         </div>
-
-        {/* Data Cards Embed
-
-        <div className="relative mb-0 mt-10 md:mt-20 rounded-2xl border border-border bg-gradient-to-br from-medium-grey/50 to-dark-grey/50 p-0 md:p-4 overflow-hidden -mx-6 md:mx-0 h-[260px] md:h-[260px]">
-          <iframe
-            title="Datacards"
-            style={{
-              borderRadius: "12px",
-              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
-              border: "none",
-              display: "block",
-              width: "100%",
-              height: "100%",
-            }}
-            src="https://app.datacards.ai/a/aiflow/company-questions?theme=dark&scale=0"
-          />
-        </div> */}
       </div>
 
       <ClientsCarousel embedInHero />

@@ -7,6 +7,19 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { teamMembers } from "@/data/team";
 import { useEffect } from "react";
 import { Target, Rocket, Shield, Cpu, Building2 } from "lucide-react";
+import { cn } from "@/lib/utils";
+import {
+  cell2Col,
+  cell2Split,
+  cell3Col,
+  cell4Stats,
+  gridCols2,
+  gridCols3,
+  gridCols4,
+  lineGrid,
+  lineHrClass,
+  statsRowTemplateLg,
+} from "@/lib/lineGrid";
 
 const stats = [
   {
@@ -83,7 +96,7 @@ const Team = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-background text-foreground">
+    <div className="page-shell">
       <Navigation />
 
       <main>
@@ -114,18 +127,17 @@ const Team = () => {
             subtitle="Two founders. One standard: delivery that goes from discovery to production without shortcuts."
             titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
             subtitleClassName="text-grey max-w-2xl"
+            className="mb-12"
           />
-          <div className="grid md:grid-cols-2 gap-8 mt-8">
-            {Object.values(teamMembers).map((member) => (
-              <div
-                key={member.id}
-                className="rounded-2xl border border-border bg-card p-8 md:p-10 hover:border-primary/40 transition-colors"
-              >
+          <hr className={lineHrClass} />
+          <div className={cn(lineGrid, gridCols2)}>
+            {Object.values(teamMembers).map((member, index) => (
+              <div key={member.id} className={cell2Col(index)}>
                 <div className="flex flex-col sm:flex-row gap-6">
                   <img
                     src={member.photo}
                     alt={member.name}
-                    className="w-24 h-24 rounded-full object-cover flex-shrink-0 border border-border"
+                    className="w-24 h-24 rounded-full object-cover flex-shrink-0 border border-[#E2E6F0]"
                   />
                   <div className="min-w-0">
                     <h3 className="text-xl font-bold font-alternates text-foreground mb-1">
@@ -152,6 +164,7 @@ const Team = () => {
               </div>
             ))}
           </div>
+          <hr className={lineHrClass} />
         </Section>
 
         {/* By the numbers */}
@@ -161,24 +174,25 @@ const Team = () => {
             subtitle="Numbers that matter to enterprises: experience, delivery, and production systems."
             titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
             subtitleClassName="text-grey max-w-2xl"
+            className="mb-12"
           />
-          <div className="rounded-2xl border border-border bg-card p-8 md:p-12 mt-8">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
-              {stats.map((stat) => (
-                <div key={stat.label}>
-                  <div className="text-3xl md:text-4xl font-bold font-alternates text-foreground mb-1">
-                    {stat.value}
-                  </div>
-                  <p className="text-sm font-semibold text-foreground">
-                    {stat.label}
-                  </p>
-                  <p className="text-sm text-grey mt-1 leading-relaxed">
-                    {stat.description}
-                  </p>
+          <hr className={lineHrClass} />
+          <div className={cn(lineGrid, gridCols4, statsRowTemplateLg)}>
+            {stats.map((stat, index) => (
+              <div key={stat.label} className={cell4Stats(index)}>
+                <div className="text-3xl md:text-4xl font-bold font-alternates text-foreground md:pt-12 md:pb-4">
+                  {stat.value}
                 </div>
-              ))}
-            </div>
+                <p className="text-sm font-semibold text-foreground md:pb-4">
+                  {stat.label}
+                </p>
+                <p className="text-sm text-grey leading-relaxed md:pb-12">
+                  {stat.description}
+                </p>
+              </div>
+            ))}
           </div>
+          <hr className={lineHrClass} />
         </Section>
 
         {/* How we work */}
@@ -186,28 +200,28 @@ const Team = () => {
           <SectionHeader
             title="How we work"
             titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
+            className="mb-12"
           />
-          <div className="grid md:grid-cols-3 gap-6 mt-8">
-            {values.map((v) => {
+          <hr className={lineHrClass} />
+          <div className={cn(lineGrid, gridCols3)}>
+            {values.map((v, index) => {
               const Icon = v.icon;
               return (
-                <div
-                  key={v.title}
-                  className="rounded-2xl border border-border bg-card p-6 md:p-8 hover:border-primary/40 transition-colors"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-muted border border-border flex items-center justify-center mb-4">
+                <div key={v.title} className={cell3Col(index)}>
+                  <div className="w-10 h-10 rounded-lg bg-muted border border-[#E2E6F0] flex items-center justify-center mb-4 md:pt-2">
                     <Icon className="w-5 h-5 text-grey" />
                   </div>
                   <h3 className="text-lg font-bold font-alternates text-foreground mb-2">
                     {v.title}
                   </h3>
-                  <p className="text-grey text-sm leading-relaxed">
+                  <p className="text-grey text-sm leading-relaxed md:pb-2">
                     {v.description}
                   </p>
                 </div>
               );
             })}
           </div>
+          <hr className={lineHrClass} />
         </Section>
 
         {/* Capabilities */}
@@ -217,48 +231,50 @@ const Team = () => {
             subtitle="We work with the stack that fits your environment and the sectors where we have proven delivery."
             titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
             subtitleClassName="text-grey max-w-2xl"
+            className="mb-12"
           />
-          <div className="rounded-2xl border border-border bg-card p-8 md:p-10 mt-8">
-            <div className="grid md:grid-cols-2 gap-10 md:gap-16">
-              <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-4 flex items-center gap-2">
-                  <Cpu className="w-4 h-4 text-grey" />
-                  Technologies
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-xs px-3 py-1.5 rounded-lg border border-border bg-muted/50 text-foreground font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+          <hr className={lineHrClass} />
+          <div className={cn(lineGrid, gridCols2)}>
+            <div className={cell2Split(0)}>
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-4 flex items-center gap-2">
+                <Cpu className="w-4 h-4 text-grey" />
+                Technologies
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="text-xs px-3 py-1.5 rounded-lg border border-[#E2E6F0] bg-muted/50 text-foreground font-medium"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
-              <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-4 flex items-center gap-2">
-                  <Building2 className="w-4 h-4 text-grey" />
-                  Industries
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {industries.map((ind) => (
-                    <span
-                      key={ind}
-                      className="text-xs px-3 py-1.5 rounded-lg border border-border bg-muted/50 text-foreground font-medium"
-                    >
-                      {ind}
-                    </span>
-                  ))}
-                </div>
+            </div>
+            <div className={cell2Split(1)}>
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-4 flex items-center gap-2">
+                <Building2 className="w-4 h-4 text-grey" />
+                Industries
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {industries.map((ind) => (
+                  <span
+                    key={ind}
+                    className="text-xs px-3 py-1.5 rounded-lg border border-[#E2E6F0] bg-muted/50 text-foreground font-medium"
+                  >
+                    {ind}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
+          <hr className={lineHrClass} />
         </Section>
 
         {/* CTA */}
         <Section padding="compact">
-          <div className="rounded-2xl border border-border bg-gradient-to-br from-card via-card to-primary/5 p-12 md:p-16 text-center">
+          <hr className={lineHrClass} />
+          <div className="border-[#E2E6F0] border-x-0 py-12 md:py-16 px-4 md:px-10 text-center bg-gradient-to-br from-background via-background to-primary/5">
             <SectionHeader
               title="Let's build something that scales"
               subtitle="Ready to work with a team that ships production AI? Get in touch for a scoping call."
@@ -279,6 +295,7 @@ const Team = () => {
               }
             />
           </div>
+          <hr className={lineHrClass} />
         </Section>
       </main>
 

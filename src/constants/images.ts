@@ -25,7 +25,7 @@ export const AI_FLOW_LOGO_SMALL =
 export const AI_FLOW_LOGO_LARGE =
   "/images/ai-flow-logo/Symbol_Monochrome_Light.png";
 export const AI_FLOW_LOGO_SYMBOL =
-  "/images/ai-flow-logo/Symbol_Monochrome_Light.png";
+  "/images/ai-flow-logo/Symbol_Monochrome_Dark.svg";
 
 // Backgrounds
 

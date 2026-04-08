@@ -26,6 +26,11 @@ export default {
         alternates: ["Montserrat Alternates", "sans-serif"],
       },
       colors: {
+        /* Semantic design tokens (light theme) */
+        ink: "#0E1015" /* Primary text, headlines */,
+        meta: "#555A66" /* Metadata, captions, footnotes */,
+        surface: "#F7F9FC" /* Subtle section backgrounds */,
+        azure: "#1AB8FF" /* Primary accent — use sparingly */,
         /* Theme palette - Primary, Status, Base (use only these, no random hex) */
         primary: {
           DEFAULT: "hsl(var(--primary))" /* #1AB8FF Azure Blue */,

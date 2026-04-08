@@ -1,418 +1,241 @@
-import { useState } from "react";
-import { NavLink } from "@/components/NavLink";
-import { SiteButton } from "@/components/SiteButton";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { teamMembers, companyInfo } from "@/data/team";
-import { AI_FLOW_LOGO_LARGE, AI_FLOW_LOGO_SMALL } from "@/constants/images";
-import { Menu, Building2, Building, Home, Layers } from "lucide-react";
+import { NavLink } from "@/components/NavLink";
+import { AI_FLOW_LOGO_SYMBOL } from "@/constants/images";
+import { SiteButton } from "@/components/SiteButton";
 import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from "@/components/ui/sheet";
+  Menu,
+  X,
+  Building2,
+  Building,
+  Home,
+  Layers,
+  Briefcase,
+  Megaphone,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
 
-// Solutions dropdown items (Industries)
-const solutionsItems = [
-  {
-    name: "Construction",
-    description: "AI solutions for construction projects",
-    href: "/industry/construction",
-    icon: Building2,
-  },
-  {
-    name: "Real Estate",
-    description: "AI solutions for real estate industry",
-    href: "/industry/real-estate",
-    icon: Home,
-  },
-  {
-    name: "PropTech",
-    description: "AI Agents for PropTech platforms",
-    href: "/industry/proptech",
-    icon: Building,
-  },
-  {
-    name: "Custom solutions",
-    description: "For your industry",
-    href: "/industry/agnostic",
-    icon: Layers,
-  },
-];
+const industryLinks = [
+  { name: "Construction", href: "/industry/construction", icon: Building2 },
+  { name: "Real Estate", href: "/industry/real-estate", icon: Home },
+  { name: "PropTech", href: "/industry/proptech", icon: Building },
+  { name: "Legal", href: "/industry/legal", icon: Briefcase },
+  { name: "Marketing", href: "/industry/marketing", icon: Megaphone },
+  { name: "Custom solutions", href: "/industry/agnostic", icon: Layers },
+] as const;
+
+const navItemClass =
+  "text-[13px] font-medium tracking-[0.01em] text-[#555A66] hover:text-[#0E1015] transition-colors";
+const navItemActive = "text-[#0E1015]";
 
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mobileIndustriesOpen, setMobileIndustriesOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+    setMobileIndustriesOpen(false);
+  }, [location.pathname, location.hash]);
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (location.pathname === "/") {
       e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/20 backdrop-blur-md ">
-      <div className="container mx-auto px-8 lg:px-32 py-6">
-        <div className="flex items-center justify-between relative">
-          {/* Logo - Left */}
+    <>
+      <nav
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-200 backdrop-blur-md",
+          scrolled ? "bg-white/80" : "bg-white/60",
+        )}
+        style={{ height: 64 }}
+      >
+        <div className="mx-auto max-w-[1200px] px-6 md:px-10 h-full flex items-center justify-between gap-4">
           <Link
             to="/"
             onClick={handleLogoClick}
-            className="flex items-center gap-2 cursor-pointer"
+            className="flex items-center shrink-0 min-w-0"
           >
-            {/* Small screen logo */}
             <img
-              src={AI_FLOW_LOGO_SMALL}
-              alt="AI Flow"
-              className="h-8 w-auto md:hidden"
-            />
-            {/* Large screen logo */}
-            <img
-              src={AI_FLOW_LOGO_LARGE}
-              alt="AI Flow"
-              className="h-10 w-auto hidden md:block"
+              src={AI_FLOW_LOGO_SYMBOL}
+              alt="AI Flow Software"
+              className="h-10 w-auto shrink-0"
             />
           </Link>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(true)}
-            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
-            aria-label="Open menu"
-          >
-            <Menu className="h-6 w-6" />
-          </button>
-
-          {/* Right side - Menus + Team + Button */}
-          <div className="hidden md:flex items-center gap-4">
-            {/* Navigation Links - centered on lg+ via absolute, flows with right content on md */}
-            <div className="flex items-center gap-3 [&>*]:m-0 [&>*]:shrink-0 lg:absolute lg:left-1/2 lg:-translate-x-1/2">
-              <NavLink
-                to="/services"
-                className="group flex justify-center items-center py-5 px-1.5 gap-1 h-16 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate rounded-none transition-colors hover:text-white"
-                activeClassName="text-white"
-              >
-                <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
-                  Services
-                </span>
-              </NavLink>
-              <NavLink
-                to="/case-studies"
-                className="group flex justify-center items-center py-5 px-1.5 gap-1 h-16 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate rounded-none transition-colors hover:text-white"
-                activeClassName="text-white"
-              >
-                <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
-                  Our work
-                </span>
-              </NavLink>
-
-              {/* Industries Dropdown */}
-              <div className="relative group flex items-center min-h-[64px]">
-                <button className="flex justify-center items-center py-5 px-1.5 gap-1 h-16 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate rounded-none transition-colors cursor-pointer group-hover:text-white">
-                  <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
-                    Industries
-                  </span>
-                </button>
-
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  <div className="bg-background/95 backdrop-blur-lg border border-border rounded-xl p-4 shadow-xl">
-                    <div className="flex flex-row gap-3">
-                      {solutionsItems.map((item) => (
-                        <Link
-                          key={item.name}
-                          to={item.href}
-                          className="flex flex-col items-center justify-center gap-3 p-4 rounded-lg border border-border bg-card text-foreground transition-all duration-200 hover:scale-[1.02] hover:border-white/20 hover:shadow-lg w-32 h-32"
-                        >
-                          <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-muted border border-border">
-                            <item.icon className="w-6 h-6 text-grey" />
-                          </div>
-                          <span className="font-semibold text-sm text-center text-foreground">
-                            {item.name}
-                          </span>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <NavLink
-                to="/team"
-                className="group flex justify-center items-center py-5 px-1.5 gap-1 h-16 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate rounded-none transition-colors hover:text-white"
-                activeClassName="text-white"
-              >
-                <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
-                  About us
-                </span>
-              </NavLink>
-              <NavLink
-                to="/careers"
-                className="group flex justify-center items-center py-5 px-1.5 gap-1 h-16 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate rounded-none transition-colors hover:text-white"
-                activeClassName="text-white"
-              >
-                <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
-                  Careers
-                </span>
-              </NavLink>
-              <NavLink
-                to="/blog"
-                className="group flex justify-center items-center py-5 px-1.5 gap-1 h-16 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate rounded-none transition-colors hover:text-white"
-                activeClassName="text-white"
-              >
-                <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
-                  Blog
-                </span>
-              </NavLink>
-            </div>
-            <div className="flex items-center">
-              {/* <a
-                href="#team"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const element = document.getElementById("team");
-                  if (element) {
-                    element.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                    });
-                  }
-                }}
-                className="group relative z-40 hover:z-50 transition-all duration-300"
-                title={`${teamMembers.irina.name} - View Team`}
-              >
-                <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110">
-                  <img
-                    src={teamMembers.irina.photo}
-                    alt={teamMembers.irina.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </a> */}
-              {/* 
-              <a
-                href="#team"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const element = document.getElementById("team");
-                  if (element) {
-                    element.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                    });
-                  }
-                }}
-                className="group relative -ml-2 z-40 hover:z-50 transition-all duration-300"
-                title={`${teamMembers.mihai.name} - View Team`}
-              >
-                <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110">
-                  <img
-                    src={teamMembers.mihai.photo}
-                    alt={teamMembers.mihai.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </a>
-
-              <a
-                href="#team"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const element = document.getElementById("team");
-                  if (element) {
-                    element.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                    });
-                  }
-                }}
-                className="group relative -ml-2 z-40 hover:z-50 transition-all duration-300"
-                title="View Team"
-              >
-                <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
-                  <span className="text-lg font-semibold text-foreground">
-                    + 10
-                  </span>
-                </div>
-              </a>*/}
-            </div>
-
-            <a href={"/contact"}>
-              <SiteButton variant="nav">Contact Us</SiteButton>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu Sheet */}
-      <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-        <SheetContent side="right" className="w-[85vw] sm:w-[400px]">
-          <SheetHeader>
-            <SheetTitle className="text-left">Menu</SheetTitle>
-          </SheetHeader>
-          <div className="flex flex-col gap-3 mt-8">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8 flex-1 justify-end min-w-0">
             <NavLink
               to="/services"
-              onClick={() => setIsMenuOpen(false)}
-              className="group flex justify-start items-center pl-0 py-4 px-0 gap-1 h-14 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate transition-colors hover:text-white"
-              activeClassName="text-white"
+              className={navItemClass}
+              activeClassName={navItemActive}
             >
-              <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
-                Services
-              </span>
+              Services
             </NavLink>
             <NavLink
               to="/case-studies"
-              onClick={() => setIsMenuOpen(false)}
-              className="group flex justify-start items-center pl-0 py-4 px-0 gap-1 h-14 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate transition-colors hover:text-white"
-              activeClassName="text-white"
+              className={navItemClass}
+              activeClassName={navItemActive}
             >
-              <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
-                Our work
-              </span>
+              Our work
             </NavLink>
 
-            {/* Industries Section in Mobile */}
-            <div className="flex flex-col gap-3 m-0 p-0">
-              <h4 className="font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey m-0">
+            <div className="relative group flex items-center h-full">
+              <button
+                type="button"
+                className={cn(
+                  navItemClass,
+                  "flex items-center gap-0.5 h-full py-2 cursor-pointer bg-transparent border-0 font-sans",
+                  location.pathname.startsWith("/industry/") && navItemActive,
+                )}
+                aria-haspopup="true"
+              >
                 Industries
-              </h4>
-              <div className="flex flex-col gap-2 pl-2">
-                {solutionsItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card text-foreground transition-all duration-200 hover:border-white/20"
-                  >
-                    <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-muted border border-border">
-                      <item.icon className="w-4 h-4 text-grey" />
-                    </div>
-                    <span className="font-medium text-sm text-foreground">
+              </button>
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="rounded-lg border border-[#E2E6F0] bg-white shadow-lg py-2 min-w-[220px]">
+                  {industryLinks.map((item) => (
+                    <Link
+                      key={item.href}
+                      to={item.href}
+                      className="flex items-center gap-3 px-4 py-2.5 text-[13px] text-[#0E1015] hover:bg-[#F7F9FC] transition-colors"
+                    >
+                      <item.icon className="w-4 h-4 shrink-0 text-[#555A66]" />
                       {item.name}
-                    </span>
-                  </Link>
-                ))}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
 
             <NavLink
               to="/team"
-              onClick={() => setIsMenuOpen(false)}
-              className="group flex justify-start items-center pl-0 py-4 px-0 gap-1 h-14 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate transition-colors hover:text-white"
-              activeClassName="text-white"
+              className={navItemClass}
+              activeClassName={navItemActive}
             >
-              <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
-                About us
-              </span>
+              About us
             </NavLink>
             <NavLink
               to="/careers"
-              onClick={() => setIsMenuOpen(false)}
-              className="group flex justify-start items-center pl-0 py-4 px-0 gap-1 h-14 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate transition-colors hover:text-white"
-              activeClassName="text-white"
+              className={navItemClass}
+              activeClassName={navItemActive}
             >
-              <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
-                Careers
-              </span>
+              Careers
             </NavLink>
             <NavLink
               to="/blog"
-              onClick={() => setIsMenuOpen(false)}
-              className="group flex justify-start items-center pl-0 py-4 px-0 gap-1 h-14 min-w-0 font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-grey relative isolate transition-colors hover:text-white"
-              activeClassName="text-white"
+              className={navItemClass}
+              activeClassName={navItemActive}
             >
-              <span className="relative flex items-center flex-none font-sans font-light text-base leading-[1.4] tracking-[0.02em] text-inherit before:content-[''] before:absolute before:w-5 before:h-5 before:-left-0.5 before:top-1/2 before:-translate-y-1/2 before:bg-primary before:blur-[12px] before:-z-10 before:pointer-events-none before:opacity-0 group-hover:before:opacity-50">
-                Blog
-              </span>
+              Blog
             </NavLink>
 
-            <div className="flex items-center gap-2 pt-4 border-t border-border">
-              {/* <a
-                href="#team"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsMenuOpen(false);
-                  const element = document.getElementById("team");
-                  if (element) {
-                    element.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                    });
-                  }
-                }}
-                className="group relative z-40 hover:z-50 transition-all duration-300"
-                title={`${teamMembers.irina.name} - View Team`}
-              >
-                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110">
-                  <img
-                    src={teamMembers.irina.photo}
-                    alt={teamMembers.irina.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </a> */}
+            <Link to="/contact" className="shrink-0 ml-2">
+              <SiteButton variant="nav">Contact us</SiteButton>
+            </Link>
+          </div>
+        </div>
+      </nav>
 
-              {/* <a
-                href="#team"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsMenuOpen(false);
-                  const element = document.getElementById("team");
-                  if (element) {
-                    element.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                    });
-                  }
-                }}
-                className="group relative -ml-4 z-40 hover:z-50 transition-all duration-300"
-                title={`${teamMembers.mihai.name} - View Team`}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-40 bg-white pt-16 md:hidden">
+          <div className="px-6 py-8 flex flex-col gap-0 overflow-y-auto max-h-[calc(100vh-4rem)]">
+            <MobileRow>
+              <Link
+                to="/services"
+                className="block py-5 text-base font-medium text-[#0E1015] hover:text-[#112e63] transition-colors"
               >
-                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110">
-                  <img
-                    src={teamMembers.mihai.photo}
-                    alt={teamMembers.mihai.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </a>
+                Services
+              </Link>
+            </MobileRow>
+            <MobileRow>
+              <Link
+                to="/case-studies"
+                className="block py-5 text-base font-medium text-[#0E1015] hover:text-[#112e63] transition-colors"
+              >
+                Our work
+              </Link>
+            </MobileRow>
 
-              <a
-                href="#team"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsMenuOpen(false);
-                  const element = document.getElementById("team");
-                  if (element) {
-                    element.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                    });
-                  }
-                }}
-                className="group relative -ml-4 z-40 hover:z-50 transition-all duration-300"
-                title="View Team"
+            <div className="border-t border-[#E2E6F0]">
+              <button
+                type="button"
+                onClick={() => setMobileIndustriesOpen((v) => !v)}
+                className="flex w-full items-center justify-between py-5 text-base font-medium text-[#0E1015] text-left"
+                aria-expanded={mobileIndustriesOpen}
               >
-                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-all duration-300 group-hover:scale-110 bg-black flex items-center justify-center">
-                  <span className="text-sm font-semibold text-foreground">
-                    + 10
-                  </span>
-                </div>
-              </a>*/}
+                Industries
+                <span className="text-[#555A66] text-sm">
+                  {mobileIndustriesOpen ? "−" : "+"}
+                </span>
+              </button>
+              {mobileIndustriesOpen && (
+                <ul className="pb-2 pl-1 space-y-0 border-l-2 border-[#E2E6F0] ml-2">
+                  {industryLinks.map((item) => (
+                    <li key={item.href}>
+                      <Link
+                        to={item.href}
+                        className="flex items-center gap-3 py-3 pl-4 text-sm font-medium text-[#555A66] hover:text-[#112e63]"
+                      >
+                        <item.icon className="w-4 h-4 shrink-0" />
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
 
-            <a href="/contact" onClick={() => setIsMenuOpen(false)}>
-              <SiteButton variant="nav" className="w-full">
-                Contact Us
+            <MobileRow>
+              <Link
+                to="/team"
+                className="block py-5 text-base font-medium text-[#0E1015] hover:text-[#112e63] transition-colors"
+              >
+                About us
+              </Link>
+            </MobileRow>
+            <MobileRow>
+              <Link
+                to="/careers"
+                className="block py-5 text-base font-medium text-[#0E1015] hover:text-[#112e63] transition-colors"
+              >
+                Careers
+              </Link>
+            </MobileRow>
+            <MobileRow>
+              <Link
+                to="/blog"
+                className="block py-5 text-base font-medium text-[#0E1015] hover:text-[#112e63] transition-colors"
+              >
+                Blog
+              </Link>
+            </MobileRow>
+
+            <hr className="border-t border-[#E2E6F0] mb-8" />
+            <Link to="/contact">
+              <SiteButton variant="nav" className="w-full justify-center">
+                Contact us
               </SiteButton>
-            </a>
+            </Link>
           </div>
-        </SheetContent>
-      </Sheet>
-    </nav>
+        </div>
+      )}
+    </>
   );
 };
+
+function MobileRow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="border-t border-[#E2E6F0] first:border-t-0">{children}</div>
+  );
+}
