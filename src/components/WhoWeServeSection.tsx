@@ -28,10 +28,10 @@ export const WhoWeServeSection = () => {
             PSD2 · MiFID II · DORA · AML
           </p>
           <p className="font-sans font-light text-[15px] leading-[1.6] text-[#555A66]">
-            The pressure is audit readiness. The fear is a regulatory finding
-            that triggers remediation and public scrutiny. The data exists — it
-            is sitting in operations, finance, risk, and technology. The problem
-            is that nobody connected it in time.
+            Audits arrive without warning and trigger days or weeks of manual
+            document preparation. Data is scattered across departments with no
+            unified source mapping it to regulatory obligations. The bottleneck
+            is not expertise. It is manual work.
           </p>
         </div>
         <div className="py-12 md:pl-10">
@@ -46,10 +46,11 @@ export const WhoWeServeSection = () => {
             FinCEN · CFPB · State banking authorities
           </p>
           <p className="font-sans font-light text-[15px] leading-[1.6] text-[#555A66]">
-            The pressure is speed to new markets. The fear is a data handoff
-            failure that looks like a compliance failure — and surfaces in a
-            fundraising conversation. Every week spent assembling data manually
-            is a week of delayed revenue.
+            Regulatory obligations are scaling faster than the compliance team
+            can handle. Each new state adds another money transmitter license
+            and another reporting template. A compliance failure in one
+            jurisdiction can delay expansion into others and damage fundraising
+            conversations. Compliance is a gate to growth.
           </p>
         </div>
       </div>

@@ -21,9 +21,9 @@ export const CTASection = () => {
               </span>
             </h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              15 hours saved per person, per week. 100% of recurring filings
-              automated. Book a diagnostic call to see where the hours are going
-              and what it costs to fix it.
+              The compliance team stops assembling data and starts doing
+              compliance. Book a diagnostic call to map where the manual work
+              is and what it costs to automate it.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact#calendly">

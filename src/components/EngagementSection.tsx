@@ -9,23 +9,23 @@ const engagementModels = [
   {
     situation: "We have an audit coming up and we are not ready.",
     solution: "Audit-ready in hours, not weeks.",
-    body: "We map your data sources across operations, finance, risk, and technology to your regulatory obligations and build an automated audit package pipeline. The next time an examiner asks for documentation, it is ready — not assembled under pressure.",
+    body: "Audits arrive without warning and trigger days or weeks of manual document preparation. We build the pipeline so the next time an examiner asks, documentation is ready — not assembled under pressure, with a full audit trail.",
   },
   {
     situation: "Our compliance team rebuilds the same reports every quarter.",
     solution: "Run it once. Run it automatically.",
-    body: "We build the pipeline between your data and your regulatory output. Reports run on schedule, validated, submission-ready. Your team reviews — it does not assemble. That is 15 hours per person, per week returned to compliance work.",
+    body: "Nothing changes except the dates and the numbers. Yet it is rebuilt from scratch each time. We build the pipeline so reports run on schedule, validated, submission-ready. The compliance team stops assembling data and starts doing compliance.",
   },
   {
     situation:
       "We are expanding into new markets and compliance is the bottleneck.",
     solution: "Each new jurisdiction adds a module, not a manual process.",
-    body: "We build your compliance infrastructure so that each new state or regulatory framework adds an automated output on top of the existing pipeline. Expansion does not restart the manual cycle.",
+    body: "Every week the compliance team spends building reporting infrastructure manually in a new market is a week the company is not generating revenue there. Compliance is a gate to growth. We build the pipeline before the market launches.",
   },
   {
     situation: "We know there is a data handoff problem. We do not know where it is.",
     solution: "Start with the Diagnostic.",
-    body: "A fixed-price, fixed-scope 1–2 week engagement. We map your workflows, data sources, and obligations across operations, finance, risk, and technology. You leave with a prioritised roadmap — whether you proceed with us or not.",
+    body: "A fixed-price, fixed-scope 1–2 week engagement. We map your compliance workflows, data sources, and regulatory obligations across all active jurisdictions. Deliverable: a prioritised automation roadmap.",
   },
 ];
 
