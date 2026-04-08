@@ -1,10 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useId } from "react";
 
-const WIDGET_SRC =
-  "https://app.datacards.ai/a/aiflow/company-questions/intercom?theme=light";
+const DEFAULT_WIDGET_SRC =
+  "https://app.datacards.ai/a/aiflow/company-questions/intercom?theme=dark";
 
-/** Fixed Datacards embed + resize handshake; mounted once in App for all routes. */
-export function DatacardsWidget() {
+interface DatacardsWidgetProps {
+  src?: string;
+}
+
+export function DatacardsWidget({ src = DEFAULT_WIDGET_SRC }: DatacardsWidgetProps) {
+  const id = useId();
+  const iframeId = `datacards-widget-${id}`;
+
   useEffect(() => {
     let rafId = 0;
     let pending: { width: number; height: number } | null = null;
@@ -14,9 +20,7 @@ export function DatacardsWidget() {
       const data = pending;
       pending = null;
       if (!data) return;
-      const iframe = document.getElementById(
-        "datacards-widget",
-      ) as HTMLIFrameElement | null;
+      const iframe = document.getElementById(iframeId) as HTMLIFrameElement | null;
       if (!iframe) return;
       iframe.style.width = `min(${data.width}px, 90vw)`;
       iframe.style.height = `${data.height}px`;
@@ -34,12 +38,12 @@ export function DatacardsWidget() {
       window.removeEventListener("message", onMessage);
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, []);
+  }, [iframeId]);
 
   return (
     <iframe
-      id="datacards-widget"
-      src={WIDGET_SRC}
+      id={iframeId}
+      src={src}
       allowTransparency
       style={{
         position: "fixed",

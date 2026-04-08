@@ -8,7 +8,7 @@ const Epsilon = () => {
       clientName="ClimeFi"
       widgetWidth={500}
       widgetHeight={320}
-      mobileWidgetUrl="https://app.datacards.ai/a/aiflow/ClimeFi/intercom"
+      mobileWidgetUrl="https://app.datacards.ai/a/aiflow/ClimeFi/intercom?theme=light"
     />
   );
 };

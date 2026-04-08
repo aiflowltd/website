@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useSearchParams, Link } from "react-router-dom";
-import { Move, Info } from "lucide-react";
+import { Move } from "lucide-react";
+import { DatacardsWidget } from "@/components/DatacardsWidget";
 
 interface ClientPageTemplateProps {
   websiteUrl: string;
@@ -254,22 +255,7 @@ const ClientPageTemplate = ({
         </div>
       )}
       {hasConsented && isMobile && mobileWidgetUrl && (
-        <iframe
-          className="pointer-events-auto"
-          src={mobileWidgetUrl}
-          title="Mobile Widget"
-          style={{
-            position: "fixed",
-            bottom: 24,
-            left: "50%",
-            transform: "translate3d(-50%, 0, 0)",
-            width: "min(580px, 95vw)",
-            height: 382,
-            border: "none",
-            background: "transparent",
-            zIndex: 2147483647,
-          }}
-        />
+        <DatacardsWidget src={mobileWidgetUrl} />
       )}
     </div>
   );
