@@ -49,7 +49,7 @@ export const Hero = () => {
           </Link>
           <Link to="/#how-we-work">
             <SiteButton variant="secondary" arrow={false}>
-              See how it works →
+              See how we work →
             </SiteButton>
           </Link>
         </div>
