@@ -60,7 +60,7 @@ const Services = () => {
                 </span>
               </>
             }
-            subtitle="Each with a defined outcome, timeline, and handoff. Start with the Diagnostic. Build when the scope is clear. Priced on deliverables, not hours."
+            subtitle="Start with a diagnostic. Build together. Stay for the long run."
             titleClassName="text-3xl md:text-5xl"
             subtitleClassName="max-w-2xl text-base md:text-lg leading-relaxed"
           />
