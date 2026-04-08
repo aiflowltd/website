@@ -54,13 +54,13 @@ const Services = () => {
           <SectionHeader
             title={
               <>
-                Services for{" "}
+                Three fixed-scope{" "}
                 <span className="font-extralight">
-                  governance and delivery.
+                  engagements.
                 </span>
               </>
             }
-            subtitle="Three engagements—each with a defined outcome, timeline, and handoff. The same delivery standard you see on our homepage: priced on deliverables, not hours."
+            subtitle="Each with a defined outcome, timeline, and handoff. Start with the Diagnostic. Build when the scope is clear. Priced on deliverables, not hours."
             titleClassName="text-3xl md:text-5xl"
             subtitleClassName="max-w-2xl text-base md:text-lg leading-relaxed"
           />
@@ -88,8 +88,8 @@ const Services = () => {
 
         <Section padding="default">
           <SectionHeader
-            title="Questions before you brief us?"
-            subtitle="Ask about fit, typical timelines, or how we’d approach your sector. When you’re ready, book a short scoping call."
+            title="Have questions before we start?"
+            subtitle="Ask about fit, typical timelines, or how we’d approach your obligation stack. When you’re ready, book a scoping call."
             titleClassName="text-2xl font-bold font-alternates text-foreground md:text-3xl"
             subtitleClassName="max-w-2xl text-muted-foreground"
             className="mb-8"
@@ -109,8 +109,8 @@ const Services = () => {
 
         <Section padding="default">
           <SectionHeader
-            title="Three ways to work together"
-            subtitle="Foundation through build. Most organisations start with clarity or an audit before a full delivery—so scope, risk, and ROI are explicit for leadership and compliance."
+            title="Diagnostic first. Build when ready."
+            subtitle="Most organisations start with the Diagnostic — so scope, risk, and ROI are explicit for leadership before a line of code is written."
             titleClassName="text-3xl md:text-4xl"
             subtitleClassName="max-w-2xl"
             className="mb-12"
@@ -131,8 +131,8 @@ const Services = () => {
         <Section padding="compact">
           <LineGridCta>
             <SectionHeader
-              title="Ready to scope the next step?"
-              subtitle="Book a call with no obligation—or review case studies from teams with similar constraints."
+              title="Start with the Diagnostic."
+              subtitle="Book a scoping call with no obligation — or review case studies from compliance teams with similar constraints."
               variant="centered"
               titleClassName="font-alternates text-2xl text-foreground md:text-3xl"
               subtitleClassName="mx-auto mb-8 max-w-xl text-muted-foreground"
@@ -140,7 +140,7 @@ const Services = () => {
                 <div className="flex flex-col justify-center gap-4 sm:flex-row">
                   <Link to="/contact#calendly">
                     <SiteButton variant="primary" arrow="up-right">
-                      Book a scoping call
+                      Book a diagnostic call
                     </SiteButton>
                   </Link>
                   <Link to="/case-studies">

@@ -9,12 +9,12 @@ const engagementModels = [
   {
     situation: "We have an audit coming up and we are not ready.",
     solution: "Audit-ready in hours, not weeks.",
-    body: "We map your existing data sources to your regulatory obligations and build an automated audit package pipeline. The next time an examiner asks for documentation, it is ready — not assembled under pressure.",
+    body: "We map your data sources across operations, finance, risk, and technology to your regulatory obligations and build an automated audit package pipeline. The next time an examiner asks for documentation, it is ready — not assembled under pressure.",
   },
   {
     situation: "Our compliance team rebuilds the same reports every quarter.",
     solution: "Run it once. Run it automatically.",
-    body: "We build the pipeline between your operational data and your regulatory output. Reports run on schedule, validated, submission-ready. Your team reviews — it does not assemble.",
+    body: "We build the pipeline between your data and your regulatory output. Reports run on schedule, validated, submission-ready. Your team reviews — it does not assemble. That is 15 hours per person, per week returned to compliance work.",
   },
   {
     situation:
@@ -23,9 +23,9 @@ const engagementModels = [
     body: "We build your compliance infrastructure so that each new state or regulatory framework adds an automated output on top of the existing pipeline. Expansion does not restart the manual cycle.",
   },
   {
-    situation: "We know we need to fix this. We do not know where to start.",
+    situation: "We know there is a data handoff problem. We do not know where it is.",
     solution: "Start with the Diagnostic.",
-    body: "A fixed-price, fixed-scope 1–2 week engagement. We map your workflows, data sources, and obligations. You leave with a prioritised roadmap — whether you proceed with us or not.",
+    body: "A fixed-price, fixed-scope 1–2 week engagement. We map your workflows, data sources, and obligations across operations, finance, risk, and technology. You leave with a prioritised roadmap — whether you proceed with us or not.",
   },
 ];
 
@@ -41,8 +41,8 @@ export const EngagementSection = () => {
   return (
     <Section>
       <SectionHeader
-        title="Where does this apply to you?"
-        subtitle="The compliance gap shows up differently depending on where your team is. The fix is the same."
+        title="Recognise any of these?"
+        subtitle="The data handoff problem shows up differently depending on where your team is. The fix is the same."
         action={
           <Link to="/contact">
             <SiteButton

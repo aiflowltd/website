@@ -6,12 +6,12 @@ const faqs = [
   {
     question: "We're not sure where to start. What do you recommend?",
     answer:
-      "That is exactly what the AI Clarity Session is for. In one focused session we map your processes, identify where AI creates measurable value, and give you a clear answer — including realistic cost and return. No obligation to continue after that.",
+      "That is exactly what the Compliance Diagnostic is for. In 1–2 weeks we map your compliance workflows, data sources, and regulatory obligations across operations, finance, risk, and technology. You leave with a prioritised roadmap and a clear answer on where the data handoff problem is — whether you proceed with us or not.",
   },
   {
     question: "How do you price? We need to present this internally.",
     answer:
-      "We price on scope and expected outcomes — not on days or headcount. The Clarity Session and Opportunity Audit are fixed-price with defined deliverables. Build engagements are scoped after the audit, with a clear budget range before any commitment. We are comfortable helping you build the business case for internal sign-off.",
+      "We price on scope and defined deliverables — not on days or headcount. The Compliance Diagnostic is fixed-price with a defined output. The Pipeline Build is scoped after the Diagnostic, with a clear budget before any commitment. We are comfortable helping you build the business case for internal sign-off.",
   },
   {
     question:
@@ -22,7 +22,7 @@ const faqs = [
   {
     question: "We have an internal data team. Where do you fit?",
     answer:
-      "We work alongside internal teams, not instead of them. We provide the AI and ML engineering depth — model development, agent architecture, LLM integration, production deployment — that most internal data teams do not have in-house. Your team retains ownership. We accelerate delivery.",
+      "We work alongside internal teams, not instead of them. We provide the compliance infrastructure engineering — data pipeline design, regulatory mapping, automated reporting, audit trail implementation — that most internal data teams do not have in-house. Your team retains ownership of what we build. We provide the runbook.",
   },
 ];
 

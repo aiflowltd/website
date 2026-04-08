@@ -9,7 +9,7 @@ const services = [
     title: "Compliance Diagnostic",
     phase: "Diagnose",
     description:
-      "A focused 1–2 week engagement. We map your compliance workflows, data sources, and regulatory obligations. You leave with a prioritised automation roadmap and a clear brief — whether you proceed with us or not.",
+      "A focused 1–2 week engagement. We map your compliance workflows, data sources, and regulatory obligations across operations, finance, risk, and technology. You leave with a prioritised roadmap and a clear brief — whether you proceed with us or not.",
     link: "/contact",
   },
   {
@@ -17,7 +17,7 @@ const services = [
     title: "Pipeline Build",
     phase: "Build",
     description:
-      "A fixed-scope, fixed-price build: 4–8 weeks. We connect your existing data sources, map them to your regulatory obligations, and deliver a fully automated compliance pipeline — operational, validated, audit trail included.",
+      "A fixed-scope, fixed-price build: 4–8 weeks. We connect your data sources across operations, finance, risk, and technology, map them to your regulatory obligations, and deliver a fully automated compliance pipeline — operational, validated, audit trail included.",
     link: "/services",
   },
   {
@@ -25,7 +25,7 @@ const services = [
     title: "Quarterly Retainer",
     phase: "Operate",
     description:
-      "Ongoing infrastructure management, scoped by obligation. Each new regulatory requirement adds an automated output — not a new manual process. A performance layer is added once value is measurable.",
+      "Ongoing infrastructure management, scoped by obligation. Each new regulatory requirement adds an automated output on top of the existing pipeline — not a new manual process for the team. The client meeting stays on the calendar.",
     link: "/services",
   },
 ];
@@ -41,8 +41,8 @@ export const ServicesSection = () => {
   return (
     <Section id="services" scrollMargin>
       <SectionHeader
-        title="Services built for business outcomes"
-        subtitle="Three entry points. One delivery standard. Priced on deliverables, not hours."
+        title="Three engagements. Each with a fixed outcome."
+        subtitle="Start with the Diagnostic. Build when the scope is clear. Priced on deliverables, not hours."
         className="mb-12"
       />
 

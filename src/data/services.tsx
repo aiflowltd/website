@@ -1,8 +1,73 @@
+/**
+ * TONE OF VOICE — AI FLOW
+ * ─────────────────────────────────────────────────────────────────────────────
+ * TAGLINE (hero, solution sections, footer)
+ *   "Nothing lost between teams."
+ *
+ * THE VOICE IN ONE SENTENCE
+ *   A warm, clear-eyed expert who has sat in the room with this problem,
+ *   understands exactly what it costs — in hours, in fines, in missed
+ *   priorities — and is here to fix the infrastructure, not lecture about
+ *   compliance.
+ *
+ * FOUR DEFINING QUALITIES
+ *   1. Human before technical — lead with the person's experience (the late
+ *      night, the cancelled meeting, the avoidable fine) before explaining how
+ *      the system works. The reader should feel recognised before they feel
+ *      sold to.
+ *   2. Specific over broad — never "saves time and money." Always "15 hours
+ *      per person per week" and "up to $2M in avoided losses." Always name
+ *      the departments: operations, finance, risk, technology.
+ *   3. Confident without announcing it — don't say "we are experts." Say
+ *      something only an expert would say. Never use: "leading,"
+ *      "best-in-class," "powerful," "cutting-edge," "seamless."
+ *   4. Warm through recognition — warmth comes from making the reader feel
+ *      understood, not from exclamation marks. Name their reality plainly.
+ *
+ * KEY PHRASES — USE CONSISTENTLY ACROSS ALL PAGES
+ *   "Nothing lost between teams"           → anchor line; hero, solution, footer
+ *   "Data handoff problem"                 → precise name for the cross-team issue
+ *   "Operations, finance, risk, technology"→ always name the departments
+ *   "The work before the work"             → hidden burden of the compliance team
+ *   "The client meeting stays on the calendar" → close the loop on human cost
+ *   "Infrastructure problem, not a compliance problem" → core reframe
+ *
+ * THE THREE MOMENTS THAT DEFINE THE PROBLEM (never abstract these)
+ *   THE DISPLACED PRIORITY — a client meeting cancelled because a filing
+ *     deadline moved and the data wasn't ready. The expertise was there.
+ *     The hours weren't.
+ *   THE AVOIDABLE FINE — the penalty arrived. The data had been sitting in
+ *     another system the whole time. A data handoff failure — not a
+ *     compliance failure.
+ *   THE NEW REGULATION — another obligation lands on an already full team.
+ *     The question isn't whether they understand it — it's where the hours
+ *     are going to come from.
+ *
+ * DO WRITE LIKE THIS
+ *   "You cancelled a client meeting to finish a filing. That's not a
+ *    compliance problem — it's an infrastructure problem."
+ *   "The data exists. It's sitting in operations, finance, risk, technology.
+ *    Nobody connected it in time."
+ *   "15 hours saved per person, per week. Up to $2M in avoided losses."
+ *   Short sentences. One idea per sentence. Fragments are fine.
+ *
+ * NEVER WRITE LIKE THIS
+ *   "Our powerful AI platform streamlines your compliance workflows end-to-end."
+ *   "We leverage cutting-edge technology to deliver best-in-class outcomes."
+ *   "We'd love to help you on your compliance journey."
+ *   No buzzwords. No journey. No ecosystem. No synergy. No leverage.
+ *
+ * FORMATTING RULES
+ *   Numbers as numerals: 15 hours, $2M, 1–2 weeks, 4–8 weeks.
+ *   CTAs are plain and direct: "Book a diagnostic call" not "Start your journey."
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+
 import { Code2, Brain, GraduationCap } from "lucide-react";
 import { ReactElement } from "react";
 
 export interface Service {
-  /** Unique slug for anchor links (e.g. /services#custom-ai-agents) */
+  /** Unique slug for anchor links (e.g. /services#compliance-diagnostic) */
   slug: string;
   /** SVG path for icon (used on main and Services page). Takes precedence over icon. */
   iconPath?: string;
@@ -28,94 +93,92 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    slug: "ai-strategy",
+    slug: "compliance-diagnostic",
     iconPath: "/images/icons/services-ai-strategy.svg",
     icon: <Brain className="w-12 h-12" />,
-    title: "AI Clarity Session",
-    tagline: "A clear answer on where AI creates measurable value.",
+    title: "Compliance Diagnostic",
+    tagline: "Where is the data handoff problem, and what will it cost to fix?",
     description:
-      "A focused session with your operational or investment team. You leave with a clear answer on where AI creates measurable value, and what it would cost to capture it.",
+      "A focused 1–2 week engagement. We map your compliance workflows, data sources, and regulatory obligations across operations, finance, risk, and technology. You leave with a prioritised automation roadmap and a clear brief — whether you proceed with us or not.",
     features: [
-      "Process and opportunity mapping",
-      "Realistic cost and return view",
-      "No obligation to continue",
+      "Workflow and data source mapping across operations, finance, risk, and technology",
+      "Regulatory obligation audit",
+      "Prioritised automation roadmap",
+      "Scope and cost estimate for the Pipeline Build",
     ],
     idealFor: [
-      "Leadership teams that know AI matters but aren't sure where to start",
-      "Teams that want a concrete answer before committing to a full audit or build",
+      "Heads of compliance who know there is a data handoff problem but have not yet mapped where it is",
+      "Teams preparing for an audit or a new regulatory obligation landing on an already full schedule",
     ],
     outcomes: [
-      "Clarity on where AI creates measurable value in your business",
-      "Realistic cost and return so you can decide next steps",
+      "A clear answer on where the data handoff failures are",
+      "A prioritised roadmap ready for leadership sign-off",
     ],
-    typicalTimeline: "One session; results within the week.",
-    industries: ["All sectors we serve"],
-    relatedCaseStudyIds: [
-      "oil-gas-invoice-automation",
-      "legal-intelligence-platform",
+    typicalTimeline: "1–2 weeks. Roadmap delivered at the end.",
+    industries: [
+      "Banks and payment institutions",
+      "Growth-stage fintechs",
+      "Regulated firms under PSD2, MiFID II, DORA, AML, FinCEN, CFPB",
     ],
   },
   {
-    slug: "ai-workshops",
+    slug: "pipeline-build",
     iconPath: "/images/icons/services-discovery.svg",
     icon: <GraduationCap className="w-12 h-12" />,
-    title: "AI Opportunity Audit",
-    tagline: "A scoped roadmap and business case ready for leadership.",
+    title: "Pipeline Build",
+    tagline: "Connect the data. Automate the output. Free the team.",
     description:
-      "A structured two-week engagement. We map your data, workflows, and decision points. You leave with a scoped roadmap and a business case ready for leadership sign-off.",
+      "A fixed-scope, fixed-price build: 4–8 weeks. We connect your existing data sources across operations, finance, risk, and technology, map them to your regulatory obligations, and deliver a fully automated compliance pipeline — operational, validated, and with a complete audit trail from day one.",
     features: [
-      "Data, workflow, and decision-point mapping",
-      "Scoped implementation roadmap",
-      "Business case for investment committee or board",
+      "Data integrations across operations, finance, risk, and technology",
+      "Regulatory mapping engine",
+      "Automated report generation and scheduling",
+      "Audit trail active from day one",
+      "Acceptance criteria agreed before build begins",
     ],
     idealFor: [
-      "Teams ready to commit to a build but need a clear scope and business case",
-      "Organisations that need internal sign-off before engaging a delivery partner",
+      "Teams who have completed the Compliance Diagnostic and are ready to build",
+      "Compliance functions spending more than 10 hours per person per week on manual data assembly",
     ],
     outcomes: [
-      "A prioritised roadmap you can execute",
-      "Business case ready for leadership sign-off",
+      "15 hours saved per person, per week",
+      "100% of recurring filings automated post-deployment",
+      "The client meeting stays on the calendar",
     ],
-    typicalTimeline: "Two weeks; roadmap and business case delivered at the end.",
-    industries: ["All sectors we serve"],
+    typicalTimeline: "4–8 weeks from kickoff to first automated filing cycle.",
+    industries: [
+      "Banks and payment institutions",
+      "Growth-stage fintechs",
+      "Regulated firms across EU and US jurisdictions",
+    ],
   },
   {
-    slug: "custom-ai-agents",
+    slug: "quarterly-retainer",
     iconPath: "/images/icons/services-custom-agents.svg",
     icon: <Code2 className="w-12 h-12" />,
-    title: "Custom AI Systems",
-    tagline: "End-to-end delivery. Senior level, client in the loop.",
+    title: "Quarterly Retainer",
+    tagline: "Each new obligation adds a module. Not a manual process.",
     description:
-      "End-to-end delivery. Senior level delivery, with the client in the loop at all times. We build, deploy, and iterate until the system delivers what we scoped it to deliver.",
+      "Ongoing infrastructure management, scoped by obligation. When a new regulatory requirement lands, it becomes an automated output on top of the existing pipeline — not a new build from scratch and not a new manual process for the team.",
     features: [
-      "End-to-end AI product development",
-      "Integration with your existing systems and tools",
-      "Scalable, production-ready architecture",
-      "Ongoing monitoring and iteration",
+      "New regulatory obligations automated on the existing pipeline",
+      "Monitoring and validation for all active automated filings",
+      "Quarterly performance review against your obligation stack",
+      "A runbook for any obligation your team needs to own internally",
     ],
     idealFor: [
-      "Startups and mid-sized companies without an in-house AI team",
-      "CTOs and PMs who want a sharp build partner",
+      "Teams post-Pipeline Build expanding into new jurisdictions or obligations",
+      "Compliance functions where the obligation stack grows faster than headcount",
     ],
     outcomes: [
-      "Faster handling of requests, leads, or back-office work",
-      "Consistent execution without scaling headcount",
-      "Clear ROI through measured impact and iteration",
+      "Each new obligation takes hours to automate — not weeks of new process",
+      "Up to $2M in avoided losses from data handoff failures",
     ],
-    typicalTimeline:
-      "Usually 8–16 weeks from kickoff to first production release; ongoing support as needed.",
+    typicalTimeline: "Ongoing. Scoped per obligation, with monthly reviews.",
     industries: [
-      "Real estate",
-      "Legal",
-      "Construction",
-      "PropTech",
-      "Marketing",
-      "Consulting",
-    ],
-    relatedCaseStudyIds: [
-      "construction-materials-retailer",
-      "automated-customer-intake",
-      "material-validation-and-dependencies",
+      "Banks and payment institutions",
+      "Growth-stage fintechs",
+      "Multi-jurisdiction regulated firms",
     ],
   },
 ];

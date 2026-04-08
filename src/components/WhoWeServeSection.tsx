@@ -29,8 +29,9 @@ export const WhoWeServeSection = () => {
           </p>
           <p className="font-sans font-light text-[15px] leading-[1.6] text-[#555A66]">
             The pressure is audit readiness. The fear is a regulatory finding
-            that triggers remediation and public scrutiny. The team is too small
-            to handle an expanding obligation stack manually.
+            that triggers remediation and public scrutiny. The data exists — it
+            is sitting in operations, finance, risk, and technology. The problem
+            is that nobody connected it in time.
           </p>
         </div>
         <div className="py-12 md:pl-10">
@@ -45,10 +46,10 @@ export const WhoWeServeSection = () => {
             FinCEN · CFPB · State banking authorities
           </p>
           <p className="font-sans font-light text-[15px] leading-[1.6] text-[#555A66]">
-            The pressure is speed to new markets. The fear is a compliance
-            failure that delays expansion and surfaces in a fundraising
-            conversation. Every week spent on manual reporting is a week of
-            delayed revenue.
+            The pressure is speed to new markets. The fear is a data handoff
+            failure that looks like a compliance failure — and surfaces in a
+            fundraising conversation. Every week spent assembling data manually
+            is a week of delayed revenue.
           </p>
         </div>
       </div>

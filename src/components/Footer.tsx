@@ -32,6 +32,9 @@ export const Footer = () => {
                 className="h-8 w-auto"
               />
             </Link>
+            <p className="text-sm text-muted-foreground mb-1 max-w-xs font-medium">
+              Nothing lost between teams.
+            </p>
             <p className="text-sm text-muted-foreground mb-4 max-w-xs leading-relaxed">
               Compliance infrastructure for regulated financial institutions and
               fintechs.

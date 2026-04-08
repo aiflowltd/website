@@ -12,24 +12,23 @@ export const CTASection = () => {
           />
           <div className="relative">
             <p className="text-sm text-muted-foreground mb-3">
-              Ready to build something real?
+              Infrastructure, not workarounds.
             </p>
             <h2 className="text-4xl md:text-5xl font-alternates text-muted-foreground mb-4">
-              Let's turn your{" "}
+              The client meeting{" "}
               <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                AI ambitions
+                stays on the calendar.
               </span>
-              <br />
-              into reality
             </h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              Book a free consultation to discuss your project and see how we can
-              help.
+              15 hours saved per person, per week. 100% of recurring filings
+              automated. Book a diagnostic call to see where the hours are going
+              and what it costs to fix it.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact#calendly">
                 <SiteButton variant="primary" arrow="up-right">
-                  Let's talk
+                  Book a diagnostic call
                 </SiteButton>
               </Link>
               <Link to="/case-studies">

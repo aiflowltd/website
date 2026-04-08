@@ -6,7 +6,7 @@ export function HomeProofStatsSection() {
     <Section id="measurable-outcomes" scrollMargin>
       <SectionHeader
         title="Outcomes you can take to your board and your regulator."
-        subtitle="These figures come from the same engagement model on the homepage: fixed scope, fixed price, and infrastructure that stays under your control. Below is what changed once the first pipeline was live."
+        subtitle="Once the first pipeline was live, these are the numbers that changed."
         titleClassName="text-3xl md:text-4xl"
         subtitleClassName="max-w-2xl"
         className="mb-12"

@@ -32,11 +32,11 @@ export const Hero = () => {
 
       <div className="container mx-auto max-w-6xl relative z-10 w-full">
         <p className="text-sm font-light text-muted-foreground tracking-widest uppercase mb-6 font-sans">
-          Your compliance team should be doing compliance. Not building reports.
+          Nothing lost between teams.
         </p>
 
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold font-alternates my-10 leading-[1.1] text-foreground">
-          Compliance solutions for
+          Compliance infrastructure for
           <br />
           <span className="font-extralight">regulated financial services.</span>
         </h1>
@@ -44,7 +44,7 @@ export const Hero = () => {
         <div className="flex flex-wrap gap-4 mb-12">
           <Link to="/contact">
             <SiteButton variant="primary" arrow="up-right">
-              Book a discovery call
+              Book a diagnostic call
             </SiteButton>
           </Link>
           <Link to="/#how-we-work">
