@@ -7,13 +7,10 @@ import { SiteButton } from "@/components/SiteButton";
 import { Section } from "@/components/Section";
 import { SectionHeader } from "@/components/SectionHeader";
 import { cn } from "@/lib/utils";
+import { colPad3, editorialHrClass, editorialLine } from "@/lib/lineGrid";
 
 const CYCLE_INTERVAL_MS = 3500;
 const UNPAUSE_DELAY_MS = 800;
-
-const LINE = "border-[#E2E6F0]";
-/** Matches ServicesSection horizontal rhythm for a 3-column row. */
-const colPad3 = ["md:pr-10", "md:px-10", "md:pl-10"] as const;
 
 function buildGroups(posts: BlogPost[], groupSize: number): BlogPost[][] {
   const groups: BlogPost[][] = [];
@@ -37,7 +34,7 @@ function BlogPostInner({
   return (
     <>
       {post.image && (
-        <div className="w-full shrink-0 md:pt-12 md:pb-6 max-md:pb-4">
+        <div className="w-full shrink-0 md:pt-8 md:pb-6 max-md:pb-4">
           <div className="w-full h-[120px] overflow-hidden shrink-0 bg-muted/30">
             <img
               src={post.image}
@@ -55,7 +52,6 @@ function BlogPostInner({
           {post.title}
         </h3>
         <p className="text-xs text-[#555A66] flex flex-wrap items-center gap-2">
-          <Tag>{post.category}</Tag>
           <span>
             {post.category} · {post.readTime}
           </span>
@@ -128,7 +124,7 @@ export const BlogSection = () => {
         className="mb-12"
       />
 
-      <hr className="border-t border-[#E2E6F0]" />
+      <hr className={editorialHrClass} />
 
       {/* Mobile: single column, same line treatment as ServicesSection */}
       <div className="grid grid-cols-1 gap-0 md:hidden">
@@ -137,7 +133,7 @@ export const BlogSection = () => {
             key={post.id}
             to={`/blog/${post.id}`}
             className={cn(
-              LINE,
+              editorialLine,
               index < posts.length - 1 && "border-b",
               "block py-10 max-md:px-4 transition-opacity duration-200 hover:opacity-75",
             )}
@@ -176,7 +172,7 @@ export const BlogSection = () => {
                       to={`/blog/${post.id}`}
                       className={cn(
                         "group flex flex-col h-full min-h-[260px]",
-                        LINE,
+                        editorialLine,
                         cardIndex > 0 && "border-l",
                         colPad3[cardIndex],
                         "transition-opacity duration-300",
@@ -198,7 +194,7 @@ export const BlogSection = () => {
         </div>
       </div>
 
-      <hr className="border-t border-[#E2E6F0]" />
+      <hr className={editorialHrClass} />
     </Section>
   );
 };

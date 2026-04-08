@@ -10,6 +10,8 @@ const buttonTypography =
 
 const primaryGradient =
   "linear-gradient(105.61deg, #0DD9B7 9.01%, #13C9DA 27.5%, #18BDF5 44.3%, #112e63 54.38%, #748DFC 92.18%)";
+const arrowHoverGradient =
+  "linear-gradient(120deg, #475564 0%, #556679 18%, #677C92 34%, #7A92AB 50%, #79A5C3 66%, #5DB5E2 82%, #1AB8FF 100%)";
 
 interface SiteButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
@@ -63,7 +65,7 @@ const SiteButton = forwardRef<HTMLButtonElement, SiteButtonProps>(
               {/* Gradient circle — on hover */}
               <span
                 className="absolute inset-0 rounded-[56px] opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-                style={{ background: primaryGradient }}
+                style={{ background: arrowHoverGradient }}
                 aria-hidden
               />
               {/* Arrow: black on white circle, white on gradient */}
@@ -137,7 +139,7 @@ const SiteButton = forwardRef<HTMLButtonElement, SiteButtonProps>(
         {/* Gradient overlay on hover */}
         <span
           className="absolute inset-0 rounded-[72px] opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-          style={{ background: primaryGradient }}
+          style={{ background: arrowHoverGradient }}
           aria-hidden
         />
         <span className="relative z-[1]">{children}</span>

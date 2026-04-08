@@ -3,14 +3,24 @@ import { Link } from "react-router-dom";
 import { CaseStudy } from "@/data/caseStudies";
 import { Tag } from "@/components/Tag";
 import { SiteButton } from "@/components/SiteButton";
+import { cn } from "@/lib/utils";
 
 interface CaseStudyCardProps {
   study: CaseStudy;
+  /** List layout with parent `divide-y` (Case Studies index). */
+  editorial?: boolean;
 }
 
-export const CaseStudyCard = ({ study }: CaseStudyCardProps) => {
+export const CaseStudyCard = ({ study, editorial }: CaseStudyCardProps) => {
   return (
-    <Card className="bg-card border-border overflow-hidden hover:border-white/20 hover:shadow-lg transition-all duration-300">
+    <Card
+      className={cn(
+        "overflow-hidden transition-all duration-300",
+        editorial
+          ? "rounded-none border-0 bg-transparent py-10 shadow-none md:py-14"
+          : "border-border bg-card hover:border-primary/30",
+      )}
+    >
       <div className="grid md:grid-cols-2 gap-0">
         <div className="relative h-64 md:h-auto">
           <img
@@ -18,7 +28,6 @@ export const CaseStudyCard = ({ study }: CaseStudyCardProps) => {
             alt={study.title}
             className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent" />
         </div>
 
         <div className="p-8 md:p-12">
@@ -28,20 +37,22 @@ export const CaseStudyCard = ({ study }: CaseStudyCardProps) => {
             ))}
           </div>
 
-          <h2 className="text-3xl font-bold mb-2">{study.title}</h2>
-          <p className="text-grey mb-6">
+          <h2 className="mb-2 font-alternates text-3xl font-bold text-foreground">
+            {study.title}
+          </h2>
+          <p className="mb-6 text-muted-foreground">
             {study.client} • {study.industry}
           </p>
 
-          <div className="space-y-4 mb-8">
+          <div className="mb-8 space-y-4">
             <div>
-              <h4 className="font-semibold text-foreground mb-2">Challenge</h4>
-              <p className="text-grey">{study.challenge}</p>
+              <h4 className="mb-2 font-semibold text-foreground">Challenge</h4>
+              <p className="text-muted-foreground">{study.challenge}</p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-foreground mb-2">Solution</h4>
-              <p className="text-grey">{study.solution}</p>
+              <h4 className="mb-2 font-semibold text-foreground">Solution</h4>
+              <p className="text-muted-foreground">{study.solution}</p>
             </div>
           </div>
 

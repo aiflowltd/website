@@ -37,13 +37,6 @@ const engagementCellBorder = [
   "md:border-b-0 md:border-l md:border-[#E2E6F0]",
 ];
 
-const mdGridPlacement = [
-  "md:col-start-1 md:row-start-1 md:row-span-3",
-  "md:col-start-2 md:row-start-1 md:row-span-3",
-  "md:col-start-1 md:row-start-4 md:row-span-3",
-  "md:col-start-2 md:row-start-4 md:row-span-3",
-] as const;
-
 export const EngagementSection = () => {
   return (
     <Section>
@@ -71,7 +64,7 @@ export const EngagementSection = () => {
       <div
         className={cn(
           "grid grid-cols-1 gap-0",
-          "md:grid-cols-2 md:[grid-template-rows:repeat(2,auto_auto_minmax(0,1fr))]",
+          "md:grid-cols-2",
         )}
       >
         {engagementModels.map((model, index) => (
@@ -82,16 +75,16 @@ export const EngagementSection = () => {
               "relative border-[#E2E6F0]",
               engagementCellBorder[index],
               engagementColPad[index],
-              "flex flex-col gap-3 py-8",
-              "md:grid md:min-h-0 md:gap-0 md:py-8 md:[grid-template-rows:subgrid]",
-              mdGridPlacement[index],
+              "flex flex-col gap-5 py-10",
+              // Fixed desktop tracks keep the solution divider aligned across all cards.
+              "md:grid md:min-h-0 md:gap-0 md:py-10 md:[grid-template-rows:120px_88px_minmax(0,1fr)]",
             )}
           >
             <div className="absolute w-7 h-7 right-4 top-4 z-10 flex items-center justify-center rounded-full border border-[#E2E6F0]">
               <ArrowUpRight className="w-5 h-5 text-muted-foreground" />
             </div>
 
-            <div className="relative z-10 pr-10 md:self-start md:w-full">
+            <div className="relative z-10 pr-10 md:w-full">
               <p className="font-sans text-[10px] font-medium uppercase tracking-[0.15em] text-muted-foreground mb-1.5">
                 Situation
               </p>
@@ -100,14 +93,14 @@ export const EngagementSection = () => {
               </p>
             </div>
 
-            <div className="relative z-10 md:self-stretch md:w-full md:min-h-0">
+            <div className="relative z-10 md:w-full md:min-h-0">
               <p className="font-sans text-[10px] font-medium uppercase tracking-[0.15em] text-muted-foreground mb-1.5">
                 Solution
               </p>
               <h3 className="font-sans font-medium text-lg leading-tight text-foreground">
                 {model.solution}
               </h3>
-              <hr className="border-0 border-t border-[#E2E6F0] mt-3 mb-0" />
+              <hr className="mt-4 mb-0 border-0 border-t border-[#E2E6F0]" />
             </div>
 
             <p className="relative z-10 font-sans font-light text-sm leading-[1.5] text-muted-foreground md:min-h-0">

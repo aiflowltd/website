@@ -120,7 +120,7 @@ const Services = () => {
             {services.map((service, index) => (
               <div
                 key={service.slug}
-                className={index > 0 ? "mt-12 md:mt-16" : undefined}
+                className={index > 0 ? "mt-24 md:mt-32" : undefined}
               >
                 <ServiceBlock service={service} index={index} />
               </div>
