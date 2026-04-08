@@ -5,8 +5,8 @@ export function HomeProofStatsSection() {
   return (
     <Section id="measurable-outcomes" scrollMargin>
       <SectionHeader
-        title="Outcomes you can take to your board and your regulator."
-        subtitle="Key people stop assembling data and start doing compliance. These are the numbers that change."
+        title="Spend on growth. Not on fines."
+        subtitle="Regulatory findings delay expansion and surface in fundraising conversations. Fixed infrastructure keeps the reputation solid and the budget where it belongs."
         titleClassName="text-3xl md:text-4xl"
         subtitleClassName="max-w-2xl"
         className="mb-12"
