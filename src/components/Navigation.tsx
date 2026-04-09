@@ -12,9 +12,10 @@ import {
 import { cn } from "@/lib/utils";
 
 const industryLinks = [
-  { name: "EU — Regulated Institutions", href: "/industry/regulated-institutions", icon: Landmark },
-  { name: "US — Growth Fintechs", href: "/industry/growth-fintechs", icon: TrendingUp },
+  { name: "Regulated Institutions", href: "/industry/regulated-institutions", icon: Landmark },
+  { name: "Growth Fintechs", href: "/industry/growth-fintechs", icon: TrendingUp },
 ] as const;
+
 
 const navItemClass =
   "text-[13px] font-medium tracking-[0.01em] text-[#555A66] hover:text-[#0E1015] transition-colors";
