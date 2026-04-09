@@ -7,9 +7,9 @@ import { cn } from "@/lib/utils";
 const stats = [
   {
     value: "10+",
-    label: "years in fintech",
+    label: "years in tech",
     description:
-      "building compliance infrastructure for regulated institutions in Europe and the United States",
+      "building production systems, four of which focused on compliance infrastructure for regulated institutions in Europe and the United States",
   },
   {
     value: "50+",
