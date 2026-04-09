@@ -117,6 +117,7 @@ const Services = () => {
             {services.map((service, index) => (
               <div
                 key={service.slug}
+                id={service.slug}
                 className={cn(
                   "flex flex-col gap-6 py-10 px-0",
                   index > 0 && cn("border-t md:border-t-0 md:border-l md:pl-10", editorialLine),

@@ -99,9 +99,9 @@ export const services: Service[] = [
     title: "Compliance Diagnostic",
     tagline: "Where is the data handoff problem, and what will it cost to fix?",
     description:
-      "A focused 1–2 week engagement. We map your compliance workflows, data sources, and regulatory obligations across operations, finance, risk, and technology. You leave with a prioritised automation roadmap and a clear brief — whether you proceed with us or not.",
+      "1–2 weeks. We map the fintech's compliance workflows, data sources, and regulatory obligations across all active jurisdictions. We identify where the data handoff failures are, what manual steps are happening, and what it would cost to automate them. Deliverable: a prioritised automation roadmap, ready for leadership sign-off.",
     features: [
-      "Workflow and data source mapping across operations, finance, risk, and technology",
+      "Workflow and data source mapping across all active jurisdictions",
       "Regulatory obligation audit",
       "Prioritised automation roadmap",
       "Scope and cost estimate for the Pipeline Build",
@@ -128,10 +128,10 @@ export const services: Service[] = [
     title: "Pipeline Build",
     tagline: "Connect the data. Automate the output. Free the team.",
     description:
-      "A fixed-scope, fixed-price build: 4–8 weeks. We connect your existing data sources across operations, finance, risk, and technology, map them to your regulatory obligations, and deliver a fully automated compliance pipeline — operational, validated, and with a complete audit trail from day one.",
+      "4–8 weeks. We build the first automated compliance pipeline for one regulatory obligation or reporting workflow. Data sources are connected, mapped to the regulatory template, and validated. The pipeline runs on schedule, produces the report, and maintains a full audit trail. Acceptance criteria are agreed before build begins.",
     features: [
-      "Data integrations across operations, finance, risk, and technology",
-      "Regulatory mapping engine",
+      "Data integrations across existing sources",
+      "Regulatory mapping engine for one obligation or workflow",
       "Automated report generation and scheduling",
       "Audit trail active from day one",
       "Acceptance criteria agreed before build begins",
@@ -153,28 +153,28 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "compliance-operations",
+    slug: "long-term-partnership",
     iconPath: "/images/icons/services-custom-agents.svg",
     icon: <Code2 className="w-12 h-12" />,
-    title: "Compliance Operations",
-    tagline: "Each new obligation adds a module. Not a manual process.",
+    title: "Long-term Partnership",
+    tagline: "Each new obligation adds an automated output. Not a manual process.",
     description:
-      "Ongoing infrastructure management, scoped by obligation. When a new regulatory requirement lands, it becomes an automated output on top of the existing pipeline — not a new build from scratch and not a new manual process for the team.",
+      "Ongoing, priced per quarter, scoped by jurisdictional and regulatory coverage. We maintain, expand, and optimise the compliance infrastructure as the fintech enters new states, countries, or product lines. Each new obligation adds an automated output on top of the existing pipeline — not a new build from scratch.",
     features: [
-      "New regulatory obligations automated on the existing pipeline",
+      "New obligations automated on the existing pipeline as coverage expands",
       "Monitoring and validation for all active automated filings",
-      "Quarterly performance review against your obligation stack",
-      "A runbook for any obligation your team needs to own internally",
+      "Quarterly performance review against the obligation stack",
+      "A runbook for any obligation the team needs to own internally",
     ],
     idealFor: [
-      "Teams post-Pipeline Build expanding into new jurisdictions or obligations",
+      "Teams post-Pipeline Build expanding into new jurisdictions, states, or product lines",
       "Compliance functions where the obligation stack grows faster than headcount",
     ],
     outcomes: [
       "Each new obligation takes hours to automate — not weeks of new process",
       "Up to $2M in avoided losses from data handoff failures",
     ],
-    typicalTimeline: "Ongoing. Scoped per obligation, with monthly reviews.",
+    typicalTimeline: "Ongoing. Priced per quarter, scoped by coverage.",
     industries: [
       "Banks and payment institutions",
       "Growth-stage fintechs",

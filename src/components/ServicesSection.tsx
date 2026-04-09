@@ -9,24 +9,24 @@ const services = [
     title: "Compliance Diagnostic",
     phase: "Diagnose",
     description:
-      "A focused 1–2 week engagement. We map your compliance workflows, data sources, and regulatory obligations across operations, finance, risk, and technology. You leave with a prioritised roadmap and a clear brief — whether you proceed with us or not.",
-    link: "/contact",
+      "1–2 weeks. We map the fintech's compliance workflows, data sources, and regulatory obligations across all active jurisdictions. Deliverable: a prioritised automation roadmap.",
+    link: "/services#compliance-diagnostic",
   },
   {
     index: "02",
     title: "Pipeline Build",
     phase: "Build",
     description:
-      "A fixed-scope, fixed-price build: 4–8 weeks. We connect your data sources across operations, finance, risk, and technology, map them to your regulatory obligations, and deliver a fully automated compliance pipeline — operational, validated, audit trail included.",
-    link: "/services",
+      "4–8 weeks. We build the first automated compliance pipeline for one regulatory obligation or reporting workflow.",
+    link: "/services#pipeline-build",
   },
   {
     index: "03",
-    title: "Compliance Operations",
-    phase: "Operate",
+    title: "Long-term Partnership",
+    phase: "Partner",
     description:
-      "Ongoing infrastructure management, scoped by obligation. Each new regulatory requirement adds an automated output on top of the existing pipeline — not a new manual process for the team. The client meeting stays on the calendar.",
-    link: "/services",
+      "Ongoing, priced per quarter, scoped by jurisdictional and regulatory coverage. We maintain, expand, and optimise the compliance infrastructure as the fintech enters new states, countries, or product lines.",
+    link: "/services#long-term-partnership",
   },
 ];
 
