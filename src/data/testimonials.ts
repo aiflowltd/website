@@ -11,6 +11,16 @@ export interface Testimonial {
 
 export const testimonials: Testimonial[] = [
   {
+    id: "exomatter",
+    quote:
+      "I trusted you to give a good result, and that's what happened. I could not have wished for anything better.",
+    author: "Josua Vieten",
+    role: "CEO",
+    company: "ExoMatter",
+    caseStudyLink: "exomatter-automl",
+    caseStudyText: "Read The Case Study",
+  },
+  {
     id: "mihai-ambitious",
     quote:
       "The AI Flow team is ambitious and a quick learner. A strong team who can make product recommendations and put them into practice.",
@@ -59,16 +69,6 @@ export const testimonials: Testimonial[] = [
     author: "",
     role: "Senior team",
     company: "European bank (under NDA)",
-  },
-  {
-    id: "exomatter",
-    quote:
-      "I trusted you to give a good result, and that's what happened. I could not have wished for anything better.",
-    author: "Josua Vieten",
-    role: "CEO",
-    company: "ExoMatter",
-    caseStudyLink: "exomatter-automl",
-    caseStudyText: "Read The Case Study",
   },
   {
     id: "bank-resilience",

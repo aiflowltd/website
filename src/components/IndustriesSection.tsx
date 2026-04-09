@@ -1,150 +1,65 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import { SiteButton } from "@/components/SiteButton";
 import { Section } from "@/components/Section";
 import { SectionHeader } from "@/components/SectionHeader";
 
-const frameworks = [
+const audiences = [
   {
-    id: "psd2",
-    title: "PSD2",
-    fullName: "Payment Services Directive 2",
+    id: "regulated-institutions",
+    title: "Regulated Institutions",
+    subtitle: "RegFin Europe",
     jurisdiction: "EU · UK",
-    appliesTo: "Payment institutions, banks",
-    automated: [
-      "Incident reporting to competent authorities",
-      "SCA exemption monitoring and documentation",
-      "Fraud reporting (Article 96)",
-      "Operational and security risk reporting",
+    profile:
+      "Banks, payment institutions, and other entities under direct supervisory authority within EU and UK frameworks. UK, Benelux, and Nordics.",
+    characteristics: [
+      "Small compliance teams (under 10) responsible for obligations that scale faster than the team can grow",
+      "PSD2, MiFID II, DORA, GDPR, and national AML frameworks",
+      "Regulatory work competes with daily operations for the same people",
     ],
-    detail:
-      "Each incident report requires data from operations, risk, and technology assembled within 24 hours of detection. We build the pipeline so the report is ready before the deadline — not assembled under it.",
+    regulations: ["PSD2", "MiFID II", "DORA", "AML"],
+    buyer: "Head of Compliance",
+    link: "/industry/regulated-institutions",
   },
   {
-    id: "mifid2",
-    title: "MiFID II",
-    fullName: "Markets in Financial Instruments Directive II",
-    jurisdiction: "EU · UK",
-    appliesTo: "Investment firms, banks with trading operations",
-    automated: [
-      "Transaction reporting to NCAs and ESMA",
-      "Best execution reporting (RTS 27 / 28)",
-      "Trade and order records",
-      "Investor suitability documentation",
-    ],
-    detail:
-      "Transaction reporting runs on tight deadlines with data from multiple trading systems. We map your trade data to the required fields and automate submission — no manual reconciliation, full audit trail.",
-  },
-  {
-    id: "dora",
-    title: "DORA",
-    fullName: "Digital Operational Resilience Act",
-    jurisdiction: "EU",
-    appliesTo: "Banks, payment institutions, investment firms",
-    automated: [
-      "Major ICT incident classification and reporting",
-      "Third-party ICT provider risk register",
-      "Operational resilience testing documentation",
-      "TLPT coordination reporting",
-    ],
-    detail:
-      "DORA penalties for inadequate incident reporting start at €1M. The classification timeline is 4 hours for initial notification, 72 hours for intermediate report. We automate the data collection so classification happens on facts, not memory.",
-  },
-  {
-    id: "aml",
-    title: "AML",
-    fullName: "Anti-Money Laundering",
-    jurisdiction: "EU · UK · US",
-    appliesTo: "Banks, payment institutions, fintechs",
-    automated: [
-      "Suspicious Activity Report (SAR) filing",
-      "Transaction monitoring report generation",
-      "Customer due diligence documentation",
-      "Periodic AML compliance reporting",
-    ],
-    detail:
-      "AML reporting pulls data from transaction systems, customer records, and risk flags across departments. We unify those sources into a single automated pipeline — reports that are accurate, timely, and fully auditable.",
-  },
-  {
-    id: "fincen",
-    title: "FinCEN",
-    fullName: "Financial Crimes Enforcement Network",
+    id: "growth-fintechs",
+    title: "Growth Fintechs",
+    subtitle: "US FinTech",
     jurisdiction: "US",
-    appliesTo: "Banks, money services businesses, fintechs",
-    automated: [
-      "Suspicious Activity Reports (SARs)",
-      "Currency Transaction Reports (CTRs)",
-      "Beneficial Ownership reporting",
-      "BSA compliance documentation",
+    profile:
+      "VC-backed, typically Series B or C, operating across multiple states in payments and lending. Engineering resources allocated to product, not compliance tooling.",
+    characteristics: [
+      "Small compliance teams (under 10) managing an expanding set of state and federal filings",
+      "FinCEN, CFPB, SEC, and state banking authorities — each new state adds a new reporting template",
+      "Compliance is a gate to growth. Every manual week in a new market is a week not generating revenue",
     ],
-    detail:
-      "Growth-stage fintechs operating across multiple states often have SAR and CTR obligations before they have the infrastructure to file consistently. We build the pipeline so every obligation is met — regardless of how fast the company is growing.",
-  },
-  {
-    id: "cfpb",
-    title: "CFPB",
-    fullName: "Consumer Financial Protection Bureau",
-    jurisdiction: "US",
-    appliesTo: "Lenders, payment companies, fintechs",
-    automated: [
-      "HMDA loan application register",
-      "Fair lending data analysis and reporting",
-      "Complaint data reporting",
-      "Supervisory examination preparation",
-    ],
-    detail:
-      "CFPB examinations arrive on a schedule — but the data preparation should not. We automate the HMDA register and fair lending analysis so the team walks into an examination with documentation ready, not assembled under pressure.",
+    regulations: ["FinCEN", "CFPB", "State MTLs"],
+    buyer: "Head of Compliance, VP Compliance, or CEO/COO",
+    link: "/industry/growth-fintechs",
   },
 ];
 
 export const IndustriesSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const frameworkRefs = useRef<(HTMLElement | null)[]>([]);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const check = () => {
-      const triggerY = window.innerHeight * 0.35;
-      const refs = frameworkRefs.current.filter(
-        (el): el is HTMLElement => el != null,
-      );
-      for (let i = refs.length - 1; i >= 0; i--) {
-        const rect = refs[i].getBoundingClientRect();
-        if (rect.top <= triggerY) {
-          setActiveIndex(i);
-          return;
-        }
-      }
-      setActiveIndex(0);
-    };
-
-    check();
-    window.addEventListener("scroll", check, { passive: true });
-    return () => window.removeEventListener("scroll", check);
-  }, []);
-
-  const active = frameworks[activeIndex];
+  const active = audiences[activeIndex];
 
   return (
-    <Section ref={sectionRef} className="w-full">
+    <Section className="w-full">
       <SectionHeader
-        title="Built for the frameworks your team reports to."
-        subtitle="PSD2, MiFID II, DORA, AML, FinCEN, CFPB — each with its own templates, deadlines, and data requirements. We automate the pipeline for each one."
+        title="Who we work with."
+        subtitle="Two client profiles. One underlying problem — compliance obligations scaling faster than the team and the infrastructure can handle."
         titleClassName="mb-3"
         className="mb-12 lg:mb-16"
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        {/* Left: framework list */}
+      <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
+        {/* Left: audience list */}
         <div className="lg:col-span-5">
           <div className="space-y-0">
-            {frameworks.map((framework, index) => (
+            {audiences.map((audience, index) => (
               <div
-                key={framework.id}
-                ref={(el) => {
-                  frameworkRefs.current[index] = el;
-                }}
+                key={audience.id}
                 className="border-b border-border last:border-b-0"
               >
                 <button
@@ -155,15 +70,15 @@ export const IndustriesSection = () => {
                   }`}
                 >
                   <div className="min-w-0 flex-1">
-                    <h3 className="text-xl md:text-2xl font-bold font-alternates mb-1">
-                      {framework.title}
+                    <h3 className="font-alternates mb-1 text-xl font-bold md:text-2xl">
+                      {audience.title}
                     </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {framework.fullName}
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      {audience.subtitle}
                     </p>
                   </div>
                   <ChevronRight
-                    className="w-5 h-5 shrink-0 text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 transition-all mt-1"
+                    className="mt-1 h-5 w-5 shrink-0 text-muted-foreground transition-all group-hover:translate-x-0.5 group-hover:text-foreground"
                     aria-hidden
                   />
                 </button>
@@ -180,51 +95,75 @@ export const IndustriesSection = () => {
           </div>
         </div>
 
-        {/* Right: framework detail panel */}
+        {/* Right: audience detail panel */}
         <div className="lg:col-span-7 lg:self-start lg:sticky lg:top-24">
           {active && (
-            <div className="rounded-xl border border-border bg-card overflow-hidden">
+            <div className="overflow-hidden rounded-xl border border-border bg-card">
               {/* Header */}
-              <div className="px-6 py-6 border-b border-border">
-                <div className="flex items-start justify-between gap-4 mb-1">
-                  <h3 className="font-alternates text-3xl font-bold text-foreground">
+              <div className="border-b border-border px-6 py-6">
+                <div className="mb-1 flex items-start justify-between gap-4">
+                  <h3 className="font-alternates text-2xl font-bold text-foreground md:text-3xl">
                     {active.title}
                   </h3>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground border border-border rounded px-2 py-1 shrink-0 mt-1.5">
+                  <span className="mt-1 shrink-0 rounded border border-border px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
                     {active.jurisdiction}
                   </span>
                 </div>
-                <p className="text-sm text-muted-foreground leading-snug">
-                  {active.fullName}
-                </p>
-                <p className="text-xs text-muted-foreground/60 mt-0.5">
-                  {active.appliesTo}
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {active.profile}
                 </p>
               </div>
 
-              {/* What we automate */}
-              <div className="px-6 py-5 border-b border-border">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground mb-4">
-                  What we automate
+              {/* Key characteristics */}
+              <div className="border-b border-border px-6 py-5">
+                <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                  Defining characteristics
                 </p>
                 <ul className="space-y-3">
-                  {active.automated.map((item, i) => (
+                  {active.characteristics.map((item, i) => (
                     <li
                       key={i}
                       className="flex items-start gap-3 text-sm leading-relaxed text-foreground"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-success mt-[0.4rem] shrink-0" />
+                      <span className="mt-[0.4rem] h-1.5 w-1.5 shrink-0 rounded-full bg-success" />
                       {item}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              {/* Detail paragraph */}
+              {/* Regulations + buyer */}
+              <div className="flex items-start justify-between gap-6 border-b border-border px-6 py-5">
+                <div>
+                  <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                    Regulatory scope
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {active.regulations.map((reg) => (
+                      <span
+                        key={reg}
+                        className="rounded border border-border px-2 py-0.5 text-[11px] font-medium text-foreground/70"
+                      >
+                        {reg}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="text-right shrink-0">
+                  <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                    Buyer
+                  </p>
+                  <p className="text-sm text-foreground/70">{active.buyer}</p>
+                </div>
+              </div>
+
+              {/* CTA */}
               <div className="px-6 py-5">
-                <p className="text-sm font-light leading-relaxed text-muted-foreground">
-                  {active.detail}
-                </p>
+                <Link to={active.link}>
+                  <SiteButton variant="secondary" arrow="up-right">
+                    Read the full profile
+                  </SiteButton>
+                </Link>
               </div>
             </div>
           )}
