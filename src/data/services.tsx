@@ -128,14 +128,14 @@ export const services: Service[] = [
     title: "Pipeline Build",
     tagline: "Connect the data. Automate the output. Free the team.",
     description:
-      "4–8 weeks. We build the first automated compliance pipeline for one regulatory obligation or reporting workflow. Data sources are connected, mapped to the regulatory template, and validated. The pipeline runs on schedule, produces the report, and maintains a full audit trail. The system is built to OWASP security standards, encrypted in transit and at rest, and operates within your existing infrastructure — no data leaves your environment. Acceptance criteria are agreed before build begins.",
+      "4–8 weeks. We build the first automated compliance pipeline for one regulatory obligation or reporting workflow. Data sources are connected, mapped to the regulatory template, and validated. The pipeline runs on schedule, produces the report, and maintains a full audit trail. The system is built to security standards (OWASP and others) and can operate within your existing infrastructure — no data leaves your environment. Acceptance criteria are agreed before build begins.",
     features: [
       "Data integrations across existing sources",
       "Regulatory mapping engine for one obligation or workflow",
       "Automated report generation and scheduling",
       "Audit trail active from day one",
-      "Built to OWASP security standards — encrypted in transit and at rest",
-      "Operates within your existing infrastructure — no data leaves your environment",
+      "Built to security standards (OWASP and others)",
+      "Can operate within your existing infrastructure — no data leaves your environment",
       "Acceptance criteria agreed before build begins",
     ],
     idealFor: [
