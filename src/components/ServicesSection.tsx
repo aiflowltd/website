@@ -17,7 +17,7 @@ const services = [
     title: "Pipeline Build",
     phase: "Build",
     description:
-      "4–8 weeks. We build the first automated compliance pipeline for one regulatory obligation or reporting workflow.",
+      "4–8 weeks. We build the first automated compliance pipeline for one regulatory obligation or reporting workflow. The system is built to OWASP security standards, encrypted in transit and at rest, and operates within your existing infrastructure.",
     link: "/services#pipeline-build",
   },
   {
@@ -25,7 +25,7 @@ const services = [
     title: "Long-term Partnership",
     phase: "Partner",
     description:
-      "Ongoing, scoped by jurisdictional and regulatory coverage. We maintain, expand, and optimise the compliance infrastructure as the regulatory environment evolves, or as your company enters new states, countries, or product lines.",
+      "Ongoing, we maintain, expand, and optimise the compliance infrastructure as the regulatory environment evolves, or as your company enters new states, countries, or product lines.",
     link: "/services#long-term-partnership",
   },
 ];
