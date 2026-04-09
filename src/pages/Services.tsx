@@ -14,19 +14,19 @@ const editorialLine = "border-[#E2E6F0]";
 
 const trustPillars = [
   {
-    kicker: "No surprises",
-    title: "Scope and outcome agreed before we start",
-    body: "Deliverables, timeline, and acceptance criteria are defined before any work begins. You know exactly what you are getting before you commit.",
+    kicker: "Recurring reporting",
+    title: "Completed, validated reports ready for review and submission",
+    body: "Each reporting cycle produces completed, validated reports ready for review and submission, with a full audit trail.",
   },
   {
-    kicker: "Delivery",
-    title: "Senior engineers throughout",
-    body: "The people who scope the work build it. No handoff to a junior team. Outputs are documented for your audit trail and for any future team that maintains the system.",
+    kicker: "Audit requests",
+    title: "Structured document packages in hours instead of weeks",
+    body: "Audit requests produce structured document packages in hours instead of weeks, with a full audit trail.",
   },
   {
-    kicker: "Independence",
-    title: "Your data stays yours",
-    body: "We build on the systems you already run. You retain full ownership of what we build. We hand over the runbook so your team can operate and extend the infrastructure without us.",
+    kicker: "New obligations",
+    title: "Each new jurisdiction adds an automated output, not a manual process",
+    body: "For fintechs entering new markets, the pipeline is built before the market launches. Each new obligation adds an automated output, not a manual process.",
   },
 ] as const;
 
