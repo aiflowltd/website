@@ -7,6 +7,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { services } from "@/data/services";
 import { DatacardsEmbedPanel } from "@/components/DatacardsEmbedPanel";
 import { LineGridCta } from "@/components/LineGridCta";
+import { PipelineBrowserMock } from "@/components/PipelineBrowserMock";
 import { useEffect } from "react";
 import { cn } from "@/lib/utils";
 
@@ -76,6 +77,17 @@ const Services = () => {
             ))}
           </div>
           <hr className={cn("border-t", editorialLine)} />
+        </Section>
+
+        <Section padding="default">
+          <SectionHeader
+            title="The core components"
+            subtitle="Data unification, regulatory mapping, audit package generation, recurring report automation, and a full audit trail — five components, one pipeline."
+            titleClassName="text-3xl md:text-4xl"
+            subtitleClassName="max-w-2xl"
+            className="mb-10"
+          />
+          <PipelineBrowserMock />
         </Section>
 
         <Section padding="default">
