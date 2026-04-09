@@ -1,125 +1,84 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronRight, MoreHorizontal } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { SiteButton } from "@/components/SiteButton";
 import { Section } from "@/components/Section";
 import { SectionHeader } from "@/components/SectionHeader";
-import { getCaseStudy } from "@/data/caseStudies";
 
-const industries = [
+const audiences = [
   {
-    title: "Private Equity",
-    description:
-      "Deal sourcing, portfolio benchmarking, and due diligence intelligence.",
-    href: "/industry/agnostic",
-    caseStudyId: "construction-materials-retailer",
+    id: "regulated-institutions",
+    title: "Regulated Institutions",
+    subtitle: "RegFin Europe",
+    jurisdiction: "EU · UK",
+    profile:
+      "Banks, payment institutions, and other entities under direct supervisory authority within EU and UK frameworks. UK, Benelux, and Nordics.",
+    characteristics: [
+      "Small compliance teams (under 10) responsible for obligations that scale faster than the team can grow",
+      "PSD2, MiFID II, DORA, GDPR, and national AML frameworks",
+      "Regulatory work competes with daily operations for the same people",
+    ],
+    regulations: ["PSD2", "MiFID II", "DORA", "AML"],
+    buyer: "Head of Compliance",
+    link: "/industry/regulated-institutions",
   },
   {
-    title: "Finance & Fintech",
-    description: "Decisioning platforms and production financial systems.",
-    href: "/industry/agnostic",
-    caseStudyId: "student-financing-platform",
-  },
-  {
-    title: "Oil, Gas & Energy",
-    description:
-      "Trading intelligence, regulatory compliance, and operational automation at scale.",
-    href: "/industry/agnostic",
-    caseStudyId: "oil-gas-invoice-automation",
-  },
-  {
-    title: "Enterprise SaaS",
-    description: "Embedded AI features and internal tooling.",
-    href: "/industry/agnostic",
-    caseStudyId: "sales-intelligence-platform",
-  },
-  {
-    title: "Legal & Professional",
-    description:
-      "Document intelligence, compliance workflows, and risk-aware automation.",
-    href: "/industry/legal",
-    caseStudyId: "legal-intelligence-platform",
-  },
-  {
-    title: "Construction",
-    description: "Intake, quotation, and risk systems for complex projects.",
-    href: "/industry/construction",
-    caseStudyId: "automated-customer-intake",
+    id: "growth-fintechs",
+    title: "Growth Fintechs",
+    subtitle: "US FinTech",
+    jurisdiction: "US",
+    profile:
+      "VC-backed, typically Series B or C, operating across multiple states in payments and lending. Engineering resources allocated to product, not compliance tooling.",
+    characteristics: [
+      "Small compliance teams (under 10) managing an expanding set of state and federal filings",
+      "FinCEN, CFPB, SEC, and state banking authorities — each new state adds a new reporting template",
+      "Compliance is a gate to growth. Every manual week in a new market is a week not generating revenue",
+    ],
+    regulations: ["FinCEN", "CFPB", "State MTLs"],
+    buyer: "Head of Compliance, VP Compliance, or CEO/COO",
+    link: "/industry/growth-fintechs",
   },
 ];
 
 export const IndustriesSection = () => {
-  const [activeIndex, setActiveIndex] = useState(3);
-  const industryRefs = useRef<(HTMLElement | null)[]>([]);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const container = sectionRef.current;
-    if (!container) return;
-
-    const check = () => {
-      const triggerY = window.innerHeight * 0.35;
-      const refs = industryRefs.current.filter(
-        (el): el is HTMLElement => el != null,
-      );
-      for (let i = refs.length - 1; i >= 0; i--) {
-        const rect = refs[i].getBoundingClientRect();
-        if (rect.top <= triggerY) {
-          setActiveIndex(i);
-          return;
-        }
-      }
-      setActiveIndex(0);
-    };
-
-    check();
-    window.addEventListener("scroll", check, { passive: true });
-    return () => window.removeEventListener("scroll", check);
-  }, []);
-
-  const activeIndustry = industries[activeIndex];
-  const caseStudy = activeIndustry
-    ? getCaseStudy(activeIndustry.caseStudyId)
-    : null;
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = audiences[activeIndex];
 
   return (
-    <Section ref={sectionRef} className="w-full">
+    <Section className="w-full">
       <SectionHeader
-        title="Proven across industries"
-        subtitle="AI systems built around real constraints, not generic templates."
+        title="Who we work with."
+        subtitle="Two client profiles. One underlying problem — compliance obligations scaling faster than the team and the infrastructure can handle."
         titleClassName="mb-3"
         className="mb-12 lg:mb-16"
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        {/* Left: industry list, indented */}
+      <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
+        {/* Left: audience list */}
         <div className="lg:col-span-5">
           <div className="space-y-0">
-            {industries.map((industry, index) => (
+            {audiences.map((audience, index) => (
               <div
-                key={index}
-                ref={(el) => {
-                  industryRefs.current[index] = el;
-                }}
+                key={audience.id}
                 className="border-b border-border last:border-b-0"
               >
                 <button
                   type="button"
                   onClick={() => setActiveIndex(index)}
                   className={`group flex w-full items-start justify-between gap-4 py-6 text-left transition-opacity hover:opacity-100 ${
-                    index === activeIndex ? "opacity-100" : "opacity-70"
+                    index === activeIndex ? "opacity-100" : "opacity-40"
                   }`}
                 >
                   <div className="min-w-0 flex-1">
-                    <h3 className="text-xl md:text-2xl font-bold font-alternates mb-1">
-                      {industry.title}
+                    <h3 className="font-alternates mb-1 text-xl font-bold md:text-2xl">
+                      {audience.title}
                     </h3>
-                    <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-                      {industry.description}
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      {audience.subtitle}
                     </p>
                   </div>
                   <ChevronRight
-                    className="w-5 h-5 shrink-0 text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 transition-all mt-1"
+                    className="mt-1 h-5 w-5 shrink-0 text-muted-foreground transition-all group-hover:translate-x-0.5 group-hover:text-foreground"
                     aria-hidden
                   />
                 </button>
@@ -127,72 +86,87 @@ export const IndustriesSection = () => {
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-4 mt-10">
+          <div className="mt-10">
             <Link to="/contact">
-              <SiteButton variant="primary">
-                Discuss a similar project
+              <SiteButton variant="primary" arrow="up-right">
+                Book a diagnostic call
               </SiteButton>
-            </Link>
-            <Link to="/case-studies">
-              <SiteButton variant="secondary">View all case studies</SiteButton>
             </Link>
           </div>
         </div>
 
-        {/* Right: floating case study window - scrolls with section, then sticks under navbar until section ends */}
+        {/* Right: audience detail panel */}
         <div className="lg:col-span-7 lg:self-start lg:sticky lg:top-24">
-          <div className="relative rounded-xl border border-border bg-card shadow-xl overflow-hidden">
-            {/* Browser-style chrome */}
-            <div className="flex items-center gap-2 px-4 py-2.5 border-b border-border bg-muted/50">
-              <div className="flex gap-1.5">
-                <span className="w-3 h-3 rounded-full bg-red-500/80" />
-                <span className="w-3 h-3 rounded-full bg-amber-500/80" />
-                <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
+          {active && (
+            <div className="overflow-hidden rounded-xl border border-border bg-card">
+              {/* Header */}
+              <div className="border-b border-border px-6 py-6">
+                <div className="mb-1 flex items-start justify-between gap-4">
+                  <h3 className="font-alternates text-2xl font-bold text-foreground md:text-3xl">
+                    {active.title}
+                  </h3>
+                  <span className="mt-1 shrink-0 rounded border border-border px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                    {active.jurisdiction}
+                  </span>
+                </div>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {active.profile}
+                </p>
               </div>
-              <div className="flex-1 flex items-center gap-2 ml-4 px-3 py-1.5 rounded-md bg-background/80 border border-border text-xs text-muted-foreground font-mono max-w-full min-w-0">
-                <span className="truncate">
-                  aiflow.ltd/case-studies/{caseStudy?.id ?? "..."}
-                </span>
-              </div>
-              <MoreHorizontal className="w-4 h-4 text-muted-foreground shrink-0" />
-            </div>
 
-            <div className="min-h-[420px] flex flex-col">
-              {caseStudy && (
-                <>
-                  <div className="relative h-36 sm:h-44 shrink-0 overflow-hidden bg-muted">
-                    <img
-                      src={caseStudy.image}
-                      alt=""
-                      className="w-full h-full object-cover"
-                    />
+              {/* Key characteristics */}
+              <div className="border-b border-border px-6 py-5">
+                <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                  Defining characteristics
+                </p>
+                <ul className="space-y-3">
+                  {active.characteristics.map((item, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-3 text-sm leading-relaxed text-foreground"
+                    >
+                      <span className="mt-[0.4rem] h-1.5 w-1.5 shrink-0 rounded-full bg-success" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Regulations + buyer */}
+              <div className="flex items-start justify-between gap-6 border-b border-border px-6 py-5">
+                <div>
+                  <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                    Regulatory scope
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {active.regulations.map((reg) => (
+                      <span
+                        key={reg}
+                        className="rounded border border-border px-2 py-0.5 text-[11px] font-medium text-foreground/70"
+                      >
+                        {reg}
+                      </span>
+                    ))}
                   </div>
-                  <div className="p-4 sm:p-6 flex flex-col flex-1">
-                    <h3 className="text-lg sm:text-xl font-bold font-alternates mb-2 line-clamp-2">
-                      {caseStudy.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3 flex-1">
-                      {caseStudy.solution}
-                    </p>
-                    <div className="flex items-center justify-between gap-4 flex-wrap">
-                      <Link to={`/case-studies/${caseStudy.id}`}>
-                        <SiteButton variant="primary">
-                          Read full case study
-                        </SiteButton>
-                      </Link>
-                      {(caseStudy.duration || caseStudy.teamSize) && (
-                        <span className="text-xs text-muted-foreground">
-                          {[caseStudy.duration, caseStudy.teamSize]
-                            .filter(Boolean)
-                            .join(" • ")}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </>
-              )}
+                </div>
+                <div className="text-right shrink-0">
+                  <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                    Buyer
+                  </p>
+                  <p className="text-sm text-foreground/70">{active.buyer}</p>
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div className="px-6 py-5">
+                <Link to={active.link}>
+                  <SiteButton variant="secondary" arrow="up-right">
+                    Read the full profile
+                  </SiteButton>
+                </Link>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </Section>

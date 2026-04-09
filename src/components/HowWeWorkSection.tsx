@@ -6,33 +6,33 @@ import { SectionHeader } from "@/components/SectionHeader";
 const steps = [
   {
     number: "01",
-    title: "Diagnostic",
+    title: "First call",
     description:
-      "Map your compliance workflows, data sources, and regulatory obligations. Define the highest-value automation opportunity and scope the pipeline build.",
+      "One conversation to understand your situation. Your obligation stack, your team, what is breaking first. No assumptions. We listen before we propose anything.",
   },
   {
     number: "02",
-    title: "Architecture",
+    title: "Diagnose together",
     description:
-      "Scope the data integrations, regulatory mappings, and output formats. Align on audit trail requirements and acceptance criteria before a line of code is written.",
+      "We map your compliance workflows and data sources with you — not for you. Every gap we find, you see. You tell us which ones matter most. Nothing gets prioritised without your input.",
   },
   {
     number: "03",
-    title: "Build",
+    title: "Agree the scope",
     description:
-      "Implement the full pipeline: data connections, regulatory mapping engine, scheduled execution, and output generation. Senior engineers from start to finish.",
+      "The findings come back to you. We present what we found. You set the priorities. The scope and expected outcome are agreed before a line of code is written.",
   },
   {
     number: "04",
-    title: "Deploy",
+    title: "Build — open book",
     description:
-      "Ship to production with monitoring, validation checks, and full audit trail active from day one. The first automated filing cycle runs before handover.",
+      "You have access to the work as it develops. Weekly updates, decisions documented, nothing moves without your sign-off. No black box. No surprises at handover.",
   },
   {
     number: "05",
-    title: "Expand",
+    title: "Long run",
     description:
-      "Add obligations, jurisdictions, and reporting workflows on top of the existing infrastructure. Each expansion is a new automated output — not a new build from scratch.",
+      "We do not disappear after deployment. Each new obligation builds on the existing infrastructure. The team that built it stays accountable for it.",
   },
 ];
 
@@ -163,7 +163,7 @@ export const HowWeWorkSection = () => {
       <div ref={containerRef} className="container mx-auto max-w-6xl">
         <SectionHeader
           title="How we work"
-          subtitle="A structured delivery flow. Fixed scope at every stage."
+          subtitle="The client is in the room at every stage."
           action={
             <Link to="/services">
               <SiteButton

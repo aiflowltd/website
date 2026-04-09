@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { SiteButton } from "@/components/SiteButton";
 import { Section } from "@/components/Section";
 import { SectionHeader } from "@/components/SectionHeader";
-import { ServiceBlock } from "@/components/ServiceBlock";
 import { services } from "@/data/services";
 import { DatacardsEmbedPanel } from "@/components/DatacardsEmbedPanel";
 import { LineGridCta } from "@/components/LineGridCta";
+import { PipelineComponentsSection } from "@/components/PipelineComponentsSection";
 import { useEffect } from "react";
 import { cn } from "@/lib/utils";
 
@@ -15,19 +15,19 @@ const editorialLine = "border-[#E2E6F0]";
 
 const trustPillars = [
   {
-    kicker: "Commercial clarity",
-    title: "Fixed scope and price",
-    body: "Deliverables and timeline are agreed before work begins—no open-ended time and materials.",
+    kicker: "Recurring reporting",
+    title: "Completed, validated reports ready for review and submission",
+    body: "Each reporting cycle produces completed, validated reports ready for review and submission, with a full audit trail.",
   },
   {
-    kicker: "Delivery",
-    title: "Senior-led teams",
-    body: "Experienced practitioners stay on the engagement; outputs are documented for audit and handoff.",
+    kicker: "Audit requests",
+    title: "Structured document packages in hours instead of weeks",
+    body: "Audit requests produce structured document packages in hours instead of weeks, with a full audit trail.",
   },
   {
-    kicker: "Control",
-    title: "Your stack, your data",
-    body: "We integrate with systems you already run. You retain ownership; we provide the build and runbook.",
+    kicker: "New obligations",
+    title: "Each new jurisdiction adds an automated output, not a manual process",
+    body: "For fintechs entering new markets, the pipeline is built before the market launches. Each new obligation adds an automated output, not a manual process.",
   },
 ] as const;
 
@@ -52,15 +52,8 @@ const Services = () => {
       <main>
         <Section padding="hero">
           <SectionHeader
-            title={
-              <>
-                Services for{" "}
-                <span className="font-extralight">
-                  governance and delivery.
-                </span>
-              </>
-            }
-            subtitle="Three engagements—each with a defined outcome, timeline, and handoff. The same delivery standard you see on our homepage: priced on deliverables, not hours."
+            title="We build the compliance pipeline between your operational data and its regulatory output."
+            subtitle="The system connects to existing data sources, maps them to the regulatory templates for each jurisdiction, and runs automatically on schedule."
             titleClassName="text-3xl md:text-5xl"
             subtitleClassName="max-w-2xl text-base md:text-lg leading-relaxed"
           />
@@ -88,8 +81,93 @@ const Services = () => {
 
         <Section padding="default">
           <SectionHeader
-            title="Questions before you brief us?"
-            subtitle="Ask about fit, typical timelines, or how we’d approach your sector. When you’re ready, book a short scoping call."
+            title="Diagnostic first. Build when ready."
+            subtitle="Most organisations start with the Diagnostic — so scope, risk, and ROI are explicit for leadership before a line of code is written."
+            titleClassName="text-3xl md:text-4xl"
+            subtitleClassName="max-w-2xl"
+            className="mb-0"
+          />
+
+          <div
+            className={cn(
+              "mt-10 grid grid-cols-1 md:grid-cols-3 border-t",
+              editorialLine,
+            )}
+          >
+            {services.map((service, index) => (
+              <div
+                key={service.slug}
+                id={service.slug}
+                className={cn(
+                  "flex flex-col gap-6 py-10 px-0",
+                  index > 0 && cn("border-t md:border-t-0 md:border-l md:pl-10", editorialLine),
+                  index < services.length - 1 && cn("md:pr-10"),
+                )}
+              >
+                {/* Number + title */}
+                <div>
+                  <span className="text-[10px] font-bold tabular-nums tracking-[0.2em] text-muted-foreground/40">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-alternates text-xl font-bold text-foreground mt-2 leading-snug">
+                    {service.title}
+                  </h3>
+                  {service.tagline && (
+                    <p className="mt-1 text-sm font-medium text-foreground/60 leading-snug">
+                      {service.tagline}
+                    </p>
+                  )}
+                </div>
+
+                {/* Description */}
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {service.description}
+                </p>
+
+                {/* Features */}
+                {service.features && service.features.length > 0 && (
+                  <ul className="space-y-2.5 flex-1">
+                    {service.features.map((feature, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-success mt-[0.4em] shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {/* Timeline */}
+                {service.typicalTimeline && (
+                  <p
+                    className={cn(
+                      "text-xs font-medium text-muted-foreground/50 border-t pt-5",
+                      editorialLine,
+                    )}
+                  >
+                    {service.typicalTimeline}
+                  </p>
+                )}
+
+                {/* CTA */}
+                <Link to="/contact#calendly" className="mt-auto">
+                  <SiteButton variant="secondary" arrow="up-right">
+                    Discuss this engagement
+                  </SiteButton>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        <PipelineComponentsSection />
+
+        <Section padding="default">
+          <SectionHeader
+            title="Have questions before we start?"
+            subtitle="Ask about fit, typical timelines, or how we'd approach your obligation stack. When you're ready, book a scoping call."
             titleClassName="text-2xl font-bold font-alternates text-foreground md:text-3xl"
             subtitleClassName="max-w-2xl text-muted-foreground"
             className="mb-8"
@@ -107,32 +185,11 @@ const Services = () => {
           </DatacardsEmbedPanel>
         </Section>
 
-        <Section padding="default">
-          <SectionHeader
-            title="Three ways to work together"
-            subtitle="Foundation through build. Most organisations start with clarity or an audit before a full delivery—so scope, risk, and ROI are explicit for leadership and compliance."
-            titleClassName="text-3xl md:text-4xl"
-            subtitleClassName="max-w-2xl"
-            className="mb-12"
-          />
-
-          <div className="flex flex-col">
-            {services.map((service, index) => (
-              <div
-                key={service.slug}
-                className={index > 0 ? "mt-24 md:mt-32" : undefined}
-              >
-                <ServiceBlock service={service} index={index} />
-              </div>
-            ))}
-          </div>
-        </Section>
-
         <Section padding="compact">
           <LineGridCta>
             <SectionHeader
-              title="Ready to scope the next step?"
-              subtitle="Book a call with no obligation—or review case studies from teams with similar constraints."
+              title="Start with the Diagnostic."
+              subtitle="Book a scoping call with no obligation — or review case studies from compliance teams with similar constraints."
               variant="centered"
               titleClassName="font-alternates text-2xl text-foreground md:text-3xl"
               subtitleClassName="mx-auto mb-8 max-w-xl text-muted-foreground"
@@ -140,7 +197,7 @@ const Services = () => {
                 <div className="flex flex-col justify-center gap-4 sm:flex-row">
                   <Link to="/contact#calendly">
                     <SiteButton variant="primary" arrow="up-right">
-                      Book a scoping call
+                      Book a diagnostic call
                     </SiteButton>
                   </Link>
                   <Link to="/case-studies">

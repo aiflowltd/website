@@ -7,24 +7,27 @@ import { cn } from "@/lib/utils";
 const stats = [
   {
     value: "10+",
-    label: "years experience",
-    description: "building and shipping AI, ML, and data systems end to end",
+    label: "years in tech",
+    description:
+      "building production systems, four of which focused on compliance infrastructure for regulated institutions in Europe and the United States",
   },
   {
     value: "50+",
-    label: "projects delivered",
-    description: "across startups, scale-ups, and enterprise environments",
+    label: "compliance workflows automated",
+    description:
+      "across payments, lending, and investment firms under EU and US regulatory frameworks",
   },
   {
     value: "20+",
-    label: "enterprise clients",
+    label: "regulated institutions served",
     description:
-      "— including a top-5 global oil & gas firm and teams connected to Google and Bloomberg",
+      "banks, payment institutions, and growth-stage fintechs across the EU and United States",
   },
   {
-    value: "250+",
-    label: "AI agents delivered",
-    description: "production systems supporting real users and workflows",
+    value: "4h",
+    label: "DORA initial notification window",
+    description:
+      "the tightest reporting deadline in our stack — and the one that makes data handoff failures most costly",
   },
 ];
 
@@ -54,11 +57,11 @@ export const TeamSection = () => {
       <SectionHeader
         title={
           <>
-            Senior expertise.{" "}
-            <span className="font-extralight">Real-world results.</span>
+            The team.{" "}
+            <span className="font-extralight">Four years in fintech.</span>
           </>
         }
-        subtitle="Delivery experience across complex systems and global teams."
+        subtitle="The regulatory knowledge comes from working inside the institutions. The infrastructure delivery comes from building production systems from scratch."
         titleClassName="text-3xl md:text-4xl"
         className="mb-12"
       />

@@ -9,24 +9,24 @@ const services = [
     title: "Compliance Diagnostic",
     phase: "Diagnose",
     description:
-      "A focused 1–2 week engagement. We map your compliance workflows, data sources, and regulatory obligations. You leave with a prioritised automation roadmap and a clear brief — whether you proceed with us or not.",
-    link: "/contact",
+      "1–2 weeks. We map your compliance workflows, data sources, and regulatory obligations across all active jurisdictions. Deliverable: a prioritised automation roadmap.",
+    link: "/services#compliance-diagnostic",
   },
   {
     index: "02",
     title: "Pipeline Build",
     phase: "Build",
     description:
-      "A fixed-scope, fixed-price build: 4–8 weeks. We connect your existing data sources, map them to your regulatory obligations, and deliver a fully automated compliance pipeline — operational, validated, audit trail included.",
-    link: "/services",
+      "4–8 weeks. We build the first automated compliance pipeline for one regulatory obligation or reporting workflow. The system is built to security standards (OWASP and others) and can operate within your existing infrastructure.",
+    link: "/services#pipeline-build",
   },
   {
     index: "03",
-    title: "Quarterly Retainer",
-    phase: "Operate",
+    title: "Long-term Partnership",
+    phase: "Partner",
     description:
-      "Ongoing infrastructure management, scoped by obligation. Each new regulatory requirement adds an automated output — not a new manual process. A performance layer is added once value is measurable.",
-    link: "/services",
+      "Ongoing, we maintain, expand, and optimise the compliance infrastructure as the regulatory environment evolves, or as your company enters new states, countries, or product lines.",
+    link: "/services#long-term-partnership",
   },
 ];
 
@@ -41,8 +41,8 @@ export const ServicesSection = () => {
   return (
     <Section id="services" scrollMargin>
       <SectionHeader
-        title="Services built for business outcomes"
-        subtitle="Three entry points. One delivery standard. Priced on deliverables, not hours."
+        title="Three engagements. Each with a clear outcome."
+        subtitle="Start with a diagnostic. Build together. Stay for the long run."
         className="mb-12"
       />
 

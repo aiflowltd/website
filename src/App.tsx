@@ -33,6 +33,8 @@ import Epsilon from "./pages/clients/Epsilon";
 import Construction from "./pages/industry/Construction";
 import PropTech from "./pages/industry/PropTech";
 import Agnostic from "./pages/industry/Agnostic";
+import RegulatedInstitutions from "./pages/industry/RegulatedInstitutions";
+import GrowthFintechs from "./pages/industry/GrowthFintechs";
 import Workshops from "./pages/Workshops";
 import { DatacardsWidget } from "@/components/DatacardsWidget";
 import { useLocation } from "react-router-dom";
@@ -80,6 +82,8 @@ const AppShell = () => {
           <Route path="/industry/proptech" element={<PropTech />} />
           <Route path="/industry/agnostic" element={<Agnostic />} />
           <Route path="/workshops" element={<Workshops />} />
+          <Route path="/industry/regulated-institutions" element={<RegulatedInstitutions />} />
+          <Route path="/industry/growth-fintechs" element={<GrowthFintechs />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -13,8 +13,8 @@ const companyLinks = [
 ] as const;
 
 const industryLinks = [
-  { label: "EU — Regulated Institutions", to: "/#who-we-serve" },
-  { label: "US — Growth Fintechs", to: "/#who-we-serve" },
+  { label: "Regulated Institutions", to: "/industry/regulated-institutions" },
+  { label: "Growth Fintechs", to: "/industry/growth-fintechs" },
 ] as const;
 
 export const Footer = () => {
@@ -32,15 +32,18 @@ export const Footer = () => {
                 className="h-8 w-auto"
               />
             </Link>
+            <p className="text-sm text-muted-foreground mb-1 max-w-xs font-medium">
+              Nothing lost between teams.
+            </p>
             <p className="text-sm text-muted-foreground mb-4 max-w-xs leading-relaxed">
               Compliance infrastructure for regulated financial institutions and
               fintechs.
             </p>
             <a
-              href="mailto:hello@aiflow.software"
+              href="mailto:contact@aiflow.ltd"
               className="text-sm text-primary hover:underline"
             >
-              hello@aiflow.software
+              contact@aiflow.ltd
             </a>
           </div>
 

@@ -21,12 +21,36 @@ export const testimonials: Testimonial[] = [
     caseStudyText: "Read The Case Study",
   },
   {
-    id: "bank-clutch",
+    id: "mihai-ambitious",
     quote:
-      "Simply exceptional problem-solving under pressure. She found a critical issue and resolved it with laser-sharp focus.",
+      "The AI Flow team is ambitious and a quick learner. A strong team who can make product recommendations and put them into practice.",
     author: "",
-    role: "Senior team",
-    company: "European bank (under NDA)",
+    role: "",
+    company: "",
+  },
+  {
+    id: "user-flows-ceo",
+    quote:
+      "You did a fantastic job. Everything makes clear, logical sense and it's pretty much exactly as I imagined it.",
+    author: "",
+    role: "CEO in the",
+    company: "creative tech space",
+  },
+  {
+    id: "automl-ceo",
+    quote:
+      "AI Flow is a competent and resilient team. I trust they can make progress fast and build something meaningful from this.",
+    author: "",
+    role: "CEO of",
+    company: "software agency",
+  },
+  {
+    id: "mobile-app",
+    quote:
+      "Irina supported our AI setup with unmatched perseverance and professionalism. She found a critical issue on our side with laser-sharp focus. Absolute massive kudos for the problem-solving skills!",
+    author: "",
+    role: "Team at",
+    company: "consulting company",
   },
   {
     id: "marcus-drewes",
@@ -39,36 +63,12 @@ export const testimonials: Testimonial[] = [
     caseStudyText: "Read The Case Study",
   },
   {
-    id: "automl-ceo",
+    id: "bank-clutch",
     quote:
-      "AutoML is becoming big in the IT industry. AI Flow is a competent and resilient team. I trust Mihai he can make progress fast and make a business of this.",
+      "Simply exceptional problem-solving under pressure. She found a critical issue and resolved it with laser-sharp focus.",
     author: "",
-    role: "CEO of",
-    company: "software agency",
-  },
-  {
-    id: "mihai-ambitious",
-    quote:
-      "The AI Flow team is ambitions and a quick learner. A strong team who can make product recommendations and put them into practice.",
-    author: "",
-    role: "",
-    company: "",
-  },
-  {
-    id: "user-flows-ceo",
-    quote:
-      "You did a FANTASTIC job on the user flows! Everything makes clear, logical sense and it's pretty much exactly as I imagined it. Thank you!",
-    author: "",
-    role: "CEO in the",
-    company: "creative tech space",
-  },
-  {
-    id: "mobile-app",
-    quote:
-      "Irina supported our AI setup with unmatched perseverance and professionalism. She found a critical issue on our side with laser-sharp focus. Absolute massive kudos for the problem-solving skills!",
-    author: "",
-    role: "Team at",
-    company: "consulting company",
+    role: "Senior team",
+    company: "European bank (under NDA)",
   },
   {
     id: "bank-resilience",

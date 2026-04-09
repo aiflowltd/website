@@ -296,6 +296,19 @@ UI colors (background, foreground, etc.) are defined here as HSL for theming sup
   .animate-dot-flash {
     animation: dot-flash 4s ease-in-out infinite;
   }
+
+  .animate-cta-color-fade {
+    animation: cta-color-fade 6s ease-in-out infinite;
+  }
+}
+
+@keyframes cta-color-fade {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 @keyframes dot-flash {
