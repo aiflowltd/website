@@ -27,15 +27,36 @@ const engagementModels = [
     solution: "Start with the Diagnostic.",
     body: "A fixed-price, fixed-scope 1–2 week engagement. We map your compliance workflows, data sources, and regulatory obligations across all active jurisdictions. Deliverable: a prioritised automation roadmap.",
   },
+  {
+    situation: "Data is scattered across departments with no unified source mapping it to regulatory obligations.",
+    solution: "One pipeline. Every source connected to every obligation.",
+    body: "The data exists. It is sitting in operations, finance, risk, and technology. Nothing connects it to the regulatory templates in time. We build that connection.",
+  },
+  {
+    situation: "Key people are spending their time on data collection and document assembly instead of compliance analysis or risk assessment.",
+    solution: "The bottleneck is not expertise. It is manual work.",
+    body: "The compliance team is not short of expertise. It is short of hours. The work before the work — pulling data, transforming formats, chasing confirmations — is where the time goes. Automate the assembly. Free the expertise.",
+  },
+  {
+    situation: "DORA penalties for inadequate incident reporting start at €1M. Regulatory findings lead to remediation programs, negative media coverage, and client loss.",
+    solution: "Fix the infrastructure before the finding arrives.",
+    body: "The cost of a regulatory finding is not just the fine. It is the remediation programme, the media coverage, the client conversations that follow. The infrastructure needs to be in place before the examiner arrives — not assembled under it.",
+  },
 ];
 
-const engagementColPad = ["md:pr-10", "md:pl-10", "md:pr-10", "md:pl-10"];
-const engagementCellBorder = [
-  "border-b border-[#E2E6F0] md:border-b md:border-[#E2E6F0]",
-  "border-b border-[#E2E6F0] md:border-b md:border-[#E2E6F0] md:border-l md:border-[#E2E6F0]",
-  "border-b border-[#E2E6F0] md:border-b-0",
-  "md:border-b-0 md:border-l md:border-[#E2E6F0]",
-];
+function getCellClasses(index: number, total: number) {
+  const isRight = index % 2 === 1;
+  const isLastMobile = index === total - 1;
+  const lastRowStart = total % 2 === 0 ? total - 2 : total - 1;
+  const isLastDesktopRow = index >= lastRowStart;
+
+  return cn(
+    isRight ? "md:pl-10" : "md:pr-10",
+    !isLastMobile && "border-b border-[#E2E6F0]",
+    isLastDesktopRow && "md:border-b-0",
+    isRight && "md:border-l md:border-[#E2E6F0]",
+  );
+}
 
 export const EngagementSection = () => {
   return (
@@ -73,8 +94,7 @@ export const EngagementSection = () => {
             to="/contact"
             className={cn(
               "group relative border-[#E2E6F0]",
-              engagementCellBorder[index],
-              engagementColPad[index],
+              getCellClasses(index, engagementModels.length),
               "flex flex-col gap-6 py-12",
             )}
           >
