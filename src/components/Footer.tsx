@@ -13,8 +13,8 @@ const companyLinks = [
 ] as const;
 
 const industryLinks = [
-  { label: "EU — Regulated Institutions", to: "/#who-we-serve" },
-  { label: "US — Growth Fintechs", to: "/#who-we-serve" },
+  { label: "Regulated Institutions", to: "/industry/regulated-institutions" },
+  { label: "Growth Fintechs", to: "/industry/growth-fintechs" },
 ] as const;
 
 export const Footer = () => {
