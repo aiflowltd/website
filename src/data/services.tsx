@@ -161,7 +161,7 @@ export const services: Service[] = [
     title: "Long-term Partnership",
     tagline: "Each new obligation adds an automated output. Not a manual process.",
     description:
-      "Ongoing, priced per quarter, scoped by jurisdictional and regulatory coverage. We maintain, expand, and optimise the compliance infrastructure as the fintech enters new states, countries, or product lines, and as the regulatory environment evolves. Each new obligation adds an automated output on top of the existing pipeline — not a new build from scratch.",
+      "Ongoing, scoped by jurisdictional and regulatory coverage. We maintain, expand, and optimise the compliance infrastructure as the regulatory environment evolves, or as your company enters new states, countries, or product lines. Each new obligation adds an automated output on top of the existing pipeline — not a new build from scratch.",
     features: [
       "New obligations automated on the existing pipeline as coverage expands",
       "Monitoring and validation for all active automated filings",

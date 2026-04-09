@@ -25,7 +25,7 @@ const services = [
     title: "Long-term Partnership",
     phase: "Partner",
     description:
-      "Ongoing, priced per quarter, scoped by jurisdictional and regulatory coverage. We maintain, expand, and optimise the compliance infrastructure as the fintech enters new states, countries, or product lines, and as the regulatory environment evolves.",
+      "Ongoing, scoped by jurisdictional and regulatory coverage. We maintain, expand, and optimise the compliance infrastructure as the regulatory environment evolves, or as your company enters new states, countries, or product lines.",
     link: "/services#long-term-partnership",
   },
 ];
