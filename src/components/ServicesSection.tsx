@@ -9,7 +9,7 @@ const services = [
     title: "Compliance Diagnostic",
     phase: "Diagnose",
     description:
-      "1–2 weeks. We map the fintech's compliance workflows, data sources, and regulatory obligations across all active jurisdictions. Deliverable: a prioritised automation roadmap.",
+      "1–2 weeks. We map your compliance workflows, data sources, and regulatory obligations across all active jurisdictions. Deliverable: a prioritised automation roadmap.",
     link: "/services#compliance-diagnostic",
   },
   {
@@ -25,7 +25,7 @@ const services = [
     title: "Long-term Partnership",
     phase: "Partner",
     description:
-      "Ongoing, priced per quarter, scoped by jurisdictional and regulatory coverage. We maintain, expand, and optimise the compliance infrastructure as the fintech enters new states, countries, or product lines.",
+      "Ongoing, priced per quarter, scoped by jurisdictional and regulatory coverage. We maintain, expand, and optimise the compliance infrastructure as the fintech enters new states, countries, or product lines, and as the regulatory environment evolves.",
     link: "/services#long-term-partnership",
   },
 ];

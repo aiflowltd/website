@@ -99,7 +99,7 @@ export const services: Service[] = [
     title: "Compliance Diagnostic",
     tagline: "Where is the data handoff problem, and what will it cost to fix?",
     description:
-      "1–2 weeks. We map the fintech's compliance workflows, data sources, and regulatory obligations across all active jurisdictions. We identify where the data handoff failures are, what manual steps are happening, and what it would cost to automate them. Deliverable: a prioritised automation roadmap, ready for leadership sign-off.",
+      "1–2 weeks. We map your compliance workflows, data sources, and regulatory obligations across all active jurisdictions. We identify where the data handoff failures are, what manual steps are happening, and what it would cost to automate them. Deliverable: a prioritised automation roadmap, ready for leadership sign-off.",
     features: [
       "Workflow and data source mapping across all active jurisdictions",
       "Regulatory obligation audit",
@@ -159,7 +159,7 @@ export const services: Service[] = [
     title: "Long-term Partnership",
     tagline: "Each new obligation adds an automated output. Not a manual process.",
     description:
-      "Ongoing, priced per quarter, scoped by jurisdictional and regulatory coverage. We maintain, expand, and optimise the compliance infrastructure as the fintech enters new states, countries, or product lines. Each new obligation adds an automated output on top of the existing pipeline — not a new build from scratch.",
+      "Ongoing, priced per quarter, scoped by jurisdictional and regulatory coverage. We maintain, expand, and optimise the compliance infrastructure as the fintech enters new states, countries, or product lines, and as the regulatory environment evolves. Each new obligation adds an automated output on top of the existing pipeline — not a new build from scratch.",
     features: [
       "New obligations automated on the existing pipeline as coverage expands",
       "Monitoring and validation for all active automated filings",
