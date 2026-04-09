@@ -55,7 +55,7 @@ const Services = () => {
       <main>
         <Section padding="hero">
           <SectionHeader
-            title="We build the compliance pipeline between an institution's operational data and its regulatory output."
+            title="We build the compliance pipeline between your operational data and its regulatory output."
             subtitle="The system connects to existing data sources, maps them to the regulatory templates for each jurisdiction, and runs automatically on schedule."
             titleClassName="text-3xl md:text-5xl"
             subtitleClassName="max-w-2xl text-base md:text-lg leading-relaxed"
