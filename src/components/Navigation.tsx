@@ -6,22 +6,14 @@ import { SiteButton } from "@/components/SiteButton";
 import {
   Menu,
   X,
-  Building2,
-  Building,
-  Home,
-  Layers,
-  Briefcase,
-  Megaphone,
+  Landmark,
+  TrendingUp,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const industryLinks = [
-  { name: "Construction", href: "/industry/construction", icon: Building2 },
-  { name: "Real Estate", href: "/industry/real-estate", icon: Home },
-  { name: "PropTech", href: "/industry/proptech", icon: Building },
-  { name: "Legal", href: "/industry/legal", icon: Briefcase },
-  { name: "Marketing", href: "/industry/marketing", icon: Megaphone },
-  { name: "Custom solutions", href: "/industry/agnostic", icon: Layers },
+  { name: "EU — Regulated Institutions", href: "/industry/regulated-institutions", icon: Landmark },
+  { name: "US — Growth Fintechs", href: "/industry/growth-fintechs", icon: TrendingUp },
 ] as const;
 
 const navItemClass =
