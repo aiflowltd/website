@@ -79,29 +79,6 @@ const Services = () => {
           <hr className={cn("border-t", editorialLine)} />
         </Section>
 
-        <PipelineComponentsSection />
-
-        <Section padding="default">
-          <SectionHeader
-            title="Have questions before we start?"
-            subtitle="Ask about fit, typical timelines, or how we'd approach your obligation stack. When you're ready, book a scoping call."
-            titleClassName="text-2xl font-bold font-alternates text-foreground md:text-3xl"
-            subtitleClassName="max-w-2xl text-muted-foreground"
-            className="mb-8"
-          />
-          <DatacardsEmbedPanel fitContent className="rounded-xl p-6 md:p-8">
-            <div className="flex w-full justify-center">
-              <div className="h-[min(420px,70vh)] w-full max-w-[900px] min-h-[280px]">
-                <iframe
-                  title="Ask about AI Flow services"
-                  className="block h-full w-full rounded-lg border-0 bg-transparent"
-                  src="https://app.datacards.ai/a/aiflow/services?theme=dark&scale=0"
-                />
-              </div>
-            </div>
-          </DatacardsEmbedPanel>
-        </Section>
-
         <Section padding="default">
           <SectionHeader
             title="Diagnostic first. Build when ready."
@@ -183,6 +160,29 @@ const Services = () => {
               </div>
             ))}
           </div>
+        </Section>
+
+        <PipelineComponentsSection />
+
+        <Section padding="default">
+          <SectionHeader
+            title="Have questions before we start?"
+            subtitle="Ask about fit, typical timelines, or how we'd approach your obligation stack. When you're ready, book a scoping call."
+            titleClassName="text-2xl font-bold font-alternates text-foreground md:text-3xl"
+            subtitleClassName="max-w-2xl text-muted-foreground"
+            className="mb-8"
+          />
+          <DatacardsEmbedPanel fitContent className="rounded-xl p-6 md:p-8">
+            <div className="flex w-full justify-center">
+              <div className="h-[min(420px,70vh)] w-full max-w-[900px] min-h-[280px]">
+                <iframe
+                  title="Ask about AI Flow services"
+                  className="block h-full w-full rounded-lg border-0 bg-transparent"
+                  src="https://app.datacards.ai/a/aiflow/services?theme=dark&scale=0"
+                />
+              </div>
+            </div>
+          </DatacardsEmbedPanel>
         </Section>
 
         <Section padding="compact">
