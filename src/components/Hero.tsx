@@ -36,7 +36,7 @@ export const Hero = () => {
         </p>
 
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold font-alternates my-10 leading-[1.1] text-foreground">
-          Compliance infrastructure for
+          Compliance solutions for
           <br />
           <span className="font-extralight">regulated financial services.</span>
         </h1>
