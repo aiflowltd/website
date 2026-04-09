@@ -23,11 +23,6 @@ const engagementModels = [
     body: "Every week the compliance team spends building reporting infrastructure manually in a new market is a week the company is not generating revenue there. Compliance is a gate to growth. We build the pipeline before the market launches.",
   },
   {
-    situation: "We know there is a data handoff problem. We do not know where it is.",
-    solution: "Start with the Diagnostic.",
-    body: "A fixed-price, fixed-scope 1–2 week engagement. We map your compliance workflows, data sources, and regulatory obligations across all active jurisdictions. Deliverable: a prioritised automation roadmap.",
-  },
-  {
     situation: "Data is scattered across departments with no unified source mapping it to regulatory obligations.",
     solution: "One pipeline. Every source connected to every obligation.",
     body: "The data exists. It is sitting in operations, finance, risk, and technology. Nothing connects it to the regulatory templates in time. We build that connection.",
