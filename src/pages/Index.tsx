@@ -12,6 +12,7 @@ import { FAQSection } from "@/components/FAQSection";
 import { ContactFormSection } from "@/components/ContactFormSection";
 import { useEffect } from "react";
 import { TeamSection } from "@/components/TeamSection";
+import { VideoSection } from "@/components/VideoSection";
 
 const Index = () => {
   useEffect(() => {
@@ -24,8 +25,15 @@ const Index = () => {
       <Hero />
       <ServicesSection />
       <HowWeWorkSection />
-<HomeProofStatsSection />
+      <HomeProofStatsSection />
       <EngagementSection />
+      <VideoSection
+        src="/videos/aiflow-demo1.mp4"
+        title="Does this look like you?"
+        subtitle="The data handoff problem shows up differently depending on where your team is. The fix is the same."
+        ctaText="Contact us"
+        ctaHref="/contact"
+      />
       <TeamSection />
       <TestimonialsSection />
       <BlogSection />

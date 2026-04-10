@@ -16,7 +16,7 @@ export const FeaturedCaseStudySection = () => {
               <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
             </div>
             <div className="flex-1 flex items-center gap-2 ml-4 px-3 py-1.5 rounded-md bg-background/80 border border-border text-xs text-muted-foreground font-mono max-w-full min-w-0">
-              <span className="truncate">aiflow.software/case-studies</span>
+              <span className="truncate">aiflow.ltd/case-studies</span>
             </div>
             <MoreHorizontal className="w-4 h-4 text-muted-foreground shrink-0" />
           </div>
@@ -35,8 +35,8 @@ export const FeaturedCaseStudySection = () => {
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
                 Mapped four data sources to PSD2 and AML reporting obligations.
-                Built an automated audit package pipeline that runs on schedule and
-                produces validated, submission-ready documentation.
+                Built an automated audit package pipeline that runs on schedule
+                and produces validated, submission-ready documentation.
               </p>
               <div className="flex items-center justify-between gap-4 flex-wrap">
                 <Link to="/case-studies">

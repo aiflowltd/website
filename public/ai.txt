@@ -1,0 +1,58 @@
+# AI Flow Software
+
+> Compliance infrastructure for regulated financial institutions and growth-stage fintechs. We build the automated pipeline between operational data and regulatory output.
+
+## What We Do
+
+AI Flow Software automates the compliance reporting pipeline - from a client's existing data sources to submission-ready regulatory output. The system connects to operational data, maps it against specific regulatory obligations, and runs on schedule producing validated reports and audit packages with a full audit trail.
+
+We do not replace existing systems. We connect to them.
+
+## Who We Serve
+
+### EU Regulated Institutions
+Banks, payment institutions, and financial firms in the UK, Benelux, and Nordics operating under PSD2, MiFID II, DORA, AML, and GDPR frameworks. Buyer: Head of Compliance. Typical team size: 3-8 people managing an expanding obligation stack manually.
+
+### US Growth-Stage Fintechs
+Series B and C companies in payments and lending, operating across multiple US states under FinCEN, CFPB, and state banking authority requirements. Buyer: VP of Compliance or Head of Compliance. Typical team size: 2-7 people. Compliance is a gate to market expansion.
+
+## The Problem We Solve
+
+The gap between operational data and regulatory output is filled by compliance professionals doing manual work. Reports are rebuilt from scratch each cycle. Audit packages take days or weeks to assemble. Each new obligation or jurisdiction adds a new manual process. The bottleneck is not expertise - it is manual work that scales with obligation count, not with headcount.
+
+## Core Components
+
+- **Data Unification** - connects to existing data sources without rip-and-replace
+- **Regulatory Mapping** - maps unified data against specific obligation templates
+- **Audit Package Generation** - produces structured, reviewable audit packages in hours
+- **Recurring Report Automation** - scheduled execution, validated output, ready for submission
+- **Full Audit Trail** - every output is traceable and defensible to a regulator
+
+## Commercial Model
+
+Fixed scope. Fixed price. No open-ended engagements.
+
+1. **Compliance Diagnostic** - 1-2 weeks, fixed price. Maps workflows, data sources, obligations, and gaps. Deliverable: a prioritized automation roadmap.
+2. **Pipeline Build** - 4-8 weeks, fixed price. Builds the first automated compliance pipeline for one regulatory obligation or reporting workflow.
+3. **Quarterly Operations Retainer** - ongoing, scoped by regulatory coverage. Maintains and expands the pipeline as obligations evolve.
+4. **Performance Layer** - gain-share tied to measurable compliance metrics, added once value is established.
+
+## Key Differentiators
+
+- AI-native architecture - not a feature layer added to legacy software
+- Fixed-price delivery - removes vendor risk from the buyer's decision
+- Audit trail by default - every output is regulator-ready
+- One obligation at a time - trust is built incrementally before expanding scope
+- Mid-market fit - built for compliance teams of 2-10, not enterprise IT procurement
+
+## Tagline
+
+"From your data to your regulator. Automatically."
+
+## Website
+
+https://aiflow.ltd
+
+## Contact
+
+hello@aiflow.ltd
