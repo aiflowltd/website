@@ -34,27 +34,27 @@ const Careers = () => {
   const benefits = [
     {
       icon: Zap,
-      title: "Cutting-Edge Projects",
+      title: "Real production systems",
       description:
-        "Work on real AI products for industry leaders, not just research papers.",
+        "You'll ship into regulated financial institutions — not internal tools or proof-of-concepts. The work has stakes. Compliance failures cost real money and real reputation.",
     },
     {
       icon: Users,
-      title: "World-Class Team",
+      title: "AI-native from day one",
       description:
-        "Collaborate with experienced AI/ML engineers and researchers.",
+        "We use AI tools across everything — engineering, research, client work. If you've been waiting to work somewhere that treats AI as infrastructure rather than a feature, this is it.",
     },
     {
       icon: TrendingUp,
-      title: "Growth & Learning",
+      title: "Small team, hard problems",
       description:
-        "Continuous learning budget, conferences, and mentorship programs.",
+        "No bureaucracy, no committees. A small senior team working directly with clients on technically demanding compliance pipelines across EU and US regulatory frameworks.",
     },
     {
       icon: Heart,
-      title: "Work-Life Balance",
+      title: "Remote and flexible",
       description:
-        "Flexible hours, remote work options, and generous time off.",
+        "100% remote. Freelance or full-time. We care about the quality of what you build, not where or when you build it.",
     },
   ];
 
@@ -66,12 +66,14 @@ const Careers = () => {
         <Section padding="hero" className="!pb-20">
           <div className="text-center">
             <h1 className="mb-6 font-alternates text-5xl font-bold md:text-7xl">
-              Join our team
+              Build infrastructure that actually matters.
             </h1>
             <p className="mx-auto max-w-3xl text-lg leading-relaxed text-muted-foreground">
-              Build the future of AI with a team that&apos;s been in the game
-              since before it was cool. We&apos;re looking for talented
-              individuals who are passionate about creating real AI products.
+              We&apos;re a small, senior team building AI systems for regulated
+              financial institutions — the kind of work where accuracy,
+              traceability, and production reliability are requirements, not
+              aspirations. If you&apos;re an engineer who uses AI to move faster
+              and thinks seriously about the systems you build, we want to talk.
             </p>
           </div>
         </Section>
@@ -110,8 +112,8 @@ const Careers = () => {
 
         <Section padding="compact">
           <SectionHeader
-            title="Open positions"
-            subtitle="Join our growing team and work on challenging AI projects with real-world impact."
+            title="Open roles"
+            subtitle="We hire into a network of engineers we staff on client projects as they land. Every role goes through a technical interview — if you're a fit, we'll connect you to paid engagements as they arise."
             titleClassName="text-3xl font-bold font-alternates text-foreground md:text-4xl"
             subtitleClassName="max-w-2xl mx-auto text-center text-muted-foreground"
             variant="centered"
@@ -166,11 +168,13 @@ const Careers = () => {
         <Section padding="compact">
           <LineGridCta>
             <h2 className="mb-4 font-alternates text-3xl font-bold text-foreground md:text-4xl">
-              Don&apos;t see the right role?
+              Don&apos;t see your role here?
             </h2>
             <p className="mx-auto mb-8 max-w-3xl text-lg text-muted-foreground">
-              We&apos;re always looking for talented people. Send us your resume
-              and let us know how you can contribute to our mission.
+              If you&apos;re an AI-first engineer with experience in financial
+              services, compliance data, or regulated industries — and you
+              haven&apos;t seen a role that fits — send us a note anyway.
+              We&apos;re always building the network for what&apos;s coming next.
             </p>
             <Link to="/contact">
               <SiteButton variant="primary" arrow="up-right">

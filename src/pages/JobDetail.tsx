@@ -259,11 +259,12 @@ const JobDetail = () => {
                   Important note
                 </h2>
                 <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
-                  This is part of our ongoing effort to grow a pool of experts
-                  we can staff on projects as they arise. If your profile fits
-                  and you pass the interview, we&apos;ll connect you to paid
-                  opportunities as they land. We hire both freelancers
-                  (B2B/C2C) and employees. Individuals only, no agencies.
+                  This is part of our ongoing effort to build a network of
+                  engineers we can staff on client projects as they land. If
+                  your profile fits and you pass the technical interview,
+                  we&apos;ll connect you to paid engagements as they arise. We
+                  hire both freelancers (B2B/C2C) and employees. Individuals
+                  only — no agencies.
                 </p>
               </div>
 
@@ -271,8 +272,33 @@ const JobDetail = () => {
                 <h2 className="mb-4 font-alternates text-2xl font-bold text-foreground">
                   About the role
                 </h2>
-                <p className="leading-relaxed">{job.description}</p>
+                {Array.isArray(job.description) ? (
+                  <div className="space-y-4">
+                    {job.description.map((para, i) => (
+                      <p key={i} className="leading-relaxed">{para}</p>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="leading-relaxed">{job.description}</p>
+                )}
               </div>
+
+              {job.aiUsage && (
+                <div className={panelClass}>
+                  <h2 className="mb-4 font-alternates text-2xl font-bold text-foreground">
+                    How you use AI at AI Flow
+                  </h2>
+                  <p className="mb-4 leading-relaxed">{job.aiUsage.intro}</p>
+                  <ul className="space-y-3">
+                    {job.aiUsage.items.map((item, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               <div className={panelClass}>
                 <h2 className="mb-6 font-alternates text-2xl font-bold text-foreground">
@@ -305,7 +331,7 @@ const JobDetail = () => {
               {job.niceToHave.length > 0 && (
                 <div className={panelClass}>
                   <h2 className="mb-6 font-alternates text-2xl font-bold text-foreground">
-                    Nice to have
+                    {job.niceToHaveLabel ?? "Nice to have"}
                   </h2>
                   <ul className="space-y-3">
                     {job.niceToHave.map((item, index) => (
@@ -320,7 +346,7 @@ const JobDetail = () => {
 
               <div className={panelClass}>
                 <h2 className="mb-6 font-alternates text-2xl font-bold text-foreground">
-                  Benefits
+                  {job.benefitsLabel ?? "Benefits"}
                 </h2>
                 <ul className="space-y-3">
                   {job.benefits.map((item, index) => (
