@@ -663,21 +663,12 @@ export default function RegulatedInstitutions() {
 
         {/* ── CTA ───────────────────────────────────────────────────────────── */}
         <Section padding="default">
-          <div
-            className="rounded-xl px-8 py-10 md:px-12 md:py-14 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
-            style={{ background: "#26215C" }}
-          >
+          <div className="bg-[#0E1015] rounded-xl px-8 py-10 md:px-12 md:py-14 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="max-w-xl">
-              <p
-                className="font-alternates text-2xl md:text-3xl font-bold mb-3"
-                style={{ color: "#CECBF6" }}
-              >
+              <p className="font-alternates text-2xl md:text-3xl font-bold text-white mb-3">
                 Let's start with your picture.
               </p>
-              <p
-                className="text-sm md:text-[15px] leading-relaxed"
-                style={{ color: "#7F77DD" }}
-              >
+              <p className="text-sm md:text-[15px] leading-relaxed text-white/60">
                 In 1–2 weeks we map your workflows, data sources, and regulatory
                 obligations — and give you a prioritised roadmap. Fixed price.
                 No commitment beyond that unless it makes sense.
@@ -686,12 +677,8 @@ export default function RegulatedInstitutions() {
             <div className="shrink-0">
               <Link to="/contact#calendly">
                 <button
-                  className="rounded-full text-sm font-medium transition-opacity hover:opacity-80 whitespace-nowrap"
-                  style={{
-                    background: "#EEEDFE",
-                    color: "#26215C",
-                    padding: "12px 24px",
-                  }}
+                  className="rounded-full text-sm font-medium bg-background text-foreground transition-opacity hover:opacity-80 whitespace-nowrap"
+                  style={{ padding: "12px 24px" }}
                 >
                   Book a diagnostic call
                 </button>
