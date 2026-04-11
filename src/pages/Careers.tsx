@@ -46,9 +46,9 @@ const Careers = () => {
     },
     {
       icon: TrendingUp,
-      title: "Small team, hard problems",
+      title: "Hard problems, zero bureaucracy",
       description:
-        "No bureaucracy, no committees. A small senior team working directly with clients on technically demanding compliance pipelines across EU and US regulatory frameworks.",
+        "No committees, no layers. A senior team working directly with clients on technically demanding compliance pipelines across EU and US regulatory frameworks.",
     },
     {
       icon: Heart,
@@ -69,7 +69,7 @@ const Careers = () => {
               Build infrastructure that actually matters.
             </h1>
             <p className="mx-auto max-w-3xl text-lg leading-relaxed text-muted-foreground">
-              We&apos;re a small, senior team building AI systems for regulated
+              We&apos;re a senior team building AI systems for regulated
               financial institutions — the kind of work where accuracy,
               traceability, and production reliability are requirements, not
               aspirations. If you&apos;re an engineer who uses AI to move faster
