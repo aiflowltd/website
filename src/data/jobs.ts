@@ -68,10 +68,10 @@ export const jobs: Record<string, Job> = {
     benefits: [
       "100% remote — work from anywhere",
       "Freelance or full-time, your choice",
-      "Production AI systems inside regulated financial institutions — not research, not demos",
+      "Production AI systems inside regulated financial institutions",
       "Senior team — direct access to founders, fast decisions",
       "Competitive compensation scoped to engagement",
-      "Hard, specific problems that require genuine ML thinking — not prompt wrappers",
+      "Hard, specific problems that require genuine ML thinking",
     ],
     benefitsLabel: "What we offer",
   },
