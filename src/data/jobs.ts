@@ -27,7 +27,7 @@ export const jobs: Record<string, Job> = {
     experience: "3–7+ years",
     shortDescription: "Design and build the AI pipelines that connect financial institutions' scattered data to their regulatory obligations — end to end, in production.",
     description: [
-      "Regulated financial institutions and growth-stage fintechs are sitting on data that could run their compliance automatically. The problem is it's scattered — across operations, finance, risk, and technology — and nobody is sitting at the intersection connecting it to the regulatory obligations that depend on it. That's the infrastructure problem we solve.",
+      "Regulated financial institutions run the same compliance processes manually, every cycle — recurring reports assembled from scratch, audit packages that take weeks to pull together, and each new regulatory obligation adding another manual process. The data to automate all of it already exists inside the organisation. The problem is that nobody has built the infrastructure to connect it to the regulatory outputs that depend on it. That's what we build.",
       "As an AI/ML Engineer at AI Flow, you'll design and build the intelligent pipelines that sit at that intersection — ingesting raw, unstructured data from across a client's organisation, making sense of it, and producing regulatory outputs that are accurate, traceable, and ready for submission. Projects span LLM pipelines, document intelligence, structured data extraction, RAG architectures, and compliance-specific ML workflows. You'll work directly with clients and ship into production environments where the cost of errors is real — regulatory findings, fines, and reputational risk.",
     ],
     aiUsage: {
