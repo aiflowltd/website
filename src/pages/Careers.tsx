@@ -171,16 +171,17 @@ const Careers = () => {
               Don&apos;t see your role here?
             </h2>
             <p className="mx-auto mb-8 max-w-3xl text-lg text-muted-foreground">
-              If you&apos;re an AI-first engineer with experience in financial
-              services, compliance data, or regulated industries — and you
-              haven&apos;t seen a role that fits — send us a note anyway.
-              We&apos;re always building the network for what&apos;s coming next.
+              If you&apos;re an AI-first engineer and haven&apos;t seen a role
+              that fits — send us a note anyway. We&apos;re always building
+              the network for what&apos;s coming next.
             </p>
-            <Link to="/contact">
-              <SiteButton variant="primary" arrow="up-right">
-                Get in touch
-              </SiteButton>
-            </Link>
+            <div className="flex justify-center">
+              <Link to="/contact">
+                <SiteButton variant="primary" arrow="up-right">
+                  Get in touch
+                </SiteButton>
+              </Link>
+            </div>
           </LineGridCta>
         </Section>
       </main>
