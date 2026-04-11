@@ -91,7 +91,7 @@ export const jobs: Record<string, Job> = {
       intro: "AI fluency is a hard requirement here, not a nice-to-have.",
       items: [
         "You use AI coding tools (Cursor, GitHub Copilot, Claude) daily — not occasionally",
-        "You integrate LLM APIs (Anthropic, OpenAI) into production systems, not just demos",
+        "You understand how LLMs work well enough to make good decisions — model selection, context design, failure modes — not just wire up an API",
         "You've built or worked with RAG pipelines, document extraction, or structured output generation",
         "You think about AI as infrastructure — prompt design, context management, fallback handling, cost — not just API calls",
         "You move faster than a traditional engineer because AI is part of how you work, not something you bolt on",
