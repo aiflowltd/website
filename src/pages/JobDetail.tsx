@@ -249,26 +249,7 @@ const JobDetail = () => {
         <Section padding="default" maxWidth="default" className="!pt-0">
           <div className="grid gap-12 lg:grid-cols-3 lg:gap-14">
             <div className="space-y-8 lg:col-span-2">
-              <div
-                className={cn(
-                  panelClass,
-                  "border-primary/15 bg-muted/25 text-foreground",
-                )}
-              >
-                <h2 className="mb-3 font-alternates text-lg font-semibold text-foreground">
-                  Important note
-                </h2>
-                <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
-                  This is part of our ongoing effort to build a network of
-                  engineers we can staff on client projects as they land. If
-                  your profile fits and you pass the technical interview,
-                  we&apos;ll connect you to paid engagements as they arise. We
-                  hire both freelancers (B2B/C2C) and employees. Individuals
-                  only — no agencies.
-                </p>
-              </div>
-
-              <div className={panelClass}>
+<div className={panelClass}>
                 <h2 className="mb-4 font-alternates text-2xl font-bold text-foreground">
                   About the role
                 </h2>
