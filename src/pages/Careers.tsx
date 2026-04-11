@@ -113,7 +113,7 @@ const Careers = () => {
         <Section padding="compact">
           <SectionHeader
             title="Open roles"
-            subtitle="We hire into a network of engineers we staff on client projects as they land. Every role goes through a technical interview — if you're a fit, we'll connect you to paid engagements as they arise."
+            subtitle="At AI Flow, everyone works directly with clients, owns their deliverables, and is responsible for what ships. We care about the quality of the work and the people behind it — the interview reflects that."
             titleClassName="text-3xl font-bold font-alternates text-foreground md:text-4xl"
             subtitleClassName="max-w-2xl mx-auto text-center text-muted-foreground"
             variant="centered"
