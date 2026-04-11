@@ -85,7 +85,7 @@ export const jobs: Record<string, Job> = {
     shortDescription: "Build the full-stack infrastructure that turns scattered compliance data into automated regulatory output — across real financial institutions.",
     description: [
       "Compliance teams at regulated financial institutions and fintechs spend most of their time not doing compliance — but chasing data across departments, reformatting it, and rebuilding the same reports from scratch. We fix that by building the infrastructure between their operational data and their regulatory output.",
-      "As a Full Stack AI Engineer at AI Flow, you'll build the systems that sit at the intersection of a client's departments — connecting data from operations, finance, risk, and technology, and producing the regulatory outputs their team currently assembles by hand. This isn't a CRUD app role. You'll be working with real compliance pipelines, LLM integrations, document intelligence, and structured data extraction — shipped into production inside regulated financial institutions where accuracy and audit trails are non-negotiable.",
+      "As a Full Stack AI Engineer at AI Flow, you'll build the systems that sit at the intersection of a client's departments — connecting data from operations, finance, risk, and technology, and producing the regulatory outputs their team currently assembles by hand. You'll be working with real compliance pipelines, LLM integrations, document intelligence, and structured data extraction — shipped into production inside regulated financial institutions where accuracy and audit trails are non-negotiable.",
     ],
     aiUsage: {
       intro: "AI fluency is a hard requirement here, not a nice-to-have.",
