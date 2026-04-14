@@ -172,14 +172,9 @@ export default function RegulatedInstitutions() {
                   <p className="font-sans text-xl font-light italic leading-snug text-foreground md:text-2xl flex-1">
                     &ldquo;{m.quote}&rdquo;
                   </p>
-                  <div
-                    className="pl-3"
-                    style={{ borderLeft: "2px solid #534AB7" }}
-                  >
-                    <p className="text-sm font-semibold text-foreground">
-                      {m.resolve}
-                    </p>
-                  </div>
+                  <p className="text-sm font-semibold text-foreground">
+                    {m.resolve}
+                  </p>
                 </div>
               );
             })}
