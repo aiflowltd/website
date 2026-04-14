@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Section } from "@/components/Section";
 import { SiteButton } from "@/components/SiteButton";
+import { HomeProofStatsSection } from "@/components/home/HomeProofStatsSection";
 import { cn } from "@/lib/utils";
 
 const LINE = "border-[#E2E6F0]";
@@ -95,12 +96,32 @@ const solutionCards = [
   },
 ];
 
+const pageFaqs = [
+  {
+    question: "What data sources do you connect to?",
+    answer:
+      "We connect to whatever your data already lives in — core banking systems, risk platforms, treasury management systems, spreadsheets, data warehouses, and internal APIs. The diagnostic identifies which sources are relevant to each obligation. Nothing is ripped out. We build the pipeline on top of your existing infrastructure.",
+  },
+  {
+    question: "Do you work with firms that have no existing automation?",
+    answer:
+      "Yes. Most of our clients are starting from spreadsheets and manual processes. That is the problem we are built to solve. The Compliance Diagnostic maps your current state — however manual — and produces a prioritised plan for automating the most painful obligations first.",
+  },
+  {
+    question: "Is data processed outside our environment?",
+    answer:
+      "No. Data does not leave your environment. The pipeline runs inside your infrastructure, under your security policies. We have experience with on-premise deployments, private cloud environments, and multi-jurisdiction data residency requirements. Architecture is agreed before build begins.",
+  },
+];
+
 // ── PAGE ──────────────────────────────────────────────────────────────────────
 
 export default function RegulatedInstitutions() {
   useEffect(() => {
     document.title = "AI Flow | Regulated Institutions";
   }, []);
+
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
     <div className="relative min-h-screen bg-background text-foreground page-shell">
@@ -143,17 +164,6 @@ export default function RegulatedInstitutions() {
                 </div>
               ))}
             </div>
-          </div>
-        </Section>
-
-        {/* ── IMAGE BREAK ──────────────────────────────────────────────────── */}
-        <Section padding="compact">
-          <div className="overflow-hidden rounded-xl">
-            <img
-              src="/images/compliance-papers.jpg"
-              alt="Compliance documents under review"
-              className="w-full h-56 md:h-80 object-cover object-center"
-            />
           </div>
         </Section>
 
@@ -272,6 +282,9 @@ export default function RegulatedInstitutions() {
           </div>
         </Section>
 
+        {/* ── OUTCOMES ─────────────────────────────────────────────────────── */}
+        <HomeProofStatsSection />
+
         {/* ── HOW WE WORK ──────────────────────────────────────────────────── */}
         <Section padding="default">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16 items-start">
@@ -319,6 +332,52 @@ export default function RegulatedInstitutions() {
                 </div>
               ))}
             </div>
+          </div>
+        </Section>
+
+        {/* ── FAQ ──────────────────────────────────────────────────────────── */}
+        <Section padding="default">
+          <p className="mb-8 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            Common questions
+          </p>
+          <div>
+            {pageFaqs.map((faq, i) => (
+              <div key={i}>
+                <hr className={cn("border-t", LINE)} />
+                <div className="py-6">
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    className="w-full flex items-start justify-between gap-6 text-left"
+                  >
+                    <span className="text-base font-medium text-foreground leading-snug">
+                      {faq.question}
+                    </span>
+                    <span
+                      className={cn(
+                        "shrink-0 w-5 h-5 flex items-center justify-center text-muted-foreground mt-0.5 transition-transform duration-200",
+                        openFaq === i && "rotate-45",
+                      )}
+                    >
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path
+                          d="M8 3v10M3 8h10"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+                  {openFaq === i && (
+                    <p className="mt-4 text-[15px] text-muted-foreground leading-[1.7]">
+                      {faq.answer}
+                    </p>
+                  )}
+                </div>
+              </div>
+            ))}
+            <hr className={cn("border-t", LINE)} />
           </div>
         </Section>
 
