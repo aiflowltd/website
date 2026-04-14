@@ -4,7 +4,6 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Section } from "@/components/Section";
 import { SiteButton } from "@/components/SiteButton";
-import { HomeProofStatsSection } from "@/components/home/HomeProofStatsSection";
 import { cn } from "@/lib/utils";
 
 const LINE = "border-[#E2E6F0]";
@@ -63,38 +62,6 @@ const workSteps = [
   },
 ];
 
-const solutionCards = [
-  {
-    num: "01",
-    title: "Data unification",
-    desc: "Connects to existing sources across operations, finance, risk, and technology. No ripping and replacing.",
-    fullWidth: false,
-  },
-  {
-    num: "02",
-    title: "Regulatory mapping",
-    desc: "Maps unified data against PSD2, MiFID II, DORA, GDPR, and AML templates. Updated as obligations evolve.",
-    fullWidth: false,
-  },
-  {
-    num: "03",
-    title: "Audit package generation",
-    desc: "Structured document packages produced in hours, not weeks. Every data point traced to its source.",
-    fullWidth: false,
-  },
-  {
-    num: "04",
-    title: "Recurring report automation",
-    desc: "Validated, submission-ready reports on schedule. No manual rebuild each cycle.",
-    fullWidth: false,
-  },
-  {
-    num: "05",
-    title: "Full audit trail",
-    desc: "Every data point, every mapping decision, every run — logged. When a supervisor asks, the answer is ready.",
-    fullWidth: true,
-  },
-];
 
 const pageFaqs = [
   {
@@ -241,49 +208,6 @@ export default function RegulatedInstitutions() {
             </p>
           </div>
         </Section>
-
-        {/* ── SOLUTION ──────────────────────────────────────────────────────── */}
-        <Section padding="default">
-          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-            How we help
-          </p>
-          <h2 className="font-alternates text-3xl md:text-4xl font-bold text-foreground mb-4">
-            One pipeline. Every source. Every obligation.
-          </h2>
-          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] mb-8">
-            We build the infrastructure between your operational data and your
-            regulatory output. The system connects to your existing data sources
-            across operations, finance, risk, and technology — unifies the data,
-            and maps it against the specific requirements of each active
-            obligation.
-          </p>
-
-          {/* Component cards: 2-col, last card full-width */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {solutionCards.map((card) => (
-              <div
-                key={card.num}
-                className={cn(
-                  "rounded-lg border border-border bg-card p-6",
-                  card.fullWidth && "md:col-span-2",
-                )}
-              >
-                <p className="text-[11px] font-semibold tabular-nums tracking-[0.14em] text-foreground/25 mb-2">
-                  {card.num}
-                </p>
-                <p className="font-alternates font-bold text-base text-foreground mb-2">
-                  {card.title}
-                </p>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {card.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </Section>
-
-        {/* ── OUTCOMES ─────────────────────────────────────────────────────── */}
-        <HomeProofStatsSection />
 
         {/* ── HOW WE WORK ──────────────────────────────────────────────────── */}
         <Section padding="default">
