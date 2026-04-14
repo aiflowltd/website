@@ -77,7 +77,7 @@ const pageFaqs = [
   {
     question: "Is data processed outside our environment?",
     answer:
-      "No. Data does not leave your environment. The pipeline runs inside your infrastructure, under your security policies. We have experience with on-premise deployments, private cloud environments, and multi-jurisdiction data residency requirements. Architecture is agreed before build begins.",
+      "We can build pipelines that keep all data within your environment — on-premise, private cloud, or air-gapped — if that is a requirement. Architecture and data residency are agreed before build begins. If you have specific constraints around data sovereignty or security policy, raise them early and we will design around them.",
   },
 ];
 
