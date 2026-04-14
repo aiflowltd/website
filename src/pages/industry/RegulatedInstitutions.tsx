@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Section } from "@/components/Section";
+import { SiteButton } from "@/components/SiteButton";
 import { cn } from "@/lib/utils";
 
 const LINE = "border-[#E2E6F0]";
@@ -40,6 +41,24 @@ const moments = [
     quote:
       "Your most experienced people are spending their time on data collection and document assembly instead of compliance analysis.",
     resolve: "The bottleneck is not expertise. It is manual work.",
+  },
+];
+
+const workSteps = [
+  {
+    num: "01",
+    title: "Compliance Diagnostic",
+    meta: "1–2 weeks · Fixed price · Prioritised roadmap delivered",
+  },
+  {
+    num: "02",
+    title: "Pipeline Build",
+    meta: "4–8 weeks · Fixed price · First obligation automated",
+  },
+  {
+    num: "03",
+    title: "Ongoing partnership",
+    meta: "Each new obligation adds to the pipeline, not the manual process",
   },
 ];
 
@@ -124,6 +143,17 @@ export default function RegulatedInstitutions() {
                 </div>
               ))}
             </div>
+          </div>
+        </Section>
+
+        {/* ── IMAGE BREAK ──────────────────────────────────────────────────── */}
+        <Section padding="compact">
+          <div className="overflow-hidden rounded-xl">
+            <img
+              src="/images/compliance-papers.jpg"
+              alt="Compliance documents under review"
+              className="w-full h-56 md:h-80 object-cover object-center"
+            />
           </div>
         </Section>
 
@@ -239,6 +269,56 @@ export default function RegulatedInstitutions() {
                 </p>
               </div>
             ))}
+          </div>
+        </Section>
+
+        {/* ── HOW WE WORK ──────────────────────────────────────────────────── */}
+        <Section padding="default">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16 items-start">
+            <div>
+              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                How we work
+              </p>
+              <h2 className="font-alternates text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Fixed scope. Fixed price. No surprises.
+              </h2>
+              <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] mb-6">
+                Each engagement is scoped before it starts. You know exactly
+                what you are getting, when it arrives, and what it costs. The
+                first step is a diagnostic — a 1–2 week exercise that maps your
+                compliance workflows, data sources, and obligations. You leave
+                with a prioritised roadmap whether or not you proceed.
+              </p>
+              <Link to="/services">
+                <SiteButton variant="secondary" arrow="right">
+                  See our engagements
+                </SiteButton>
+              </Link>
+            </div>
+
+            <div className={cn("border-t", LINE)}>
+              {workSteps.map((s, i) => (
+                <div
+                  key={s.num}
+                  className={cn(
+                    "flex gap-5 py-6",
+                    i > 0 && cn("border-t", LINE),
+                  )}
+                >
+                  <span className="text-[11px] font-semibold tabular-nums tracking-[0.14em] text-foreground/25 mt-0.5 shrink-0 w-6">
+                    {s.num}
+                  </span>
+                  <div>
+                    <p className="font-alternates font-bold text-sm text-foreground mb-1">
+                      {s.title}
+                    </p>
+                    <p className="text-xs leading-relaxed text-muted-foreground">
+                      {s.meta}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </Section>
 
