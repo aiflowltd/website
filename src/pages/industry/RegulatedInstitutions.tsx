@@ -1,4 +1,4 @@
-import { useEffect, Fragment } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -15,8 +15,6 @@ const heroStats = [
   { value: "€1M+", label: "DORA penalty floor per finding" },
 ];
 
-const purpleTags = ["PSD2", "MiFID II", "DORA", "GDPR", "AML"];
-const neutralTags = ["UK", "Benelux", "Nordics"];
 
 const moments = [
   {
@@ -78,263 +76,6 @@ const solutionCards = [
   },
 ];
 
-const engagementSteps = [
-  {
-    step: "Step 1",
-    title: "Compliance Diagnostic",
-    meta: "Fixed scope · Fixed price · 1–2 weeks",
-  },
-  {
-    step: "Step 2",
-    title: "Pipeline Build",
-    meta: "Fixed scope · Fixed price · 4–8 weeks",
-  },
-  {
-    step: "Step 3",
-    title: "Quarterly Retainer",
-    meta: "Ongoing · Per quarter · By coverage",
-  },
-  {
-    step: "Step 4",
-    title: "Performance Layer",
-    meta: "Pain-share / gain-share on compliance metrics",
-  },
-];
-
-// ── PIPELINE SVG ──────────────────────────────────────────────────────────────
-
-function PipelineDiagram() {
-  const srcFill = "#F1EFE8";
-  const srcStroke = "#B4B2A9";
-  const srcText = "#444441";
-  const ctrFill = "#EEEDFE";
-  const ctrStroke = "#534AB7";
-  const ctrText = "#26215C";
-  const outFill = "#E1F5EE";
-  const outStroke = "#0F6E56";
-  const outText = "#085041";
-  const arrowLeft = "#B4B2A9";
-  const arrowRight = "#534AB7";
-
-  const bw = 100;
-  const bh = 32;
-  const lx = 8;
-
-  const srcBoxes = [
-    { label: "Operations", y: 16 },
-    { label: "Finance", y: 62 },
-    { label: "Risk", y: 108 },
-    { label: "Technology", y: 154 },
-  ];
-
-  // Vertical center of the source group
-  const srcCenterY =
-    (srcBoxes[0].y + bh / 2 + srcBoxes[srcBoxes.length - 1].y + bh / 2) / 2;
-
-  const cw = 128;
-  const ch = 44;
-  const cx = 185;
-  const cy = srcCenterY - ch / 2;
-  const ctrRight = cx + cw;
-
-  const ow = 112;
-  const oh = 32;
-  const ox = 378;
-  const outSpacing = 46;
-
-  const outBoxes = [
-    {
-      label: "DORA report",
-      sub: "(validated)",
-      y: srcCenterY - outSpacing - oh / 2,
-    },
-    { label: "MiFID filing", sub: "(automated)", y: srcCenterY - oh / 2 },
-    {
-      label: "Audit package",
-      sub: "(in hours)",
-      y: srcCenterY + outSpacing - oh / 2,
-    },
-  ];
-
-  const svgH = 210;
-
-  return (
-    <svg
-      viewBox={`0 0 500 ${svgH}`}
-      className="w-full h-auto"
-      aria-hidden="true"
-    >
-      <defs>
-        <marker
-          id="ri-arrowL"
-          markerWidth="6"
-          markerHeight="6"
-          refX="5"
-          refY="3"
-          orient="auto"
-        >
-          <path d="M0,0 L0,6 L6,3 z" fill={arrowLeft} />
-        </marker>
-        <marker
-          id="ri-arrowR"
-          markerWidth="6"
-          markerHeight="6"
-          refX="5"
-          refY="3"
-          orient="auto"
-        >
-          <path d="M0,0 L0,6 L6,3 z" fill={arrowRight} />
-        </marker>
-      </defs>
-
-      {/* Left arrows: source boxes → center box */}
-      {srcBoxes.map((box) => {
-        const fromY = box.y + bh / 2;
-        return (
-          <path
-            key={`la-${box.label}`}
-            d={`M ${lx + bw},${fromY} C ${lx + bw + 38},${fromY} ${cx - 38},${srcCenterY} ${cx},${srcCenterY}`}
-            fill="none"
-            stroke={arrowLeft}
-            strokeWidth="1.5"
-            markerEnd="url(#ri-arrowL)"
-          />
-        );
-      })}
-
-      {/* Right arrows: center box → output boxes */}
-      {outBoxes.map((box) => {
-        const toY = box.y + oh / 2;
-        return (
-          <path
-            key={`ra-${box.label}`}
-            d={`M ${ctrRight},${srcCenterY} C ${ctrRight + 35},${srcCenterY} ${ox - 35},${toY} ${ox},${toY}`}
-            fill="none"
-            stroke={arrowRight}
-            strokeWidth="1.5"
-            markerEnd="url(#ri-arrowR)"
-          />
-        );
-      })}
-
-      {/* Source boxes */}
-      {srcBoxes.map((box) => (
-        <g key={box.label}>
-          <rect
-            x={lx}
-            y={box.y}
-            width={bw}
-            height={bh}
-            rx="4"
-            fill={srcFill}
-            stroke={srcStroke}
-            strokeWidth="1"
-          />
-          <text
-            x={lx + bw / 2}
-            y={box.y + bh / 2}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fontSize="10"
-            fontFamily="Montserrat, sans-serif"
-            fill={srcText}
-          >
-            {box.label}
-          </text>
-        </g>
-      ))}
-
-      {/* Center box */}
-      <rect
-        x={cx}
-        y={cy}
-        width={cw}
-        height={ch}
-        rx="6"
-        fill={ctrFill}
-        stroke={ctrStroke}
-        strokeWidth="1.5"
-      />
-      <text
-        x={cx + cw / 2}
-        y={cy + ch / 2 - 7}
-        textAnchor="middle"
-        dominantBaseline="middle"
-        fontSize="11"
-        fontWeight="600"
-        fontFamily="Montserrat, sans-serif"
-        fill={ctrText}
-      >
-        AI Flow
-      </text>
-      <text
-        x={cx + cw / 2}
-        y={cy + ch / 2 + 7}
-        textAnchor="middle"
-        dominantBaseline="middle"
-        fontSize="9"
-        fontFamily="Montserrat, sans-serif"
-        fill={ctrText}
-        opacity="0.75"
-      >
-        pipeline
-      </text>
-
-      {/* Output boxes */}
-      {outBoxes.map((box) => (
-        <g key={box.label}>
-          <rect
-            x={ox}
-            y={box.y}
-            width={ow}
-            height={oh}
-            rx="4"
-            fill={outFill}
-            stroke={outStroke}
-            strokeWidth="1"
-          />
-          <text
-            x={ox + ow / 2}
-            y={box.y + oh / 2 - 6}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fontSize="9.5"
-            fontFamily="Montserrat, sans-serif"
-            fill={outText}
-          >
-            {box.label}
-          </text>
-          <text
-            x={ox + ow / 2}
-            y={box.y + oh / 2 + 7}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fontSize="8"
-            fontFamily="Montserrat, sans-serif"
-            fill={outText}
-            opacity="0.75"
-          >
-            {box.sub}
-          </text>
-        </g>
-      ))}
-
-      {/* Caption */}
-      <text
-        x={250}
-        y={svgH - 6}
-        textAnchor="middle"
-        fontSize="9"
-        fontFamily="Montserrat, sans-serif"
-        fill={srcText}
-        opacity="0.55"
-      >
-        Nothing lost between teams.
-      </text>
-    </svg>
-  );
-}
-
 // ── PAGE ──────────────────────────────────────────────────────────────────────
 
 export default function RegulatedInstitutions() {
@@ -349,77 +90,39 @@ export default function RegulatedInstitutions() {
       <main>
         {/* ── HERO ──────────────────────────────────────────────────────────── */}
         <Section padding="hero">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16 items-start">
-            {/* Left column */}
-            <div>
-              <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-                Regulated institutions — EU &amp; UK
-              </p>
-              <h1 className="font-alternates text-3xl md:text-5xl font-bold leading-tight text-foreground mb-6">
-                The compliance obligation stack grows.
-                <br />
-                The team does not.
-              </h1>
-              <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] max-w-lg">
-                Banks, payment institutions, and regulated entities in the UK,
-                Benelux, and Nordics — managing overlapping obligations across
-                PSD2, MiFID II, DORA, GDPR, and national AML frameworks.
-              </p>
+          <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            Regulated institutions — EU &amp; UK
+          </p>
+          <h1 className="font-alternates text-3xl md:text-5xl font-bold leading-tight text-foreground mb-6 max-w-2xl">
+            The compliance obligation stack grows.
+            <br />
+            The team does not.
+          </h1>
+          <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] max-w-2xl">
+            Banks, payment institutions, and regulated entities in the UK,
+            Benelux, and Nordics — managing overlapping obligations across
+            PSD2, MiFID II, DORA, GDPR, and national AML frameworks.
+          </p>
 
-              {/* Stats row */}
-              <div className={cn("mt-8 pt-6 border-t", LINE)}>
-                <div className="grid grid-cols-3">
-                  {heroStats.map((stat, i) => (
-                    <div
-                      key={stat.label}
-                      className={cn(
-                        "flex flex-col gap-1",
-                        i > 0 && cn("border-l pl-4 md:pl-5", LINE),
-                      )}
-                    >
-                      <p className="font-alternates text-xl md:text-2xl font-bold text-foreground">
-                        {stat.value}
-                      </p>
-                      <p className="text-[11px] leading-snug text-muted-foreground">
-                        {stat.label}
-                      </p>
-                    </div>
-                  ))}
+          {/* Stats row */}
+          <div className={cn("mt-10 pt-6 border-t max-w-2xl", LINE)}>
+            <div className="grid grid-cols-3">
+              {heroStats.map((stat, i) => (
+                <div
+                  key={stat.label}
+                  className={cn(
+                    "flex flex-col gap-1",
+                    i > 0 && cn("border-l pl-4 md:pl-5", LINE),
+                  )}
+                >
+                  <p className="font-alternates text-xl md:text-2xl font-bold text-foreground">
+                    {stat.value}
+                  </p>
+                  <p className="text-[11px] leading-snug text-muted-foreground">
+                    {stat.label}
+                  </p>
                 </div>
-              </div>
-            </div>
-
-            {/* Right column */}
-            <div className="flex flex-col gap-5">
-              {/* Regulatory tags */}
-              <div className="flex flex-wrap gap-2">
-                {purpleTags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs font-medium px-3 py-1 rounded-full"
-                    style={{
-                      background: "#EEEDFE",
-                      border: "1px solid #534AB7",
-                      color: "#26215C",
-                    }}
-                  >
-                    {tag}
-                  </span>
-                ))}
-                {neutralTags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs px-3 py-1 rounded-full bg-muted border border-border text-muted-foreground"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* Pipeline diagram */}
-              <div className="rounded-xl border border-border bg-card p-4 md:p-5">
-                <PipelineDiagram />
-              </div>
+              ))}
             </div>
           </div>
         </Section>
@@ -507,97 +210,13 @@ export default function RegulatedInstitutions() {
           <h2 className="font-alternates text-3xl md:text-4xl font-bold text-foreground mb-4">
             One pipeline. Every source. Every obligation.
           </h2>
-          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] mb-10">
+          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] mb-8">
             We build the infrastructure between your operational data and your
             regulatory output. The system connects to your existing data sources
             across operations, finance, risk, and technology — unifies the data,
             and maps it against the specific requirements of each active
             obligation.
           </p>
-
-          {/* Before / After strip */}
-          <div className="rounded-lg bg-muted border border-border p-5 mb-10">
-            <div className="flex flex-col gap-4">
-              {/* Before */}
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground w-24 shrink-0">
-                  Before AI Flow
-                </span>
-                <span className="text-xs px-3 py-1 rounded-full bg-background border border-border text-muted-foreground">
-                  Ops data
-                </span>
-                <span className="text-muted-foreground/60 text-sm font-medium">
-                  +
-                </span>
-                <span className="text-xs px-3 py-1 rounded-full bg-background border border-border text-muted-foreground">
-                  Finance data
-                </span>
-                <span className="text-muted-foreground/60 text-sm font-medium">
-                  +
-                </span>
-                <span className="text-xs px-3 py-1 rounded-full bg-background border border-border text-muted-foreground">
-                  Risk data
-                </span>
-                <span className="text-muted-foreground/60 text-sm font-medium">
-                  →
-                </span>
-                <span
-                  className="text-xs px-3 py-1 rounded-full"
-                  style={{
-                    background: "#FCEBEB",
-                    border: "1px solid #F09595",
-                    color: "#791F1F",
-                  }}
-                >
-                  Manual assembly · weeks · errors
-                </span>
-              </div>
-
-              <hr className={cn("border-t", LINE)} />
-
-              {/* After */}
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground w-24 shrink-0">
-                  After AI Flow
-                </span>
-                <span className="text-xs px-3 py-1 rounded-full bg-background border border-border text-muted-foreground">
-                  All sources
-                </span>
-                <span
-                  className="text-sm font-medium"
-                  style={{ color: "#534AB7" }}
-                >
-                  →
-                </span>
-                <span
-                  className="text-xs font-medium px-3 py-1 rounded-full"
-                  style={{
-                    background: "#EEEDFE",
-                    border: "1px solid #534AB7",
-                    color: "#26215C",
-                  }}
-                >
-                  AI Flow pipeline
-                </span>
-                <span
-                  className="text-sm font-medium"
-                  style={{ color: "#534AB7" }}
-                >
-                  →
-                </span>
-                <span
-                  className="text-xs px-3 py-1 rounded-full"
-                  style={{
-                    background: "#E1F5EE",
-                    border: "1px solid #0F6E56",
-                    color: "#085041",
-                  }}
-                >
-                  Validated output · hours · audit trail
-                </span>
-              </div>
-            </div>
-          </div>
 
           {/* Component cards: 2-col, last card full-width */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -619,44 +238,6 @@ export default function RegulatedInstitutions() {
                   {card.desc}
                 </p>
               </div>
-            ))}
-          </div>
-        </Section>
-
-        {/* ── ENGAGEMENT ────────────────────────────────────────────────────── */}
-        <Section padding="default">
-          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-            How we engage
-          </p>
-          <h2 className="font-alternates text-3xl md:text-4xl font-bold text-foreground mb-4">
-            We price deliverables, not hours.
-          </h2>
-          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] mb-10">
-            Compliance leaders cannot afford vendor risk on critical
-            infrastructure. Each step builds evidence and trust before the next
-            commitment.
-          </p>
-
-          <div className="flex flex-col sm:flex-row sm:items-stretch gap-3 sm:gap-0">
-            {engagementSteps.map((s, i) => (
-              <Fragment key={s.step}>
-                <div className="sm:flex-1 rounded-lg border border-border bg-card p-5">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground mb-2">
-                    {s.step}
-                  </p>
-                  <p className="font-alternates font-bold text-base text-foreground mb-1">
-                    {s.title}
-                  </p>
-                  <p className="text-xs leading-relaxed text-muted-foreground">
-                    {s.meta}
-                  </p>
-                </div>
-                {i < engagementSteps.length - 1 && (
-                  <div className="hidden sm:flex items-center justify-center w-7 shrink-0 text-muted-foreground/30 text-base select-none">
-                    →
-                  </div>
-                )}
-              </Fragment>
             ))}
           </div>
         </Section>
