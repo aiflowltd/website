@@ -290,7 +290,7 @@ UI colors (background, foreground, etc.) are defined here as HSL for theming sup
   }
 
   .animate-marquee {
-    animation: marquee 20s linear infinite;
+    animation: marquee 50s linear infinite;
   }
 
   .animate-dot-flash {
