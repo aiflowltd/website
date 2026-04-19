@@ -5,7 +5,7 @@ const paddingMap = {
   default: "py-24 px-6",
   tight: "py-20 px-6",
   compact: "py-12 px-6",
-  /** Vertical only — use inside a parent that already applies horizontal padding (e.g. Hero). */
+  /** Vertical only - use inside a parent that already applies horizontal padding (e.g. Hero). */
   "compact-y": "py-12",
   hero: "pt-40 pb-32 px-6",
 } as const;

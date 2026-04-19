@@ -29,7 +29,7 @@ UI colors (background, foreground, etc.) are defined here as HSL for theming sup
     --grey: 222 12% 59%; /* #8B92A3 Grey */
     --light-grey: 220 33% 91%; /* #E2E6F0 Light Grey */
 
-    /* UI Colors — Light Theme */
+    /* UI Colors - Light Theme */
     --background: 0 0% 100%;         /* #FFFFFF */
     --foreground: 222 17% 7%;        /* #0E1015 ink */
 
@@ -49,12 +49,12 @@ UI colors (background, foreground, etc.) are defined here as HSL for theming sup
     --input: 220 33% 91%;
     --ring: 199 100% 55%;
 
-    --radius: 0.25rem;               /* 4px — institutional, not rounded-pill */
+    --radius: 0.25rem;               /* 4px - institutional, not rounded-pill */
 
     /* Custom design tokens */
     --cyan-glow: 199 100% 55%;
     --dark-surface: 213 60% 98%;
-    /* Brand blue #112e63 (hsl 219 83% 39%) — text selection highlight */
+    /* Brand blue #112e63 (hsl 219 83% 39%) - text selection highlight */
     --text-selection: rgba(17, 46, 99, 0.3);
     
     /* Animations */
@@ -63,7 +63,7 @@ UI colors (background, foreground, etc.) are defined here as HSL for theming sup
 }
 
 @layer components {
-  /** Default page wrapper — matches Index (relative, theme bg, ink text). */
+  /** Default page wrapper - matches Index (relative, theme bg, ink text). */
   .page-shell {
     @apply relative min-h-screen bg-background text-foreground;
   }

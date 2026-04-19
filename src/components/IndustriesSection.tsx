@@ -31,7 +31,7 @@ const audiences = [
       "VC-backed, typically Series B or C, operating across multiple states in payments and lending. Engineering resources allocated to product, not compliance tooling.",
     characteristics: [
       "Small compliance teams (under 10) managing an expanding set of state and federal filings",
-      "FinCEN, CFPB, SEC, and state banking authorities — each new state adds a new reporting template",
+      "FinCEN, CFPB, SEC, and state banking authorities - each new state adds a new reporting template",
       "Compliance is a gate to growth. Every manual week in a new market is a week not generating revenue",
     ],
     regulations: ["FinCEN", "CFPB", "State MTLs"],
@@ -48,7 +48,7 @@ export const IndustriesSection = () => {
     <Section className="w-full">
       <SectionHeader
         title="Who we work with."
-        subtitle="Two client profiles. One underlying problem — compliance obligations scaling faster than the team and the infrastructure can handle."
+        subtitle="Two client profiles. One underlying problem - compliance obligations scaling faster than the team and the infrastructure can handle."
         titleClassName="mb-3"
         className="mb-12 lg:mb-16"
       />

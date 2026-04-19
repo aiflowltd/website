@@ -27,7 +27,7 @@ const stats = [
     value: "4h",
     label: "DORA initial notification window",
     description:
-      "the tightest reporting deadline in our stack — and the one that makes data handoff failures most costly",
+      "the tightest reporting deadline in our stack - and the one that makes data handoff failures most costly",
   },
 ];
 

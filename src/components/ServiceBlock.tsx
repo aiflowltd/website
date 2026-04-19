@@ -64,7 +64,7 @@ function graphicVariant(serviceIndex: number, slug: string) {
   const rotateDeg = (seeded01(base + 1) - 0.5) * 8;
   const tx = (seeded01(base + 3) - 0.5) * 20;
   const ty = (seeded01(base + 4) - 0.5) * 16;
-  /** Subtle skew (deg) — different character per block without breaking the art. */
+  /** Subtle skew (deg) - different character per block without breaking the art. */
   const skewX = (seeded01(base + 5) - 0.5) * 2.5;
   return { blueRingIndex, rotateDeg, skewX, tx, ty, base };
 }
@@ -87,7 +87,7 @@ function ringStroke(
   };
 }
 
-/** Concentric rings — Figma export; anchored top-right of the section column. */
+/** Concentric rings - Figma export; anchored top-right of the section column. */
 function ServiceSectionGraphic({
   serviceIndex,
   slug,
@@ -284,7 +284,7 @@ export const ServiceBlock = ({
             )}
           >
             <p className="text-sm leading-relaxed text-muted-foreground md:max-w-md">
-              Fixed scope, senior-led delivery, and a documented handoff—whether
+              Fixed scope, senior-led delivery, and a documented handoff-whether
               you continue with us or use the outputs internally.
             </p>
             <Link to="/contact" className="shrink-0">

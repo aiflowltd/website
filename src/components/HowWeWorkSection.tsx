@@ -14,7 +14,7 @@ const steps = [
     number: "02",
     title: "Diagnose together",
     description:
-      "We map your compliance workflows and data sources with you — not for you. Every gap we find, you see. You tell us which ones matter most. Nothing gets prioritised without your input.",
+      "We map your compliance workflows and data sources with you - not for you. Every gap we find, you see. You tell us which ones matter most. Nothing gets prioritised without your input.",
   },
   {
     number: "03",
@@ -24,7 +24,7 @@ const steps = [
   },
   {
     number: "04",
-    title: "Build — open book",
+    title: "Build - open book",
     description:
       "You have access to the work as it develops. Weekly updates, decisions documented, nothing moves without your sign-off. No black box. No surprises at handover.",
   },

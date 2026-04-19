@@ -9,7 +9,7 @@ const engagementModels = [
   {
     situation: "We have an audit coming up and we are not ready.",
     solution: "Audit-ready in hours, not weeks.",
-    body: "Audits arrive without warning and trigger days or weeks of manual document preparation. We build the pipeline so the next time an examiner asks, documentation is ready — not assembled under pressure, with a full audit trail.",
+    body: "Audits arrive without warning and trigger days or weeks of manual document preparation. We build the pipeline so the next time an examiner asks, documentation is ready - not assembled under pressure, with a full audit trail.",
   },
   {
     situation: "Our compliance team rebuilds the same reports every quarter.",
@@ -30,12 +30,12 @@ const engagementModels = [
   {
     situation: "Key people are spending their time on data collection and document assembly instead of compliance analysis or risk assessment.",
     solution: "The bottleneck is not expertise. It is manual work.",
-    body: "The compliance team is not short of expertise. It is short of hours. The work before the work — pulling data, transforming formats, chasing confirmations — is where the time goes. Automate the assembly. Free the expertise.",
+    body: "The compliance team is not short of expertise. It is short of hours. The work before the work - pulling data, transforming formats, chasing confirmations - is where the time goes. Automate the assembly. Free the expertise.",
   },
   {
     situation: "DORA penalties for inadequate incident reporting start at €1M. Regulatory findings lead to remediation programs, negative media coverage, and client loss.",
     solution: "Fix the infrastructure before the finding arrives.",
-    body: "The cost of a regulatory finding is not just the fine. It is the remediation programme, the media coverage, the client conversations that follow. The infrastructure needs to be in place before the examiner arrives — not assembled under it.",
+    body: "The cost of a regulatory finding is not just the fine. It is the remediation programme, the media coverage, the client conversations that follow. The infrastructure needs to be in place before the examiner arrives - not assembled under it.",
   },
 ];
 
@@ -98,7 +98,7 @@ export const EngagementSection = () => {
               {String(index + 1).padStart(2, "0")}
             </span>
 
-            {/* Quote — visual hero */}
+            {/* Quote - visual hero */}
             <p className="font-sans text-2xl md:text-[1.65rem] font-light leading-snug text-foreground flex-1">
               &ldquo;{model.situation}&rdquo;
             </p>

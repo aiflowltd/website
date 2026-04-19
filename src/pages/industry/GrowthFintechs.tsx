@@ -64,17 +64,17 @@ const pageFaqs = [
   {
     question: "What data sources do you connect to?",
     answer:
-      "We connect to whatever your data already lives in — core banking systems, payment processors, ledgers, spreadsheets, data warehouses, and internal APIs. The diagnostic identifies which sources are relevant to each obligation. Nothing is ripped out. We build the pipeline on top of your existing infrastructure.",
+      "We connect to whatever your data already lives in - core banking systems, payment processors, ledgers, spreadsheets, data warehouses, and internal APIs. The diagnostic identifies which sources are relevant to each obligation. Nothing is ripped out. We build the pipeline on top of your existing infrastructure.",
   },
   {
     question: "Do you work with firms that have no existing automation?",
     answer:
-      "Yes. Most of our clients are starting from spreadsheets and manual processes. That is the problem we are built to solve. The Compliance Diagnostic maps your current state — however manual — and produces a prioritised plan for automating the most painful obligations first.",
+      "Yes. Most of our clients are starting from spreadsheets and manual processes. That is the problem we are built to solve. The Compliance Diagnostic maps your current state - however manual - and produces a prioritised plan for automating the most painful obligations first.",
   },
   {
     question: "Is data processed outside our environment?",
     answer:
-      "We can build pipelines that keep all data within your environment — on-premise, private cloud, or air-gapped — if that is a requirement. Architecture and data residency are agreed before build begins. If you have specific constraints around data sovereignty or security policy, raise them early and we will design around them.",
+      "We can build pipelines that keep all data within your environment - on-premise, private cloud, or air-gapped - if that is a requirement. Architecture and data residency are agreed before build begins. If you have specific constraints around data sovereignty or security policy, raise them early and we will design around them.",
   },
 ];
 
@@ -104,7 +104,7 @@ export default function GrowthFintechs() {
           </h1>
           <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] max-w-2xl">
             Every new market adds another set of obligations. FinCEN, CFPB,
-            state MTLs — each jurisdiction arrives with its own reporting
+            state MTLs - each jurisdiction arrives with its own reporting
             templates, data requirements, and deadlines. And the manual process
             compounds faster than the team can absorb it.
           </p>
@@ -138,7 +138,7 @@ export default function GrowthFintechs() {
             Does this sound familiar?
           </p>
           <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] mb-12">
-            The obligation stack produces the same infrastructure problem —
+            The obligation stack produces the same infrastructure problem -
             regardless of which jurisdiction triggers it.
           </p>
 
@@ -215,7 +215,7 @@ export default function GrowthFintechs() {
               <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] mb-6">
                 Each engagement is scoped before it starts. You know exactly
                 what you are getting, when it arrives, and what it costs. The
-                first step is a diagnostic — a 1–2 week exercise that maps your
+                first step is a diagnostic - a 1–2 week exercise that maps your
                 compliance workflows, data sources, and obligations. You leave
                 with a prioritised roadmap whether or not you proceed.
               </p>
@@ -307,7 +307,7 @@ export default function GrowthFintechs() {
               </p>
               <p className="text-sm md:text-[15px] leading-relaxed text-white/60">
                 In 1–2 weeks we map your workflows, data sources, and regulatory
-                obligations — and give you a prioritised roadmap. Fixed price.
+                obligations - and give you a prioritised roadmap. Fixed price.
                 No commitment beyond that unless it makes sense.
               </p>
             </div>

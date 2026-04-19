@@ -1,30 +1,30 @@
 /**
- * TONE OF VOICE — AI FLOW
+ * TONE OF VOICE - AI FLOW
  * ─────────────────────────────────────────────────────────────────────────────
  * TAGLINE (hero, solution sections, footer)
  *   "Nothing lost between teams."
  *
  * THE VOICE IN ONE SENTENCE
  *   A warm, clear-eyed expert who has sat in the room with this problem,
- *   understands exactly what it costs — in hours, in fines, in missed
- *   priorities — and is here to fix the infrastructure, not lecture about
+ *   understands exactly what it costs - in hours, in fines, in missed
+ *   priorities - and is here to fix the infrastructure, not lecture about
  *   compliance.
  *
  * FOUR DEFINING QUALITIES
- *   1. Human before technical — lead with the person's experience (the late
+ *   1. Human before technical - lead with the person's experience (the late
  *      night, the cancelled meeting, the avoidable fine) before explaining how
  *      the system works. The reader should feel recognised before they feel
  *      sold to.
- *   2. Specific over broad — never "saves time and money." Always "15 hours
+ *   2. Specific over broad - never "saves time and money." Always "15 hours
  *      per person per week" and "up to $2M in avoided losses." Always name
  *      the departments: operations, finance, risk, technology.
- *   3. Confident without announcing it — don't say "we are experts." Say
+ *   3. Confident without announcing it - don't say "we are experts." Say
  *      something only an expert would say. Never use: "leading,"
  *      "best-in-class," "powerful," "cutting-edge," "seamless."
- *   4. Warm through recognition — warmth comes from making the reader feel
+ *   4. Warm through recognition - warmth comes from making the reader feel
  *      understood, not from exclamation marks. Name their reality plainly.
  *
- * KEY PHRASES — USE CONSISTENTLY ACROSS ALL PAGES
+ * KEY PHRASES - USE CONSISTENTLY ACROSS ALL PAGES
  *   "Nothing lost between teams"           → anchor line; hero, solution, footer
  *   "Data handoff problem"                 → precise name for the cross-team issue
  *   "Operations, finance, risk, technology"→ always name the departments
@@ -33,19 +33,19 @@
  *   "Infrastructure problem, not a compliance problem" → core reframe
  *
  * THE THREE MOMENTS THAT DEFINE THE PROBLEM (never abstract these)
- *   THE DISPLACED PRIORITY — a client meeting cancelled because a filing
+ *   THE DISPLACED PRIORITY - a client meeting cancelled because a filing
  *     deadline moved and the data wasn't ready. The expertise was there.
  *     The hours weren't.
- *   THE AVOIDABLE FINE — the penalty arrived. The data had been sitting in
- *     another system the whole time. A data handoff failure — not a
+ *   THE AVOIDABLE FINE - the penalty arrived. The data had been sitting in
+ *     another system the whole time. A data handoff failure - not a
  *     compliance failure.
- *   THE NEW REGULATION — another obligation lands on an already full team.
- *     The question isn't whether they understand it — it's where the hours
+ *   THE NEW REGULATION - another obligation lands on an already full team.
+ *     The question isn't whether they understand it - it's where the hours
  *     are going to come from.
  *
  * DO WRITE LIKE THIS
  *   "You cancelled a client meeting to finish a filing. That's not a
- *    compliance problem — it's an infrastructure problem."
+ *    compliance problem - it's an infrastructure problem."
  *   "The data exists. It's sitting in operations, finance, risk, technology.
  *    Nobody connected it in time."
  *   "15 hours saved per person, per week. Up to $2M in avoided losses."
@@ -159,7 +159,7 @@ export const services: Service[] = [
     title: "Long-term Partnership",
     tagline: "Each new obligation adds an automated output. Not a manual process.",
     description:
-      "Ongoing, we maintain, expand, and optimise the compliance infrastructure as the regulatory environment evolves, or as your company enters new states, countries, or product lines. Each new obligation adds an automated output on top of the existing pipeline — not a new build from scratch.",
+      "Ongoing, we maintain, expand, and optimise the compliance infrastructure as the regulatory environment evolves, or as your company enters new states, countries, or product lines. Each new obligation adds an automated output on top of the existing pipeline - not a new build from scratch.",
     features: [
       "New obligations automated on the existing pipeline as coverage expands",
       "Monitoring and validation for all active automated filings",
@@ -171,7 +171,7 @@ export const services: Service[] = [
       "Compliance functions where the obligation stack grows faster than headcount",
     ],
     outcomes: [
-      "Each new obligation takes hours to automate — not weeks of new process",
+      "Each new obligation takes hours to automate - not weeks of new process",
       "Up to $2M in avoided losses from data handoff failures",
     ],
     typicalTimeline: "Ongoing. Priced per quarter, scoped by coverage.",

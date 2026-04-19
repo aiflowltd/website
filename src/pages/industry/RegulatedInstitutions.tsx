@@ -26,7 +26,7 @@ const moments = [
   {
     num: "02",
     quote:
-      "Every filing is rebuilt from scratch — pulling data from multiple sources, transforming it into required formats, submitting under deadline.",
+      "Every filing is rebuilt from scratch - pulling data from multiple sources, transforming it into required formats, submitting under deadline.",
     resolve: "Run it once. Run it automatically.",
   },
   {
@@ -66,17 +66,17 @@ const pageFaqs = [
   {
     question: "What data sources do you connect to?",
     answer:
-      "We connect to whatever your data already lives in — core banking systems, risk platforms, treasury management systems, spreadsheets, data warehouses, and internal APIs. The diagnostic identifies which sources are relevant to each obligation. Nothing is ripped out. We build the pipeline on top of your existing infrastructure.",
+      "We connect to whatever your data already lives in - core banking systems, risk platforms, treasury management systems, spreadsheets, data warehouses, and internal APIs. The diagnostic identifies which sources are relevant to each obligation. Nothing is ripped out. We build the pipeline on top of your existing infrastructure.",
   },
   {
     question: "Do you work with firms that have no existing automation?",
     answer:
-      "Yes. Most of our clients are starting from spreadsheets and manual processes. That is the problem we are built to solve. The Compliance Diagnostic maps your current state — however manual — and produces a prioritised plan for automating the most painful obligations first.",
+      "Yes. Most of our clients are starting from spreadsheets and manual processes. That is the problem we are built to solve. The Compliance Diagnostic maps your current state - however manual - and produces a prioritised plan for automating the most painful obligations first.",
   },
   {
     question: "Is data processed outside our environment?",
     answer:
-      "We can build pipelines that keep all data within your environment — on-premise, private cloud, or air-gapped — if that is a requirement. Architecture and data residency are agreed before build begins. If you have specific constraints around data sovereignty or security policy, raise them early and we will design around them.",
+      "We can build pipelines that keep all data within your environment - on-premise, private cloud, or air-gapped - if that is a requirement. Architecture and data residency are agreed before build begins. If you have specific constraints around data sovereignty or security policy, raise them early and we will design around them.",
   },
 ];
 
@@ -106,7 +106,7 @@ export default function RegulatedInstitutions() {
           </h1>
           <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] max-w-2xl">
             Regulatory obligations compound year on year. PSD2, MiFID II,
-            DORA, GDPR, national AML — each framework arrives with its own
+            DORA, GDPR, national AML - each framework arrives with its own
             data sources, reporting formats, and filing deadlines. And the
             team responsible for all of it does not grow to match.
           </p>
@@ -140,7 +140,7 @@ export default function RegulatedInstitutions() {
             Does this sound familiar?
           </p>
           <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] mb-12">
-            The obligation stack produces the same infrastructure problem —
+            The obligation stack produces the same infrastructure problem -
             regardless of which regulation triggers it.
           </p>
 
@@ -217,7 +217,7 @@ export default function RegulatedInstitutions() {
               <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] mb-6">
                 Each engagement is scoped before it starts. You know exactly
                 what you are getting, when it arrives, and what it costs. The
-                first step is a diagnostic — a 1–2 week exercise that maps your
+                first step is a diagnostic - a 1–2 week exercise that maps your
                 compliance workflows, data sources, and obligations. You leave
                 with a prioritised roadmap whether or not you proceed.
               </p>
@@ -309,7 +309,7 @@ export default function RegulatedInstitutions() {
               </p>
               <p className="text-sm md:text-[15px] leading-relaxed text-white/60">
                 In 1–2 weeks we map your workflows, data sources, and regulatory
-                obligations — and give you a prioritised roadmap. Fixed price.
+                obligations - and give you a prioritised roadmap. Fixed price.
                 No commitment beyond that unless it makes sense.
               </p>
             </div>
