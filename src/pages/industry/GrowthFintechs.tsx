@@ -11,7 +11,6 @@ const LINE = "border-[#E2E6F0]";
 // ── DATA ──────────────────────────────────────────────────────────────────────
 
 const heroStats = [
-  { value: "< 10", label: "Typical compliance team headcount" },
   { value: "15h", label: "Saved per person per week" },
   { value: "~$2M", label: "In avoided fines and findings" },
 ];
@@ -104,14 +103,15 @@ export default function GrowthFintechs() {
             The team does not.
           </h1>
           <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] max-w-2xl">
-            VC-backed fintechs in payments and lending, operating across
-            multiple US states — managing overlapping obligations under FinCEN,
-            CFPB, and state money transmitter licence frameworks.
+            Every new market adds another set of obligations. FinCEN, CFPB,
+            state MTLs — each jurisdiction arrives with its own reporting
+            templates, data requirements, and deadlines. And the manual process
+            compounds faster than the team can absorb it.
           </p>
 
           {/* Stats row */}
           <div className={cn("mt-10 pt-6 border-t max-w-2xl", LINE)}>
-            <div className="grid grid-cols-3">
+            <div className="grid grid-cols-2">
               {heroStats.map((stat, i) => (
                 <div
                   key={stat.label}
@@ -138,8 +138,8 @@ export default function GrowthFintechs() {
             Does this sound familiar?
           </p>
           <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] mb-12">
-            The same manual reporting infrastructure problem shows up at every
-            growth-stage fintech — regardless of which states you operate in.
+            The obligation stack produces the same infrastructure problem —
+            regardless of which jurisdiction triggers it.
           </p>
 
           <hr className={cn("border-t", LINE)} />

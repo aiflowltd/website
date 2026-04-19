@@ -11,7 +11,6 @@ const LINE = "border-[#E2E6F0]";
 // ── DATA ──────────────────────────────────────────────────────────────────────
 
 const heroStats = [
-  { value: "< 10", label: "Typical compliance team headcount" },
   { value: "15h", label: "Saved per person per week" },
   { value: "€1M+", label: "DORA penalty floor per finding" },
 ];
@@ -106,14 +105,15 @@ export default function RegulatedInstitutions() {
             The team does not.
           </h1>
           <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] max-w-2xl">
-            Banks, payment institutions, and regulated entities in the UK,
-            Benelux, and Nordics — managing overlapping obligations across
-            PSD2, MiFID II, DORA, GDPR, and national AML frameworks.
+            Regulatory obligations compound year on year. PSD2, MiFID II,
+            DORA, GDPR, national AML — each framework arrives with its own
+            data sources, reporting formats, and filing deadlines. And the
+            team responsible for all of it does not grow to match.
           </p>
 
           {/* Stats row */}
           <div className={cn("mt-10 pt-6 border-t max-w-2xl", LINE)}>
-            <div className="grid grid-cols-3">
+            <div className="grid grid-cols-2">
               {heroStats.map((stat, i) => (
                 <div
                   key={stat.label}
@@ -140,8 +140,8 @@ export default function RegulatedInstitutions() {
             Does this sound familiar?
           </p>
           <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] mb-12">
-            The compliance obligation stack in EU and UK institutions produces
-            the same infrastructure problem — regardless of the regulation.
+            The obligation stack produces the same infrastructure problem —
+            regardless of which regulation triggers it.
           </p>
 
           <hr className={cn("border-t", LINE)} />
