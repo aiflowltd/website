@@ -26,7 +26,7 @@ const WAVE_SHADE_BOTTOM = svgDataUrl(
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" preserveAspectRatio="none"><defs><linearGradient id="g" x1="50%" y1="100%" x2="50%" y2="35%"><stop offset="0%" stop-color="#000" stop-opacity=".22"/><stop offset="45%" stop-color="#000" stop-opacity=".07"/><stop offset="100%" stop-color="#000" stop-opacity="0"/></linearGradient><filter id="f" x="-30%" y="-30%" width="160%" height="160%"><feTurbulence type="fractalNoise" baseFrequency="0.005 0.014" numOctaves="2" seed="29" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="14"/></filter></defs><rect width="100%" height="100%" fill="url(#g)" filter="url(#f)"/></svg>`,
 );
 
-/** Neutral dark stock — grey-white paper, not kraft / yellow. */
+/** Neutral dark stock - grey-white paper, not kraft / yellow. */
 const PAPER_BASE = "#2c2c2c";
 
 function shellStyle(fitContent: boolean): CSSProperties {
@@ -78,7 +78,7 @@ export function DatacardsEmbedPanel({
       className={cn("overflow-hidden", className)}
       style={shellStyle(fitContent)}
     >
-      {/* Subtle neutral lift — white mist, not cream */}
+      {/* Subtle neutral lift - white mist, not cream */}
       <div
         style={layer(r, {
           background:
@@ -86,7 +86,7 @@ export function DatacardsEmbedPanel({
         })}
         aria-hidden
       />
-      {/* Heavier bottom curl — paper weight on a surface */}
+      {/* Heavier bottom curl - paper weight on a surface */}
       <div
         style={layer(r, {
           background:
@@ -102,7 +102,7 @@ export function DatacardsEmbedPanel({
         })}
         aria-hidden
       />
-      {/* Crown — pure white highlight */}
+      {/* Crown - pure white highlight */}
       <div
         style={layer(r, {
           background:
@@ -119,7 +119,7 @@ export function DatacardsEmbedPanel({
         })}
         aria-hidden
       />
-      {/* Coarse grain — same PAPER_NOISE_DATA_URL, zoomed out reads as uneven stock */}
+      {/* Coarse grain - same PAPER_NOISE_DATA_URL, zoomed out reads as uneven stock */}
       <div
         style={layer(r, {
           backgroundImage: PAPER_NOISE_DATA_URL,
@@ -131,7 +131,7 @@ export function DatacardsEmbedPanel({
         })}
         aria-hidden
       />
-      {/* Medium pass — breaks tiling regularity */}
+      {/* Medium pass - breaks tiling regularity */}
       <div
         style={layer(r, {
           backgroundImage: PAPER_NOISE_DATA_URL,

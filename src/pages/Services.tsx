@@ -82,7 +82,7 @@ const Services = () => {
         <Section padding="default">
           <SectionHeader
             title="Diagnostic first. Build when ready."
-            subtitle="Most organisations start with the Diagnostic — so scope, risk, and ROI are explicit for leadership before a line of code is written."
+            subtitle="Most organisations start with the Diagnostic - so scope, risk, and ROI are explicit for leadership before a line of code is written."
             titleClassName="text-3xl md:text-4xl"
             subtitleClassName="max-w-2xl"
             className="mb-0"
@@ -189,7 +189,7 @@ const Services = () => {
           <LineGridCta>
             <SectionHeader
               title="Start with the Diagnostic."
-              subtitle="Book a scoping call with no obligation — or review case studies from compliance teams with similar constraints."
+              subtitle="Book a scoping call with no obligation - or review case studies from compliance teams with similar constraints."
               variant="centered"
               titleClassName="font-alternates text-2xl text-foreground md:text-3xl"
               subtitleClassName="mx-auto mb-8 max-w-xl text-muted-foreground"

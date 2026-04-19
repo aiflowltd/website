@@ -36,13 +36,13 @@ const Careers = () => {
       icon: Zap,
       title: "Real production systems",
       description:
-        "You'll ship into regulated financial institutions — not internal tools or proof-of-concepts. The work has stakes. Compliance failures cost real money and real reputation.",
+        "You'll ship into regulated financial institutions - not internal tools or proof-of-concepts. The work has stakes. Compliance failures cost real money and real reputation.",
     },
     {
       icon: Users,
       title: "AI-native from day one",
       description:
-        "We use AI tools across everything — engineering, research, client work. If you've been waiting to work somewhere that treats AI as infrastructure rather than a feature, this is it.",
+        "We use AI tools across everything - engineering, research, client work. If you've been waiting to work somewhere that treats AI as infrastructure rather than a feature, this is it.",
     },
     {
       icon: TrendingUp,
@@ -70,7 +70,7 @@ const Careers = () => {
             </h1>
             <p className="mx-auto max-w-3xl text-lg leading-relaxed text-muted-foreground">
               We&apos;re a senior team building AI systems for regulated
-              financial institutions — the kind of work where accuracy,
+              financial institutions - the kind of work where accuracy,
               traceability, and production reliability are requirements, not
               aspirations. If you&apos;re an engineer who uses AI to move faster
               and thinks seriously about the systems you build, we want to talk.
@@ -113,7 +113,7 @@ const Careers = () => {
         <Section padding="compact">
           <SectionHeader
             title="Open roles"
-            subtitle="At AI Flow, everyone works directly with clients, owns their deliverables, and is responsible for what ships. We care about the quality of the work and the people behind it — the interview reflects that."
+            subtitle="At AI Flow, everyone works directly with clients, owns their deliverables, and is responsible for what ships. We care about the quality of the work and the people behind it - the interview reflects that."
             titleClassName="text-3xl font-bold font-alternates text-foreground md:text-4xl"
             subtitleClassName="max-w-2xl mx-auto text-center text-muted-foreground"
             variant="centered"
@@ -172,7 +172,7 @@ const Careers = () => {
             </h2>
             <p className="mx-auto mb-8 max-w-3xl text-lg text-muted-foreground">
               If you&apos;re an AI-first engineer and haven&apos;t seen a role
-              that fits — send us a note anyway. We&apos;re always building
+              that fits - send us a note anyway. We&apos;re always building
               the network for what&apos;s coming next.
             </p>
             <div className="flex justify-center">

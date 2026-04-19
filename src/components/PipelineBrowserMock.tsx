@@ -32,7 +32,7 @@ const pipelineComponents = [
     metric: "1,247 entries logged",
     tags: "All filings traceable",
     description:
-      "Every data point, every mapping decision, every run — logged and traceable. Included in every audit package.",
+      "Every data point, every mapping decision, every run - logged and traceable. Included in every audit package.",
   },
 ];
 

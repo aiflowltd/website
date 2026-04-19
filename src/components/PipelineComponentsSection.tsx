@@ -15,7 +15,7 @@ const components = [
     details: [
       "Reads from operations, finance, risk, and technology systems",
       "Validates and normalises data before it enters the pipeline",
-      "No data leaves existing systems — the pipeline reads and transforms in place",
+      "No data leaves existing systems - the pipeline reads and transforms in place",
       "Full source lineage tracked for every output field",
     ],
     description:
@@ -30,7 +30,7 @@ const components = [
       "Maps unified data fields to each regulatory template",
       "Handles jurisdiction-specific field requirements and formats",
       "Flags missing or out-of-range data before a run",
-      "Updated when templates change — no manual rework",
+      "Updated when templates change - no manual rework",
     ],
     description:
       "Takes the unified data and maps it to the specific fields required by each regulatory template. One data layer, multiple output formats.",
@@ -61,7 +61,7 @@ const components = [
       "Complete run log included with every report",
     ],
     description:
-      "Each reporting cycle runs automatically. The compliance team reviews the output, not the data — because the data is already assembled, validated, and formatted.",
+      "Each reporting cycle runs automatically. The compliance team reviews the output, not the data - because the data is already assembled, validated, and formatted.",
   },
   {
     id: "full-audit-trail",
@@ -215,7 +215,7 @@ export const PipelineComponentsSection = () => {
     <Section className="w-full">
       <SectionHeader
         title="The core components"
-        subtitle="Data unification, regulatory mapping, audit package generation, recurring report automation, and a full audit trail — five components, one pipeline."
+        subtitle="Data unification, regulatory mapping, audit package generation, recurring report automation, and a full audit trail - five components, one pipeline."
         titleClassName="mb-3"
         className="mb-12 lg:mb-16"
       />

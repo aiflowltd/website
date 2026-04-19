@@ -57,12 +57,12 @@ const SiteButton = forwardRef<HTMLButtonElement, SiteButtonProps>(
           <span className="flex-1 flex justify-center min-w-0">{children}</span>
           {arrow && (
             <span className="relative flex flex-none items-center justify-center w-10 h-10 rounded-[56px] shrink-0 overflow-hidden ml-2">
-              {/* White circle — default state */}
+              {/* White circle - default state */}
               <span
                 className="absolute inset-0 rounded-[56px] bg-background transition-opacity duration-300 group-hover:opacity-0"
                 aria-hidden
               />
-              {/* Gradient circle — on hover */}
+              {/* Gradient circle - on hover */}
               <span
                 className="absolute inset-0 rounded-[56px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 style={{ background: arrowHoverGradient }}
