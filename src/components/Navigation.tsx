@@ -67,6 +67,16 @@ export const Navigation = () => {
             />
           </Link>
 
+          <button
+            type="button"
+            className="md:hidden p-2 text-[#0E1015] hover:text-[#555A66] transition-colors"
+            onClick={() => setIsMenuOpen((v) => !v)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+
           <div className="hidden md:flex items-center gap-6 lg:gap-8 flex-1 justify-end min-w-0">
             <NavLink
               to="/services"
