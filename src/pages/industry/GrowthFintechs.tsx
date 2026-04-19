@@ -1,138 +1,161 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Section } from "@/components/Section";
-import { SectionHeader } from "@/components/SectionHeader";
+import { SiteButton } from "@/components/SiteButton";
 import { cn } from "@/lib/utils";
 
 const LINE = "border-[#E2E6F0]";
 
-const profileFacts = [
+// ── DATA ──────────────────────────────────────────────────────────────────────
+
+const heroStats = [
+  { value: "< 10", label: "Typical compliance team headcount" },
+  { value: "15h", label: "Saved per person per week" },
+  { value: "~$2M", label: "In avoided fines and findings" },
+];
+
+const moments = [
   {
-    label: "Stage",
-    value: "Series B / C",
-    detail: "VC-backed, operating across multiple states in payments and lending.",
+    num: "01",
+    quote:
+      "Every regulatory framework has its own reporting templates, deadlines, and data requirements. Reports are assembled manually from multiple data streams every cycle.",
+    resolve: "Run it once. Run it automatically.",
   },
   {
-    label: "Team profile",
-    value: "<10",
-    detail: "Compliance team headcount. Responsible for an expanding set of state and federal filings.",
+    num: "02",
+    quote:
+      "Nothing changes except the dates and the numbers. Yet it is rebuilt from scratch every time.",
+    resolve: "The pipeline runs on schedule. The team reviews the output, not the data.",
   },
   {
-    label: "Buyer",
-    value: "Head / VP of Compliance",
-    detail: "At companies under 80 people where compliance reports to the founder, the buyer is the CEO or COO.",
+    num: "03",
+    quote:
+      "Adding a new state means a new money transmitter licence and a new manual reporting process. Each market entry multiplies the compliance overhead.",
+    resolve: "Each new jurisdiction adds an automated output, not a manual process.",
   },
   {
-    label: "Regulatory scope",
-    value: "FinCEN · CFPB · State MTLs",
-    detail: "Each new state adds a money transmitter licence and another reporting template.",
+    num: "04",
+    quote:
+      "Your most experienced compliance people are spending their hours assembling data instead of doing compliance work.",
+    resolve: "The bottleneck is not expertise. It is manual work.",
   },
 ];
 
-const problems = [
+const workSteps = [
   {
-    quote: "Every regulatory framework has its own reporting templates, deadlines, and data requirements. Reports are assembled manually from multiple data streams every cycle.",
-    resolution: "Run it once. Run it automatically.",
+    num: "01",
+    title: "Compliance Diagnostic",
+    meta: "1–2 weeks · Fixed price · Prioritised roadmap delivered",
   },
   {
-    quote: "Nothing changes except the dates and the numbers. Yet it is rebuilt from scratch every time.",
-    resolution: "The pipeline runs on schedule. The team reviews the output, not the data.",
+    num: "02",
+    title: "Pipeline Build",
+    meta: "4–8 weeks · Fixed price · First obligation automated",
   },
   {
-    quote: "Operating across five or more states means five or more sets of obligations, each with different formats and timelines. Adding a new state adds a new manual process.",
-    resolution: "Each new jurisdiction adds an automated output, not a manual process.",
-  },
-  {
-    quote: "Every week your compliance team spends building reporting infrastructure manually in a new market is a week you are not generating revenue there.",
-    resolution: "Compliance is a gate to growth. We build the pipeline before the market launches.",
-  },
-  {
-    quote: "Inaccurate reporting to FinCEN or state regulators triggers investigations, fines, and licence suspension. A compliance failure in one jurisdiction can delay expansion into others.",
-    resolution: "Fix the infrastructure before the finding arrives.",
+    num: "03",
+    title: "Ongoing partnership",
+    meta: "Each new obligation adds to the pipeline, not the manual process",
   },
 ];
 
-const components = [
-  "Data integration across existing operational sources",
-  "Template mapping to FinCEN, CFPB, and state-specific reporting formats",
-  "Scheduled execution — every obligation runs on time, every cycle",
-  "Jurisdiction expansion — each new state adds a module, not a manual process",
-  "Full audit trail — every filing traceable from source data to submission",
+const pageFaqs = [
+  {
+    question: "What data sources do you connect to?",
+    answer:
+      "We connect to whatever your data already lives in — core banking systems, payment processors, ledgers, spreadsheets, data warehouses, and internal APIs. The diagnostic identifies which sources are relevant to each obligation. Nothing is ripped out. We build the pipeline on top of your existing infrastructure.",
+  },
+  {
+    question: "Do you work with firms that have no existing automation?",
+    answer:
+      "Yes. Most of our clients are starting from spreadsheets and manual processes. That is the problem we are built to solve. The Compliance Diagnostic maps your current state — however manual — and produces a prioritised plan for automating the most painful obligations first.",
+  },
+  {
+    question: "Is data processed outside our environment?",
+    answer:
+      "We can build pipelines that keep all data within your environment — on-premise, private cloud, or air-gapped — if that is a requirement. Architecture and data residency are agreed before build begins. If you have specific constraints around data sovereignty or security policy, raise them early and we will design around them.",
+  },
 ];
+
+// ── PAGE ──────────────────────────────────────────────────────────────────────
 
 export default function GrowthFintechs() {
   useEffect(() => {
     document.title = "AI Flow | Growth Fintechs";
   }, []);
 
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
   return (
     <div className="relative min-h-screen bg-background text-foreground page-shell">
       <Navigation />
 
       <main>
-        {/* Hero */}
+        {/* ── HERO ──────────────────────────────────────────────────────────── */}
         <Section padding="hero">
           <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
             US FinTech
           </p>
-          <SectionHeader
-            title="Growth Fintechs"
-            subtitle="VC-backed, Series B or C, operating across multiple states in payments and lending. Your compliance obligations are scaling faster than the team and the tooling."
-            titleClassName="text-3xl md:text-5xl"
-            subtitleClassName="max-w-2xl text-base md:text-lg leading-relaxed"
-          />
-        </Section>
+          <h1 className="font-alternates text-3xl md:text-5xl font-bold leading-tight text-foreground mb-6 max-w-2xl">
+            Compliance obligations scale.
+            <br />
+            The team does not.
+          </h1>
+          <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] max-w-2xl">
+            VC-backed payments and lending companies operating across multiple
+            states — managing overlapping obligations across FinCEN, CFPB, and
+            state money transmitter licences.
+          </p>
 
-        {/* Profile strip */}
-        <Section padding="compact" className="!pt-0">
-          <hr className={cn("border-t", LINE)} />
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
-            {profileFacts.map((fact, index) => (
-              <div
-                key={fact.label}
-                className={cn(
-                  "flex flex-col gap-2 px-0 py-8 md:px-6",
-                  index > 0 && cn("border-t sm:border-t-0 sm:border-l", LINE),
-                )}
-              >
-                <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                  {fact.label}
-                </p>
-                <p className="font-alternates text-lg font-bold text-foreground leading-snug">
-                  {fact.value}
-                </p>
-                <p className="text-xs leading-relaxed text-muted-foreground/70">
-                  {fact.detail}
-                </p>
-              </div>
-            ))}
+          {/* Stats row */}
+          <div className={cn("mt-10 pt-6 border-t max-w-2xl", LINE)}>
+            <div className="grid grid-cols-3">
+              {heroStats.map((stat, i) => (
+                <div
+                  key={stat.label}
+                  className={cn(
+                    "flex flex-col gap-1",
+                    i > 0 && cn("border-l pl-4 md:pl-5", LINE),
+                  )}
+                >
+                  <p className="font-alternates text-xl md:text-2xl font-bold text-foreground">
+                    {stat.value}
+                  </p>
+                  <p className="text-[11px] leading-snug text-muted-foreground">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-          <hr className={cn("border-t", LINE)} />
         </Section>
 
-        {/* Problems */}
+        {/* ── PROBLEM ───────────────────────────────────────────────────────── */}
         <Section padding="default">
-          <SectionHeader
-            title="Does this sound familiar?"
-            subtitle="The same manual reporting infrastructure problem shows up at every growth-stage fintech — regardless of which states you operate in."
-            titleClassName="text-3xl md:text-4xl"
-            subtitleClassName="max-w-2xl"
-            className="mb-12"
-          />
+          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            Does this sound familiar?
+          </p>
+          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] mb-12">
+            The same manual reporting infrastructure problem shows up at every
+            growth-stage fintech — regardless of which states you operate in.
+          </p>
 
           <hr className={cn("border-t", LINE)} />
 
           <div className="grid grid-cols-1 md:grid-cols-2">
-            {problems.map((problem, index) => {
+            {moments.map((m, index) => {
               const isRight = index % 2 === 1;
-              const isLast = index === problems.length - 1;
-              const lastRowStart = problems.length % 2 === 0 ? problems.length - 2 : problems.length - 1;
+              const isLast = index === moments.length - 1;
+              const lastRowStart =
+                moments.length % 2 === 0
+                  ? moments.length - 2
+                  : moments.length - 1;
               const isLastRow = index >= lastRowStart;
               return (
                 <div
-                  key={index}
+                  key={m.num}
                   className={cn(
                     "flex flex-col gap-4 py-10",
                     isRight ? "md:pl-10" : "md:pr-10",
@@ -142,13 +165,13 @@ export default function GrowthFintechs() {
                   )}
                 >
                   <p className="text-[11px] font-semibold tabular-nums tracking-[0.14em] text-foreground/25">
-                    {String(index + 1).padStart(2, "0")}
+                    {m.num}
                   </p>
-                  <p className="font-sans text-xl font-light leading-snug text-foreground md:text-2xl flex-1">
-                    &ldquo;{problem.quote}&rdquo;
+                  <p className="font-sans text-xl font-light italic leading-snug text-foreground md:text-2xl flex-1">
+                    &ldquo;{m.quote}&rdquo;
                   </p>
-                  <p className="text-sm font-medium text-muted-foreground">
-                    {problem.resolution}
+                  <p className="text-sm font-semibold text-foreground">
+                    {m.resolve}
                   </p>
                 </div>
               );
@@ -156,46 +179,126 @@ export default function GrowthFintechs() {
           </div>
 
           <hr className={cn("border-t", LINE)} />
+
+          {/* Fine callout */}
+          <div
+            className="mt-8 p-5 rounded-sm"
+            style={{
+              background: "#FCEBEB",
+              borderLeft: "3px solid #E24B4A",
+            }}
+          >
+            <p
+              className="text-sm leading-relaxed"
+              style={{ color: "#791F1F" }}
+            >
+              <strong style={{ color: "#501313" }}>
+                Inaccurate reporting to FinCEN or state regulators triggers
+                investigations, fines, and licence suspension.
+              </strong>{" "}
+              A compliance failure in one jurisdiction can delay expansion into
+              others. Fix the infrastructure before the finding arrives.
+            </p>
+          </div>
         </Section>
 
-        {/* How we help */}
+        {/* ── HOW WE WORK ──────────────────────────────────────────────────── */}
         <Section padding="default">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16 items-start">
             <div>
-              <SectionHeader
-                title="How we help"
-                subtitle={null}
-                titleClassName="text-3xl md:text-4xl"
-                className="mb-6"
-              />
-              <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] mb-4">
-                We build the compliance pipeline between your operational data and your regulatory output. The system connects to your existing data sources, maps them to the templates required for each jurisdiction, and runs automatically on schedule.
+              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                How we work
               </p>
-              <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] mb-4">
-                Each reporting cycle produces completed, validated reports ready for review and submission, with a full audit trail. For fintechs entering new markets, the pipeline is built before the market launches.
+              <h2 className="font-alternates text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Fixed scope. Fixed price. No surprises.
+              </h2>
+              <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] mb-6">
+                Each engagement is scoped before it starts. You know exactly
+                what you are getting, when it arrives, and what it costs. The
+                first step is a diagnostic — a 1–2 week exercise that maps your
+                compliance workflows, data sources, and obligations. You leave
+                with a prioritised roadmap whether or not you proceed.
               </p>
-              <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7]">
-                Each new jurisdiction adds an automated output, not a manual process. The compliance team stops assembling data and starts doing compliance.
-              </p>
+              <Link to="/services">
+                <SiteButton variant="secondary" arrow="right">
+                  See our engagements
+                </SiteButton>
+              </Link>
             </div>
 
-            <div>
-              <p className="mb-6 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-                The core components
-              </p>
-              <ul className="space-y-4">
-                {components.map((component, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm leading-relaxed text-foreground">
-                    <span className="mt-[0.4em] h-1.5 w-1.5 shrink-0 rounded-full bg-success" />
-                    {component}
-                  </li>
-                ))}
-              </ul>
+            <div className={cn("border-t", LINE)}>
+              {workSteps.map((s, i) => (
+                <div
+                  key={s.num}
+                  className={cn(
+                    "flex gap-5 py-6",
+                    i > 0 && cn("border-t", LINE),
+                  )}
+                >
+                  <span className="text-[11px] font-semibold tabular-nums tracking-[0.14em] text-foreground/25 mt-0.5 shrink-0 w-6">
+                    {s.num}
+                  </span>
+                  <div>
+                    <p className="font-alternates font-bold text-sm text-foreground mb-1">
+                      {s.title}
+                    </p>
+                    <p className="text-xs leading-relaxed text-muted-foreground">
+                      {s.meta}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </Section>
 
-        {/* CTA */}
+        {/* ── FAQ ──────────────────────────────────────────────────────────── */}
+        <Section padding="default">
+          <p className="mb-8 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            Common questions
+          </p>
+          <div>
+            {pageFaqs.map((faq, i) => (
+              <div key={i}>
+                <hr className={cn("border-t", LINE)} />
+                <div className="py-6">
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    className="w-full flex items-start justify-between gap-6 text-left"
+                  >
+                    <span className="text-base font-medium text-foreground leading-snug">
+                      {faq.question}
+                    </span>
+                    <span
+                      className={cn(
+                        "shrink-0 w-5 h-5 flex items-center justify-center text-muted-foreground mt-0.5 transition-transform duration-200",
+                        openFaq === i && "rotate-45",
+                      )}
+                    >
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path
+                          d="M8 3v10M3 8h10"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+                  {openFaq === i && (
+                    <p className="mt-4 text-[15px] text-muted-foreground leading-[1.7]">
+                      {faq.answer}
+                    </p>
+                  )}
+                </div>
+              </div>
+            ))}
+            <hr className={cn("border-t", LINE)} />
+          </div>
+        </Section>
+
+        {/* ── CTA ───────────────────────────────────────────────────────────── */}
         <Section padding="default">
           <div className="bg-[#0E1015] rounded-xl px-8 py-10 md:px-12 md:py-14 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="max-w-xl">

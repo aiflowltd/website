@@ -5,7 +5,6 @@ import { Footer } from "@/components/Footer";
 import { Section } from "@/components/Section";
 import { SiteButton } from "@/components/SiteButton";
 import { cn } from "@/lib/utils";
-import industry1 from "@/assets/industry1.png";
 
 const LINE = "border-[#E2E6F0]";
 
@@ -132,17 +131,6 @@ export default function RegulatedInstitutions() {
                 </div>
               ))}
             </div>
-          </div>
-        </Section>
-
-        {/* ── IMAGE BREAK ──────────────────────────────────────────────────── */}
-        <Section padding="compact">
-          <div className="overflow-hidden rounded-xl">
-            <img
-              src={industry1}
-              alt=""
-              className="w-full h-56 md:h-80 object-cover object-center"
-            />
           </div>
         </Section>
 
