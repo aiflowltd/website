@@ -96,7 +96,7 @@ export default function GrowthFintechs() {
         {/* ── HERO ──────────────────────────────────────────────────────────── */}
         <Section padding="hero">
           <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-            US FinTech
+            Growth fintechs
           </p>
           <h1 className="font-alternates text-3xl md:text-5xl font-bold leading-tight text-foreground mb-6 max-w-2xl">
             Compliance obligations scale.
@@ -104,9 +104,9 @@ export default function GrowthFintechs() {
             The team does not.
           </h1>
           <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] max-w-2xl">
-            VC-backed payments and lending companies operating across multiple
-            states — managing overlapping obligations across FinCEN, CFPB, and
-            state money transmitter licences.
+            VC-backed fintechs in payments and lending, operating across
+            multiple US states — managing overlapping obligations under FinCEN,
+            CFPB, and state money transmitter licence frameworks.
           </p>
 
           {/* Stats row */}

@@ -98,7 +98,7 @@ export default function RegulatedInstitutions() {
         {/* ── HERO ──────────────────────────────────────────────────────────── */}
         <Section padding="hero">
           <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-            Regulated institutions — EU &amp; UK
+            Financial institutions
           </p>
           <h1 className="font-alternates text-3xl md:text-5xl font-bold leading-tight text-foreground mb-6 max-w-2xl">
             The compliance obligation stack grows.
