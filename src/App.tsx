@@ -36,6 +36,7 @@ import Agnostic from "./pages/industry/Agnostic";
 import RegulatedInstitutions from "./pages/industry/RegulatedInstitutions";
 import GrowthFintechs from "./pages/industry/GrowthFintechs";
 import Workshops from "./pages/Workshops";
+import Meet from "./pages/Meet";
 import { DatacardsWidget } from "@/components/DatacardsWidget";
 import { useLocation } from "react-router-dom";
 
@@ -84,6 +85,7 @@ const AppShell = () => {
           <Route path="/workshops" element={<Workshops />} />
           <Route path="/industry/regulated-institutions" element={<RegulatedInstitutions />} />
           <Route path="/industry/growth-fintechs" element={<GrowthFintechs />} />
+          <Route path="/meet" element={<Meet />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
