@@ -55,7 +55,7 @@ const Meet = () => {
         <div className="bg-card border border-border rounded-xl overflow-hidden">
           <div
             className="calendly-inline-widget"
-            data-url="https://calendly.com/irina-barbos/20min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=ffffff&text_color=0e1015&primary_color=1ab8ff"
+            data-url="https://calendly.com/mihaianton/20min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=ffffff&text_color=0e1015&primary_color=1ab8ff"
             style={{ minWidth: "320px", height: "700px" }}
           />
         </div>
