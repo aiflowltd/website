@@ -289,9 +289,9 @@ const Contact = () => {
           <div className="bg-card border border-border rounded-lg overflow-hidden">
             <div
               className="calendly-inline-widget"
-              data-url="https://calendly.com/mihaianton/20min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=080808&text_color=ffffff"
+              data-url="https://calendly.com/mihaianton/20min?hide_event_type_details=1&hide_gdpr_banner=1"
               style={{ minWidth: "320px", height: "700px" }}
-            ></div>
+            />
           </div>
         </div>
       </main>
