@@ -35,18 +35,12 @@ const Meet = () => {
             <strong>streamline audit</strong> reporting — so your team spends
             less time on manual processes and more time on what matters.
           </p>
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
-            <a href="https://aiflow.ltd" className="text-azure hover:underline">
-              aiflow.ltd
-            </a>
-            <span className="text-grey">-</span>
-            <a
-              href="mailto:contact@aiflow.ltd"
-              className="text-azure hover:underline"
-            >
-              contact@aiflow.ltd
-            </a>
-          </div>
+          <a
+            href="mailto:contact@aiflow.ltd"
+            className="text-sm text-azure hover:underline"
+          >
+            contact@aiflow.ltd
+          </a>
         </div>
 
         <h2 className="text-xl font-bold font-alternates text-foreground mb-4">
