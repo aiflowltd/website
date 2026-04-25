@@ -67,8 +67,8 @@ export const TheProblemSection = () => {
               className="flex flex-col gap-1 px-6 py-0 lg:px-0 lg:py-8 first:pl-0 lg:first:pt-0 last:pr-0 lg:last:pb-0 flex-1 lg:flex-none"
             >
               <p
-                className="font-sans font-extralight tracking-[-0.03em] leading-none text-foreground"
-                style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
+                className="font-sans font-extralight tracking-[-0.03em] leading-none"
+                style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#EA2849" }}
               >
                 {stat.value}
               </p>
