@@ -27,13 +27,6 @@ const Index = () => {
       <Navigation />
       <Hero />
       <TheProblemSection />
-      <WhatWeBuildSection />
-      <WhyUsSection />
-      <MarketQuoteSection />
-      <ServicesSection />
-      <HowWeWorkSection />
-      <HomeProofStatsSection />
-      <EngagementSection />
       <VideoSection
         src="/videos/aiflow-demo1.mp4"
         title="Does this look like you?"
@@ -41,6 +34,13 @@ const Index = () => {
         ctaText="Contact us"
         ctaHref="/contact"
       />
+      <WhatWeBuildSection />
+      <WhyUsSection />
+      <MarketQuoteSection />
+      <ServicesSection />
+      <HowWeWorkSection />
+      <HomeProofStatsSection />
+      <EngagementSection />
       <TeamSection />
       <TestimonialsSection />
       <BlogSection />
