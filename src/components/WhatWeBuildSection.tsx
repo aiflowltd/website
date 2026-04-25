@@ -1,4 +1,5 @@
 import { Section, type SectionPadding } from "@/components/Section";
+import { SectionHeader } from "@/components/SectionHeader";
 import { cn } from "@/lib/utils";
 
 const pillars = [
@@ -32,17 +33,13 @@ function pillarCellClass(index: number) {
 export const WhatWeBuildSection = ({ padding = "default" }: { padding?: SectionPadding }) => {
   return (
     <Section id="what-we-build" scrollMargin padding={padding}>
-      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground mb-6">
-        What we build
-      </p>
-
-      <p className="font-alternates font-bold text-2xl md:text-3xl lg:text-4xl text-foreground leading-snug mb-4 max-w-3xl">
-        We build the compliance pipeline between your operational data and its regulatory output.
-      </p>
-
-      <p className="font-sans font-light text-base text-muted-foreground leading-relaxed mb-10 max-w-2xl">
-        The system connects to existing data sources, maps them to the regulatory templates for each jurisdiction, and runs automatically on schedule.
-      </p>
+      <SectionHeader
+        title="We build the compliance pipeline between your operational data and its regulatory output."
+        subtitle="The system connects to existing data sources, maps them to the regulatory templates for each jurisdiction, and runs automatically on schedule."
+        titleClassName="text-3xl md:text-5xl"
+        subtitleClassName="max-w-2xl text-base md:text-lg leading-relaxed"
+        className="mb-10"
+      />
 
       <hr className={cn("border-t", editorialLine)} />
 
