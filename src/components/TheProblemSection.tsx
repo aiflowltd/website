@@ -41,43 +41,45 @@ export const TheProblemSection = () => {
         The problem
       </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-16">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8 lg:gap-12 items-start">
         {/* Left: problems */}
         <div className="flex flex-col divide-y divide-[#E2E6F0]">
-          {problems.map((problem) => (
-            <div key={problem.title} className="py-8 first:pt-0 last:pb-0 flex flex-col gap-3">
-              <h3 className="font-alternates font-semibold text-lg md:text-xl text-foreground leading-snug">
-                {problem.title}
-              </h3>
-              <p className="font-sans font-light text-sm text-muted-foreground leading-relaxed">
-                {problem.body}
-              </p>
-              <p className="font-sans text-[11px] text-muted-foreground/50 font-medium">
-                {problem.source}
-              </p>
+          {problems.map((problem, index) => (
+            <div key={problem.title} className="py-8 first:pt-0 last:pb-0 flex gap-5">
+              <span className="font-sans font-extralight text-xs text-foreground/25 tracking-widest tabular-nums shrink-0 pt-1">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div className="flex flex-col gap-3 min-w-0">
+                <h3 className="font-alternates font-semibold text-lg md:text-xl text-foreground leading-snug">
+                  {problem.title}
+                </h3>
+                <p className="font-sans font-light text-sm text-muted-foreground leading-relaxed">
+                  {problem.body}
+                </p>
+                <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground/40">
+                  {problem.source}
+                </p>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Right: stats */}
-        <div className="flex flex-row lg:flex-col gap-0 divide-x lg:divide-x-0 lg:divide-y divide-[#E2E6F0] lg:w-56">
+        {/* Right: stats dark card */}
+        <div className="bg-[#0E1015] rounded-xl px-8 py-10 flex flex-col divide-y divide-white/10">
           {stats.map((stat) => (
-            <div
-              key={stat.value}
-              className="flex flex-col gap-1 px-6 py-0 lg:px-0 lg:py-8 first:pl-0 lg:first:pt-0 last:pr-0 lg:last:pb-0 flex-1 lg:flex-none"
-            >
+            <div key={stat.value} className="flex flex-col gap-2 py-8 first:pt-0 last:pb-0">
               <p
                 className="font-sans font-extralight tracking-[-0.03em] leading-none"
-                style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#EA2849" }}
+                style={{ fontSize: "clamp(2rem, 3.5vw, 2.75rem)", color: "#EA2849" }}
               >
                 {stat.value}
               </p>
               {stat.sublabel && (
-                <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground/40">
+                <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-white/35">
                   {stat.sublabel}
                 </p>
               )}
-              <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground mt-1">
+              <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-white/50">
                 {stat.label}
               </p>
             </div>

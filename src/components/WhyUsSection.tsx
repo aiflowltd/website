@@ -1,8 +1,6 @@
 import { Section } from "@/components/Section";
 import { cn } from "@/lib/utils";
 
-const editorialLine = "border-[#E2E6F0]";
-
 const columns = [
   {
     title: "RegTech Platforms",
@@ -31,47 +29,43 @@ export const WhyUsSection = () => {
         Why us
       </p>
 
-      <hr className={cn("border-t", editorialLine)} />
-
-      <div className="grid grid-cols-1 md:grid-cols-3">
-        {columns.map((col, index) => (
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+        {columns.map((col) => (
           <div
             key={col.title}
             className={cn(
-              "flex flex-col gap-4 py-10 px-0",
-              index > 0 && cn("border-t md:border-t-0 md:border-l md:pl-8 lg:pl-10", editorialLine),
-              index < columns.length - 1 && "md:pr-8 lg:pr-10",
-              col.highlight && "bg-[#EEF6FF] md:bg-transparent",
+              "flex flex-col gap-5 rounded-xl px-8 py-10",
+              col.highlight
+                ? "bg-[#0E1015]"
+                : "bg-foreground/[0.03]",
             )}
           >
             <h3
               className={cn(
                 "font-alternates font-semibold text-lg md:text-xl leading-snug",
-                col.highlight ? "text-foreground" : "text-foreground/60",
+                col.highlight ? "text-white" : "text-foreground/50",
               )}
             >
               {col.title}
-              {col.highlight && (
-                <span className="ml-2 inline-block text-[10px] font-sans font-semibold uppercase tracking-[0.16em] text-[#2563EB] bg-[#DBEAFE] px-2 py-0.5 rounded align-middle">
-                  us
-                </span>
-              )}
             </h3>
 
-            <p className="font-sans font-light text-sm text-muted-foreground leading-relaxed flex-1">
+            <p
+              className={cn(
+                "font-sans font-light text-sm leading-relaxed flex-1",
+                col.highlight ? "text-white/60" : "text-muted-foreground",
+              )}
+            >
               {col.body}
             </p>
 
             {col.differentiator && (
-              <p className="font-sans font-semibold text-sm text-foreground leading-relaxed mt-auto pt-4 border-t border-[#E2E6F0]">
+              <p className="font-sans font-semibold text-sm text-foreground leading-relaxed pt-4 border-t border-foreground/10">
                 {col.differentiator}
               </p>
             )}
           </div>
         ))}
       </div>
-
-      <hr className={cn("border-t", editorialLine)} />
     </Section>
   );
 };

@@ -33,6 +33,10 @@ function pillarCellClass(index: number) {
 export const WhatWeBuildSection = ({ padding = "default" }: { padding?: SectionPadding }) => {
   return (
     <Section id="what-we-build" scrollMargin padding={padding}>
+      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground mb-6">
+        What we build
+      </p>
+
       <SectionHeader
         title="We build the compliance pipeline between your operational data and its regulatory output."
         subtitle="The system connects to existing data sources, maps them to the regulatory templates for each jurisdiction, and runs automatically on schedule."
