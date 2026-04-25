@@ -3,16 +3,19 @@ import { cn } from "@/lib/utils";
 
 const pillars = [
   {
-    kicker: "Recurring Reporting",
-    body: "Completed, validated reports on schedule - ready for review and submission with a full audit trail.",
+    kicker: "Recurring reporting",
+    title: "Completed, validated reports ready for review and submission",
+    body: "Each reporting cycle produces completed, validated reports ready for review and submission, with a full audit trail.",
   },
   {
-    kicker: "Audit Requests",
-    body: "Structured document packages in hours instead of weeks. With full traceability by default.",
+    kicker: "Audit requests",
+    title: "Structured document packages in hours instead of weeks",
+    body: "Audit requests produce structured document packages in hours instead of weeks, with a full audit trail.",
   },
   {
-    kicker: "New Obligations",
-    body: "Each new jurisdiction adds an automated output, not a manual process.",
+    kicker: "New obligations",
+    title: "Each new jurisdiction adds an automated output, not a manual process",
+    body: "For fintechs entering new markets, the pipeline is built before the market launches. Each new obligation adds an automated output, not a manual process.",
   },
 ] as const;
 
@@ -20,10 +23,9 @@ const editorialLine = "border-[#E2E6F0]";
 
 function pillarCellClass(index: number) {
   return cn(
-    "flex flex-col gap-2 py-8 md:py-10",
+    "flex flex-col gap-2 px-4 py-8 md:px-8 md:py-10",
     index < pillars.length - 1 && cn("border-b md:border-b-0", editorialLine),
-    index > 0 && cn("md:border-l md:pl-8 lg:pl-10", editorialLine),
-    index < pillars.length - 1 && "md:pr-8 lg:pr-10",
+    index > 0 && cn("md:border-l", editorialLine),
   );
 }
 
@@ -50,7 +52,10 @@ export const WhatWeBuildSection = ({ padding = "default" }: { padding?: SectionP
             <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
               {pillar.kicker}
             </p>
-            <p className="font-sans font-light text-sm text-muted-foreground leading-relaxed">
+            <p className="font-alternates text-lg font-semibold text-foreground md:text-xl">
+              {pillar.title}
+            </p>
+            <p className="text-sm font-light leading-relaxed text-muted-foreground">
               {pillar.body}
             </p>
           </div>
