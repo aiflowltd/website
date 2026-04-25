@@ -8,37 +8,11 @@ import { services } from "@/data/services";
 import { DatacardsEmbedPanel } from "@/components/DatacardsEmbedPanel";
 import { LineGridCta } from "@/components/LineGridCta";
 import { PipelineComponentsSection } from "@/components/PipelineComponentsSection";
+import { WhatWeBuildSection } from "@/components/WhatWeBuildSection";
 import { useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 const editorialLine = "border-[#E2E6F0]";
-
-const trustPillars = [
-  {
-    kicker: "Recurring reporting",
-    title: "Completed, validated reports ready for review and submission",
-    body: "Each reporting cycle produces completed, validated reports ready for review and submission, with a full audit trail.",
-  },
-  {
-    kicker: "Audit requests",
-    title: "Structured document packages in hours instead of weeks",
-    body: "Audit requests produce structured document packages in hours instead of weeks, with a full audit trail.",
-  },
-  {
-    kicker: "New obligations",
-    title: "Each new jurisdiction adds an automated output, not a manual process",
-    body: "For fintechs entering new markets, the pipeline is built before the market launches. Each new obligation adds an automated output, not a manual process.",
-  },
-] as const;
-
-function trustCellClass(index: number) {
-  return cn(
-    "flex flex-col gap-2 px-4 py-8 md:px-8 md:py-10",
-    index < trustPillars.length - 1 &&
-      cn("border-b md:border-b-0", editorialLine),
-    index > 0 && cn("md:border-l", editorialLine),
-  );
-}
 
 const Services = () => {
   useEffect(() => {
@@ -50,34 +24,7 @@ const Services = () => {
       <Navigation />
 
       <main>
-        <Section padding="hero">
-          <SectionHeader
-            title="We build the compliance pipeline between your operational data and its regulatory output."
-            subtitle="The system connects to existing data sources, maps them to the regulatory templates for each jurisdiction, and runs automatically on schedule."
-            titleClassName="text-3xl md:text-5xl"
-            subtitleClassName="max-w-2xl text-base md:text-lg leading-relaxed"
-          />
-        </Section>
-
-        <Section padding="compact" className="!pt-0">
-          <hr className={cn("border-t", editorialLine)} />
-          <div className="grid grid-cols-1 md:grid-cols-3">
-            {trustPillars.map((pillar, index) => (
-              <div key={pillar.kicker} className={trustCellClass(index)}>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                  {pillar.kicker}
-                </p>
-                <p className="font-alternates text-lg font-semibold text-foreground md:text-xl">
-                  {pillar.title}
-                </p>
-                <p className="text-sm font-light leading-relaxed text-muted-foreground">
-                  {pillar.body}
-                </p>
-              </div>
-            ))}
-          </div>
-          <hr className={cn("border-t", editorialLine)} />
-        </Section>
+        <WhatWeBuildSection padding="hero" />
 
         <Section padding="default">
           <SectionHeader

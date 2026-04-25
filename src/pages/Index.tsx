@@ -1,9 +1,12 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
+import { TheProblemSection } from "@/components/TheProblemSection";
+import { WhatWeBuildSection } from "@/components/WhatWeBuildSection";
+import { WhyUsSection } from "@/components/WhyUsSection";
+import { MarketQuoteSection } from "@/components/MarketQuoteSection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { HowWeWorkSection } from "@/components/HowWeWorkSection";
-
 import { HomeProofStatsSection } from "@/components/home/HomeProofStatsSection";
 import { EngagementSection } from "@/components/EngagementSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
@@ -23,10 +26,7 @@ const Index = () => {
     <div className="relative min-h-screen bg-background text-foreground page-shell">
       <Navigation />
       <Hero />
-      <ServicesSection />
-      <HowWeWorkSection />
-      <HomeProofStatsSection />
-      <EngagementSection />
+      <TheProblemSection />
       <VideoSection
         src="/videos/aiflow-demo1.mp4"
         title="Does this look like you?"
@@ -34,7 +34,14 @@ const Index = () => {
         ctaText="Contact us"
         ctaHref="/contact"
       />
-      <TeamSection />
+      <WhatWeBuildSection />
+      <WhyUsSection />
+      <MarketQuoteSection />
+      <ServicesSection />
+      <HowWeWorkSection />
+      <HomeProofStatsSection />
+      <EngagementSection />
+      {/* <TeamSection /> */}
       <TestimonialsSection />
       <BlogSection />
       <FAQSection />
