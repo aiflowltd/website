@@ -46,7 +46,7 @@ export const TheProblemSection = () => {
         <div className="flex flex-col divide-y divide-[#E2E6F0]">
           {problems.map((problem) => (
             <div key={problem.title} className="py-8 first:pt-0 last:pb-0 flex flex-col gap-3">
-              <h3 className="font-alternates font-bold text-lg text-foreground leading-snug">
+              <h3 className="font-alternates font-semibold text-lg md:text-xl text-foreground leading-snug">
                 {problem.title}
               </h3>
               <p className="font-sans font-light text-sm text-muted-foreground leading-relaxed">
@@ -73,11 +73,11 @@ export const TheProblemSection = () => {
                 {stat.value}
               </p>
               {stat.sublabel && (
-                <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground/40">
+                <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground/40">
                   {stat.sublabel}
                 </p>
               )}
-              <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground mt-1">
+              <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground mt-1">
                 {stat.label}
               </p>
             </div>

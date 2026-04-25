@@ -46,7 +46,7 @@ export const WhyUsSection = () => {
           >
             <h3
               className={cn(
-                "font-alternates font-bold text-lg leading-snug",
+                "font-alternates font-semibold text-lg md:text-xl leading-snug",
                 col.highlight ? "text-foreground" : "text-foreground/60",
               )}
             >
@@ -63,7 +63,7 @@ export const WhyUsSection = () => {
             </p>
 
             {col.differentiator && (
-              <p className="font-sans font-semibold text-sm text-foreground leading-snug mt-auto pt-4 border-t border-[#E2E6F0]">
+              <p className="font-sans font-semibold text-sm text-foreground leading-relaxed mt-auto pt-4 border-t border-[#E2E6F0]">
                 {col.differentiator}
               </p>
             )}

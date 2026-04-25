@@ -8,7 +8,7 @@ export const MarketQuoteSection = () => {
       </p>
 
       <blockquote className="border-l-2 border-foreground/20 pl-6 md:pl-8 mb-8">
-        <p className="font-alternates font-light text-2xl md:text-3xl text-foreground leading-snug">
+        <p className="font-alternates font-semibold text-2xl md:text-3xl text-foreground leading-snug">
           &ldquo;Monzo Bank Limited was fined £21.1m after rapid customer growth outpaced the maturity of its compliance infrastructure&rdquo;
         </p>
         <footer className="mt-4 font-sans text-sm text-muted-foreground">
