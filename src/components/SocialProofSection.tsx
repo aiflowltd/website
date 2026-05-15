@@ -57,7 +57,7 @@ export const SocialProofSection = () => {
                 <div>
                   <p className="font-semibold">{teamMembers.mihai.name}</p>
                   <p className="text-sm text-muted-foreground">
-                    Founder & Lead AI/ML Engineer
+                    Founder & AI Solutions Consultant
                   </p>
                 </div>
               </div>

@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { Section } from "@/components/Section";
 import { SectionHeader } from "@/components/SectionHeader";
 import { LineGridCta } from "@/components/LineGridCta";
+import { parseBlogInline } from "@/lib/blogInline";
 
 const BlogPost = () => {
   const { id } = useParams();
@@ -37,9 +38,9 @@ const BlogPost = () => {
           return (
             <p
               key={index}
-              className="mb-10 text-lg leading-loose text-foreground"
+              className="mb-10 text-md leading-loose text-foreground"
             >
-              {block.text}
+              {parseBlogInline(block.text)}
             </p>
           );
         case "heading":
@@ -58,8 +59,8 @@ const BlogPost = () => {
               className="mb-10 ml-8 list-disc space-y-5 marker:text-xl marker:text-muted-foreground"
             >
               {block.items.map((item: string, idx: number) => (
-                <li key={idx} className="pl-2 text-lg text-foreground">
-                  {item}
+                <li key={idx} className="pl-2 text-md text-foreground">
+                  {parseBlogInline(item)}
                 </li>
               ))}
             </ul>
@@ -70,7 +71,7 @@ const BlogPost = () => {
               key={index}
               className="my-8 border border-border border-l-4 border-l-border bg-muted p-6"
             >
-              <p className="mb-2 text-lg italic text-foreground">
+              <p className="mb-2 text-md italic text-foreground">
                 &ldquo;{block.text}&rdquo;
               </p>
               {block.author && (

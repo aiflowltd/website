@@ -15,11 +15,7 @@ import { LineGridCta } from "@/components/LineGridCta";
 import { Section } from "@/components/Section";
 import { SectionHeader } from "@/components/SectionHeader";
 import { cn } from "@/lib/utils";
-import {
-  colPad3,
-  editorialHrClass,
-  editorialLine,
-} from "@/lib/lineGrid";
+import { editorialHrClass, editorialLine } from "@/lib/lineGrid";
 
 function chunkPosts<T>(items: T[], size: number): T[][] {
   const rows: T[][] = [];
@@ -33,8 +29,8 @@ function BlogPagePostInner({ post }: { post: BlogPost }) {
   return (
     <>
       {post.image ? (
-        <div className="w-full shrink-0 md:pt-12 md:pb-6 max-md:pb-4">
-          <div className="h-[120px] w-full shrink-0 overflow-hidden bg-muted/30 md:h-[120px]">
+        <div className="w-full shrink-0 md:pt-0 md:pb-2 max-md:pt-0 max-md:pb-2">
+          <div className="h-[120px] w-full shrink-0 overflow-hidden bg-muted/30">
             <img
               src={post.image}
               alt=""
@@ -43,17 +39,14 @@ function BlogPagePostInner({ post }: { post: BlogPost }) {
           </div>
         </div>
       ) : (
-        <div className="w-full shrink-0 md:pt-12 md:pb-6 max-md:pb-4">
-          <div className="h-[120px] w-full bg-muted/30 md:h-[120px]" />
+        <div className="w-full shrink-0 md:pt-0 md:pb-2 max-md:pt-0 max-md:pb-2">
+          <div className="h-[120px] w-full bg-muted/30" />
         </div>
       )}
-      <div className="flex min-h-0 min-w-0 flex-1 flex-col justify-center gap-2 md:pb-12">
-        <h3 className="line-clamp-2 font-semibold leading-snug text-foreground">
+      <div className="flex min-h-0 min-w-0 flex-1 flex-col justify-center gap-1.5 md:pb-0">
+        <h3 className="line-clamp-3 font-semibold leading-snug text-foreground">
           {post.title}
         </h3>
-        <p className="line-clamp-3 text-sm font-light leading-relaxed text-muted-foreground">
-          {post.excerpt}
-        </p>
         <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
           <span className="flex items-center gap-1">
             <Calendar className="h-3.5 w-3.5 shrink-0" />
@@ -144,7 +137,7 @@ const Blog = () => {
                     className={cn(
                       editorialLine,
                       index < filteredPosts.length - 1 && "border-b",
-                      "block py-10 transition-opacity duration-200 hover:opacity-75 max-md:px-4",
+                      "block py-8 transition-opacity duration-200 hover:opacity-75 max-md:px-4",
                     )}
                   >
                     <BlogPagePostInner post={post} />
@@ -152,33 +145,30 @@ const Blog = () => {
                 ))}
               </div>
 
-              {/* Desktop: 3-column rows, gap-0 + vertical rules like BlogSection */}
-              <div className="hidden md:flex md:flex-col md:divide-y md:divide-[#E2E6F0]">
+              {/* Desktop: fixed 3-column grid per row; partial rows keep 1/3 width slots */}
+              <div className="hidden md:flex md:flex-col md:gap-y-8">
                 {rows.map((row, rowIndex) => (
                   <div
                     key={rowIndex}
-                    className="flex min-h-[260px] w-full gap-0"
+                    className={cn(
+                      "grid w-full grid-cols-3 gap-0",
+                      rowIndex > 0 && cn("border-t pt-8", editorialLine),
+                    )}
                   >
                     {row.map((post, cardIndex) => (
-                      <div
+                      <Link
                         key={post.id}
-                        className="min-h-[260px] min-w-0 flex-1 basis-0"
+                        to={`/blog/${post.id}`}
+                        className={cn(
+                          "group flex min-w-0 flex-col",
+                          editorialLine,
+                          cardIndex > 0 && "border-l",
+                          "md:px-6 md:py-4",
+                          "transition-opacity duration-200 hover:opacity-75",
+                        )}
                       >
-                        <Link
-                          to={`/blog/${post.id}`}
-                          className={cn(
-                            "group flex h-full min-h-[260px] flex-col",
-                            editorialLine,
-                            cardIndex > 0 && "border-l",
-                            row.length === 1
-                              ? "md:px-10"
-                              : colPad3[cardIndex as 0 | 1 | 2],
-                            "transition-opacity duration-200 hover:opacity-75",
-                          )}
-                        >
-                          <BlogPagePostInner post={post} />
-                        </Link>
-                      </div>
+                        <BlogPagePostInner post={post} />
+                      </Link>
                     ))}
                   </div>
                 ))}

@@ -1,3 +1,10 @@
+import { doraRoiRegisterPost } from "@/data/posts/dora-roi-register";
+import { sar30DayClockPost } from "@/data/posts/sar-30-day-clock";
+import { mifidTransactionReportingPost } from "@/data/posts/mifid-transaction-reporting";
+import { retailInvestmentStrategyPost } from "@/data/posts/retail-investment-strategy";
+import { doraIncidentReportingPost } from "@/data/posts/dora-incident-reporting";
+import { moneyTransmitterLicensePost } from "@/data/posts/money-transmitter-license";
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -11,7 +18,18 @@ export interface BlogPost {
   content?: any[];
 }
 
+/** Finance compliance series (newest first in listing). */
+export const financeCompliancePosts: BlogPost[] = [
+  retailInvestmentStrategyPost, // 6 — RIS
+  doraIncidentReportingPost, // 5 — DORA incident reporting
+  moneyTransmitterLicensePost, // 4 — MTL
+  mifidTransactionReportingPost, // 3 — MiFIR
+  sar30DayClockPost, // 2 — AML
+  doraRoiRegisterPost, // 1 — DORA RoI
+];
+
 export const blogPosts: BlogPost[] = [
+  ...financeCompliancePosts,
   {
     id: "why-you-need-ai-consultant-2025",
     title: "Why You Need an AI Consultant in 2025",
@@ -701,12 +719,13 @@ Payback Period: 9 months`,
 
 export const categories = [
   "All",
+  "Finance",
   "AI Trends",
   "Machine Learning",
   "Engineering",
   "LLMs",
   "Strategy",
-  "Edge Computing"
+  "Edge Computing",
 ];
 
 export const getAllBlogPosts = (): BlogPost[] => {
