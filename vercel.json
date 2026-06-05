@@ -1,6 +1,10 @@
 {
   "routes": [
     {
+      "src": "/pdf",
+      "dest": "/aiflow.pdf"
+    },
+    {
       "src": "/[^.]+",
       "dest": "/",
       "status": 200
