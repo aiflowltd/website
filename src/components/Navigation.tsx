@@ -3,19 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { NavLink } from "@/components/NavLink";
 import { AI_FLOW_LOGO_SYMBOL } from "@/constants/images";
 import { SiteButton } from "@/components/SiteButton";
-import {
-  Menu,
-  X,
-  Landmark,
-  TrendingUp,
-} from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const industryLinks = [
-  { name: "Regulated Institutions", href: "/industry/regulated-institutions", icon: Landmark },
-  { name: "Growth Fintechs", href: "/industry/growth-fintechs", icon: TrendingUp },
-] as const;
-
 
 const navItemClass =
   "text-[13px] font-medium tracking-[0.01em] text-[#555A66] hover:text-[#0E1015] transition-colors";
@@ -23,7 +12,6 @@ const navItemActive = "text-[#0E1015]";
 
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [mobileIndustriesOpen, setMobileIndustriesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
@@ -35,7 +23,6 @@ export const Navigation = () => {
 
   useEffect(() => {
     setIsMenuOpen(false);
-    setMobileIndustriesOpen(false);
   }, [location.pathname, location.hash]);
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -93,34 +80,6 @@ export const Navigation = () => {
               Our work
             </NavLink>
 
-            <div className="relative group flex items-center h-full">
-              <button
-                type="button"
-                className={cn(
-                  navItemClass,
-                  "flex items-center gap-0.5 h-full py-2 cursor-pointer bg-transparent border-0 font-sans",
-                  location.pathname.startsWith("/industry/") && navItemActive,
-                )}
-                aria-haspopup="true"
-              >
-                Industries
-              </button>
-              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="rounded-lg border border-[#E2E6F0] bg-white shadow-lg py-2 min-w-[220px]">
-                  {industryLinks.map((item) => (
-                    <Link
-                      key={item.href}
-                      to={item.href}
-                      className="flex items-center gap-3 px-4 py-2.5 text-[13px] text-[#0E1015] hover:bg-[#F7F9FC] transition-colors"
-                    >
-                      <item.icon className="w-4 h-4 shrink-0 text-[#555A66]" />
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
             <NavLink
               to="/team"
               className={navItemClass}
@@ -169,35 +128,6 @@ export const Navigation = () => {
                 Our work
               </Link>
             </MobileRow>
-
-            <div className="border-t border-[#E2E6F0]">
-              <button
-                type="button"
-                onClick={() => setMobileIndustriesOpen((v) => !v)}
-                className="flex w-full items-center justify-between py-5 text-base font-medium text-[#0E1015] text-left"
-                aria-expanded={mobileIndustriesOpen}
-              >
-                Industries
-                <span className="text-[#555A66] text-sm">
-                  {mobileIndustriesOpen ? "−" : "+"}
-                </span>
-              </button>
-              {mobileIndustriesOpen && (
-                <ul className="pb-2 pl-1 space-y-0 border-l-2 border-[#E2E6F0] ml-2">
-                  {industryLinks.map((item) => (
-                    <li key={item.href}>
-                      <Link
-                        to={item.href}
-                        className="flex items-center gap-3 py-3 pl-4 text-sm font-medium text-[#555A66] hover:text-[#112e63]"
-                      >
-                        <item.icon className="w-4 h-4 shrink-0" />
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
 
             <MobileRow>
               <Link

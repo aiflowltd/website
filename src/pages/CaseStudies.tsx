@@ -24,7 +24,7 @@ const CaseStudies = () => {
         <Section padding="hero">
           <SectionHeader
             title="Case Studies"
-            subtitle="Real-world AI success stories. See how we've helped leading companies transform their businesses with cutting-edge AI solutions."
+            subtitle="Not compliance deployments - but the same underlying problem: scattered data, unified into a system that runs on its own and holds up under scrutiny. This is how we'd approach yours."
             variant="centered"
             titleClassName="text-5xl font-bold font-alternates md:text-7xl text-foreground"
             subtitleClassName="mx-auto max-w-3xl text-xl text-muted-foreground leading-relaxed"

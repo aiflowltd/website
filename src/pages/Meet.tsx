@@ -30,12 +30,6 @@ const Meet = () => {
           <h1 className="text-2xl font-bold font-alternates text-foreground mb-3">
             Compliance solutions for regulated financial services.
           </h1>
-          <p className="text-foreground leading-relaxed mb-6">
-            We <strong>automate compliance</strong> and{" "}
-            <strong>streamline audit</strong> reporting — so your team spends
-            less time on manual processes and more time on what matters.
-          </p>
-
           <a
             href="mailto:contact@aiflow.ltd"
             className="text-sm text-azure hover:underline"

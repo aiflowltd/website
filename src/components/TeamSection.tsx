@@ -12,16 +12,16 @@ const stats = [
       "building production systems, four of which focused on compliance infrastructure for regulated institutions in Europe and the United States",
   },
   {
-    value: "50+",
-    label: "compliance workflows automated",
+    value: "3",
+    label: "compliance design partners",
     description:
-      "across payments, lending, and investment firms under EU and US regulatory frameworks",
+      "institutions building the first regulatory reporting deployment with us",
   },
   {
-    value: "20+",
-    label: "regulated institutions served",
+    value: "30+",
+    label: "compliance leaders interviewed",
     description:
-      "banks, payment institutions, and growth-stage fintechs across the EU and United States",
+      "conversations that narrowed the product from broad compliance automation to recurring regulatory reporting",
   },
   {
     value: "4h",
@@ -58,7 +58,7 @@ export const TeamSection = () => {
         title={
           <>
             The team.{" "}
-            <span className="font-extralight">Four years in fintech.</span>
+            <span className="font-extralight">Four years in compliance.</span>
           </>
         }
         subtitle="The regulatory knowledge comes from working inside the institutions. The infrastructure delivery comes from building production systems from scratch."

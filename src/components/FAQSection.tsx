@@ -11,7 +11,7 @@ const faqs = [
   {
     question: "Is AI Flow right for us?",
     answer:
-      "AI Flow is built for two situations. First: a compliance team managing a regulatory obligation stack that is growing faster than the team can handle - spending most of their hours on data assembly rather than compliance work. Second: a regulated institution or growth-stage fintech that has had a data handoff failure that looked like a compliance failure, and knows it needs infrastructure, not more headcount. If your team rebuilds the same reports from scratch every cycle, if adding a new jurisdiction means adding a new manual process, or if an audit request triggers days of document preparation - this is the problem we solve.",
+      "AI Flow is built for two situations. First: a compliance team managing a regulatory obligation stack that is growing faster than the team can handle - spending most of their hours on data assembly rather than compliance work. Second: a regulated institution that has had a data handoff failure that looked like a compliance failure, and knows it needs infrastructure, not more headcount. If your team rebuilds the same reports from scratch every cycle, if adding a new jurisdiction means adding a new manual process, or if an audit request triggers days of document preparation - this is the problem we solve.",
   },
   {
     question:

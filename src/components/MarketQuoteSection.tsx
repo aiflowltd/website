@@ -17,6 +17,33 @@ export const MarketQuoteSection = () => {
           </footer>
         </blockquote>
 
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-white/10 pt-8 mb-8">
+          <div>
+            <p className="font-alternates text-lg font-semibold text-white">£29m</p>
+            <p className="text-xs text-white/40 mt-1">
+              FCA fine, Starling Bank - failings in financial crime systems and controls
+            </p>
+          </div>
+          <div>
+            <p className="font-alternates text-lg font-semibold text-white">$3.09B</p>
+            <p className="text-xs text-white/40 mt-1">
+              TD Bank fine - &ldquo;placing profit over compliance&rdquo;
+            </p>
+          </div>
+          <div>
+            <p className="font-alternates text-lg font-semibold text-white">€21.5m</p>
+            <p className="text-xs text-white/40 mt-1">
+              Coinbase fine - inadequate AML monitoring and delayed STRs
+            </p>
+          </div>
+          <div>
+            <p className="font-alternates text-lg font-semibold text-white">€2.6m</p>
+            <p className="text-xs text-white/40 mt-1">
+              bunq fine - alerts not investigated, SARs delayed
+            </p>
+          </div>
+        </div>
+
         <p className="font-sans font-semibold text-base md:text-lg text-white leading-snug max-w-2xl border-t border-white/10 pt-8">
           With our solutions you will be compliant in a couple of weeks, at a fraction of the exposure cost.
         </p>

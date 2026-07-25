@@ -42,7 +42,7 @@ export const ClientsCarousel = ({ embedInHero = false }: ClientsCarouselProps) =
     >
       <div className="mb-8 text-left">
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl">
-          Reliable AI, used and trusted by large organizations worldwide
+          Built by engineers with production AI experience at global companies.
         </p>
       </div>
 

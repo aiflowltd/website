@@ -2,36 +2,23 @@ import { Section } from "@/components/Section";
 
 const problems = [
   {
-    title: "Every cycle starts from scratch",
-    body: "Same data, same templates, same deadlines - rebuilt manually every reporting period. The cost of getting it wrong is rising fast: global AML fines totalled $1.23 billion in H1 2025 alone, a 417% increase on the same period in 2024.",
-    source: "Comply Advantage",
+    title: "The systems don't talk",
+    body: "The data sits across Salesforce, core systems, transaction platforms, spreadsheets, and different teams. None of them speak to each other.",
   },
   {
-    title: "Audits arrive without warning",
-    body: "Preparing a document package takes days or weeks. The team stops everything else. Moreover, starting Jan 2026, the EBA can conduct on-site inspections, demand your full documentation on the spot, and fine you up to €10M - and they already began.",
-    source: "European Banking Authority",
+    title: "You chase every number by hand",
+    body: "You email each deal team to confirm what closed, then wait on the replies. That chain becomes your only record.",
   },
   {
-    title: "Each new market adds a manual process",
-    body: "Expansion should be automated. Instead it creates new compliance bottlenecks. Executives now spend 42% of their working time on compliance - up from 24% in 2016. For every new market you enter, that number grows.",
-    source: "BPI",
+    title: "When someone leaves, the knowledge is gone",
+    body: "The reasoning lived in their head and their emails. Copilot and ChatGPT can't give it back.",
   },
 ];
 
-const stats = [
-  {
-    value: "$1.23 billion",
-    label: "AML fines in H1 2025",
-  },
-  {
-    value: "up to 10M€",
-    sublabel: "or 2% of global turnover",
-    label: "DORA fine for non-compliance",
-  },
-  {
-    value: "42%",
-    label: "of an executive's time is spent on compliance",
-  },
+const quotes = [
+  "“I have to go through this one by one and ask the deal teams by email, did this thing close?”",
+  "“Regulators can come back several years later and ask for risk and compliance artifacts.”",
+  "“We had to go back to the regulator and correct our reporting from three quarters ago.”",
 ];
 
 export const TheProblemSection = () => {
@@ -41,7 +28,7 @@ export const TheProblemSection = () => {
         The problem
       </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8 lg:gap-12 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-8 lg:gap-12 items-start">
         {/* Left: problems */}
         <div className="flex flex-col divide-y divide-[#E2E6F0]">
           {problems.map((problem, index) => (
@@ -56,33 +43,23 @@ export const TheProblemSection = () => {
                 <p className="font-sans font-light text-sm text-muted-foreground leading-relaxed">
                   {problem.body}
                 </p>
-                <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground/40">
-                  {problem.source}
-                </p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Right: stats dark card */}
+        {/* Right: quotes dark card */}
         <div className="bg-[#0E1015] rounded-xl px-8 py-10 flex flex-col divide-y divide-white/10">
-          {stats.map((stat) => (
-            <div key={stat.value} className="flex flex-col gap-2 py-8 first:pt-0 last:pb-0">
-              <p
-                className="font-sans font-extralight tracking-[-0.03em] leading-none"
-                style={{ fontSize: "clamp(2rem, 3.5vw, 2.75rem)", color: "#EA2849" }}
-              >
-                {stat.value}
-              </p>
-              {stat.sublabel && (
-                <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-white/35">
-                  {stat.sublabel}
-                </p>
-              )}
-              <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-white/50">
-                {stat.label}
-              </p>
-            </div>
+          <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-white/40 pb-6">
+            What compliance teams tell us
+          </p>
+          {quotes.map((quote) => (
+            <p
+              key={quote}
+              className="font-sans text-sm text-white/70 leading-relaxed py-6 first:pt-0 last:pb-0"
+            >
+              {quote}
+            </p>
           ))}
         </div>
       </div>

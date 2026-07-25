@@ -11,19 +11,14 @@ export const CTASection = () => {
             aria-hidden
           />
           <div className="relative">
-            <p className="text-sm text-muted-foreground mb-3">
-              Infrastructure, not workarounds.
-            </p>
             <h2 className="text-4xl md:text-5xl font-alternates text-muted-foreground mb-4">
-              The client meeting{" "}
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                stays on the calendar.
-              </span>
+              Your name is on <span className="text-azure">the filing.</span>
             </h2>
-            <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              The compliance team stops assembling data and starts doing
-              compliance. Book a diagnostic call to map where the manual work
-              is and what it costs to automate it.
+            <p className="text-muted-foreground mb-2 max-w-xl mx-auto">
+              We help you make sure you can stand behind every number on it.
+            </p>
+            <p className="text-sm text-muted-foreground/70 mb-8 max-w-lg mx-auto">
+              Start with one workflow your team still does by hand.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact#calendly">

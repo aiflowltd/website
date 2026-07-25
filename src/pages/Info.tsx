@@ -10,10 +10,11 @@ import { SiteButton } from "@/components/SiteButton";
 import { ClientsCarousel } from "@/components/ClientsCarousel";
 import { ServicesSection } from "@/components/ServicesSection";
 import { HowWeWorkSection } from "@/components/HowWeWorkSection";
-import { HomeProofStatsSection } from "@/components/home/HomeProofStatsSection";
 import { TeamSection } from "@/components/TeamSection";
 import { ContactFormSection } from "@/components/ContactFormSection";
 import { VideoSection } from "@/components/VideoSection";
+import { WhyNowSection } from "@/components/WhyNowSection";
+import { CTASection } from "@/components/CTASection";
 
 // ─── Who we serve ────────────────────────────────────────────────────────────
 
@@ -22,31 +23,21 @@ const audiences = [
     title: "Regulated Institutions",
     body: "Banks, payment institutions, and other entities under direct supervisory authority within EU and UK regulations like PSD2, MiFID II, DORA, GDPR, and national AML frameworks. UK, Benelux, and Nordics. The compliance obligation stack grows. The team does not.",
   },
-  {
-    title: "Growth Fintechs",
-    body: "VC-backed, Series B or C, operating across multiple states in payments and lending, filing across FinCEN, CFPB, SEC, and multiple state banking authorities simultaneously. Every new state is another set of manual processes.",
-  },
 ];
 
 const WhoWeServeSection = () => (
   <Section id="who-we-serve" scrollMargin>
     <SectionHeader
       title="Who we serve"
-      subtitle="Two situations. One infrastructure gap."
+      subtitle="The compliance obligation stack grows faster than the team."
       className="mb-12"
     />
 
     <hr className="border-t border-[#E2E6F0]" />
 
-    <div className="grid grid-cols-1 gap-0 md:grid-cols-2">
-      {audiences.map((item, index) => (
-        <div
-          key={item.title}
-          className={[
-            index === 0 ? "border-b md:border-b-0" : "md:border-l md:border-[#E2E6F0]",
-            "md:px-8 lg:px-10 flex flex-col gap-6 py-12",
-          ].join(" ")}
-        >
+    <div className="grid grid-cols-1 gap-0">
+      {audiences.map((item) => (
+        <div key={item.title} className="md:px-8 lg:px-10 flex flex-col gap-6 py-12">
           <h3 className="font-alternates font-bold text-2xl text-foreground leading-snug">
             {item.title}
           </h3>
@@ -140,7 +131,7 @@ const regulatoryItems = [
   {
     index: "03",
     title: "The Capacity Gap",
-    body: "Global bank compliance costs exceed $270B annually. Compliance teams of 3–8 spend 60–70% of each reporting cycle on data collection — not on compliance.",
+    body: "$206B is spent on compliance labor every year, across 400,000 compliance officers doing this work. Compliance teams of 3–8 spend 60–70% of each reporting cycle on data collection — not on compliance.",
   },
 ];
 
@@ -357,10 +348,9 @@ const Info = () => {
       {/* What we build — ServicesSection */}
       <ServicesSection />
 
-      {/* What clients achieve */}
-      <HomeProofStatsSection />
-
       <RegulatoryEnvironmentSection />
+
+      <WhyNowSection />
 
       {/* How we work */}
       <HowWeWorkSection />
@@ -379,6 +369,8 @@ const Info = () => {
       />
 
       <StartHereSection />
+
+      <CTASection />
 
       {/* Book a call */}
       <ContactFormSection />

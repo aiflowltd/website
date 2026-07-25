@@ -4,20 +4,20 @@ import { cn } from "@/lib/utils";
 const columns = [
   {
     title: "RegTech Platforms",
-    body: "Generic coverage for common filings. They assume your data is clean and mapped. They work with pre-defined data sources that most often don't satisfy your needs.",
+    body: "You operate the tool. The manual work around it remains.",
     differentiator: "We're not a SaaS, we don't ask you to migrate data. We work with existing systems.",
     highlight: false,
   },
   {
     title: "Dev Agencies",
-    body: "They ship what you spec. They cannot tell you whether the output satisfies a DORA incident report or a MiFID II transaction filing.",
+    body: "They build what you specify. You still define what correct means.",
     differentiator: "We are not another dev shop that just places engineers, we think the solution end-to-end.",
     highlight: false,
   },
   {
     title: "AI Flow",
     body: "We build the compliance pipeline between your operational data and its regulatory output. The system connects to existing data sources, maps them to the regulatory templates for each jurisdiction, and runs automatically on schedule.",
-    differentiator: null,
+    differentiator: "We do the work between your systems and the finished report. The numbers are right, and when the regulator asks where one came from, you have the answer.",
     highlight: true,
   },
 ] as const;
@@ -59,7 +59,14 @@ export const WhyUsSection = () => {
             </p>
 
             {col.differentiator && (
-              <p className="font-sans font-semibold text-sm text-foreground leading-relaxed pt-4 border-t border-foreground/10">
+              <p
+                className={cn(
+                  "font-sans font-semibold text-sm leading-relaxed pt-4 border-t",
+                  col.highlight
+                    ? "text-white border-white/10"
+                    : "text-foreground border-foreground/10",
+                )}
+              >
                 {col.differentiator}
               </p>
             )}

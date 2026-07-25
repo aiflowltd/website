@@ -114,8 +114,8 @@ const Contact = () => {
             Get in touch
           </h1>
           <p className="text-lg text-grey max-w-2xl mx-auto">
-            Ready to transform your business with AI? Let's discuss how we can
-            help you achieve your goals.
+            If the client meeting keeps getting cancelled because of filing
+            deadlines, it is worth a conversation.
           </p>
         </div>
 
@@ -221,9 +221,6 @@ const Contact = () => {
                       +41 76 777 11 31 (Switzerland)
                     </p>
                     <p className="text-grey">
-                      +971 58 655 8931 (Dubai)
-                    </p>
-                    <p className="text-grey">
                       +40 721 658 931 (Romania)
                     </p>
                   </div>
@@ -237,8 +234,6 @@ const Contact = () => {
                     <h3 className="font-semibold mb-1">Location</h3>
                     <p className="text-grey">
                       Zürich, Switzerland
-                      <br />
-                      Dubai, UAE
                       <br />
                       Cluj-Napoca, Romania
                     </p>
@@ -281,8 +276,8 @@ const Contact = () => {
               </h2>
             </div>
             <p className="text-lg text-grey max-w-2xl mx-auto">
-              Prefer to talk directly? Book a 20-minute consultation call with
-              us to discuss your AI project.
+              Prefer to talk directly? Book a 20-minute call to discuss your
+              obligation stack and where the data handoff problem sits.
             </p>
           </div>
 

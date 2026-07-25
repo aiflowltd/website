@@ -117,7 +117,6 @@ export const services: Service[] = [
     typicalTimeline: "1–2 weeks. Roadmap delivered at the end.",
     industries: [
       "Banks and payment institutions",
-      "Growth-stage fintechs",
       "Regulated firms under PSD2, MiFID II, DORA, AML, FinCEN, CFPB",
     ],
   },
@@ -148,7 +147,6 @@ export const services: Service[] = [
     typicalTimeline: "4–8 weeks from kickoff to first automated filing cycle.",
     industries: [
       "Banks and payment institutions",
-      "Growth-stage fintechs",
       "Regulated firms across EU and US jurisdictions",
     ],
   },
@@ -177,7 +175,6 @@ export const services: Service[] = [
     typicalTimeline: "Ongoing. Priced per quarter, scoped by coverage.",
     industries: [
       "Banks and payment institutions",
-      "Growth-stage fintechs",
       "Multi-jurisdiction regulated firms",
     ],
   },

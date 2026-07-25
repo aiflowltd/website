@@ -40,7 +40,6 @@ const companySizes = [
 
 const industries = [
   "Bank or payment institution (EU)",
-  "Growth-stage fintech (US)",
   "Other regulated financial institution",
   "Other",
 ];

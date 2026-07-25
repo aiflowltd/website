@@ -24,23 +24,24 @@ import {
 const stats = [
   {
     value: "10+",
-    label: "Years experience",
-    description: "Building and shipping AI, ML, and data systems end to end",
+    label: "Years in tech",
+    description:
+      "Building production systems, four of which focused on compliance infrastructure for regulated institutions in Europe and the United States",
   },
   {
-    value: "50+",
-    label: "Projects delivered",
-    description: "Across startups, scale-ups, and enterprise",
+    value: "3",
+    label: "Compliance design partners",
+    description: "Institutions building the first regulatory reporting deployment with us",
   },
   {
-    value: "20+",
-    label: "Enterprise clients",
-    description: "Including Google, Bloomberg, and Fortune 500 environments",
+    value: "30+",
+    label: "Compliance leaders interviewed",
+    description: "Conversations that narrowed the product to recurring regulatory reporting",
   },
   {
-    value: "250+",
-    label: "AI agents delivered",
-    description: "Production systems supporting real users and workflows",
+    value: "4h",
+    label: "DORA initial notification window",
+    description: "The tightest reporting deadline in our stack, and the one that makes data handoff failures most costly",
   },
 ];
 
@@ -79,15 +80,14 @@ const technologies = [
 ];
 
 const industries = [
-  "Real estate",
-  "Legal",
-  "Oil & gas",
-  "E‑commerce",
-  "Healthcare",
-  "Manufacturing",
-  "Construction",
-  "PropTech",
-  "Marketing",
+  "PSD2",
+  "MiFID II",
+  "DORA",
+  "GDPR",
+  "National AML frameworks",
+  "FinCEN",
+  "CFPB",
+  "State banking authorities",
 ];
 
 const Team = () => {
@@ -105,18 +105,24 @@ const Team = () => {
           <div className="text-center mb-16">
             <div className="inline-block">
               <p className="mb-1 text-5xl md:text-7xl  text-muted-foreground">
-                Senior expertise.
+                Four years inside compliance.
               </p>
               <h2 className="text-5xl md:text-7xl  font-bold font-alternates">
-                Real-world results.
+                Ten years building the systems that fix it.
               </h2>
             </div>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-6 text-center leading-relaxed">
-              The team behind AI Flow brings deep engineering and strategy
-              experience from Google, Bloomberg, and the NYU innovation
-              ecosystem. We build AI systems that scale - for enterprises and
-              high-growth teams alike.
-            </p>
+            <div className="max-w-2xl mx-auto mt-6 space-y-4 text-center">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                The regulatory knowledge comes from working inside the
+                institutions - four years in private banking, wealth, and
+                asset management compliance.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                The infrastructure delivery comes from 10 years building
+                production systems - ex-Bloomberg (regulated financial data)
+                and ex-Google (ML tooling).
+              </p>
+            </div>
           </div>
         </Section>
 
@@ -227,8 +233,8 @@ const Team = () => {
         {/* Capabilities */}
         <Section padding="compact">
           <SectionHeader
-            title="Technologies & industries"
-            subtitle="We work with the stack that fits your environment and the sectors where we have proven delivery."
+            title="Technologies & regulatory scope"
+            subtitle="We work with the stack that fits your environment and the frameworks your obligations sit under."
             titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
             subtitleClassName="text-grey max-w-2xl"
             className="mb-12"
@@ -254,7 +260,7 @@ const Team = () => {
             <div className={cell2Split(1)}>
               <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-4 flex items-center gap-2">
                 <Building2 className="w-4 h-4 text-grey" />
-                Industries
+                Regulatory frameworks
               </h3>
               <div className="flex flex-wrap gap-2">
                 {industries.map((ind) => (
@@ -277,7 +283,7 @@ const Team = () => {
           <div className="border-[#E2E6F0] border-x-0 py-12 md:py-16 px-4 md:px-10 text-center bg-gradient-to-br from-background via-background to-primary/5">
             <SectionHeader
               title="Let's build something that scales"
-              subtitle="Ready to work with a team that ships production AI? Get in touch for a scoping call."
+              subtitle="Ready to work with a team that ships production compliance infrastructure? Get in touch for a scoping call."
               variant="centered"
               titleClassName="text-3xl md:text-4xl font-alternates text-foreground"
               subtitleClassName="text-grey max-w-xl mx-auto mb-8"

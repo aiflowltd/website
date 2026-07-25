@@ -7,7 +7,6 @@ import { WhyUsSection } from "@/components/WhyUsSection";
 import { MarketQuoteSection } from "@/components/MarketQuoteSection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { HowWeWorkSection } from "@/components/HowWeWorkSection";
-import { HomeProofStatsSection } from "@/components/home/HomeProofStatsSection";
 import { EngagementSection } from "@/components/EngagementSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { BlogSection } from "@/components/BlogSection";
@@ -16,6 +15,8 @@ import { ContactFormSection } from "@/components/ContactFormSection";
 import { useEffect } from "react";
 import { TeamSection } from "@/components/TeamSection";
 import { VideoSection } from "@/components/VideoSection";
+import { WhyNowSection } from "@/components/WhyNowSection";
+import { CTASection } from "@/components/CTASection";
 
 const Index = () => {
   useEffect(() => {
@@ -37,14 +38,15 @@ const Index = () => {
       <WhatWeBuildSection />
       <WhyUsSection />
       <MarketQuoteSection />
+      <WhyNowSection />
       <ServicesSection />
       <HowWeWorkSection />
-      <HomeProofStatsSection />
       <EngagementSection />
       {/* <TeamSection /> */}
       <TestimonialsSection />
       <BlogSection />
       <FAQSection />
+      <CTASection />
       <ContactFormSection />
       <Footer />
     </div>
