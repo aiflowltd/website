@@ -58,10 +58,12 @@ export const TeamSection = () => {
         title={
           <>
             The team.{" "}
-            <span className="font-extralight">Four years in compliance.</span>
+            <span className="font-extralight">
+              We've done this work. We know how to deliver it.
+            </span>
           </>
         }
-        subtitle="The regulatory knowledge comes from working inside the institutions. The infrastructure delivery comes from building production systems from scratch."
+        subtitle="The regulatory knowledge comes from working inside the institutions - four years in private banking, wealth, and asset management compliance. The infrastructure delivery comes from 10 years building production systems - ex-Bloomberg (regulated financial data) and ex-Google (ML tooling)."
         titleClassName="text-3xl md:text-4xl"
         className="mb-12"
       />

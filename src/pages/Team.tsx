@@ -102,25 +102,22 @@ const Team = () => {
       <main>
         {/* Hero */}
         <Section padding="hero" className="!pb-20">
-          <div className="text-center mb-16">
-            <div className="inline-block">
-              <p className="mb-1 text-5xl md:text-7xl  text-muted-foreground">
-                Four years inside compliance.
+          <div className="mb-16 text-left">
+            <div>
+              <p className="mb-1 text-5xl md:text-7xl text-muted-foreground">
+                We've done this work.
               </p>
-              <h2 className="text-5xl md:text-7xl  font-bold font-alternates">
-                Ten years building the systems that fix it.
+              <h2 className="text-5xl md:text-7xl font-bold font-alternates">
+                We know how to deliver it.
               </h2>
             </div>
-            <div className="max-w-2xl mx-auto mt-6 space-y-4 text-center">
+            <div className="max-w-2xl mt-6">
               <p className="text-lg text-muted-foreground leading-relaxed">
                 The regulatory knowledge comes from working inside the
                 institutions - four years in private banking, wealth, and
-                asset management compliance.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                The infrastructure delivery comes from 10 years building
-                production systems - ex-Bloomberg (regulated financial data)
-                and ex-Google (ML tooling).
+                asset management compliance. The infrastructure delivery comes
+                from 10 years building production systems - ex-Bloomberg
+                (regulated financial data) and ex-Google (ML tooling).
               </p>
             </div>
           </div>
