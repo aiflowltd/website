@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItemClass =
-  "text-[13px] font-medium tracking-[0.01em] text-[#555A66] hover:text-[#0E1015] transition-colors";
+  "whitespace-nowrap text-[13px] font-medium tracking-[0.01em] text-[#555A66] hover:text-[#0E1015] transition-colors";
 const navItemActive = "text-[#0E1015]";
 
 export const Navigation = () => {
@@ -64,13 +64,20 @@ export const Navigation = () => {
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
 
-          <div className="hidden md:flex items-center gap-6 lg:gap-8 flex-1 justify-end min-w-0">
+          <div className="hidden md:flex items-center gap-4 lg:gap-8 flex-1 justify-end min-w-0">
             <NavLink
-              to="/services"
+              to="/platform"
               className={navItemClass}
               activeClassName={navItemActive}
             >
-              Services
+              Platform
+            </NavLink>
+            <NavLink
+              to="/how-we-work"
+              className={navItemClass}
+              activeClassName={navItemActive}
+            >
+              How we work
             </NavLink>
             <NavLink
               to="/case-studies"
@@ -102,8 +109,10 @@ export const Navigation = () => {
               Blog
             </NavLink>
 
-            <Link to="/contact" className="shrink-0 ml-2">
-              <SiteButton variant="nav">Contact us</SiteButton>
+            <Link to="/contact#calendly" className="shrink-0 ml-2">
+              <SiteButton variant="nav" className="whitespace-nowrap">
+                Book a discovery call
+              </SiteButton>
             </Link>
           </div>
         </div>
@@ -114,10 +123,18 @@ export const Navigation = () => {
           <div className="px-6 py-8 flex flex-col gap-0 overflow-y-auto max-h-[calc(100vh-4rem)]">
             <MobileRow>
               <Link
-                to="/services"
+                to="/platform"
                 className="block py-5 text-base font-medium text-[#0E1015] hover:text-[#112e63] transition-colors"
               >
-                Services
+                Platform
+              </Link>
+            </MobileRow>
+            <MobileRow>
+              <Link
+                to="/how-we-work"
+                className="block py-5 text-base font-medium text-[#0E1015] hover:text-[#112e63] transition-colors"
+              >
+                How we work
               </Link>
             </MobileRow>
             <MobileRow>
@@ -155,9 +172,9 @@ export const Navigation = () => {
             </MobileRow>
 
             <hr className="border-t border-[#E2E6F0] mb-8" />
-            <Link to="/contact">
+            <Link to="/contact#calendly">
               <SiteButton variant="nav" className="w-full justify-center">
-                Contact us
+                Book a discovery call
               </SiteButton>
             </Link>
           </div>

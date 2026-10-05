@@ -5,18 +5,18 @@ const columns = [
   {
     title: "RegTech Platforms",
     body: "You operate the tool. The manual work around it remains.",
-    differentiator: "We're not a SaaS, we don't ask you to migrate data. We work with existing systems.",
+    differentiator: "We don't ask you to migrate data. AI Flow Core works on top of the systems you already have.",
     highlight: false,
   },
   {
     title: "Dev Agencies",
-    body: "They build what you specify. You still define what correct means.",
-    differentiator: "We are not another dev shop that just places engineers, we think the solution end-to-end.",
+    body: "They build what you specify, from scratch, every time. You still define what correct means.",
+    differentiator: "We don't start from a blank page. We start from a platform that already works, and think the solution end-to-end.",
     highlight: false,
   },
   {
     title: "AI Flow",
-    body: "We build the compliance pipeline between your operational data and its regulatory output. The system connects to existing data sources, maps them to the regulatory templates for each jurisdiction, and runs automatically on schedule.",
+    body: "AI Flow Core is our own AI-native compliance platform, built from reusable components. Our forward deployed engineers connect it to your existing systems and fit it to how your company works - end to end.",
     differentiator: "We do the work between your systems and the finished report. The numbers are right, and when the regulator asks where one came from, you have the answer.",
     highlight: true,
   },

@@ -126,7 +126,7 @@ export const BlogSection = () => {
 
       <hr className={editorialHrClass} />
 
-      {/* Mobile: single column, same line treatment as ServicesSection */}
+      {/* Mobile: single column, same line treatment as PlatformModelSection */}
       <div className="grid grid-cols-1 gap-0 md:hidden">
         {posts.map((post, index) => (
           <Link

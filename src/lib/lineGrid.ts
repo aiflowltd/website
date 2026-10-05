@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 /** Horizontal rules that match section line grids (full-width top border only). */
 export const lineHrClass = "w-full border-0 border-t border-border";
 
-/** Hairline border class + `<hr>` matching ServicesSection / BlogSection. */
+/** Hairline border class + `<hr>` matching PlatformModelSection / BlogSection. */
 export const editorialLine = "border-[#E2E6F0]";
 export const editorialHrClass = "w-full border-0 border-t border-[#E2E6F0]";
 

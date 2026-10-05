@@ -214,8 +214,8 @@ export const PipelineComponentsSection = () => {
   return (
     <Section className="w-full">
       <SectionHeader
-        title="The core components"
-        subtitle="Data unification, regulatory mapping, audit package generation, recurring report automation, and a full audit trail - five components, one pipeline."
+        title="Inside AI Flow Core"
+        subtitle="Data unification, regulatory mapping, audit package generation, recurring report automation, and a full audit trail - five reusable components, one platform. Every deployment runs on them."
         titleClassName="mb-3"
         className="mb-12 lg:mb-16"
       />

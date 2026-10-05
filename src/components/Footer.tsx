@@ -4,10 +4,10 @@ import { AI_FLOW_LOGO_LARGE } from "@/constants/images";
 import { useCookieConsent } from "@/contexts/CookieConsentContext";
 
 const companyLinks = [
-  { label: "How it works", to: "/#how-we-work" },
   { label: "Who we serve", to: "/#who-we-serve" },
   { label: "Our work", to: "/case-studies" },
-  { label: "Services", to: "/services" },
+  { label: "Platform", to: "/platform" },
+  { label: "How we work", to: "/how-we-work" },
   { label: "Team", to: "/team" },
   { label: "Contact", to: "/contact" },
 ] as const;

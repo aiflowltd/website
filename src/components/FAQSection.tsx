@@ -4,9 +4,14 @@ import { SiteButton } from "@/components/SiteButton";
 
 const faqs = [
   {
+    question: "Are you a software product or a services company?",
+    answer:
+      "A product. AI Flow Core is our own platform - the connectors, the regulatory mapping, the validation rules, the audit trail. Every deployment runs on it. What we add is forward deployed engineers, because no two finance functions are the same. They integrate Core with your systems end to end and adapt it to whatever is unique about how your company works. You get software that is already built, fitted to you.",
+  },
+  {
     question: "We're not sure where to start. What do you recommend?",
     answer:
-      "That is exactly what the Compliance Diagnostic is for. In 1–2 weeks we map your compliance workflows, data sources, and regulatory obligations across operations, finance, risk, and technology. You leave with a prioritised roadmap and a clear answer on where the data handoff problem is - whether you proceed with us or not.",
+      "Book a discovery call. One conversation about your obligation stack, your systems, and the workflow your team still does by hand. If AI Flow Core is a fit, we agree one workflow to deploy first and the acceptance criteria for it. If it is not, we will tell you.",
   },
   {
     question: "Is AI Flow right for us?",
@@ -22,7 +27,7 @@ const faqs = [
   {
     question: "We have an internal data team. Where do you fit?",
     answer:
-      "We work alongside internal teams, not instead of them. We provide the compliance infrastructure engineering - data pipeline design, regulatory mapping, automated reporting, audit trail implementation - that most internal data teams do not have in-house. Regulatory obligations do not respect department boundaries. A MiFID II transaction report pulls from trading, risk, and finance simultaneously. A DORA incident report requires data from IT operations, security, and senior management. We sit with the compliance team but work across operations, finance, risk, and technology - because that is where the data lives. Your team retains ownership of what we build. We provide the runbook.",
+      "We work alongside internal teams, not instead of them. AI Flow Core brings what most internal data teams do not have in-house - regulatory mapping, automated reporting, audit trail - and our forward deployed engineers do the integration work with your team. Regulatory obligations do not respect department boundaries. A MiFID II transaction report pulls from trading, risk, and finance simultaneously. A DORA incident report requires data from IT operations, security, and senior management. We sit with the compliance team but work across operations, finance, risk, and technology - because that is where the data lives. Your team keeps full visibility of every configuration. We provide the runbook.",
   },
 ];
 

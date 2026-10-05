@@ -45,18 +45,18 @@ const moments = [
 const workSteps = [
   {
     num: "01",
-    title: "Compliance Diagnostic",
-    meta: "1–2 weeks · Fixed price · Prioritised roadmap delivered",
+    title: "Discovery call",
+    meta: "One conversation · Your obligations, your systems, your first workflow",
   },
   {
     num: "02",
-    title: "Pipeline Build",
-    meta: "4–8 weeks · Fixed price · First obligation automated",
+    title: "Deploy one workflow",
+    meta: "4–8 weeks · AI Flow Core connected to your systems · First obligation automated",
   },
   {
     num: "03",
-    title: "Ongoing partnership",
-    meta: "Each new obligation adds to the pipeline, not the manual process",
+    title: "Expand",
+    meta: "Each new obligation is a new module on the platform, not a manual process",
   },
 ];
 
@@ -64,12 +64,12 @@ const pageFaqs = [
   {
     question: "What data sources do you connect to?",
     answer:
-      "We connect to whatever your data already lives in - core banking systems, payment processors, ledgers, spreadsheets, data warehouses, and internal APIs. The diagnostic identifies which sources are relevant to each obligation. Nothing is ripped out. We build the pipeline on top of your existing infrastructure.",
+      "We connect to whatever your data already lives in - core banking systems, payment processors, ledgers, spreadsheets, data warehouses, and internal APIs. AI Flow Core ships with connectors for the common ones; our forward deployed engineers build whatever is specific to you. Nothing is ripped out. Core runs on top of your existing infrastructure.",
   },
   {
     question: "Do you work with firms that have no existing automation?",
     answer:
-      "Yes. Most of our clients are starting from spreadsheets and manual processes. That is the problem we are built to solve. The Compliance Diagnostic maps your current state - however manual - and produces a prioritised plan for automating the most painful obligations first.",
+      "Yes. Most of our clients are starting from spreadsheets and manual processes. That is the problem we are built to solve. Our forward deployed engineers start from your current state - however manual - and deploy AI Flow Core on the most painful obligation first.",
   },
   {
     question: "Is data processed outside our environment?",
@@ -210,18 +210,18 @@ export default function GrowthFintechs() {
                 How we work
               </p>
               <h2 className="font-alternates text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Fixed scope. Fixed price. No surprises.
+                A platform, deployed by engineers.
               </h2>
               <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-[1.7] mb-6">
-                Each engagement is scoped before it starts. You know exactly
-                what you are getting, when it arrives, and what it costs. The
-                first step is a diagnostic - a 1–2 week exercise that maps your
-                compliance workflows, data sources, and obligations. You leave
-                with a prioritised roadmap whether or not you proceed.
+                AI Flow Core is our own compliance platform. Every finance
+                function is different, so our forward deployed engineers connect
+                it to your systems and adapt it to how your company actually
+                works. Scope and acceptance criteria are agreed before
+                deployment begins. No surprises.
               </p>
-              <Link to="/services">
+              <Link to="/how-we-work">
                 <SiteButton variant="secondary" arrow="right">
-                  See our engagements
+                  See how we work
                 </SiteButton>
               </Link>
             </div>
@@ -306,9 +306,9 @@ export default function GrowthFintechs() {
                 Let's start with your picture.
               </p>
               <p className="text-sm md:text-[15px] leading-relaxed text-white/60">
-                In 1–2 weeks we map your workflows, data sources, and regulatory
-                obligations - and give you a prioritised roadmap. Fixed price.
-                No commitment beyond that unless it makes sense.
+                One call about your obligations, your systems, and the workflow
+                your team still does by hand. If AI Flow Core is a fit, we agree
+                the first workflow to deploy. If it is not, we will tell you.
               </p>
             </div>
             <div className="shrink-0">
@@ -317,7 +317,7 @@ export default function GrowthFintechs() {
                   className="rounded-full text-sm font-medium bg-background text-foreground transition-opacity hover:opacity-80 whitespace-nowrap"
                   style={{ padding: "12px 24px" }}
                 >
-                  Book a diagnostic call
+                  Book a discovery call
                 </button>
               </Link>
             </div>

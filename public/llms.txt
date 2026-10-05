@@ -1,12 +1,23 @@
 # AI Flow Software
 
-> Compliance infrastructure for regulated financial institutions and growth-stage fintechs. We build the automated pipeline between operational data and regulatory output.
+> AI Flow Core is an AI-native compliance platform for regulated financial institutions and growth-stage fintechs. It automates the work between operational data and regulatory output. Forward deployed engineers integrate it end to end with each client's systems.
 
 ## What We Do
 
-AI Flow Software automates the compliance reporting pipeline - from a client's existing data sources to submission-ready regulatory output. The system connects to operational data, maps it against specific regulatory obligations, and runs on schedule producing validated reports and audit packages with a full audit trail.
+AI Flow Software builds and runs AI Flow Core, a proprietary compliance platform made of reusable components. Core connects to a client's existing data sources (core banking, transaction systems, CRM, email, Teams, vendors, spreadsheets and documents), maps the data against specific regulatory obligations, and runs on schedule producing validated reports and audit packages with a full audit trail.
+
+What Core automates:
+
+- **Recurring regulatory reporting** - done and checked, on schedule, ready to sign off and submit
+- **Continuous control testing** - every control monitored, not a hand-picked sample
+- **Audit & evidence packs** - the proof behind every number, kept with the report
+- **First-line reporting** - the rules live in the tool, so the first line can't miss them
 
 We do not replace existing systems. We connect to them.
+
+## How We Work: Platform + Forward Deployed Engineers
+
+Every finance function is different. AI Flow Core provides the reusable foundation; AI Flow's forward deployed engineers integrate it end to end with each client's systems and adapt it to anything unique about how that company works. Each new obligation is a new module on the same platform, not a new build.
 
 ## Who We Serve
 
@@ -20,7 +31,7 @@ Series B and C companies in payments and lending, operating across multiple US s
 
 The gap between operational data and regulatory output is filled by compliance professionals doing manual work. Reports are rebuilt from scratch each cycle. Audit packages take days or weeks to assemble. Each new obligation or jurisdiction adds a new manual process. The bottleneck is not expertise - it is manual work that scales with obligation count, not with headcount.
 
-## Core Components
+## AI Flow Core Components
 
 - **Data Unification** - connects to existing data sources without rip-and-replace
 - **Regulatory Mapping** - maps unified data against specific obligation templates
@@ -30,17 +41,17 @@ The gap between operational data and regulatory output is filled by compliance p
 
 ## Commercial Model
 
-Fixed scope. Fixed price. No open-ended engagements.
+Start with one workflow. Expand on the same foundation.
 
-1. **Compliance Diagnostic** - 1-2 weeks, fixed price. Maps workflows, data sources, obligations, and gaps. Deliverable: a prioritized automation roadmap.
-2. **Pipeline Build** - 4-8 weeks, fixed price. Builds the first automated compliance pipeline for one regulatory obligation or reporting workflow.
-3. **Quarterly Operations Retainer** - ongoing, scoped by regulatory coverage. Maintains and expands the pipeline as obligations evolve.
+1. **Discovery call** - free. One conversation about obligations, systems, and the workflow the team still does by hand.
+2. **Deploy one workflow** - 4-8 weeks. Forward deployed engineers connect AI Flow Core to existing systems and take one regulatory obligation or reporting workflow to a real, review-ready output.
+3. **Expand** - ongoing, scoped by regulatory coverage. More reports, controls, evidence packs, and registers added as modules on the same platform.
 4. **Performance Layer** - gain-share tied to measurable compliance metrics, added once value is established.
 
 ## Key Differentiators
 
-- AI-native architecture - not a feature layer added to legacy software
-- Fixed-price delivery - removes vendor risk from the buyer's decision
+- AI-native platform - AI Flow Core is proprietary and built from reusable components, not a feature layer added to legacy software
+- Forward deployed engineers - end-to-end integration with each client's systems, adapted to how that company works
 - Audit trail by default - every output is regulator-ready
 - One obligation at a time - trust is built incrementally before expanding scope
 - Mid-market fit - built for compliance teams of 2-10, not enterprise IT procurement

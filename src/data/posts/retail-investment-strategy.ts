@@ -241,7 +241,7 @@ export const retailInvestmentStrategyPost: BlogPost = {
     },
     {
       type: "paragraph",
-      text: "**Q2-Q3 2026: diagnostic and data mapping.** Identify where every cost component lives today, what the gaps are against the value-for-money data model, and what the build sequence looks like. The diagnostic should answer: if the technical standards landed tomorrow, what would the firm need to build first, and how long would each component take.",
+      text: "**Q2-Q3 2026: discovery and data mapping.** Identify where every cost component lives today, what the gaps are against the value-for-money data model, and what the build sequence looks like. The mapping should answer: if the technical standards landed tomorrow, what would the firm need to build first, and how long would each component take.",
     },
     {
       type: "paragraph",
@@ -261,15 +261,15 @@ export const retailInvestmentStrategyPost: BlogPost = {
     },
     {
       type: "heading",
-      text: "What a diagnostic answers",
+      text: "Where a deployment starts",
     },
     {
       type: "paragraph",
-      text: "In 1-2 weeks, an AI Flow Compliance Diagnostic for the RIS maps the current state: where every cost component lives today, what data the firm produces in its existing product governance process, what the gap is to the value-for-money data model, and what the build sequence looks like against the implementation timeline.",
+      text: "In the first weeks of an AI Flow Core deployment for the RIS, our forward deployed engineers map the current state: where every cost component lives today, what data the firm produces in its existing product governance process, what the gap is to the value-for-money data model, and what the build sequence looks like against the implementation timeline.",
     },
     {
       type: "paragraph",
-      text: "For an asset manager, the diagnostic is calibrated against the fund range, the distribution agreements, and the existing product governance structure. For an insurance product manufacturer, the diagnostic adds the IDD-specific data demands. For a distributor or platform, the diagnostic focuses on the inducement and advice-cost data and the distribution-context layer.",
+      text: "For an asset manager, the deployment is calibrated against the fund range, the distribution agreements, and the existing product governance structure. For an insurance product manufacturer, the deployment adds the IDD-specific data demands. For a distributor or platform, the deployment focuses on the inducement and advice-cost data and the distribution-context layer.",
     },
     {
       type: "paragraph",

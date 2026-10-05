@@ -19,7 +19,7 @@ import { LineGridCta } from "@/components/LineGridCta";
 import { cn } from "@/lib/utils";
 import { cell3Col, gridCols3, lineGrid } from "@/lib/lineGrid";
 
-/** Matches ServicesSection hairline rules. */
+/** Matches PlatformModelSection hairline rules. */
 const editorialGridLine = "border-[#E2E6F0]";
 
 /** Desktop column count: 2 → one row; 3 → one row; 4 → 2×2; 5+ → 3-col wrap. */

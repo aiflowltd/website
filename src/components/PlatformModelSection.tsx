@@ -3,30 +3,30 @@ import { Section } from "@/components/Section";
 import { SectionHeader } from "@/components/SectionHeader";
 import { ArrowUpRight } from "lucide-react";
 
-const services = [
+const pillars = [
   {
     index: "01",
-    title: "Compliance Diagnostic",
-    phase: "Diagnose",
+    title: "AI Flow Core",
+    phase: "Platform",
     description:
-      "1–2 weeks. We map your compliance workflows, data sources, and regulatory obligations across all active jurisdictions. Deliverable: a prioritised automation roadmap.",
-    link: "/services#compliance-diagnostic",
+      "Our own AI-native compliance platform. Connectors, regulatory mapping, validation rules, evidence packs and a full audit trail - reusable components every deployment runs on.",
+    link: "/platform",
   },
   {
     index: "02",
-    title: "Pipeline Build",
-    phase: "Build",
+    title: "Forward deployed engineers",
+    phase: "Integration",
     description:
-      "4–8 weeks. We build the first automated compliance pipeline for one regulatory obligation or reporting workflow. The system is built to security standards (OWASP and others) and can operate within your existing infrastructure.",
-    link: "/services#pipeline-build",
+      "Finance is different in every company. Our engineers integrate Core end to end with your systems and adapt it to whatever is unique about how you work.",
+    link: "/how-we-work",
   },
   {
     index: "03",
-    title: "Long-term Partnership",
-    phase: "Partner",
+    title: "One workflow, then expand",
+    phase: "Engagement",
     description:
-      "Ongoing, we maintain, expand, and optimise the compliance infrastructure as the regulatory environment evolves, or as your company enters new states, countries, or product lines.",
-    link: "/services#long-term-partnership",
+      "4–8 weeks to take one workflow live on Core. Then add more reports, controls, evidence packs and registers on the same foundation - instead of starting again.",
+    link: "/how-we-work#engagement",
   },
 ];
 
@@ -37,19 +37,19 @@ const cellBorder = [
   "md:border-l md:border-[#E2E6F0]",
 ];
 
-export const ServicesSection = () => {
+export const PlatformModelSection = () => {
   return (
-    <Section id="services" scrollMargin>
+    <Section id="platform" scrollMargin>
       <SectionHeader
-        title="Three engagements. Each with a clear outcome."
-        subtitle="Start with a diagnostic. Build together. Stay for the long run."
+        title="A platform, deployed by engineers."
+        subtitle="The product does the work. Our engineers make it fit your company."
         className="mb-12"
       />
 
       <hr className="border-t border-[#E2E6F0]" />
 
       <div className="grid grid-cols-1 gap-0 md:[grid-template-columns:repeat(3,minmax(0,1fr))] md:[grid-template-rows:auto_auto_1fr]">
-        {services.map((service, index) => (
+        {pillars.map((service, index) => (
           <Link
             key={service.index}
             to={service.link}

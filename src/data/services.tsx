@@ -59,15 +59,15 @@
  *
  * FORMATTING RULES
  *   Numbers as numerals: 15 hours, $2M, 1–2 weeks, 4–8 weeks.
- *   CTAs are plain and direct: "Book a diagnostic call" not "Start your journey."
+ *   CTAs are plain and direct: "Book a discovery call" not "Start your journey."
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
-import { Code2, Brain, GraduationCap } from "lucide-react";
+import { Code2, Rocket } from "lucide-react";
 import { ReactElement } from "react";
 
 export interface Service {
-  /** Unique slug for anchor links (e.g. /services#compliance-diagnostic) */
+  /** Unique slug for anchor links (e.g. /how-we-work#deploy) */
   slug: string;
   /** SVG path for icon (used on main and Services page). Takes precedence over icon. */
   iconPath?: string;
@@ -93,89 +93,59 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    slug: "compliance-diagnostic",
-    iconPath: "/images/icons/services-ai-strategy.svg",
-    icon: <Brain className="w-12 h-12" />,
-    title: "Compliance Diagnostic",
-    tagline: "Where is the data handoff problem, and what will it cost to fix?",
-    description:
-      "1–2 weeks. We map your compliance workflows, data sources, and regulatory obligations across all active jurisdictions. We identify where the data handoff failures are, what manual steps are happening, and what it would cost to automate them. Deliverable: a prioritised automation roadmap, ready for leadership sign-off.",
-    features: [
-      "Workflow and data source mapping across all active jurisdictions",
-      "Regulatory obligation audit",
-      "Prioritised automation roadmap",
-      "Scope and cost estimate for the Pipeline Build",
-    ],
-    idealFor: [
-      "Heads of compliance who know there is a data handoff problem but have not yet mapped where it is",
-      "Teams preparing for an audit or a new regulatory obligation landing on an already full schedule",
-    ],
-    outcomes: [
-      "A clear answer on where the data handoff failures are",
-      "A prioritised roadmap ready for leadership sign-off",
-    ],
-    typicalTimeline: "1–2 weeks. Roadmap delivered at the end.",
-    industries: [
-      "Banks and payment institutions",
-      "Regulated firms under PSD2, MiFID II, DORA, AML, FinCEN, CFPB",
-    ],
-  },
-  {
-    slug: "pipeline-build",
+    slug: "deploy",
     iconPath: "/images/icons/services-discovery.svg",
-    icon: <GraduationCap className="w-12 h-12" />,
-    title: "Pipeline Build",
-    tagline: "Connect the data. Automate the output. Free the team.",
+    icon: <Rocket className="w-12 h-12" />,
+    title: "Deploy one workflow",
+    tagline: "AI Flow Core, connected to your systems and live on one real workflow.",
     description:
-      "4–8 weeks. We build the first automated compliance pipeline for one regulatory obligation or reporting workflow. Built to security standards (OWASP and others); no data leaves your environment. Acceptance criteria agreed before build begins.",
+      "4–8 weeks. Our forward deployed engineers connect AI Flow Core to the systems you already use and configure it for one recurring workflow - a regulatory report, a control, an evidence pack. We take it through to a real, review-ready output. Built to security standards (OWASP and others); no data leaves your environment.",
     features: [
-      "Data integrations across existing sources",
-      "Regulatory mapping engine for one obligation or workflow",
-      "Automated report generation and scheduling",
+      "Connectors into core banking, transaction systems, CRM, email, Teams and spreadsheets",
+      "Regulatory mapping configured for one obligation or workflow",
+      "Validation rules and controls specific to your company",
       "Audit trail active from day one",
-      "Acceptance criteria agreed before build begins",
+      "Acceptance criteria agreed before deployment begins",
     ],
     idealFor: [
-      "Teams who have completed the Compliance Diagnostic and are ready to build",
       "Compliance functions spending more than 10 hours per person per week on manual data assembly",
+      "Teams facing an audit or a new obligation on an already full schedule",
     ],
     outcomes: [
       "15 hours saved per person, per week",
       "100% of recurring filings automated post-deployment",
       "The client meeting stays on the calendar",
     ],
-    typicalTimeline: "4–8 weeks from kickoff to first automated filing cycle.",
+    typicalTimeline: "4–8 weeks from kickoff to first automated reporting cycle.",
     industries: [
       "Banks and payment institutions",
       "Regulated firms across EU and US jurisdictions",
     ],
   },
   {
-    slug: "long-term-partnership",
+    slug: "expand",
     iconPath: "/images/icons/services-custom-agents.svg",
     icon: <Code2 className="w-12 h-12" />,
-    title: "Long-term Partnership",
-    tagline: "Each new obligation adds an automated output. Not a manual process.",
+    title: "Expand",
+    tagline: "Each new obligation is a new module on the same foundation. Not a new build.",
     description:
-      "Ongoing, we maintain, expand, and optimise the compliance infrastructure as the regulatory environment evolves, or as your company enters new states, countries, or product lines. Each new obligation adds an automated output on top of the existing pipeline - not a new build from scratch.",
+      "Ongoing. Add more reports, controls, evidence packs, and registers on AI Flow Core instead of starting again. The same engineers stay with you as the regulatory environment changes, or as your company enters new states, countries, or product lines.",
     features: [
-      "New obligations automated on the existing pipeline as coverage expands",
-      "Monitoring and validation for all active automated filings",
-      "Quarterly performance review against the obligation stack",
-      "A runbook for any obligation the team needs to own internally",
+      "New obligations added as modules on the existing platform",
+      "Monitoring and validation for every active automated output",
+      "Template updates when regulators change the rules",
+      "Quarterly review against your obligation stack",
+      "A runbook for anything your team wants to own internally",
     ],
     idealFor: [
-      "Teams post-Pipeline Build expanding into new jurisdictions, states, or product lines",
+      "Teams expanding into new jurisdictions, states, or product lines",
       "Compliance functions where the obligation stack grows faster than headcount",
     ],
     outcomes: [
       "Each new obligation takes hours to automate - not weeks of new process",
       "Up to $2M in avoided losses from data handoff failures",
     ],
-    typicalTimeline: "Ongoing. Priced per quarter, scoped by coverage.",
-    industries: [
-      "Banks and payment institutions",
-      "Multi-jurisdiction regulated firms",
-    ],
+    typicalTimeline: "Ongoing. Scoped by coverage.",
+    industries: ["Banks and payment institutions", "Multi-jurisdiction regulated firms"],
   },
 ];

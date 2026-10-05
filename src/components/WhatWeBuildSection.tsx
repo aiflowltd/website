@@ -37,12 +37,12 @@ export const WhatWeBuildSection = ({ padding = "default" }: { padding?: SectionP
   return (
     <Section id="what-we-build" scrollMargin padding={padding}>
       <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground mb-6">
-        What we build
+        What AI Flow Core automates
       </p>
 
       <SectionHeader
-        title="We automate assembly, reconciliation, validation and evidence collection your team does by hand."
-        subtitle="The system connects to existing data sources, maps them to the regulatory templates for each jurisdiction, and runs automatically on schedule."
+        title="Core automates the assembly, reconciliation, validation and evidence collection your team does by hand."
+        subtitle="It connects to your existing data sources, maps them to the regulatory templates for each jurisdiction, and runs automatically on schedule."
         titleClassName="text-3xl md:text-5xl"
         subtitleClassName="max-w-2xl text-base md:text-lg leading-relaxed"
         className="mb-10"

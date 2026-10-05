@@ -199,11 +199,11 @@ export const sar30DayClockPost: BlogPost = {
     },
     {
       type: "heading",
-      text: "What a diagnostic answers",
+      text: "Where a deployment starts",
     },
     {
       type: "paragraph",
-      text: "In 1-2 weeks, an AI Flow Compliance Diagnostic for AML maps the current alert workflow end-to-end: what the transaction monitoring system generates, what the KYC and CDD data looks like in practice, where the analyst time goes, where the 30-day clock typically gets lost, and where the biggest gains from automation sit. The output is a phased plan: which workflows automate first, what the time-to-value is for each, and what the audit trail looks like at the end.",
+      text: "In the first weeks of an AI Flow Core deployment for AML, our forward deployed engineers map the current alert workflow end-to-end: what the transaction monitoring system generates, what the KYC and CDD data looks like in practice, where the analyst time goes, where the 30-day clock typically gets lost, and where the biggest gains from automation sit. The output is a phased plan: which workflows automate first, what the time-to-value is for each, and what the audit trail looks like at the end.",
     },
     {
       type: "paragraph",

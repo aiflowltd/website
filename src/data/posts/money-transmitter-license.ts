@@ -234,19 +234,19 @@ export const moneyTransmitterLicensePost: BlogPost = {
     },
     {
       type: "heading",
-      text: "What a diagnostic answers",
+      text: "Where a deployment starts",
     },
     {
       type: "paragraph",
-      text: `In 1-2 weeks, an AI Flow Compliance Diagnostic for multi-state operations maps the current state of the firm's MTL stack: which states are licensed, what the per-state reporting workload is today, where the per-state attribution logic breaks, what the renewal and material-change calendar looks like over the next 12 months, and where the biggest gains from automation sit.`,
+      text: `In the first weeks of an AI Flow Core deployment for multi-state operations, our forward deployed engineers map the current state of the firm's MTL stack: which states are licensed, what the per-state reporting workload is today, where the per-state attribution logic breaks, what the renewal and material-change calendar looks like over the next 12 months, and where the biggest gains from automation sit.`,
     },
     {
       type: "paragraph",
-      text: `For a fintech planning to add 5-10 states in the next 12 months, the diagnostic identifies the bottleneck before it bites, typically around the 20-state threshold. For a fintech already past that threshold and feeling the compliance ops cost, the diagnostic produces a phased plan that reduces the per-quarter burden without disrupting the ongoing reporting cycle.`,
+      text: `For a fintech planning to add 5-10 states in the next 12 months, the deployment identifies the bottleneck before it bites, typically around the 20-state threshold. For a fintech already past that threshold and feeling the compliance ops cost, the deployment follows a phased plan that reduces the per-quarter burden without disrupting the ongoing reporting cycle.`,
     },
     {
       type: "paragraph",
-      text: `If a sponsor bank has flagged the firm's BSA program, or if a recent state examination has surfaced findings, the diagnostic answers both questions: how to remediate the immediate finding, and how to prevent the next examination from finding the same pattern. Background on licensing mechanics: [InnReg](${INNREG_MTL}), [Brico on MSB vs MTL](${BRICO_MSB_MTL}), [Cogent Law](${COGENT_MTL}), and the [Congressional Research Service analysis](${CRS_MTL}).`,
+      text: `If a sponsor bank has flagged the firm's BSA program, or if a recent state examination has surfaced findings, the deployment answers both questions: how to remediate the immediate finding, and how to prevent the next examination from finding the same pattern. Background on licensing mechanics: [InnReg](${INNREG_MTL}), [Brico on MSB vs MTL](${BRICO_MSB_MTL}), [Cogent Law](${COGENT_MTL}), and the [Congressional Research Service analysis](${CRS_MTL}).`,
     },
   ],
 };
