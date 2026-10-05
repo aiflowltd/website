@@ -4,7 +4,7 @@ export const journeySteps: JourneyStep[] = [
   {
     label: "Discovery",
     description:
-      "We start with a diagnostic conversation to understand your workflow bottlenecks, pain points, and where execution slows down.",
+      "We start with a discovery conversation to understand your workflow bottlenecks, pain points, and where execution slows down.",
   },
   {
     label: "Workshop",

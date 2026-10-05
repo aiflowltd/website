@@ -36,20 +36,26 @@ export const Hero = () => {
         </p>
 
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold font-alternates my-10 leading-[1.1] text-foreground">
-          Compliance solutions for
+          The AI-native compliance platform
           <br />
-          <span className="font-extralight">regulated financial services.</span>
+          <span className="font-extralight">for regulated financial services.</span>
         </h1>
 
+        <p className="max-w-2xl text-base md:text-lg font-light leading-relaxed text-muted-foreground -mt-4 mb-10">
+          AI Flow Core does the reporting your team does by hand today and hands it
+          back checked, on schedule, with the proof behind every number. Deployed
+          end to end by our forward deployed engineers.
+        </p>
+
         <div className="flex flex-wrap gap-4 mb-12">
-          <Link to="/contact">
+          <Link to="/contact#calendly">
             <SiteButton variant="primary" arrow="up-right">
-              Book a diagnostic call
+              Book a discovery call
             </SiteButton>
           </Link>
-          <Link to="/#how-we-work">
+          <Link to="/platform">
             <SiteButton variant="secondary" arrow={false}>
-              See how we work →
+              See the platform →
             </SiteButton>
           </Link>
         </div>

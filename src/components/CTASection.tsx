@@ -23,7 +23,7 @@ export const CTASection = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact#calendly">
                 <SiteButton variant="primary" arrow="up-right">
-                  Book a diagnostic call
+                  Book a discovery call
                 </SiteButton>
               </Link>
               <Link to="/case-studies">

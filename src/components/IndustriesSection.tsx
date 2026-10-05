@@ -89,7 +89,7 @@ export const IndustriesSection = () => {
           <div className="mt-10">
             <Link to="/contact">
               <SiteButton variant="primary" arrow="up-right">
-                Book a diagnostic call
+                Book a discovery call
               </SiteButton>
             </Link>
           </div>

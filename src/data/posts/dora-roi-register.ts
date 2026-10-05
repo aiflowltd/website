@@ -201,11 +201,11 @@ export const doraRoiRegisterPost: BlogPost = {
     },
     {
       type: "paragraph",
-      text: "The right time is now. The 2027 reference date will be 31 December 2026. Building the pipeline takes 4-8 weeks for the first regulatory output. Working backwards from that, starting the diagnostic in Q2 or Q3 of 2026 puts an institution in a position where the 2027 cycle is the first one that runs through automation, not the year after.",
+      text: "The right time is now. The 2027 reference date will be 31 December 2026. Building the pipeline takes 4-8 weeks for the first regulatory output. Working backwards from that, starting the deployment in Q2 or Q3 of 2026 puts an institution in a position where the 2027 cycle is the first one that runs through automation, not the year after.",
     },
     {
       type: "paragraph",
-      text: "What a diagnostic answers in 1-2 weeks: where each of the 15 templates' data sources sit today, which sources are clean and which are not, what the current manual workflow costs in person-time, where the highest-risk gaps are, and what a phased automation roadmap looks like. The output is not a sales pitch. It is a map of the institution's own data handoff problem, with priorities attached.",
+      text: "What the first weeks of a deployment map: where each of the 15 templates' data sources sit today, which sources are clean and which are not, what the current manual workflow costs in person-time, where the highest-risk gaps are, and what to automate first. The output is not a sales pitch. It is a map of the institution's own data handoff problem, with priorities attached.",
     },
     {
       type: "paragraph",

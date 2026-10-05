@@ -221,7 +221,7 @@ export const mifidTransactionReportingPost: BlogPost = {
     },
     {
       type: "paragraph",
-      text: "A diagnostic answers in 1-2 weeks: where in the reporting chain errors are most likely, what the current control framework actually catches, how the firm would respond if the FCA's automated monitoring flagged a discrepancy tomorrow, and what a remediation roadmap looks like ahead of the FCA's expected enforcement tempo through 2026.",
+      text: "The first weeks of a deployment answer: where in the reporting chain errors are most likely, what the current control framework actually catches, how the firm would respond if the FCA's automated monitoring flagged a discrepancy tomorrow, and what a remediation roadmap looks like ahead of the FCA's expected enforcement tempo through 2026.",
     },
     {
       type: "paragraph",

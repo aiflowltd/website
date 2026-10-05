@@ -53,9 +53,8 @@ const situations = [
 ];
 
 const engagementTypes = [
-  "Compliance Diagnostic",
-  "Pipeline Build",
-  "Compliance Operations",
+  "Deploy AI Flow Core on one workflow",
+  "Expand an existing deployment",
   "Not sure yet",
 ];
 

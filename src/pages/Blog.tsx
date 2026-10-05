@@ -128,7 +128,7 @@ const Blog = () => {
             </div>
           ) : (
             <>
-              {/* Mobile: same line treatment as BlogSection / ServicesSection */}
+              {/* Mobile: same line treatment as BlogSection / PlatformModelSection */}
               <div className="grid grid-cols-1 gap-0 md:hidden">
                 {filteredPosts.map((post, index) => (
                   <Link

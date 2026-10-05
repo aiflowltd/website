@@ -5,7 +5,7 @@ import { TheProblemSection } from "@/components/TheProblemSection";
 import { WhatWeBuildSection } from "@/components/WhatWeBuildSection";
 import { WhyUsSection } from "@/components/WhyUsSection";
 import { MarketQuoteSection } from "@/components/MarketQuoteSection";
-import { ServicesSection } from "@/components/ServicesSection";
+import { PlatformModelSection } from "@/components/PlatformModelSection";
 import { HowWeWorkSection } from "@/components/HowWeWorkSection";
 import { EngagementSection } from "@/components/EngagementSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
@@ -20,7 +20,7 @@ import { CTASection } from "@/components/CTASection";
 
 const Index = () => {
   useEffect(() => {
-    document.title = "AI Flow Software | Compliance infrastructure";
+    document.title = "AI Flow Core | The AI-native compliance platform";
   }, []);
 
   return (
@@ -36,10 +36,10 @@ const Index = () => {
         ctaHref="/contact"
       />
       <WhatWeBuildSection />
+      <PlatformModelSection />
       <WhyUsSection />
       <MarketQuoteSection />
       <WhyNowSection />
-      <ServicesSection />
       <HowWeWorkSection />
       <EngagementSection />
       {/* <TeamSection /> */}

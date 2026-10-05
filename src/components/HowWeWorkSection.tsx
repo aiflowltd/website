@@ -6,33 +6,33 @@ import { SectionHeader } from "@/components/SectionHeader";
 const steps = [
   {
     number: "01",
-    title: "First call",
+    title: "Discovery call",
     description:
-      "One conversation to understand your situation. Your obligation stack, your team, what is breaking first. No assumptions. We listen before we propose anything.",
+      "One conversation about your obligation stack, your systems, and the workflow your team still does by hand. We agree the first workflow to deploy and what correct looks like for it.",
   },
   {
     number: "02",
-    title: "Diagnose together",
+    title: "Connect",
     description:
-      "We map your compliance workflows and data sources with you - not for you. Every gap we find, you see. You tell us which ones matter most. Nothing gets prioritised without your input.",
+      "Our forward deployed engineers connect AI Flow Core to the systems you already use - core banking, transaction platforms, CRM, email, spreadsheets. Nothing to migrate. Nothing ripped out.",
   },
   {
     number: "03",
-    title: "Agree the scope",
+    title: "Fit it to you",
     description:
-      "The findings come back to you. We present what we found. You set the priorities. The scope and expected outcome are agreed before a line of code is written.",
+      "Your sign-off chain, your exceptions, your definitions. The engineers configure Core around how your company actually works - and build what is unique to you on top of it.",
   },
   {
     number: "04",
-    title: "Build - open book",
+    title: "Go live - open book",
     description:
-      "You have access to the work as it develops. Weekly updates, decisions documented, nothing moves without your sign-off. No black box. No surprises at handover.",
+      "The first workflow runs on schedule and lands review-ready. Weekly updates, decisions documented, nothing moves without your sign-off. No black box. No surprises at handover.",
   },
   {
     number: "05",
-    title: "Long run",
+    title: "Expand",
     description:
-      "We do not disappear after deployment. Each new obligation builds on the existing infrastructure. The team that built it stays accountable for it.",
+      "Each new report, control, or register is a new module on the same platform - not a new build. The engineers who deployed it stay accountable for it.",
   },
 ];
 
@@ -54,7 +54,7 @@ const stepAccentColors = [
 
 const FADE_DURATION_MS = 220;
 
-export const HowWeWorkSection = () => {
+export const HowWeWorkSection = ({ showAction = true }: { showAction?: boolean }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const stepsWrapperRef = useRef<HTMLDivElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -163,17 +163,19 @@ export const HowWeWorkSection = () => {
       <div ref={containerRef} className="container mx-auto max-w-6xl">
         <SectionHeader
           title="How we work"
-          subtitle="The client is in the room at every stage."
+          subtitle="Our platform. Our engineers. You in the room at every stage."
           action={
-            <Link to="/services">
-              <SiteButton
-                variant="primary"
-                arrow="up-right"
-                className="whitespace-nowrap"
-              >
-                Explore our services in depth
-              </SiteButton>
-            </Link>
+            showAction ? (
+              <Link to="/how-we-work">
+                <SiteButton
+                  variant="primary"
+                  arrow="up-right"
+                  className="whitespace-nowrap"
+                >
+                  How we deploy AI Flow Core
+                </SiteButton>
+              </Link>
+            ) : undefined
           }
           className="mb-10"
         />

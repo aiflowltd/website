@@ -8,7 +8,7 @@ import { Section } from "@/components/Section";
 import { SectionHeader } from "@/components/SectionHeader";
 import { SiteButton } from "@/components/SiteButton";
 import { ClientsCarousel } from "@/components/ClientsCarousel";
-import { ServicesSection } from "@/components/ServicesSection";
+import { PlatformModelSection } from "@/components/PlatformModelSection";
 import { HowWeWorkSection } from "@/components/HowWeWorkSection";
 import { TeamSection } from "@/components/TeamSection";
 import { ContactFormSection } from "@/components/ContactFormSection";
@@ -276,19 +276,19 @@ const StartHereSection = () => (
             className="font-alternates font-bold text-white leading-tight mb-4"
             style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
           >
-            Compliance Diagnostic
+            Discovery call
             <br />
             <span className="font-extralight text-white/50">
-              Fixed scope · Fixed price · 1–2 weeks
+              One conversation · No cost · No obligation
             </span>
           </h2>
           <p className="font-sans font-light text-sm text-white/60 leading-relaxed mb-2">
-            We map your compliance workflows, data sources, and regulatory obligations. You receive
-            a prioritised automation roadmap and a clear picture of where the first pipeline should
-            go. This is the gate before any further commitment.
+            Your obligations, your systems, and the workflow your team still does by hand. If AI
+            Flow Core is a fit, we agree the first workflow to deploy and the acceptance criteria
+            for it.
           </p>
           <p className="font-sans text-sm text-white/40">
-            Low commitment. High signal. No obligation to continue.
+            Start with one workflow. Expand on the same foundation.
           </p>
         </div>
         <div className="shrink-0">
@@ -321,14 +321,14 @@ const Info = () => {
             Company overview · AI Flow Software
           </p>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold font-alternates my-10 leading-[1.1] text-foreground">
-            Compliance solutions for
+            The AI-native compliance platform
             <br />
-            <span className="font-extralight">regulated financial services.</span>
+            <span className="font-extralight">for regulated financial services.</span>
           </h1>
           <div className="flex flex-wrap gap-4">
             <Link to="/contact">
               <SiteButton variant="primary" arrow="up-right">
-                Book a diagnostic call
+                Book a discovery call
               </SiteButton>
             </Link>
             <Link to="#how-we-work">
@@ -345,8 +345,8 @@ const Info = () => {
       <WhoWeServeSection />
       <TheProblemSection />
 
-      {/* What we build — ServicesSection */}
-      <ServicesSection />
+      {/* Platform + engineers — PlatformModelSection */}
+      <PlatformModelSection />
 
       <RegulatoryEnvironmentSection />
 

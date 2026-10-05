@@ -33,7 +33,7 @@ const stats = [
 
 const LINE = "border-[#E2E6F0]";
 
-/** Horizontal padding between columns (matches ServicesSection). */
+/** Horizontal padding between columns (matches PlatformModelSection). */
 const colPad = ["md:pr-10", "md:px-10", "md:px-10", "md:pl-10"] as const;
 
 function statCellClass(index: number) {
@@ -72,7 +72,7 @@ export const TeamSection = () => {
 
       {/*
         Desktop: 4 columns, 3 shared row tracks (value / label / description).
-        Mobile: 2×2 with dividers matching ServicesSection line weight.
+        Mobile: 2×2 with dividers matching PlatformModelSection line weight.
       */}
       <div className="grid grid-cols-2 md:grid-cols-4 md:[grid-template-rows:auto_auto_1fr] gap-0">
         {stats.map((stat, index) => (

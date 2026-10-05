@@ -271,19 +271,19 @@ export const doraIncidentReportingPost: BlogPost = {
     },
     {
       type: "heading",
-      text: "What a diagnostic answers",
+      text: "Where a deployment starts",
     },
     {
       type: "paragraph",
-      text: "In 1-2 weeks, a Compliance Diagnostic for incident reporting maps the current state: how classification calls are being made today, what the average time-to-classification looks like for past incidents, where the data assembly bottlenecks are, what the audit trail looks like across the most recent 5-10 incidents, and what an automated workflow would change for the technical, compliance, and CISO teams.",
+      text: "In the first weeks of an AI Flow Core deployment for incident reporting, our forward deployed engineers map the current state: how classification calls are being made today, what the average time-to-classification looks like for past incidents, where the data assembly bottlenecks are, what the audit trail looks like across the most recent 5-10 incidents, and what an automated workflow would change for the technical, compliance, and CISO teams.",
     },
     {
       type: "paragraph",
-      text: "For institutions that have already had one incident reportable under DORA, the diagnostic is calibrated against the institution's own experience. For institutions that have been fortunate so far, the diagnostic uses the incident scenarios in the institution's own DORA testing program as the basis for the assessment.",
+      text: "For institutions that have already had one incident reportable under DORA, the deployment is calibrated against the institution's own experience. For institutions that have been fortunate so far, the deployment uses the incident scenarios in the institution's own DORA testing program as the basis for the assessment.",
     },
     {
       type: "paragraph",
-      text: `If the institution depends on Critical ICT Third-Party Providers, which, since [November 2025](${ESA_CTPP}), means most EU financial entities, the contract-level notification clauses become part of the diagnostic. Whether the providers' notifications actually arrive in a form the institution can act on within minutes is the operational question.`,
+      text: `If the institution depends on Critical ICT Third-Party Providers, which, since [November 2025](${ESA_CTPP}), means most EU financial entities, the contract-level notification clauses become part of the deployment. Whether the providers' notifications actually arrive in a form the institution can act on within minutes is the operational question.`,
     },
   ],
 };

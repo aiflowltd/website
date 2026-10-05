@@ -66,11 +66,18 @@ export const Navigation = () => {
 
           <div className="hidden md:flex items-center gap-6 lg:gap-8 flex-1 justify-end min-w-0">
             <NavLink
-              to="/services"
+              to="/platform"
               className={navItemClass}
               activeClassName={navItemActive}
             >
-              Services
+              Platform
+            </NavLink>
+            <NavLink
+              to="/how-we-work"
+              className={navItemClass}
+              activeClassName={navItemActive}
+            >
+              How we work
             </NavLink>
             <NavLink
               to="/case-studies"
@@ -114,10 +121,18 @@ export const Navigation = () => {
           <div className="px-6 py-8 flex flex-col gap-0 overflow-y-auto max-h-[calc(100vh-4rem)]">
             <MobileRow>
               <Link
-                to="/services"
+                to="/platform"
                 className="block py-5 text-base font-medium text-[#0E1015] hover:text-[#112e63] transition-colors"
               >
-                Services
+                Platform
+              </Link>
+            </MobileRow>
+            <MobileRow>
+              <Link
+                to="/how-we-work"
+                className="block py-5 text-base font-medium text-[#0E1015] hover:text-[#112e63] transition-colors"
+              >
+                How we work
               </Link>
             </MobileRow>
             <MobileRow>
