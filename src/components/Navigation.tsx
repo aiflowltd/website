@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItemClass =
-  "text-[13px] font-medium tracking-[0.01em] text-[#555A66] hover:text-[#0E1015] transition-colors";
+  "whitespace-nowrap text-[13px] font-medium tracking-[0.01em] text-[#555A66] hover:text-[#0E1015] transition-colors";
 const navItemActive = "text-[#0E1015]";
 
 export const Navigation = () => {
@@ -64,7 +64,7 @@ export const Navigation = () => {
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
 
-          <div className="hidden md:flex items-center gap-6 lg:gap-8 flex-1 justify-end min-w-0">
+          <div className="hidden md:flex items-center gap-4 lg:gap-8 flex-1 justify-end min-w-0">
             <NavLink
               to="/platform"
               className={navItemClass}
@@ -109,8 +109,10 @@ export const Navigation = () => {
               Blog
             </NavLink>
 
-            <Link to="/contact" className="shrink-0 ml-2">
-              <SiteButton variant="nav">Contact us</SiteButton>
+            <Link to="/contact#calendly" className="shrink-0 ml-2">
+              <SiteButton variant="nav" className="whitespace-nowrap">
+                Book a discovery call
+              </SiteButton>
             </Link>
           </div>
         </div>
@@ -170,9 +172,9 @@ export const Navigation = () => {
             </MobileRow>
 
             <hr className="border-t border-[#E2E6F0] mb-8" />
-            <Link to="/contact">
+            <Link to="/contact#calendly">
               <SiteButton variant="nav" className="w-full justify-center">
-                Contact us
+                Book a discovery call
               </SiteButton>
             </Link>
           </div>
