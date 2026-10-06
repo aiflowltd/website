@@ -323,7 +323,7 @@ const Info = () => {
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold font-alternates my-10 leading-[1.1] text-foreground">
             The AI-native compliance platform
             <br />
-            <span className="font-extralight">for regulated financial services.</span>
+            <span className="font-extralight">for regulated finance.</span>
           </h1>
           <div className="flex flex-wrap gap-4">
             <Link to="/contact">

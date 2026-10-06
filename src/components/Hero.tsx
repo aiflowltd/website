@@ -38,7 +38,7 @@ export const Hero = () => {
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold font-alternates my-10 leading-[1.1] text-foreground">
           The AI-native compliance platform
           <br />
-          <span className="font-extralight">for regulated financial services.</span>
+          <span className="font-extralight">for regulated finance.</span>
         </h1>
 
         <p className="max-w-2xl text-base md:text-lg font-light leading-relaxed text-muted-foreground -mt-4 mb-10">
